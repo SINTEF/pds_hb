@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "format": "prettier --write **/*.{js,jsx,ts,tsx,md,html,css}",
-    "lint": "eslint ./**/*.{ts,tsx}'",
+    "lint": "eslint './**/*.{ts,tsx}'",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
