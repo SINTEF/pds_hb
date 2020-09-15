@@ -10,7 +10,7 @@
   font-size: 24px;
   position: absolute;
   transform-origin: top left;
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .primary input {
@@ -51,6 +51,23 @@
 
 .standard label::after {
   content: ':';
+}
+
+.success {
+  border-color: #50b836;
+  color: #50b836;
+  transition: color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.success > input {
+  color: #50b836;
+  transition: color 0.3s ease-in-out;
+}
+
+.success > label {
+  color: #50b836;
+  transition: color 0.3s ease-in-out;
 }
 
 .field {
