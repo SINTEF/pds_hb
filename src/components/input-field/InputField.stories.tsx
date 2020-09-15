@@ -62,3 +62,6 @@ StandardWithFile.args = {
   type: 'file',
   variant: 'standard',
 }
+StandardWithFile.parameters = {
+  backgrounds: { default: 'white' },
+}
