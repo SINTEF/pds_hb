@@ -9,6 +9,7 @@ export interface InputProps {
   label: string
   icon?: string
   placeholder?: string
+  success?: boolean
 }
 
 export const InputField: React.FC<InputProps> = ({
@@ -19,6 +20,7 @@ export const InputField: React.FC<InputProps> = ({
   label,
   icon,
   placeholder,
+  success,
 }: InputProps) => {
   const [hasContent, setHasContent] = useState<boolean>(!!defaultValue)
   const handleHanged = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +37,13 @@ export const InputField: React.FC<InputProps> = ({
   }
 
   return (
-    <div className={[styles[variant], styles.field].join(' ')}>
+    <div
+      className={[
+        styles[variant],
+        styles.field,
+        success ? styles.success : '',
+      ].join(' ')}
+    >
       <label
         className={
           variant === 'primary' && (hasContent || type === 'file')
