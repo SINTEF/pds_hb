@@ -4,7 +4,7 @@ import Ripples from 'react-ripples'
 import styles from './Button.module.css'
 
 export interface ButtonProps {
-  type: 'standard' | 'danger' | 'primary'
+  type?: 'standard' | 'danger' | 'primary'
 
   /**
    * What background color to use
@@ -17,7 +17,7 @@ export interface ButtonProps {
   /**
    * Button contents
    */
-  label: string
+  label?: string
   /**
    * Button icon
    * Use a material icon font glyph
