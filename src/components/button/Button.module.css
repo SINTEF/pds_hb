@@ -16,6 +16,11 @@
   border: #03191e solid 4px;
 }
 
+.primary {
+  color: #003d65;
+  border: #003d65 solid 4px;
+}
+
 .danger {
   border: #e00c0c solid 4px;
   color: #e00c0c;

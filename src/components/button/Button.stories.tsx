@@ -18,6 +18,12 @@ Standard.args = {
   label: 'Click me!',
 }
 
+export const Primary = Template.bind({})
+Primary.args = {
+  label: 'Click me!',
+  type: 'primary',
+}
+
 export const Danger = Template.bind({})
 Danger.args = {
   type: 'danger',
