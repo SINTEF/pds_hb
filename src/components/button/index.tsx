@@ -26,7 +26,7 @@ export interface ButtonProps {
   /**
    * Optional click handler
    */
-  onClick?: () => void
+  onClick: () => void
 }
 
 /**
@@ -38,7 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
   icon = 'chevron_right',
   backgroundColor,
   label,
-  ...props
+  onClick,
 }: ButtonProps) => {
   return (
     <Ripples>
@@ -46,10 +46,10 @@ export const Button: React.FC<ButtonProps> = ({
         type="button"
         className={[styles.button, styles[size], styles[type]].join(' ')}
         style={{ backgroundColor }}
-        {...props}
+        onClick={onClick}
       >
         {label}
-        {label ? (
+        {icon ? (
           <i className={'material-icons ' + styles.icon}>{icon}</i>
         ) : null}
       </button>
