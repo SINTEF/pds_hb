@@ -15,6 +15,5 @@ const Template: Story<ContactFormProps> = (args) => <ContactForm {...args} />
 
 export const Standard = Template.bind({})
 Standard.args = {
-  name: 'Ada Lovelace',
-  company: 'SINTEF',
+  isOpen: true,
 }
