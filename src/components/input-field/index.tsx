@@ -4,7 +4,7 @@ import styles from './InputField.module.css'
 export interface InputProps {
   defaultValue: string
   onValueChanged: (value: string | FileList | null) => void
-  type: 'text' | 'number' | 'email' | 'password' | 'file'
+  type: 'text' | 'textarea' | 'number' | 'email' | 'password' | 'file'
   variant: 'primary' | 'standard'
   label: string
   icon?: string
@@ -23,14 +23,16 @@ export const InputField: React.FC<InputProps> = ({
   success,
 }: InputProps) => {
   const [hasContent, setHasContent] = useState<boolean>(!!defaultValue)
-  const handleHanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChanged = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     if (event.target.value !== '' && !hasContent) {
       setHasContent(true)
     } else if (event.target.value === '' && hasContent) {
       setHasContent(false)
     }
     if (type === 'file') {
-      onValueChanged(event.target.files)
+      onValueChanged((event.target as EventTarget & HTMLInputElement).files)
     } else {
       onValueChanged(event.target.value)
     }
@@ -42,6 +44,7 @@ export const InputField: React.FC<InputProps> = ({
         styles[variant],
         styles.field,
         success ? styles.success : '',
+        type === 'textarea' ? styles.fieldPadding : '',
       ].join(' ')}
     >
       <label
@@ -50,17 +53,29 @@ export const InputField: React.FC<InputProps> = ({
             ? styles.labelTuck
             : ''
         }
+        style={{ alignSelf: type === 'textarea' ? 'flex-start' : '' }}
         htmlFor={label}
       >
         {label}
       </label>
-      <input
-        id={label}
-        type={type}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        onChange={handleHanged}
-      ></input>
+      {type === 'textarea' ? (
+        <textarea
+          id={label}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          onChange={handleChanged}
+          rows={5}
+          cols={40}
+        ></textarea>
+      ) : (
+        <input
+          id={label}
+          type={type}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          onChange={handleChanged}
+        ></input>
+      )}
       {icon ? <i className={'material-icons ' + styles.icon}>{icon}</i> : null}
     </div>
   )
