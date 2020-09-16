@@ -26,7 +26,7 @@ export interface ButtonProps {
   /**
    * Optional click handler
    */
-  onClick?: () => void
+  onClick: () => void
 }
 
 /**
@@ -49,7 +49,7 @@ export const Button: React.FC<ButtonProps> = ({
         {...props}
       >
         {label}
-        {label ? (
+        {icon ? (
           <i className={'material-icons ' + styles.icon}>{icon}</i>
         ) : null}
       </button>
