@@ -29,6 +29,13 @@
   transform: translate(0, -14px) scale(0.5);
 }
 
+.primary textarea {
+  border: unset;
+  border-radius: 2px;
+  background-color: transparent;
+  max-width: 378px;
+}
+
 .standard {
   padding-bottom: 25px;
   border-bottom: 1px solid black;
@@ -40,6 +47,16 @@
 }
 
 .standard input::placeholder {
+  color: #dadada;
+}
+
+.standard textarea {
+  border: 2px solid black;
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+.standard textarea::placeholder {
   color: #dadada;
 }
 
@@ -73,6 +90,10 @@
 .field {
   display: flex;
   align-items: center;
+}
+
+.fieldPadding {
+  padding: 14px 8px;
 }
 
 .field > input {

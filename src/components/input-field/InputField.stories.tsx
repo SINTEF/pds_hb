@@ -15,6 +15,12 @@ PrimaryInput.args = {
   label: 'Input Label',
 }
 
+export const PrimaryTextArea = Template.bind({})
+PrimaryTextArea.args = {
+  label: 'Input Label',
+  type: 'textarea',
+}
+
 export const PrimaryWithDefault = Template.bind({})
 PrimaryWithDefault.args = {
   label: 'Input Label',
@@ -41,6 +47,17 @@ StandardInput.args = {
   placeholder: 'Input placeholder',
 }
 StandardInput.parameters = {
+  backgrounds: { default: 'white' },
+}
+
+export const StandardTextArea = Template.bind({})
+StandardTextArea.args = {
+  label: 'Input Label',
+  variant: 'standard',
+  placeholder: 'Input placeholder',
+  type: 'textarea',
+}
+StandardTextArea.parameters = {
   backgrounds: { default: 'white' },
 }
 
