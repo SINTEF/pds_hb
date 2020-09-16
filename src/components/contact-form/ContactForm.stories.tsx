@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { ContactForm, ContactFormProps } from '.'
+import { ContactForm } from '.'
 
 export default {
   title: 'ContactForm',
@@ -11,9 +11,6 @@ export default {
   },
 } as Meta
 
-const Template: Story<ContactFormProps> = (args) => <ContactForm {...args} />
+const Template: Story = (args) => <ContactForm {...args} />
 
 export const Standard = Template.bind({})
-Standard.args = {
-  isOpen: true,
-}

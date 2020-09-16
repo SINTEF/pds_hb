@@ -4,7 +4,7 @@ import Modal from 'react-modal'
 import { Button } from '../button'
 import { InputField } from '../input-field'
 
-import { form, submitButton } from './ContactForm.module.css'
+import styles from './ContactForm.module.css'
 
 export type ContactFormState = {
   senderEmail: string
@@ -24,7 +24,7 @@ export const ContactForm: React.FC = () => {
       <Button
         size={'small'}
         label={'Contact SINTEF'}
-        icon={'message'}
+        icon={'email'}
         onClick={() => setIsOpen(true)}
       />
       <Modal
@@ -32,7 +32,7 @@ export const ContactForm: React.FC = () => {
         onRequestClose={() => setIsOpen(false)}
         shouldCloseOnOverlayClick={true}
       >
-        <div className={form}>
+        <div className={styles.form}>
           <h2>Contact SINTEF</h2>
           <div>
             <InputField
@@ -60,12 +60,12 @@ export const ContactForm: React.FC = () => {
               }
             />
           </div>
-          <div className={submitButton}>
+          <div className={styles.submitButton}>
             <Button
               label={'Send'}
-              // TODO: Send form data to BE and send e-mail there
               onClick={() => {
                 setIsOpen(false)
+                // TODO: Send form data to BE and send e-mail there
                 console.log(values)
               }}
               icon={'send'}
