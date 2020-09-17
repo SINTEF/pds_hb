@@ -22,7 +22,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      # Runs a set of commands using the runners shell
       - name: Check Prettier fromatting
         run: yarn format:check
 
