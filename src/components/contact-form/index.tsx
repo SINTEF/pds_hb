@@ -19,6 +19,15 @@ export const ContactForm: React.FC = () => {
     subject: '',
     message: '',
   })
+
+  const resetFormState = () => {
+    setValues({
+      senderEmail: '',
+      subject: '',
+      message: '',
+    })
+  }
+
   return (
     <>
       <Button
@@ -31,9 +40,25 @@ export const ContactForm: React.FC = () => {
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
         shouldCloseOnOverlayClick={true}
+        style={{
+          content: {
+            margin: '0 20vw',
+          },
+        }}
       >
         <div className={styles.form}>
-          <h2>Contact SINTEF</h2>
+          <div className={styles.headRow}>
+            <h2>Contact SINTEF</h2>
+            <i
+              className="material-icons"
+              onClick={() => {
+                setIsOpen(false)
+                resetFormState()
+              }}
+            >
+              close
+            </i>
+          </div>
           <div>
             <InputField
               variant={'standard'}
@@ -45,6 +70,7 @@ export const ContactForm: React.FC = () => {
             />
             <InputField
               variant={'standard'}
+              type={'email'}
               label={'Your e-mail'}
               placeholder={'hans@hansen.no'}
               onValueChanged={(email) =>
