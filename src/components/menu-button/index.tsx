@@ -1,12 +1,12 @@
 import React from 'react'
-import Ripples from 'react-ripples'
-
 import styles from './MenuButton.module.css'
 
 export interface MenuButtonProps {
-  type?: 'standard' | 'logout' | 'notify'
+  type: 'standard' | 'logout' | 'notify'
 
   label: string
+
+  alert?: Int16Array
 
   onClick: () => void
 }
@@ -18,6 +18,7 @@ and account/company menu
 export const MenuButton: React.FC<MenuButtonProps> = ({
   type = 'standard',
   label,
+  alert,
   ...props
 }: MenuButtonProps) => {
   return (
@@ -25,6 +26,7 @@ export const MenuButton: React.FC<MenuButtonProps> = ({
       <hr className={styles.line} />
       <button className={[styles.button, styles[type]].join(' ')}>
         {label}
+        {type == 'notify' && <div className={styles.notifysignal}>{alert}</div>}
       </button>
     </div>
   )
