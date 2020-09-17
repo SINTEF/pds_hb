@@ -6,6 +6,8 @@ import { InputField } from '../input-field'
 
 import styles from './ContactForm.module.css'
 
+Modal.setAppElement('#root')
+
 export type ContactFormState = {
   senderEmail: string
   subject: string
