@@ -28,4 +28,5 @@ export const Notify = Template.bind({})
 Notify.args = {
   label: 'Approve new users',
   type: 'notify',
+  alert: 1,
 }

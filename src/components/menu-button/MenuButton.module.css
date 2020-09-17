@@ -8,6 +8,7 @@
   padding-left: 8px;
   padding-right: 8px;
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .container {
@@ -15,6 +16,7 @@
   max-width: 237px;
   padding-left: 24px;
   padding-right: 24px;
+  background-color: #ffffff;
 }
 
 .line {
@@ -36,11 +38,11 @@
 Elipse Notification Signal
 */
 .notifysignal {
-  position: absolute;
+  text-align: center;
   width: 35px;
   height: 35px;
-  left: 287px;
-  top: 405px;
+  line-height: 35px;
+  border-radius: 30px;
   color: #ffffff;
   background-color: #e00c0c;
 }
