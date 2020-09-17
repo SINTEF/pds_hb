@@ -1,0 +1,41 @@
+.dropDownMenu {
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  width: 237px;
+  text-align: left;
+  background-color: #ffffff;
+  border-style: inset;
+}
+
+.title {
+  background-color: #ffffff;
+  width: 237px;
+  height: 80px;
+}
+
+.username {
+  font-size: 24px;
+  padding-left: 32px;
+}
+
+.company {
+  font-size: 14px;
+  font-weight: lighter;
+  padding-left: 32px;
+}
+
+.usersymbol {
+  position: absolute;
+  width: 53px;
+  height: 51px;
+  left: 1360.01px;
+  top: 11px;
+  font-size: 24px;
+  color: #000000;
+  background: #dadada;
+}
