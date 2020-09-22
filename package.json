@@ -72,7 +72,12 @@
     }
   },
   "lint-staged": {
+<<<<<<< HEAD
     "**/*.{js,jsx,ts,tsx,md,html,css}": "prettier --write",
     "**/*.{ts,tsx}": "eslint --cache --fix --max-warnings=0"
+=======
+    "**/*.{js,jsx,ts,tsx,test.tsx,md,html,css}": "prettier --write",
+    "**/*.{ts,tsx,test.tsx}": "eslint --cache --fix"
+>>>>>>> Added test files to linter
   }
 }
