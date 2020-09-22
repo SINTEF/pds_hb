@@ -19,7 +19,6 @@ export const MenuButton: React.FC<MenuButtonProps> = ({
   type = 'standard',
   label,
   alert,
-  ...props
 }: MenuButtonProps) => {
   return (
     <div className={styles.container}>

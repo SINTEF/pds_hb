@@ -1,22 +1,47 @@
 import React from 'react'
-import Ripples from 'react-ripples'
 
 import styles from './DropDownMenu.module.css'
-import { background } from '@storybook/theming'
+import { MenuButton } from '../menu-button'
+import { useState } from 'react'
+import { bool } from 'prop-types'
 
 export interface DropDownMenuProps {
-  username?: string
+  isCompanyUser: boolean
 
-  company?: string | null
+  isClicked: boolean
+
+  username: string
+
+  company?: string
 }
 
 export const DropDownMenu: React.FC<DropDownMenuProps> = ({
-  ...props
+  username,
+  company,
 }: DropDownMenuProps) => {
+  const [isClicked, setMode] = useState<boolean>(false)
   return (
-    <div className={styles.DropDownMenu}>
-      <h1 className={styles.username}>{props.username}</h1>
-      <h2 className={styles.company}>{props.company}</h2>
+    <div>
+      <div
+        className={[styles.title, isClicked ? '' : styles.notClicked].join(' ')}
+      >
+        {isClicked && (
+          <div>
+            <div className={styles.username}>{username}</div>
+            <div className={styles.company}>{company}</div>
+          </div>
+        )}
+        <div className={styles.usersymbol} onClick={() => setMode(!isClicked)}>
+          {username.charAt(0)}
+        </div>
+      </div>
+      {isClicked && (
+        <div className={styles.dropDownMenu}>
+          <MenuButton label={'My account'}></MenuButton>
+          <MenuButton label={'Company page'}></MenuButton>
+          <MenuButton type={'logout'} label={'Log out'}></MenuButton>
+        </div>
+      )}
     </div>
   )
 }

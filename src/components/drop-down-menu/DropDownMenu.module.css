@@ -1,40 +1,56 @@
 .dropDownMenu {
-  border: 0;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
-  line-height: 1;
   width: 237px;
-  text-align: left;
+  padding-bottom: 10px;
   background-color: #ffffff;
-  border-style: inset;
 }
 
 .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 237px;
+  min-height: 60px;
   background-color: #ffffff;
-  width: 237px;
-  height: 80px;
+}
+
+.notClicked {
+  flex-direction: row-reverse;
+  max-width: 237px;
+  min-height: 60px;
+  background-color: transparent;
 }
 
 .username {
   font-size: 24px;
+  max-width: 200;
   padding-left: 32px;
+  padding-top: 10px;
+  align-self: right;
+  color: #000000;
 }
 
 .company {
   font-size: 14px;
+  max-width: 200;
+  line-height: 14px;
   font-weight: lighter;
   padding-left: 32px;
+  padding-bottom: 10px;
+  color: #000000;
 }
 
 .usersymbol {
-  position: absolute;
+  text-align: center;
+  cursor: pointer;
   width: 53px;
-  height: 51px;
-  left: 1360.01px;
-  top: 11px;
+  height: 53px;
+  margin-right: 5px;
+  border-radius: 30px;
+  line-height: 53px;
   font-size: 24px;
   color: #000000;
   background: #dadada;
