@@ -1,8 +1,6 @@
 import React from 'react'
 import styles from './MenuButton.module.css'
 
-import { useState } from 'react'
-
 export interface MenuButtonProps {
   type: 'standard' | 'logout'
 
