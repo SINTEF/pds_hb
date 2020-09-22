@@ -3,7 +3,6 @@ import React from 'react'
 import styles from './DropDownMenu.module.css'
 import { MenuButton } from '../menu-button'
 import { useState } from 'react'
-import { bool } from 'prop-types'
 
 export interface DropDownMenuProps {
   isCompanyUser: boolean

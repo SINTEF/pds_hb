@@ -1,12 +1,14 @@
 import React from 'react'
 import styles from './MenuButton.module.css'
 
+import { useState } from 'react'
+
 export interface MenuButtonProps {
-  type: 'standard' | 'logout' | 'notify'
+  type: 'standard' | 'logout'
 
   label: string
 
-  alert?: Int16Array
+  alert?: number
 
   onClick: () => void
 }
@@ -19,13 +21,21 @@ export const MenuButton: React.FC<MenuButtonProps> = ({
   type = 'standard',
   label,
   alert,
+  onClick,
 }: MenuButtonProps) => {
   return (
     <div className={styles.container}>
       <hr className={styles.line} />
-      <button className={[styles.button, styles[type]].join(' ')}>
+      <button
+        className={[
+          styles.button,
+          styles[type],
+          alert ? styles.notify : '',
+        ].join(' ')}
+        onClick={onClick}
+      >
         {label}
-        {type == 'notify' && <div className={styles.notifysignal}>{alert}</div>}
+        {alert && <div className={styles.notifysignal}>{alert}</div>}
       </button>
     </div>
   )

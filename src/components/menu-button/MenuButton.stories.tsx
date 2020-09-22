@@ -26,7 +26,7 @@ LogOut.args = {
 
 export const Notify = Template.bind({})
 Notify.args = {
-  label: 'Approve new users',
+  label: 'Approve',
   type: 'notify',
   alert: 1,
 }
