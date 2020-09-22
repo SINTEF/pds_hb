@@ -28,7 +28,7 @@ primaryInput.args = {
 
 export const secondaryInput = Template.bind({})
 secondaryInput.args = {
-  label: 'Search',
+  label: 'Component',
   variant: 'secondary',
   placeholder: 'Set a component...',
   suggestions: [
