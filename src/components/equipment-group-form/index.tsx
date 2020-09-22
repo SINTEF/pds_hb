@@ -47,13 +47,13 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
         },
       }}
     >
-      <h2>Equipment group</h2>
+      <h2>{equipmentGroup ? 'Edit' : 'Add'} Equipment Group</h2>
       <div className={styles.form}>
         <InputField
           label="Name"
           variant="standard"
           type="text"
-          defaultValue=""
+          defaultValue={formState.name}
           placeholder="Equipment group name"
           onValueChanged={(value) =>
             setFormState({ ...formState, name: value as string })

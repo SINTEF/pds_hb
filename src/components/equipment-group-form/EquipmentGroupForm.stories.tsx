@@ -19,3 +19,12 @@ Standard.args = {
   isOpen: true,
   onSave: (formValue) => console.log(formValue),
 }
+export const WithGroup = Template.bind({})
+WithGroup.args = {
+  isOpen: true,
+  onSave: (formValue) => console.log(formValue),
+  equipmentGroup: {
+    id: 'dfrewre',
+    name: 'Fire detectors',
+  },
+}
