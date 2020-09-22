@@ -27,7 +27,6 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   suggestions,
   icon,
   input,
-  ...props
 }: SearchFieldProps) => {
   const [filtered, setFiltered] = useState<Array<string>>([])
   const [chosen, setChosen] = useState<number>(0)
