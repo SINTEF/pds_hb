@@ -7,7 +7,7 @@ export interface SearchFieldProps {
 
   defaultValue: string
 
-  label: string
+  label?: string
 
   placeholder?: string
 
@@ -57,9 +57,8 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   return (
     <div className={styles.SearchField}>
       <div className={[styles[variant], styles.field].join(' ')}>
-        {variant === 'secondary' ? <label>Component:</label> : null}
+        {variant === 'secondary' ? <label>{label}:</label> : null}
         <input
-          id={label}
           placeholder={placeholder}
           onChange={handleHanged}
           onKeyDown={handleKeyPress}
