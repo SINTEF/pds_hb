@@ -1,0 +1,58 @@
+.button {
+  cursor: pointer;
+  border: 0;
+  text-align: left;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #ffffff;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-top: 15px;
+}
+
+.container {
+  min-height: 60px;
+  max-width: 237px;
+  padding-left: 24px;
+  padding-right: 24px;
+  background-color: #ffffff;
+}
+
+.line {
+  margin-bottom: -2px;
+  border: none;
+  background-color: #dadada;
+  height: 1px;
+}
+
+.notify {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 237px;
+}
+
+/*
+Elipse Notification Signal
+*/
+.notifysignal {
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 30px;
+  color: #ffffff;
+  background-color: #e00c0c;
+}
+
+.standard {
+  color: #000000;
+}
+
+.logout {
+  color: #e00c0c;
+}
+
+.clicked {
+  color: #003d65;
+}
