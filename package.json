@@ -23,9 +23,9 @@
     "test": "react-scripts test",
     "format": "prettier --write **/*.{js,jsx,ts,tsx,md,html,css}",
     "format:check": "prettier --check **/*.{js,jsx,ts,tsx,md,html,css}",
-    "lint": "eslint './**/*.{ts,tsx}'",
     "lint:ci": "eslint './**/*.{ts,tsx}' --max-warnings=0",
-    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
+    "lint": "eslint './**/*.{ts,tsx,test.tsx}'",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx,test.tsx}'",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -72,12 +72,9 @@
     }
   },
   "lint-staged": {
-<<<<<<< HEAD
     "**/*.{js,jsx,ts,tsx,md,html,css}": "prettier --write",
-    "**/*.{ts,tsx}": "eslint --cache --fix --max-warnings=0"
-=======
+    "**/*.{ts,tsx}": "eslint --cache --fix --max-warnings=0",
     "**/*.{js,jsx,ts,tsx,test.tsx,md,html,css}": "prettier --write",
     "**/*.{ts,tsx,test.tsx}": "eslint --cache --fix"
->>>>>>> Added test files to linter
   }
 }
