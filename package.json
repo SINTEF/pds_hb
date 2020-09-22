@@ -22,8 +22,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "format": "prettier --write **/*.{js,jsx,ts,tsx,md,html,css}",
-    "lint": "eslint './**/*.{ts,tsx}'",
-    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
+    "format:check": "prettier --check **/*.{js,jsx,ts,tsx,md,html,css}",
+    "lint": "eslint './**/*.{ts,tsx,test.tsx}'",
+    "lint:ci": "eslint './**/*.{ts,tsx,test.tsx}' --max-warnings=0",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx,test.tsx}'",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -70,7 +72,7 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,md,html,css}": "prettier --write",
-    "**/*.{ts,tsx}": "eslint --cache --fix"
+    "**/*.{js,jsx,ts,tsx,test.tsx,md,html,css}": "prettier --write",
+    "**/*.{ts,tsx,test.tsx}": "eslint --cache --fix"
   }
 }
