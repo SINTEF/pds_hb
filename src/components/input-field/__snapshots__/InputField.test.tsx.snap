@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div
+  className="primary field  "
+>
+  <label
+    className=""
+    style={
+      Object {
+        "alignSelf": "",
+      }
+    }
+  />
+  <input
+    onChange={[Function]}
+    type="text"
+  />
+</div>
+`;
