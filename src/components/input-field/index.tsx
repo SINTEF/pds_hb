@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import styles from './InputField.module.css'
 
 export interface InputProps {
-  defaultValue: string
+  defaultValue?: string
   onValueChanged: (value: string | FileList | null) => void
-  type: 'text' | 'textarea' | 'number' | 'email' | 'password' | 'file'
-  variant: 'primary' | 'standard'
+  type?: 'text' | 'textarea' | 'number' | 'email' | 'password' | 'file'
+  variant?: 'primary' | 'standard'
   label: string
   icon?: string
   placeholder?: string
@@ -64,7 +64,7 @@ export const InputField: React.FC<InputProps> = ({
           defaultValue={defaultValue}
           placeholder={placeholder}
           onChange={handleChanged}
-          rows={5}
+          rows={10}
           cols={40}
         ></textarea>
       ) : (

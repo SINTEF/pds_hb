@@ -24,6 +24,11 @@ export interface ButtonProps {
    */
   icon?: string
   /**
+   * Button icon size
+   * Takes a valid CSS font size
+   */
+  iconSize?: string
+  /**
    * Optional click handler
    */
   onClick: () => void
@@ -36,6 +41,7 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'standard',
   size = 'medium',
   icon = 'chevron_right',
+  iconSize,
   backgroundColor,
   label,
   onClick,
@@ -50,7 +56,12 @@ export const Button: React.FC<ButtonProps> = ({
       >
         {label}
         {icon ? (
-          <i className={'material-icons ' + styles.icon}>{icon}</i>
+          <i
+            className={'material-icons ' + styles.icon}
+            style={{ fontSize: iconSize ?? '' }}
+          >
+            {icon}
+          </i>
         ) : null}
       </button>
     </Ripples>
