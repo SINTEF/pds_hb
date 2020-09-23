@@ -17,12 +17,11 @@ const Template: Story<EquipmentGroupFormProps> = (args) => (
 export const Standard = Template.bind({})
 Standard.args = {
   isOpen: true,
-  onSave: (formValue) => console.log(formValue),
+  onSave: (formValue) => formValue,
 }
 export const WithGroup = Template.bind({})
 WithGroup.args = {
-  isOpen: true,
-  onSave: (formValue) => console.log(formValue),
+  ...Standard.args,
   equipmentGroup: {
     id: 'dfrewre',
     name: 'Fire detectors',

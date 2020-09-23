@@ -35,15 +35,15 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
     <Modal
       isOpen={isOpen}
       style={{
-        overlay: {
-          width: '60vw',
-          minWidth: '750px',
-          maxHeight: '552px',
-          margin: 'auto auto',
-        },
         content: {
+          margin: 'auto auto',
+          width: '60vw',
+          minWidth: '600px',
+          maxHeight: '552px',
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'space-between',
         },
       }}
     >
@@ -70,13 +70,13 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
             setFormState({ ...formState, symbol: (value as FileList)[0] })
           }
         />
-        <Button label="Save" onClick={() => onSave(formState)} />
-        <Button
-          label={equipmentGroup ? 'Delete group' : 'Cancel'}
-          type="danger"
-          onClick={onCancel}
-        />
       </div>
+      <Button label="Save" onClick={() => onSave(formState)} />
+      <Button
+        label={equipmentGroup ? 'Delete group' : 'Cancel'}
+        type="danger"
+        onClick={onCancel}
+      />
     </Modal>
   )
 }
