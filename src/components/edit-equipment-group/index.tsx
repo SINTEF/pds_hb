@@ -13,6 +13,8 @@ export const EditEquipmentGroup: React.FC<EditEquipmentGroupProps> = ({
 }: EditEquipmentGroupProps) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
+  // TODO: Send data to server for creation
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSave = (formValue: EquipmentGroup) => {
     setModalOpen(false)
   }
