@@ -28,7 +28,7 @@ export const Filter: React.FC<FilterProps> = ({
       </div>
       {isClicked && (
         <ul className={styles.list}>
-          {filters.map((s, i) => {
+          {filters.map((s) => {
             let listItem = 'standard'
             if (s === chosen) {
               listItem = 'clicked'
