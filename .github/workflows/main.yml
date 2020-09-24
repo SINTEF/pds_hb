@@ -1,10 +1,10 @@
-name: Enforce code style
+name: Check PR for errors
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the development branch
 on:
   pull_request:
-    branches: [development]
+    branches: [development, master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -33,6 +33,8 @@ jobs:
     needs: dependencies
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
@@ -49,6 +51,8 @@ jobs:
     needs: dependencies
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
