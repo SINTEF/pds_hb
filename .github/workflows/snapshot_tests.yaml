@@ -22,8 +22,5 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Check Prettier fromatting
-        run: yarn format:check
-
-      - name: Check ESLint rules
-        run: yarn lint:ci
+      - name: Run tests
+        run: yarn test --all --ci
