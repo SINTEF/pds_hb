@@ -1,0 +1,863 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Button Danger 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button medium danger"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Click me!
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      delete
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Button Large 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button large standard"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Button
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      chevron_right
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Button Primary 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button medium primary"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Click me!
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      chevron_right
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Button Small 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button small standard"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Button
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      chevron_right
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Button Standard 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button medium standard"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Click me!
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      chevron_right
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Components/display-field Standard 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <label
+      className="index"
+    >
+      Index: 
+    </label>
+    <label
+      className="content"
+    >
+      123456
+    </label>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots ContactForm Standard 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button small standard"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Contact SINTEF
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      email
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots DropDownMenu Company User 1`] = `
+<div>
+  <div
+    className="title notClicked"
+  >
+    <div
+      className="usersymbol"
+      onClick={[Function]}
+    >
+      S
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Header Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+  >
+    PDS Datahandbook
+  </div>
+  <div>
+    <div
+      className="title notClicked"
+    >
+      <div
+        className="usersymbol"
+        onClick={[Function]}
+      >
+        J
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Primary Input 1`] = `
+<div
+  className="primary field  "
+>
+  <label
+    className=""
+    htmlFor="Input Label"
+    style={
+      Object {
+        "alignSelf": "",
+      }
+    }
+  >
+    Input Label
+  </label>
+  <input
+    id="Input Label"
+    onChange={[Function]}
+    type="text"
+  />
+</div>
+`;
+
+exports[`Storyshots Input field Primary Text Area 1`] = `
+<div
+  className="primary field  fieldPadding"
+>
+  <label
+    className=""
+    htmlFor="Input Label"
+    style={
+      Object {
+        "alignSelf": "flex-start",
+      }
+    }
+  >
+    Input Label
+  </label>
+  <textarea
+    cols={40}
+    id="Input Label"
+    onChange={[Function]}
+    rows={10}
+  />
+</div>
+`;
+
+exports[`Storyshots Input field Primary With Default 1`] = `
+<div
+  className="primary field  "
+>
+  <label
+    className="labelTuck"
+    htmlFor="Input Label"
+    style={
+      Object {
+        "alignSelf": "",
+      }
+    }
+  >
+    Input Label
+  </label>
+  <input
+    defaultValue="Default value"
+    id="Input Label"
+    onChange={[Function]}
+    type="text"
+  />
+</div>
+`;
+
+exports[`Storyshots Input field Primary With File 1`] = `
+<div
+  className="primary field  "
+>
+  <label
+    className="labelTuck"
+    htmlFor="Input label"
+    style={
+      Object {
+        "alignSelf": "",
+      }
+    }
+  >
+    Input label
+  </label>
+  <input
+    id="Input label"
+    onChange={[Function]}
+    type="file"
+  />
+  <i
+    className="material-icons icon"
+  >
+    add_photo_alternate
+  </i>
+</div>
+`;
+
+exports[`Storyshots Input field Primary With Icon 1`] = `
+<div
+  className="primary field  "
+>
+  <label
+    className="labelTuck"
+    htmlFor="Input label"
+    style={
+      Object {
+        "alignSelf": "",
+      }
+    }
+  >
+    Input label
+  </label>
+  <input
+    defaultValue="Default value"
+    id="Input label"
+    onChange={[Function]}
+    type="text"
+  />
+  <i
+    className="material-icons icon"
+  >
+    search
+  </i>
+</div>
+`;
+
+exports[`Storyshots Input field Standard Input 1`] = `
+<div
+  className="standard field  "
+>
+  <label
+    className=""
+    htmlFor="Input Label"
+    style={
+      Object {
+        "alignSelf": "",
+      }
+    }
+  >
+    Input Label
+  </label>
+  <input
+    id="Input Label"
+    onChange={[Function]}
+    placeholder="Input placeholder"
+    type="text"
+  />
+</div>
+`;
+
+exports[`Storyshots Input field Standard Input With Icon 1`] = `
+<div
+  className="standard field  "
+>
+  <label
+    className=""
+    htmlFor="Input Label"
+    style={
+      Object {
+        "alignSelf": "",
+      }
+    }
+  >
+    Input Label
+  </label>
+  <input
+    id="Input Label"
+    onChange={[Function]}
+    placeholder="Input placeholder"
+    type="text"
+  />
+  <i
+    className="material-icons icon"
+  >
+    add_photo_alternate
+  </i>
+</div>
+`;
+
+exports[`Storyshots Input field Standard Text Area 1`] = `
+<div
+  className="standard field  fieldPadding"
+>
+  <label
+    className=""
+    htmlFor="Input Label"
+    style={
+      Object {
+        "alignSelf": "flex-start",
+      }
+    }
+  >
+    Input Label
+  </label>
+  <textarea
+    cols={40}
+    id="Input Label"
+    onChange={[Function]}
+    placeholder="Input placeholder"
+    rows={10}
+  />
+</div>
+`;
+
+exports[`Storyshots Input field Standard With File 1`] = `
+<div
+  className="standard field  "
+>
+  <label
+    className=""
+    htmlFor="Input label"
+    style={
+      Object {
+        "alignSelf": "",
+      }
+    }
+  >
+    Input label
+  </label>
+  <input
+    id="Input label"
+    onChange={[Function]}
+    type="file"
+  />
+  <i
+    className="material-icons icon"
+  >
+    add_photo_alternate
+  </i>
+</div>
+`;
+
+exports[`Storyshots MenuButton Log Out 1`] = `
+<div
+  className="container"
+>
+  <hr
+    className="line"
+  />
+  <button
+    className="button logout "
+  >
+    Log out
+  </button>
+</div>
+`;
+
+exports[`Storyshots MenuButton Notify 1`] = `
+<div
+  className="container"
+>
+  <hr
+    className="line"
+  />
+  <button
+    className="button standard notify"
+  >
+    Approve new users
+    <div
+      className="notifysignal"
+    >
+      1
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Storyshots MenuButton Standard 1`] = `
+<div
+  className="container"
+>
+  <hr
+    className="line"
+  />
+  <button
+    className="button standard "
+  >
+    Adapt premissions for user groups
+  </button>
+</div>
+`;
+
+exports[`Storyshots Search field Primary Input 1`] = `
+<div
+  className="SearchField"
+>
+  <div
+    className="primary field"
+  >
+    <input
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      placeholder="Search for component..."
+    />
+    <i
+      className="material-icons icon"
+    >
+      search
+    </i>
+  </div>
+  <ul
+    className="filtered"
+  />
+</div>
+`;
+
+exports[`Storyshots Search field Secondary Input 1`] = `
+<div
+  className="SearchField"
+>
+  <div
+    className="secondary field"
+  >
+    <label>
+      Component
+      :
+    </label>
+    <input
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      placeholder="Set a component..."
+    />
+  </div>
+  <ul
+    className="filtered"
+  />
+</div>
+`;
+
+exports[`Storyshots SideMenu Admin Side Menu 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+  >
+    PDS Datahandbook
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      My account
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Review next release
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Adapt premissions for user groups
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Add new companies
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard notify"
+    >
+      Approve new users
+      <div
+        className="notifysignal"
+      >
+        2
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SideMenu General Side Menu 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+  >
+    PDS Datahandbook
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      My account
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SideMenu Operator Side Menu 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+  >
+    PDS Datahandbook
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      My account
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Browse own equipment data
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Company account
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Manage staffmember
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Manage facilities
+    </button>
+  </div>
+</div>
+`;
