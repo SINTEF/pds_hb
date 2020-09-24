@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+    onClick={[Function]}
+  >
+    PDS Datahandbook
+  </div>
+  <div>
+    <div
+      className="title notClicked"
+    >
+      <div
+        className="usersymbol"
+        onClick={[Function]}
+      >
+        N
+      </div>
+    </div>
+  </div>
+</div>
+`;

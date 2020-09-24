@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders company user without crashing 1`] = `
+<div>
+  <div
+    className="title notClicked"
+  >
+    <div
+      className="usersymbol"
+      onClick={[Function]}
+    >
+      J
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders non-company user without crashing 1`] = `
+<div>
+  <div
+    className="title notClicked"
+  >
+    <div
+      className="usersymbol"
+      onClick={[Function]}
+    >
+      J
+    </div>
+  </div>
+</div>
+`;

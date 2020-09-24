@@ -6,13 +6,17 @@ exports[`renders without crashing 1`] = `
 >
   <label
     className=""
+    htmlFor="Test"
     style={
       Object {
         "alignSelf": "",
       }
     }
-  />
+  >
+    Test
+  </label>
   <input
+    id="Test"
     onChange={[Function]}
     type="text"
   />

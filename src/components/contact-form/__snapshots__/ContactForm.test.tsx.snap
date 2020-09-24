@@ -13,7 +13,7 @@ exports[`renders without crashing 1`] = `
   }
 >
   <button
-    className="button medium standard"
+    className="button small standard"
     onClick={[Function]}
     style={
       Object {
@@ -22,6 +22,7 @@ exports[`renders without crashing 1`] = `
     }
     type="button"
   >
+    Contact SINTEF
     <i
       className="material-icons icon"
       style={
@@ -30,7 +31,7 @@ exports[`renders without crashing 1`] = `
         }
       }
     >
-      chevron_right
+      email
     </i>
   </button>
   <s

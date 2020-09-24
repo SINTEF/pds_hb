@@ -1,17 +1,10 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { InputField } from '.'
+import { SideMenu } from '.'
 
 it('renders without crashing', () => {
   const tree = renderer
-    .create(
-      <InputField
-        label="Test"
-        onValueChanged={() => {
-          return
-        }}
-      />
-    )
+    .create(<SideMenu menu={['Approve new users', 'test menu']} alert={6} />)
     .toJSON()
   expect(tree).toMatchSnapshot()
 })

@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders primary without crashing 1`] = `
+<div
+  className="SearchField"
+>
+  <div
+    className="primary field"
+  >
+    <input
+      onChange={[Function]}
+      onKeyDown={[Function]}
+    />
+    <i
+      className="material-icons icon"
+    >
+      search
+    </i>
+  </div>
+  <ul
+    className="filtered"
+  />
+</div>
+`;
+
+exports[`renders standard without crashing 1`] = `
+<div
+  className="SearchField"
+>
+  <div
+    className="primary field"
+  >
+    <input
+      onChange={[Function]}
+      onKeyDown={[Function]}
+    />
+    <i
+      className="material-icons icon"
+    >
+      search
+    </i>
+  </div>
+  <ul
+    className="filtered"
+  />
+</div>
+`;

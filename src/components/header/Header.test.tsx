@@ -1,13 +1,14 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { InputField } from '.'
+import { Header } from '.'
 
 it('renders without crashing', () => {
   const tree = renderer
     .create(
-      <InputField
-        label="Test"
-        onValueChanged={() => {
+      <Header
+        isCompanyUser={true}
+        username="Navn Navnesen"
+        onClick={() => {
           return
         }}
       />
