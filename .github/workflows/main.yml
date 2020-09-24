@@ -27,3 +27,6 @@ jobs:
 
       - name: Check ESLint rules
         run: yarn lint:ci
+
+      - name: Run tests
+        run: yarn test
