@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Filter.module.css'
 import { FilterButton } from '../filter-button'
 import { MenuButton } from '../menu-button'
-import { useState } from 'react'
 
 export interface FilterProps {
   category: string
@@ -19,18 +18,17 @@ export const Filter: React.FC<FilterProps> = ({
 
   return (
     <div className={styles.open}>
-      <div className={styles.closed}>
-        <FilterButton
-          label={chosen}
-          onClick={() => setMode(!isClicked)}
-          open={isClicked}
-        ></FilterButton>
-      </div>
+      <FilterButton
+        label={chosen}
+        onClick={() => setMode(!isClicked)}
+        open={isClicked}
+      ></FilterButton>
+
       {isClicked && (
         <ul className={styles.list}>
-          {filters.map((s) => {
+          {filters.map((s, i) => {
             let listItem = 'standard'
-            if (s === chosen) {
+            if (filters[i] === chosen) {
               listItem = 'clicked'
             }
             return (

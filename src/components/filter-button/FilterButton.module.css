@@ -8,18 +8,17 @@
   cursor: pointer;
   outline: none;
   font-size: 24px;
-  padding-left: 8px;
-  padding-right: 8px;
   margin-top: 15px;
 }
 
 .container {
   display: flex;
   align-items: center;
+  justify-content: left;
+  padding-bottom: 10px;
+  padding-left: 22px;
   min-height: 60px;
-  max-width: 200px;
-  padding-left: 24px;
-  padding-right: 24px;
+  max-width: 237px;
   overflow: hidden;
 }
 
@@ -27,8 +26,8 @@
   display: flex;
   cursor: pointer;
   position: relative;
-  top: 5px;
-  font-size: 24px;
+  top: 2px;
+  font-size: 40px;
   color: black;
   max-width: 34px;
 }
