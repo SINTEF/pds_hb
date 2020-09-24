@@ -695,9 +695,7 @@ exports[`Storyshots SideMenu Admin Side Menu 1`] = `
 >
   <div
     className="home"
-  >
-    PDS Datahandbook
-  </div>
+  />
   <div
     className="container"
   >
@@ -772,9 +770,7 @@ exports[`Storyshots SideMenu General Side Menu 1`] = `
 >
   <div
     className="home"
-  >
-    PDS Datahandbook
-  </div>
+  />
   <div
     className="container"
   >
@@ -796,9 +792,7 @@ exports[`Storyshots SideMenu Operator Side Menu 1`] = `
 >
   <div
     className="home"
-  >
-    PDS Datahandbook
-  </div>
+  />
   <div
     className="container"
   >
@@ -858,6 +852,42 @@ exports[`Storyshots SideMenu Operator Side Menu 1`] = `
     >
       Manage facilities
     </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextBox Large 1`] = `
+<div
+  className="container large"
+>
+  <div
+    className="titlecontainer"
+  >
+    Description
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    The detector includes the sensor and local electronics such as the address-/ interface unit.
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextBox Small 1`] = `
+<div
+  className="container small"
+>
+  <div
+    className="titlecontainer"
+  >
+    Description
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    The detector includes the sensor and local electronics such as the address-/ interface unit.
   </div>
 </div>
 `;
