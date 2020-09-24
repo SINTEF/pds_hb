@@ -37,18 +37,7 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
     <Modal
       isOpen={isOpen}
       onRequestClose={() => onCancel()}
-      style={{
-        content: {
-          margin: 'auto auto',
-          width: '60vw',
-          minWidth: '600px',
-          maxHeight: '552px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        },
-      }}
+      className={styles.content}
     >
       <h2>{equipmentGroup ? 'Edit' : 'Add'} Equipment Group</h2>
       <div className={styles.form}>

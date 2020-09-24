@@ -12,3 +12,26 @@
 .form InputField {
   width: 100%;
 }
+
+.content {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  margin: auto auto;
+  width: 60vw;
+  min-width: 600px;
+  max-height: 552px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
