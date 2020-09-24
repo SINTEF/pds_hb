@@ -7,6 +7,8 @@ import { useState } from 'react'
 export interface DropDownMenuProps {
   isCompanyUser: boolean
 
+  isClicked: boolean
+
   username: string
 
   company?: string
