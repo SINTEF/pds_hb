@@ -6,20 +6,15 @@ export interface SideMenuProps {
   menu: Array<string>
 
   alert?: number
-
-  onClick?: () => void
 }
 
 export const SideMenu: React.FC<SideMenuProps> = ({
   menu,
   alert,
-  onClick,
 }: SideMenuProps) => {
   return (
     <div className={styles.container}>
-      <div className={styles.home} onClick={onClick}>
-        {'PDS Datahandbook'}
-      </div>
+      <div className={styles.home}></div>
       {menu.map((btn) =>
         btn === 'Approve new users' ? (
           <MenuButton label={btn} alert={alert}></MenuButton>
