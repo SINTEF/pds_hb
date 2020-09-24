@@ -94,7 +94,6 @@ export const ContactForm: React.FC = () => {
               onClick={() => {
                 setIsOpen(false)
                 // TODO: Send form data to BE and send e-mail there
-                console.log(values)
               }}
               icon={'send'}
               iconSize={'32px'}
