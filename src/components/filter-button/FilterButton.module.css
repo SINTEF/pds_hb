@@ -1,0 +1,46 @@
+.button {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-top: 15px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  max-width: 200px;
+  padding-left: 24px;
+  padding-right: 24px;
+  overflow: hidden;
+}
+
+.button i {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  top: 5px;
+  font-size: 24px;
+  color: black;
+  max-width: 34px;
+}
+
+.button div {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 150px;
+}
+
+.standard {
+  color: #000000;
+}
