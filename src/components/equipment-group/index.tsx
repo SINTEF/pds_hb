@@ -18,7 +18,7 @@ export interface EquipmentGroupProps {
 
 export const EquipmentGroup: React.FC<EquipmentGroupProps> = ({
   name,
-  symbol,
+  symbol = 'https://www.svgrepo.com/show/131030/question-mark.svg',
   onClick,
   forEdit,
   isAdmin,

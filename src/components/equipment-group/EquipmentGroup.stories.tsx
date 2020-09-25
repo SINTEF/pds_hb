@@ -27,3 +27,9 @@ Editable.args = {
   symbol:
     'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png',
 }
+
+export const NoImg = Template.bind({})
+NoImg.args = {
+  isAdmin: false,
+  name: 'Fire equipment',
+}
