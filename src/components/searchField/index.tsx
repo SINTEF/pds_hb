@@ -26,6 +26,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   suggestions,
   icon,
   onClick,
+  onValueChanged,
 }: SearchFieldProps) => {
   const [filtered, setFiltered] = useState<Array<string>>([])
   const [chosen, setChosen] = useState<number>(0)
@@ -38,12 +39,14 @@ export const SearchField: React.FC<SearchFieldProps> = ({
       onClick(filtered[chosen])
     }
   }
-  const handleHanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.currentTarget.value
+    onValueChanged(event.currentTarget.value)
     if (input !== '') {
       setFiltered(
         suggestions.filter(
-          (s) => s.toLowerCase().indexOf(input.toLowerCase()) !== -1
+          (suggestion) =>
+            suggestion.toLowerCase().indexOf(input.toLowerCase()) !== -1
         )
       )
     } else {
@@ -58,7 +61,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
         {variant === 'secondary' ? <label>{label}:</label> : null}
         <input
           placeholder={placeholder}
-          onChange={handleHanged}
+          onChange={handleChanged}
           onKeyDown={handleKeyPress}
         ></input>
         {variant === 'primary' ? (
