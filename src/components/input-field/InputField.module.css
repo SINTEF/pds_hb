@@ -1,6 +1,7 @@
 .primary {
   position: relative;
   width: 386px;
+  height: 60px;
 }
 
 .primary label {
@@ -15,16 +16,15 @@
   border: none;
   font-size: 24px;
   background-color: transparent;
-  margin: 16px 0 10px;
   outline: 0;
 }
 
 .primary:focus-within label {
-  transform: translate(0, -14px) scale(0.5);
+  transform: translate(0, -12px) scale(0.5);
 }
 
 .labelTuck {
-  transform: translate(0, -14px) scale(0.5);
+  transform: translate(0, -12px) scale(0.5);
 }
 
 .primary textarea {
@@ -70,9 +70,9 @@
   content: ':';
 }
 
-.success {
-  border-color: #50b836;
-  color: #50b836;
+.success * {
+  border-color: #50b836 !important;
+  color: #50b836 !important;
   transition: color 0.3s ease-in-out;
   transition: border-color 0.3s ease-in-out;
 }
@@ -88,7 +88,9 @@
 }
 
 .primaryContent {
+  height: 52px;
   border: 4px solid #003d65;
+  background-color: #ffffff;
   display: flex;
   flex-grow: 1;
   align-items: center;
@@ -103,7 +105,7 @@
 }
 
 .fieldPadding {
-  padding: 14px 8px;
+  padding: 14px 0;
 }
 
 .field > input {
