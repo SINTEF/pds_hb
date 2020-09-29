@@ -331,6 +331,49 @@ exports[`Storyshots EquipmentGroup Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots Filter Filter Component 1`] = `
+<div
+  className="open"
+>
+  <div
+    className="container"
+  >
+    <button
+      className="button standard"
+      onClick={[Function]}
+    >
+      <div>
+        Components
+      </div>
+      <i
+        className="material-icons icon"
+      >
+        expand_more
+      </i>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots FilterButton Standard Filter Button 1`] = `
+<div
+  className="container"
+>
+  <button
+    className="button standard"
+  >
+    <div>
+      Flame detector
+    </div>
+    <i
+      className="material-icons icon"
+    >
+      expand_more
+    </i>
+  </button>
+</div>
+`;
+
 exports[`Storyshots Header Standard 1`] = `
 <div
   className="container"

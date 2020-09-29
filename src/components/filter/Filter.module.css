@@ -1,0 +1,21 @@
+.open {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  max-width: 237px;
+  background-color: #ffffff;
+  outline: black solid 4px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  max-width: 237px;
+  padding-left: 0px;
+}
+
+.listItem {
+  align-items: left;
+  list-style: none;
+  overflow-y: visible;
+}
