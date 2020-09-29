@@ -8,7 +8,7 @@ export interface SwitchProps {
 
   handleChange: () => void
 
-  size?: small | medium | large
+  size?: 'small' | 'medium' | 'large'
 }
 
 export const Switch: React.FC<Switch> = ({
