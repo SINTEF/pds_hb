@@ -1,0 +1,17 @@
+.home {
+  color: #003d65;
+  font-size: 34px;
+  line-height: 40px;
+  position: relative;
+  left: 20px;
+  top: 16px;
+  padding-bottom: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 51px;
+  background-color: transparent;
+}

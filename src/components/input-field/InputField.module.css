@@ -44,6 +44,7 @@
 .standard input {
   border: none;
   background-color: transparent;
+  outline: 0;
 }
 
 .standard input::placeholder {
@@ -54,6 +55,7 @@
   border: 2px solid black;
   border-radius: 2px;
   background-color: transparent;
+  width: 100%;
 }
 
 .standard textarea::placeholder {
@@ -90,6 +92,7 @@
 .field {
   display: flex;
   align-items: center;
+  margin-top: 5px;
 }
 
 .fieldPadding {

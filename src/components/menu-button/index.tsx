@@ -2,13 +2,13 @@ import React from 'react'
 import styles from './MenuButton.module.css'
 
 export interface MenuButtonProps {
-  type: 'standard' | 'logout'
+  type?: 'standard' | 'logout'
 
   label: string
 
   alert?: number
 
-  onClick: () => void
+  onClick?: () => void
 }
 
 /*
