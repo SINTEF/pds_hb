@@ -14,3 +14,6 @@ export default {
 const Template: Story = (args) => <ContactForm {...args} />
 
 export const Standard = Template.bind({})
+Standard.parameters = {
+  storyshots: { disable: true },
+}

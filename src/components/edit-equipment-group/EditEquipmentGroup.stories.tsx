@@ -15,6 +15,9 @@ const Template: Story<EditEquipmentGroupProps> = (args) => (
 )
 
 export const Standard = Template.bind({})
+Standard.parameters = {
+  storyshots: { disable: true },
+}
 Standard.args = {
   equipmentGroup: {
     id: 'rwesdfa',
