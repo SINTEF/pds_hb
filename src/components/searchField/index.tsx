@@ -16,8 +16,6 @@ export interface SearchFieldProps {
   icon: string
 
   variant: 'primary' | 'secondary'
-
-  input: string
 }
 
 export const SearchField: React.FC<SearchFieldProps> = ({
@@ -26,7 +24,6 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   placeholder,
   suggestions,
   icon,
-  input,
 }: SearchFieldProps) => {
   const [filtered, setFiltered] = useState<Array<string>>([])
   const [chosen, setChosen] = useState<number>(0)
@@ -40,7 +37,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
     }
   }
   const handleHanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-    input = event.currentTarget.value
+    const input = event.currentTarget.value
     if (input !== '') {
       setFiltered(
         suggestions.filter(

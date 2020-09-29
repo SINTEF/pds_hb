@@ -17,9 +17,9 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       <div className={styles.home}></div>
       {menu.map((btn) =>
         btn === 'Approve new users' ? (
-          <MenuButton label={btn} alert={alert}></MenuButton>
+          <MenuButton label={btn} alert={alert} key={btn}></MenuButton>
         ) : (
-          <MenuButton label={btn}></MenuButton>
+          <MenuButton label={btn} key={btn}></MenuButton>
         )
       )}
     </div>
