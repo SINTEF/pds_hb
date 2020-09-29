@@ -1,15 +1,16 @@
-name: Enforce code style
+name: Check PR for errors
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the development branch
 on:
   pull_request:
-    branches: [development]
+    branches: [development, master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  dependencies:
+    name: Install dependencies
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -18,12 +19,44 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       # Runs a single command using the runners shell
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Check Prettier fromatting
+  codestyle:
+    name: Enforce code style
+    needs: dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Check Prettier formatting
         run: yarn format:check
 
       - name: Check ESLint rules
         run: yarn lint:ci
+
+  tests:
+    name: Run tests
+    needs: dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Tests
+        run: yarn test --all --ci
