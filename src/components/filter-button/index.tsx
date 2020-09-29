@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './FilterButton.module.css'
-import Ripples from 'react-ripples'
 
 export interface FilterButtonProps {
   label: string
@@ -21,7 +20,7 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
   open,
 }: FilterButtonProps) => {
   return (
-    <Ripples className={styles.container}>
+    <div className={styles.container}>
       <button
         className={[styles.button, styles.standard].join(' ')}
         onClick={onClick}
@@ -33,6 +32,6 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
           <i className={'material-icons ' + styles.icon}>{icon}</i>
         )}
       </button>
-    </Ripples>
+    </div>
   )
 }
