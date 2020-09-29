@@ -26,11 +26,7 @@ export const Filter: React.FC<FilterProps> = ({
 
       {isClicked && (
         <ul className={styles.list}>
-          {filters.map((s, i) => {
-            let listItem = 'standard'
-            if (filters[i] === chosen) {
-              listItem = 'clicked'
-            }
+          {filters.map((s) => {
             return (
               <li className={styles.listItem} key={s}>
                 <MenuButton
@@ -39,7 +35,6 @@ export const Filter: React.FC<FilterProps> = ({
                     setChosen(s)
                   }}
                   label={s}
-                  type={listItem}
                 ></MenuButton>
               </li>
             )
