@@ -914,6 +914,29 @@ exports[`Storyshots TextBox Large 1`] = `
 </div>
 `;
 
+exports[`Storyshots TextBox Large Admin Text Box 1`] = `
+<div
+  className="container large"
+>
+  <div
+    className="material-icons icon"
+  >
+    editor
+  </div>
+  <div
+    className="titlecontainer"
+  >
+    Description
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    test
+  </div>
+</div>
+`;
+
 exports[`Storyshots TextBox Small 1`] = `
 <div
   className="container small"
@@ -928,6 +951,29 @@ exports[`Storyshots TextBox Small 1`] = `
   </div>
   <div>
     The detector includes the sensor and local electronics such as the address-/ interface unit.
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextBox Small Admin Text Box 1`] = `
+<div
+  className="container small"
+>
+  <div
+    className="material-icons icon"
+  >
+    editor
+  </div>
+  <div
+    className="titlecontainer"
+  >
+    Description
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    test
   </div>
 </div>
 `;

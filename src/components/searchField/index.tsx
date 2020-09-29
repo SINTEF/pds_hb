@@ -4,15 +4,13 @@ import styles from './SearchField.module.css'
 export interface SearchFieldProps {
   onValueChanged: (value: string) => void
 
-  defaultValue: string
-
   label?: string
 
   placeholder?: string
 
   suggestions: Array<string>
 
-  icon: string
+  icon?: string
 
   variant: 'primary' | 'secondary'
 
