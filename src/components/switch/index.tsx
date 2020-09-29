@@ -11,7 +11,7 @@ export interface SwitchProps {
   size?: 'small' | 'medium' | 'large'
 }
 
-export const Switch: React.FC<Switch> = ({
+export const Switch: React.FC<SwitchProps> = ({
   checked,
   diasabled,
   handleChange,
