@@ -42,41 +42,46 @@ export const InputField: React.FC<InputProps> = ({
     <div
       className={[
         styles[variant],
-        styles.field,
         success ? styles.success : '',
         type === 'textarea' ? styles.fieldPadding : '',
       ].join(' ')}
     >
-      <label
-        className={
-          variant === 'primary' && (hasContent || type === 'file')
-            ? styles.labelTuck
-            : ''
-        }
-        style={{ alignSelf: type === 'textarea' ? 'flex-start' : '' }}
-        htmlFor={label}
+      <div
+        className={variant === 'primary' ? styles.primaryContent : styles.field}
       >
-        {label}
-      </label>
-      {type === 'textarea' ? (
-        <textarea
-          id={label}
-          defaultValue={defaultValue}
-          placeholder={placeholder}
-          onChange={handleChanged}
-          rows={10}
-          cols={40}
-        ></textarea>
-      ) : (
-        <input
-          id={label}
-          type={type}
-          defaultValue={defaultValue}
-          placeholder={placeholder}
-          onChange={handleChanged}
-        ></input>
-      )}
-      {icon ? <i className={'material-icons ' + styles.icon}>{icon}</i> : null}
+        <label
+          className={
+            variant === 'primary' && (hasContent || type === 'file')
+              ? styles.labelTuck
+              : ''
+          }
+          style={{ alignSelf: type === 'textarea' ? 'flex-start' : '' }}
+          htmlFor={label}
+        >
+          {label}
+        </label>
+        {type === 'textarea' ? (
+          <textarea
+            id={label}
+            defaultValue={defaultValue}
+            placeholder={placeholder}
+            onChange={handleChanged}
+            rows={10}
+            cols={40}
+          ></textarea>
+        ) : (
+          <input
+            id={label}
+            type={type}
+            defaultValue={defaultValue}
+            placeholder={placeholder}
+            onChange={handleChanged}
+          ></input>
+        )}
+        {icon ? (
+          <i className={'material-icons ' + styles.icon}>{icon}</i>
+        ) : null}
+      </div>
     </div>
   )
 }
