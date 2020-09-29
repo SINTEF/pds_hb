@@ -13,7 +13,7 @@ export interface SearchFieldProps {
 
   suggestions: Array<string>
 
-  icon: string
+  icon?: string
 
   variant: 'primary' | 'secondary'
 }
