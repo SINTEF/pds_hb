@@ -20,4 +20,7 @@ FilterComponent.args = {
     'cake detector',
   ],
   category: 'Components',
+  onClick(s) {
+    alert(s)
+  },
 }
