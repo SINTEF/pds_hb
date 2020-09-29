@@ -27,7 +27,11 @@ export const EquipmentGroup: React.FC<EquipmentGroupProps> = ({
   return (
     <div>
       <div className={styles.container} onClick={onClick}>
-        <img className={styles.image} src={symbol} />
+        <img
+          className={styles.image}
+          src={symbol}
+          alt={`Icon for group ${name}`}
+        />
         {name}
         {isAdmin && (
           <i
