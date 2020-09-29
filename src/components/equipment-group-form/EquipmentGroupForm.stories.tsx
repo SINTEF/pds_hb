@@ -15,11 +15,18 @@ const Template: Story<EquipmentGroupFormProps> = (args) => (
 )
 
 export const Standard = Template.bind({})
+Standard.parameters = {
+  storyshots: { disable: true },
+}
 Standard.args = {
   isOpen: true,
   onSave: (formValue) => formValue,
 }
+
 export const WithGroup = Template.bind({})
+WithGroup.parameters = {
+  storyshots: { disable: true },
+}
 WithGroup.args = {
   ...Standard.args,
   equipmentGroup: {

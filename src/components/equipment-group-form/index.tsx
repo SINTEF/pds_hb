@@ -7,7 +7,7 @@ import { InputField } from '../input-field'
 
 import styles from './EquipmentGroupForm.module.css'
 
-Modal.setAppElement('#root')
+Modal.setAppElement(document.getElementById('root') as HTMLElement)
 
 export interface EquipmentGroup {
   id: string
