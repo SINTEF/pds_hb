@@ -5,8 +5,6 @@ import { useState } from 'react'
 export interface SearchFieldProps {
   onValueChanged: (value: string) => void
 
-  defaultValue: string
-
   label?: string
 
   placeholder?: string
