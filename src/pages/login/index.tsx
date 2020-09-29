@@ -46,7 +46,7 @@ export const Login: React.FC = () => {
         />
       </div>
       <div className={styles.buttonGroup}>
-        <Button label={'Log in'} onClick={() => login()} />
+        <Button label={'Log in'} type={'primary'} onClick={() => login()} />
         <Button
           label={'Register new user'}
           onClick={() => {
