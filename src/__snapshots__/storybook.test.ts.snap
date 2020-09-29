@@ -269,56 +269,6 @@ exports[`Storyshots Components/display-field Standard 1`] = `
 </div>
 `;
 
-exports[`Storyshots ContactForm Standard 1`] = `
-<div
-  className="react-ripples"
-  onClick={[Function]}
-  style={
-    Object {
-      "display": "inline-flex",
-      "overflow": "hidden",
-      "position": "relative",
-    }
-  }
->
-  <button
-    className="button small standard"
-    onClick={[Function]}
-    style={
-      Object {
-        "backgroundColor": undefined,
-      }
-    }
-    type="button"
-  >
-    Contact SINTEF
-    <i
-      className="material-icons icon"
-      style={
-        Object {
-          "fontSize": "",
-        }
-      }
-    >
-      email
-    </i>
-  </button>
-  <s
-    style={
-      Object {
-        "borderRadius": "50%",
-        "height": 35,
-        "opacity": 0,
-        "pointerEvents": "none",
-        "position": "absolute",
-        "transform": "translate(-50%, -50%)",
-        "width": 35,
-      }
-    }
-  />
-</div>
-`;
-
 exports[`Storyshots DropDownMenu Company User 1`] = `
 <div>
   <div
@@ -330,6 +280,53 @@ exports[`Storyshots DropDownMenu Company User 1`] = `
     >
       S
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots EquipmentGroup Editable 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <img
+      className="image"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
+    />
+    Fire equipment
+    <i
+      className="material-icons icon"
+    >
+      editor
+    </i>
+  </div>
+</div>
+`;
+
+exports[`Storyshots EquipmentGroup No Img 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <img
+      className="image"
+      src="https://www.svgrepo.com/show/131030/question-mark.svg"
+    />
+    Fire equipment
+  </div>
+</div>
+`;
+
+exports[`Storyshots EquipmentGroup Standard 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <img
+      className="image"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
+    />
+    Fire equipment
   </div>
 </div>
 `;
