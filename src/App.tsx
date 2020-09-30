@@ -4,17 +4,18 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import './App.css'
 import { Login } from './pages/login'
+import { AuthRoute } from './utils/AuthRoute'
 
 function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/signin">
+        <Route path="/login">
           <Login />
         </Route>
-        <Route path="/">
+        <AuthRoute path="/">
           <p>Home</p>
-        </Route>
+        </AuthRoute>
       </Switch>
     </BrowserRouter>
   )
