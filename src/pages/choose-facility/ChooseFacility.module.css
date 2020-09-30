@@ -1,11 +1,20 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tilte {
   min-width: 1040px;
   max-width: 1260px;
   padding-left: 30px;
   padding-right: 30px;
   height: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+}
+
+.button {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
 }
