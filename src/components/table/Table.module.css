@@ -21,7 +21,7 @@
 }
 
 .dataTable tr:nth-child(even) {
-  background-color: #ffebeb;
+  background-color: #eeeeee;
 }
 
 .dataTable tr:nth-child(odd) {
