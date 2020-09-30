@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './SearchField.module.css'
-import { useState } from 'react'
 
 export interface SearchFieldProps {
   onValueChanged: (value: string) => void
@@ -14,6 +13,8 @@ export interface SearchFieldProps {
   icon?: string
 
   variant: 'primary' | 'secondary'
+
+  onClick: (selectedComponent: string) => void
 }
 
 export const SearchField: React.FC<SearchFieldProps> = ({
@@ -22,6 +23,8 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   placeholder,
   suggestions,
   icon,
+  onClick,
+  onValueChanged,
 }: SearchFieldProps) => {
   const [filtered, setFiltered] = useState<Array<string>>([])
   const [chosen, setChosen] = useState<number>(0)
@@ -31,15 +34,17 @@ export const SearchField: React.FC<SearchFieldProps> = ({
     } else if (event.key === 'ArrowUp' && chosen > 0) {
       setChosen(chosen - 1)
     } else if (event.key === 'Enter' && filtered.length > 0) {
-      alert(filtered[chosen])
+      onClick(filtered[chosen])
     }
   }
-  const handleHanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.currentTarget.value
+    onValueChanged(event.currentTarget.value)
     if (input !== '') {
       setFiltered(
         suggestions.filter(
-          (s) => s.toLowerCase().indexOf(input.toLowerCase()) !== -1
+          (suggestion) =>
+            suggestion.toLowerCase().indexOf(input.toLowerCase()) !== -1
         )
       )
     } else {
@@ -54,7 +59,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
         {variant === 'secondary' ? <label>{label}:</label> : null}
         <input
           placeholder={placeholder}
-          onChange={handleHanged}
+          onChange={handleChanged}
           onKeyDown={handleKeyPress}
         ></input>
         {variant === 'primary' ? (
@@ -62,19 +67,19 @@ export const SearchField: React.FC<SearchFieldProps> = ({
         ) : null}
       </div>
       <ul className={styles.filtered}>
-        {filtered.map((s, i) => {
+        {filtered.map((suggestion, index) => {
           let style = 'notCurrent'
-          if (i === chosen) {
+          if (index === chosen) {
             style = 'current'
           }
           return (
             <li
               className={styles[style]}
-              key={s}
-              onClick={() => alert(filtered[chosen])}
-              onMouseEnter={() => setChosen(i)}
+              key={suggestion}
+              onMouseEnter={() => setChosen(index)}
+              onClick={() => onClick(filtered[chosen])}
             >
-              {s}
+              {suggestion}
             </li>
           )
         })}

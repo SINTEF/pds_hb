@@ -24,6 +24,9 @@ primaryInput.args = {
     'Flamethrower',
     'banana',
   ],
+  onClick(s) {
+    alert(s)
+  },
 }
 
 export const secondaryInput = Template.bind({})
