@@ -1,0 +1,22 @@
+.frontpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.menu {
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 96px;
+  color: #003d65;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
