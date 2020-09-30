@@ -245,6 +245,49 @@ exports[`Storyshots Button Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots ChooseFacilityPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose Facility
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="SearchField"
+  >
+    <div
+      className="secondary field"
+    >
+      <label>
+        Facility
+        :
+      </label>
+      <input
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Choose facility to register data to..."
+      />
+    </div>
+    <ul
+      className="filtered"
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Components/display-field Standard 1`] = `
 <div>
   <div
@@ -929,5 +972,48 @@ exports[`Storyshots TextBox Small 1`] = `
   <div>
     The detector includes the sensor and local electronics such as the address-/ interface unit.
   </div>
+</div>
+`;
+
+exports[`Storyshots Title Dynamic 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title "
+    >
+      Failure data at
+    </div>
+    <div
+      className="dynamic"
+    >
+      Askeladden
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
+</div>
+`;
+
+exports[`Storyshots Title Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title notdynamic"
+    >
+      Choose Facility
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
 </div>
 `;
