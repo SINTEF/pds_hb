@@ -1,19 +1,17 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { ChooseFacility, ChooseFacilityProps } from '.'
+import { AddDataPage, AddDataPageProps } from '.'
 
 export default {
-  title: 'ChooseFacilityPage',
-  component: ChooseFacility,
+  title: 'AddDataPagePage',
+  component: AddDataPage,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
 } as Meta
 
-const Template: Story<ChooseFacilityProps> = (args) => (
-  <ChooseFacility {...args} />
-)
+const Template: Story<AddDataPageProps> = (args) => <AddDataPage {...args} />
 
 export const Standard = Template.bind({})
 Standard.args = {
