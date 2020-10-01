@@ -1,5 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots AddDataPagePage Standard 1`] = `
+<div
+  className="container title"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose Facility
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="SearchField"
+  >
+    <div
+      className="secondary field"
+    >
+      <label>
+        Facility
+        :
+      </label>
+      <input
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Choose facility to register data to..."
+      />
+    </div>
+    <ul
+      className="filtered"
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Button Danger 1`] = `
 <div
   className="react-ripples"
@@ -1158,5 +1201,48 @@ exports[`Storyshots TextBox Small Admin Text Box 1`] = `
   <div>
     test
   </div>
+</div>
+`;
+
+exports[`Storyshots Title Dynamic 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title "
+    >
+      Failure data at
+    </div>
+    <div
+      className="dynamic"
+    >
+      Askeladden
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
+</div>
+`;
+
+exports[`Storyshots Title Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title notdynamic"
+    >
+      Choose Facility
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
 </div>
 `;
