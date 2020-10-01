@@ -16,4 +16,13 @@ const Template: Story<ChooseFacilityProps> = (args) => (
 )
 
 export const Standard = Template.bind({})
-Standard.args = {}
+Standard.args = {
+  getComponents: () => ['Fire edtector', 'Flame detector', 'Smoke detector'],
+  getFacilities: () => [
+    'Askeladden',
+    'Troll',
+    'Gullfaks A',
+    'Draugen',
+    'Veslefrikk',
+  ],
+}

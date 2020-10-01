@@ -4,7 +4,7 @@ import styles from './Title.module.css'
 export interface TitleProps {
   title: string
 
-  dynamic?: string
+  dynamic?: string | null
 }
 
 export const Title: React.FC<TitleProps> = ({ title, dynamic }: TitleProps) => {

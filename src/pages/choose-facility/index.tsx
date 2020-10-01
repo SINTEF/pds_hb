@@ -8,19 +8,18 @@ import { Button } from '../../components/button'
 
 export interface ChooseFacilityProps {
   onChange: (value: string) => void
-  getFacilities: () => void
-  getComponents: () => void
-  setNewValue: () => void
+  getFacilities: () => Array<string>
+  getComponents: () => Array<string>
   updateData: () => void
 }
 
 export interface Form {
-  facility: string
-  component: string
-  period: string
-  t: number
-  du: number
-  populationsize: number
+  facility: string | null
+  component: string | null
+  period: number | null
+  t: number | null
+  du: number | null
+  populationsize: number | null
 }
 
 export const ChooseFacility: React.FC<ChooseFacilityProps> = ({
@@ -28,17 +27,17 @@ export const ChooseFacility: React.FC<ChooseFacilityProps> = ({
   updateData,
   getFacilities,
   getComponents,
-  setNewValue,
 }: ChooseFacilityProps) => {
   const [pageState, setPage] = useState<number>(1)
-  const [formState, setForm] = useState<Form>({
-    facility: '',
-    component: '',
-    period: '',
-    t: 0,
-    du: 0,
-    populationsize: 0,
+  const [dataState, setData] = useState<Form>({
+    facility: null,
+    component: null,
+    period: null,
+    t: null,
+    du: null,
+    populationsize: null,
   })
+  //const navigateToFacility: () => setData(1);
   if (pageState === 1) {
     return (
       <div className={[styles.container, styles.title].join(' ')}>
@@ -47,92 +46,108 @@ export const ChooseFacility: React.FC<ChooseFacilityProps> = ({
           label="Facility"
           variant="secondary"
           placeholder="Choose facility to register data to..."
-          suggestions={() => getFacilities()}
-          onValueChanged={(value) => {
-            onChange(value)
-            setForm({ ...formState, facility: value })
+          suggestions={getFacilities()}
+          onValueChanged={(value) => onChange(value)}
+          onClick={(facility) => {
+            setData({ ...dataState, facility: facility })
             setPage(2)
           }}
         />
       </div>
     )
-  } else if (pageState === 2) {
+  }
+  if (pageState === 2) {
     return (
       <div className={styles.container}>
-        <Title title={'Failure data at'} dynamic={formState.facility} />
-        <SearchField
-          variant="secondary"
-          label="Component"
-          placeholder={formState.component ? undefined : 'Set a component...'}
-          suggestions={getComponents}
-          onValueChanged={(value) => {
-            onChange(value)
-            setForm({ ...formState, component: value })
-          }}
-          onClick={}
-        />
-        <InputField
-          variant="standard"
-          type="text"
-          label="Period"
-          placeholder={
-            formState.period ? undefined : 'dd.mm.yyyy - dd.mm.yyyy...'
-          }
-          onValueChanged={(value) => {
-            setNewValue()
-            setForm({ ...formState, period: value })
-          }}
-        />
-        <InputField
-          variant="standard"
-          type="number"
-          label="T"
-          placeholder={formState.T ? undefined : 'Set a time T in hours...'}
-          onValueChanged={(value) => {
-            setNewValue()
-            setForm({ ...formState, t: value })
-          }}
-        />
-        <InputField
-          variant="standard"
-          type="number"
-          label="DU value"
-          placeholder={formState.du ? undefined : 'Set a DU-value...'}
-          onValueChanged={(value) => {
-            setNewValue()
-            setForm({ ...formState, du: value })
-          }}
-        />
-        <InputField
-          variant="standard"
-          type="number"
-          label="Population size"
-          placeholder={
-            formState.populationsize ? undefined : 'Set a populationsize...'
-          }
-          onValueChanged={(value) => {
-            setNewValue()
-            setForm({ ...formState, populationsize: value })
-          }}
-        />
-        <div className={styles.button}>
-          <Button
-            onClick={() => {
-              updateData()
-              setPage(2)
+        <Title title={'Add failure data at'} dynamic={dataState.facility} />
+        <div className={styles.data}>
+          <SearchField
+            variant="secondary"
+            label="Component"
+            placeholder={dataState.component ? undefined : 'Set a component...'}
+            suggestions={getComponents()}
+            onValueChanged={(value) => {
+              onChange(value)
             }}
-            label="Add data"
+            onClick={(component) =>
+              setData({ ...dataState, component: component })
+            }
+          />
+          <InputField
+            variant="standard"
+            type="text"
+            label="Period"
+            placeholder={
+              dataState.period ? undefined : 'dd.mm.yyyy - dd.mm.yyyy...'
+            }
+            onValueChanged={(value) => {
+              setData({ ...dataState, period: value as number })
+            }}
+          />
+          <InputField
+            variant="standard"
+            type="number"
+            label="T"
+            placeholder={dataState.t ? undefined : 'Set a time T in hours...'}
+            onValueChanged={(value) => {
+              setData({ ...dataState, t: value as number })
+            }}
+          />
+          <InputField
+            variant="standard"
+            type="number"
+            label="DU value"
+            placeholder={dataState.du ? undefined : 'Set a DU-value...'}
+            onValueChanged={(value) => {
+              setData({ ...dataState, du: value as number })
+            }}
+          />
+          <InputField
+            variant="standard"
+            type="number"
+            label="Population size"
+            placeholder={
+              dataState.populationsize ? undefined : 'Set a populationsize...'
+            }
+            onValueChanged={(value) => {
+              setData({ ...dataState, populationsize: value as number })
+            }}
           />
         </div>
+        {
+          //dataState.component &&
+          dataState.period &&
+            dataState.t &&
+            dataState.du &&
+            dataState.populationsize && (
+              <div className={styles.button}>
+                <Button
+                  onClick={() => {
+                    setPage(3)
+                    updateData()
+                  }}
+                  label="Add data"
+                />
+              </div>
+            )
+        }
       </div>
     )
   } else if (pageState === 3) {
     return (
       <div className={styles.container}>
-        <Title title={'Failure data at'} dynamic={formState.facility} />
-        <Button onClick={updateData} label={'Add more data'} />
-        <Button onClick={updateData} label={'View at company page'} />
+        <Title title={'Failure data at'} dynamic={dataState.facility} />
+        <div className={[styles.container, styles.buttoncontainer].join(' ')}>
+          {'Data successfully added!'}
+          {
+            //want onClick to take function navigate as argument - setPage(1)
+          }
+          <Button onClick={updateData} label={'Add more data'} />
+          <Button onClick={updateData} label={'View at company page'} />
+        </div>
       </div>
     )
+  } else {
+    return <div>{'Unknown!'}</div>
   }
 }
