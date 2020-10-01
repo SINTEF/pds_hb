@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './Frontpage.module.css'
-import { Header } from '../header'
 import { SearchField } from '../searchField'
 import { Button } from '../button'
 
@@ -31,6 +30,7 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             'banana',
           ]}
           onValueChanged={(value) => onChange(value)}
+          onClick={(s) => false}
         ></SearchField>
         <Button label={'Read PDS datahandbook'}></Button>
         <Button label={'Browse equipment data'}></Button>

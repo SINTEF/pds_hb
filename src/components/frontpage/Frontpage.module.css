@@ -6,7 +6,7 @@
 }
 
 .menu {
-  min-height: 240px;
+  height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,4 +19,5 @@
   color: #003d65;
   margin-top: 50px;
   margin-bottom: 100px;
+  white-space: nowrap;
 }
