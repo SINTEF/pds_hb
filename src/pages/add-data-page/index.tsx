@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import styles from './ChooseFacility.module.css'
+import styles from './AddDataPage.module.css'
 
 import { Title } from '../../components/title'
 import { SearchField } from '../../components/searchField'
 import { InputField } from '../../components/input-field'
 import { Button } from '../../components/button'
 
-export interface ChooseFacilityProps {
+export interface AddDataPageProps {
   onChange: (value: string) => void
   getFacilities: () => Array<string>
   getComponents: () => Array<string>
@@ -22,12 +22,12 @@ export interface Form {
   populationsize: number | null
 }
 
-export const ChooseFacility: React.FC<ChooseFacilityProps> = ({
+export const AddDataPage: React.FC<AddDataPageProps> = ({
   onChange,
   updateData,
   getFacilities,
   getComponents,
-}: ChooseFacilityProps) => {
+}: AddDataPageProps) => {
   const [pageState, setPage] = useState<number>(1)
   const [dataState, setData] = useState<Form>({
     facility: null,
