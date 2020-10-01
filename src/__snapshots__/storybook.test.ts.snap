@@ -896,6 +896,67 @@ exports[`Storyshots SideMenu Operator Side Menu 1`] = `
 </div>
 `;
 
+exports[`Storyshots Switch Checked 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    checked={true}
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Large 1`] = `
+<label
+  className="switch large"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Small 1`] = `
+<label
+  className="switch small"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Standard 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
 exports[`Storyshots Table Table Component 1`] = `
 <table
   className="dataTable"
