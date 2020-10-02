@@ -1,13 +1,29 @@
+.path {
+  cursor: pointer;
+}
+
 .filters {
-  display: flex;
-  flex-direction: row;
-  align-items: left;
-  padding-top: 30px;
+  display: inline-grid;
+  gap: 1rem;
+  grid-auto-flow: column;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-height: 120%;
+  align-items: left;
+  width: inherit;
+}
+
+.description {
+  position: relative;
+  margin-left: auto;
+}
+
+.center {
+  align-self: center;
+}
+
+.padding {
+  padding-top: 100px;
 }

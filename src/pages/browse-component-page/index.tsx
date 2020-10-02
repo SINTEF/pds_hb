@@ -6,6 +6,7 @@ import { Title } from '../../components/title'
 import { TextBox } from '../../components/text-box'
 import { InputField } from '../../components/input-field'
 import { Filter } from '../../components/filter'
+import { Table } from '../../components/table'
 
 export interface BrowseComponentPageProps {
   component: string //this comes from the parentpage in somehow or from userinput by homepage-search
@@ -18,12 +19,17 @@ export interface BrowseComponentPageProps {
   getRemarks: (component: string) => string
   getRecommendedValues: (component: string) => string
   getDefinitionDU: (component: string) => string
-  getFailureData: (component: string) => Array<string>
+  getHeaders: (component: string) => Array<string>
+  getFailureData: (
+    component: string,
+    filters: Array<Record<string, string>>
+  ) => Array<Array<string>>
   onChange: (value: string) => void //This is only temporary
+  redirect: () => void
 }
 
 export interface Form {
-  filters: [{ filter: string; value: string | number | React.ReactText }]
+  filters: { filter: string; value: string }[]
 }
 
 export const BrowseComponentPage: React.FC<BrowseComponentPageProps> = ({
@@ -35,6 +41,9 @@ export const BrowseComponentPage: React.FC<BrowseComponentPageProps> = ({
   getDescription,
   onChange,
   getDefinitionDU,
+  getHeaders,
+  getFailureData,
+  redirect,
 }: BrowseComponentPageProps) => {
   const [compState, setComp] = useState<string>(component)
   const [filterState, setFilter] = useState<Form>({
@@ -42,12 +51,14 @@ export const BrowseComponentPage: React.FC<BrowseComponentPageProps> = ({
   })
   return (
     <div>
-      <div>{'/Choose equipmentgroup /Fire detectors'}</div>
-      <div className={styles.filters}>
+      <div className={styles.path} onClick={redirect}>
+        {'/Choose equipmentgroup /'}
+        {equipmentgroup}
+      </div>
+      <div className={[styles.filters, styles.padding].join(' ')}>
         {
           //filters - use getFilters and for each filter return a
-          // FilterComponent - use map inside each of these to return
-          // variable amount of filterValues comming from getFilterValues
+          // FilterComponent
           // think i need a isChecked var to set/unset the filter
         }
         <Filter
@@ -61,48 +72,65 @@ export const BrowseComponentPage: React.FC<BrowseComponentPageProps> = ({
             filters={getValuesForFilter(filter)}
             onClick={(selected) =>
               setFilter({
-                ...filterState.filters,
-                filter: filter,
-                value: selected,
+                filters: [
+                  ...filterState.filters,
+                  {
+                    filter: filter,
+                    value: selected,
+                  },
+                ],
               })
             }
             key={filter}
           />
         ))}
       </div>
-      <div className={styles.container}>
-        <Title title={compState} />
-        <div className={styles.description}>
-          <TextBox
-            title="Description"
-            content={getDescription(compState)}
-            size="small"
+      <div>
+        <div className={styles.content}>
+          <div className={[styles.padding, styles.center].join(' ')}>
+            <Title title={compState} />
+          </div>
+          <div className={styles.description}>
+            <TextBox
+              title="Description"
+              content={getDescription(compState)}
+              size="small"
+            />
+          </div>
+          <InputField
+            type="text"
+            variant="standard"
+            label="Date of revision"
+            onValueChanged={(value) => onChange(value as string)} // This is wrong
+          />
+          <InputField
+            type="text"
+            variant="standard"
+            label="Remarks"
+            onValueChanged={(value) => onChange(value as string)} // This is wrong
+          />
+          <InputField
+            type="text"
+            variant="standard"
+            label="Recommended values for calculation"
+            onValueChanged={(value) => onChange(value as string)} // This is wrong
+          />
+          <div className={styles.padding}>
+            <TextBox
+              title="Definition of DU"
+              content={getDefinitionDU(compState)}
+              size="large"
+            />
+          </div>
+          <div className={[styles.center, styles.padding].join(' ')}>
+            <Title title="Failure data" />
+          </div>
+          <Table
+            headers={getHeaders(compState)}
+            data={getFailureData(compState, filterState.filters)}
+            onValueChanged={(value) => onChange(value)}
           />
         </div>
-        <InputField
-          type="text"
-          variant="standard"
-          label="Date of revision"
-          onValueChanged={(value) => onChange(value as string)} // This is wrong
-        />
-        <InputField
-          type="text"
-          variant="standard"
-          label="Remarks"
-          onValueChanged={(value) => onChange(value as string)} // This is wrong
-        />
-        <InputField
-          type="text"
-          variant="standard"
-          label="Recommended values for calculation"
-          onValueChanged={(value) => onChange(value as string)} // This is wrong
-        />
-        <Title title="Failure data" />
-        <TextBox
-          title="Definition of DU"
-          content={getDefinitionDU(compState)}
-          size="large"
-        />
       </div>
     </div>
   )
