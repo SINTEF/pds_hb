@@ -4,12 +4,20 @@ import styles from './RegisteredDataField.module.css'
 
 export interface RegisteredDataFieldProps {
   component: string
+
   period: string
+
   t: number
+
   tags: number
+
   du: number
+
   edited: string
+
   icon?: string
+
+  onClick: () => void
 }
 
 /**
@@ -23,6 +31,7 @@ export const RegisteredDataField: React.FC<RegisteredDataFieldProps> = ({
   du,
   edited,
   icon = 'editor',
+  onClick,
 }: RegisteredDataFieldProps) => {
   return (
     <div className={styles.container}>
@@ -32,7 +41,12 @@ export const RegisteredDataField: React.FC<RegisteredDataFieldProps> = ({
       <label className={styles.label}>{tags}</label>
       <label className={styles.label}>{du}</label>
       <label className={styles.label}>{edited}</label>
-      <i className={['material-icons', styles.icon].join(' ')}>{icon}</i>
+      <i
+        className={['material-icons', styles.icon].join(' ')}
+        onClick={onClick}
+      >
+        {icon}
+      </i>
     </div>
   )
 }
