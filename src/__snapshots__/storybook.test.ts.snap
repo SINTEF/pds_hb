@@ -1,5 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots AddDataPagePage Standard 1`] = `
+<div
+  className="container title"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose Facility
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="SearchField"
+  >
+    <div
+      className="secondary field"
+    >
+      <label>
+        Facility
+        :
+      </label>
+      <input
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Choose facility to register data to..."
+      />
+    </div>
+    <ul
+      className="filtered"
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Button Danger 1`] = `
 <div
   className="react-ripples"
@@ -938,6 +981,67 @@ exports[`Storyshots SideMenu Operator Side Menu 1`] = `
 </div>
 `;
 
+exports[`Storyshots Switch Checked 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    checked={true}
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Large 1`] = `
+<label
+  className="switch large"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Small 1`] = `
+<label
+  className="switch small"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Standard 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
 exports[`Storyshots Table Table Component 1`] = `
 <table
   className="dataTable"
@@ -1139,5 +1243,48 @@ exports[`Storyshots TextBox Small Admin Text Box 1`] = `
   <div>
     test
   </div>
+</div>
+`;
+
+exports[`Storyshots Title Dynamic 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title "
+    >
+      Failure data at
+    </div>
+    <div
+      className="dynamic"
+    >
+      Askeladden
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
+</div>
+`;
+
+exports[`Storyshots Title Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title notdynamic"
+    >
+      Choose Facility
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
 </div>
 `;
