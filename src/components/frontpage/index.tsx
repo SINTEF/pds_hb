@@ -7,11 +7,14 @@ export interface FrontpageProps {
   onChange: (value: string) => void
 
   userType: 'general' | 'operator' | 'moderator'
+
+  suggestions: Array<string>
 }
 
 export const Frontpage: React.FC<FrontpageProps> = ({
   onChange,
   userType = 'general',
+  suggestions,
 }: FrontpageProps) => {
   return (
     <div className={styles.frontpage}>
@@ -22,14 +25,7 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             variant="primary"
             icon={'search'}
             placeholder="Search for component..."
-            suggestions={[
-              'Flame detector',
-              'Smoke detector',
-              'Cake detector',
-              'Metal detector',
-              'Flamethrower',
-              'banana',
-            ]}
+            suggestions={suggestions}
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
@@ -43,14 +39,7 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             variant="primary"
             icon={'search'}
             placeholder="Search for component..."
-            suggestions={[
-              'Flame detector',
-              'Smoke detector',
-              'Cake detector',
-              'Metal detector',
-              'Flamethrower',
-              'banana',
-            ]}
+            suggestions={suggestions}
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
@@ -64,14 +53,7 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             variant="primary"
             icon={'search'}
             placeholder="Search for component..."
-            suggestions={[
-              'Flame detector',
-              'Smoke detector',
-              'Cake detector',
-              'Metal detector',
-              'Flamethrower',
-              'banana',
-            ]}
+            suggestions={suggestions}
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
