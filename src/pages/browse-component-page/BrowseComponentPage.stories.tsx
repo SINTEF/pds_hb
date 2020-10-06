@@ -30,12 +30,13 @@ Standard.args = {
   getComponents: () => ['Smoke detector', 'Flame detector'],
   getFilters: (component) => filters[component],
   getValuesForFilter: (filter) => values[filter],
+  getUserGroup: () => 'Operator',
   getDescription: () =>
     'The detector includes the sensor and local electronics such as the address-/ interface unit.',
   getDefinitionDU: () => 'This is DU',
   getDateOfRevision: () => '23.03.2020',
   getRemarks: () => 'Remark this',
-  getRecommendedValues: () => 'recommended values',
+  getRecommendedValues: () => 'Recommended values',
   getHeaders: () => [
     'Failure rates',
     'Source',

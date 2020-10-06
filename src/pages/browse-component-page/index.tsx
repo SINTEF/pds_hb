@@ -4,7 +4,7 @@ import styles from './BrowseComponentPage.module.css'
 
 import { Title } from '../../components/title'
 import { TextBox } from '../../components/text-box'
-import { InputField } from '../../components/input-field'
+import { EditableField } from '../../components/editable-field'
 import { Filter } from '../../components/filter'
 import { Table } from '../../components/table'
 
@@ -26,6 +26,7 @@ export interface BrowseComponentPageProps {
   ) => Array<Array<string>>
   onChange: (value: string) => void //This is only temporary
   redirect: () => void
+  getUserGroup: () => string
 }
 
 export interface Form {
@@ -40,10 +41,14 @@ export const BrowseComponentPage: React.FC<BrowseComponentPageProps> = ({
   getValuesForFilter,
   getDescription,
   onChange,
+  getDateOfRevision,
+  getRemarks,
+  getRecommendedValues,
   getDefinitionDU,
   getHeaders,
   getFailureData,
   redirect,
+  getUserGroup,
 }: BrowseComponentPageProps) => {
   const [compState, setComp] = useState<string>(component)
   const [filterState, setFilter] = useState<Form>({
@@ -97,23 +102,23 @@ export const BrowseComponentPage: React.FC<BrowseComponentPageProps> = ({
               size="small"
             />
           </div>
-          <InputField
-            type="text"
-            variant="standard"
-            label="Date of revision"
-            onValueChanged={(value) => onChange(value as string)} // This is wrong
+          <EditableField
+            index="Date of revision"
+            content={getDateOfRevision(compState)}
+            mode="view"
+            isAdmin={getUserGroup() === 'Admin'}
           />
-          <InputField
-            type="text"
-            variant="standard"
-            label="Remarks"
-            onValueChanged={(value) => onChange(value as string)} // This is wrong
+          <EditableField
+            index="Remarks"
+            content={getRemarks(compState)}
+            mode="view"
+            isAdmin={getUserGroup() === 'Admin'}
           />
-          <InputField
-            type="text"
-            variant="standard"
-            label="Recommended values for calculation"
-            onValueChanged={(value) => onChange(value as string)} // This is wrong
+          <EditableField
+            index="Recommended values for calculation"
+            content={getRecommendedValues(compState)}
+            mode="view"
+            isAdmin={getUserGroup() === 'Admin'}
           />
           <div className={styles.padding}>
             <TextBox
