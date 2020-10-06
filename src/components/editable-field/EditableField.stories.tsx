@@ -30,7 +30,7 @@ Editmode.args = {
 export const NotAdmin = Template.bind({})
 NotAdmin.args = {
   content: '123456',
-  index: 'Index',
+  index: 'Index sddddddddd',
   mode: 'edit',
   isAdmin: false,
 }
