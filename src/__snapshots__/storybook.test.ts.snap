@@ -312,6 +312,153 @@ exports[`Storyshots Components/display-field Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots Components/editable-field Editmode 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <input
+        className="content input"
+        id="inputContent"
+        placeholder="123456"
+        type="text"
+      />
+    </div>
+    <div>
+      <button
+        aria-label="delete"
+        className="MuiButtonBase-root MuiIconButton-root icon MuiIconButton-sizeSmall"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <i
+            className="material-icons icon"
+          >
+            done
+          </i>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/editable-field Not Admin 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <label
+        className="content"
+      >
+        123456
+      </label>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/editable-field Viewmode 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <label
+        className="content"
+      >
+        123456
+      </label>
+    </div>
+    <div>
+      <button
+        aria-label="delete"
+        className="MuiButtonBase-root MuiIconButton-root iconbutton MuiIconButton-sizeSmall"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <i
+            className="material-icons icon"
+          >
+            edit
+          </i>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots DropDownMenu Company User 1`] = `
 <div>
   <div
