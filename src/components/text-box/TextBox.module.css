@@ -1,0 +1,40 @@
+.container {
+  border: 1px;
+  border-color: #000000;
+  border-style: groove;
+  padding: 20px 20px 20px 20px;
+  border-radius: 5px;
+  background-color: white;
+  line-height: 0px;
+  position: relative;
+  grid-template-columns: fit-content(120%);
+}
+
+.titlecontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.line {
+  border: none;
+  background-color: #000000;
+  height: 1px;
+  margin-bottom: 20px;
+  width: 60%;
+}
+
+.icon {
+  font-size: 30px;
+  position: absolute;
+  top: 20px;
+  right: -30px;
+}
+
+.large {
+  max-width: 1264px;
+}
+
+.small {
+  max-width: 400px;
+}
