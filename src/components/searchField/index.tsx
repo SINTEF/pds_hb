@@ -28,18 +28,22 @@ export const SearchField: React.FC<SearchFieldProps> = ({
 }: SearchFieldProps) => {
   const [filtered, setFiltered] = useState<Array<string>>([])
   const [chosen, setChosen] = useState<number>(0)
-  const handleKeyPress = (event: React.KeyboardEvent) => {
+  const [selected, setSelected] = useState<string>('')
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowDown' && chosen !== filtered.length - 1) {
       setChosen(chosen + 1)
     } else if (event.key === 'ArrowUp' && chosen > 0) {
       setChosen(chosen - 1)
     } else if (event.key === 'Enter' && filtered.length > 0) {
       onClick(filtered[chosen])
+      setSelected(filtered[chosen])
+      setFiltered([])
     }
   }
   const handleChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.currentTarget.value
-    onValueChanged(event.currentTarget.value)
+    setSelected(input)
+    onValueChanged(input)
     if (input !== '') {
       setFiltered(
         suggestions.filter(
@@ -52,21 +56,28 @@ export const SearchField: React.FC<SearchFieldProps> = ({
       setChosen(0)
     }
   }
-
+  const elementClicked = (event: React.MouseEvent) => {
+    event.preventDefault()
+  }
   return (
-    <div className={styles.SearchField}>
-      <div className={[styles[variant], styles.field].join(' ')}>
+    <div
+      className={[styles[variant], styles.SearchField].join(' ')}
+      onBlur={() => setFiltered([])}
+    >
+      <div className={styles.field}>
         {variant === 'secondary' ? <label>{label}:</label> : null}
         <input
           placeholder={placeholder}
           onChange={handleChanged}
           onKeyDown={handleKeyPress}
+          onFocus={handleChanged}
+          value={selected}
         ></input>
         {variant === 'primary' ? (
           <i className={'material-icons ' + styles.icon}>{icon}</i>
         ) : null}
       </div>
-      <ul className={styles.filtered}>
+      <ul>
         {filtered.map((suggestion, index) => {
           let style = 'notCurrent'
           if (index === chosen) {
@@ -77,7 +88,12 @@ export const SearchField: React.FC<SearchFieldProps> = ({
               className={styles[style]}
               key={suggestion}
               onMouseEnter={() => setChosen(index)}
-              onClick={() => onClick(filtered[chosen])}
+              onMouseDown={elementClicked}
+              onClick={() => {
+                onClick(filtered[chosen])
+                setSelected(filtered[chosen])
+                setFiltered([])
+              }}
             >
               {suggestion}
             </li>
