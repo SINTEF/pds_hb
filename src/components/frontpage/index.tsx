@@ -31,7 +31,7 @@ export const Frontpage: React.FC<FrontpageProps> = ({
               'banana',
             ]}
             onValueChanged={(value) => onChange(value)}
-            onClick={(s) => false}
+            onClick={() => false}
           ></SearchField>
           <Button label={'Read PDS datahandbook'}></Button>
           <Button label={'Browse equipment data'}></Button>
@@ -52,7 +52,7 @@ export const Frontpage: React.FC<FrontpageProps> = ({
               'banana',
             ]}
             onValueChanged={(value) => onChange(value)}
-            onClick={(s) => false}
+            onClick={() => false}
           ></SearchField>
           <Button label={'Read and edit PDS datahandbook'}></Button>
           <Button label={'Browse and edit equipment data'}></Button>
@@ -73,7 +73,7 @@ export const Frontpage: React.FC<FrontpageProps> = ({
               'banana',
             ]}
             onValueChanged={(value) => onChange(value)}
-            onClick={(s) => false}
+            onClick={() => false}
           ></SearchField>
           <Button label={'Read PDS datahandbook'}></Button>
           <Button label={'Browse equipment data'}></Button>
