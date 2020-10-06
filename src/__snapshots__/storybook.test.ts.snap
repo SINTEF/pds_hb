@@ -738,7 +738,7 @@ exports[`Storyshots Components/editable-field Not Admin 1`] = `
       <label
         className="index"
       >
-        Index: 
+        Index sddddddddd: 
       </label>
       <label
         className="content"
