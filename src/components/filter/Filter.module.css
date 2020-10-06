@@ -5,6 +5,7 @@
   max-width: 237px;
   background-color: #ffffff;
   outline: black solid 4px;
+  height: fit-content;
 }
 
 .list {
@@ -12,6 +13,7 @@
   flex-direction: column;
   max-width: 237px;
   padding-left: 0px;
+  margin-top: -10px;
 }
 
 .listItem {
