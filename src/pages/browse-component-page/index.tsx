@@ -24,7 +24,7 @@ export interface BrowseComponentPageProps {
     component: string,
     filters: Array<Record<string, string>>
   ) => Array<Array<string>>
-  onChange: (value: string) => void //This is only temporary
+  onChange: (value: string) => void
   redirect: () => void
   getUserGroup: () => string
 }
