@@ -27,6 +27,8 @@ export interface EditableFieldProps {
    */
 
   doneIcon?: string
+
+  isAdmin: boolean
 }
 
 export const EditableField: React.FC<EditableFieldProps> = ({
@@ -35,10 +37,11 @@ export const EditableField: React.FC<EditableFieldProps> = ({
   mode,
   editIcon = 'edit',
   doneIcon = 'done',
+  isAdmin,
 }: EditableFieldProps) => {
   const [currentMode, setMode] = useState(mode)
 
-  if (currentMode === 'edit') {
+  if (currentMode === 'edit' && isAdmin) {
     return (
       <div>
         <div className={styles.container}>
@@ -75,16 +78,18 @@ export const EditableField: React.FC<EditableFieldProps> = ({
             <label className={styles.index}>{index + ': '}</label>
             <label className={styles.content}>{content}</label>
           </div>
-          <div>
-            <IconButton
-              className={styles.iconbutton}
-              aria-label="delete"
-              size="small"
-              onClick={() => setMode('edit')}
-            >
-              <i className={'material-icons ' + styles.icon}>{editIcon}</i>
-            </IconButton>
-          </div>
+          {isAdmin && (
+            <div>
+              <IconButton
+                className={styles.iconbutton}
+                aria-label="delete"
+                size="small"
+                onClick={() => setMode('edit')}
+              >
+                <i className={'material-icons ' + styles.icon}>{editIcon}</i>
+              </IconButton>
+            </div>
+          )}
         </div>
         <div>
           <hr className={styles.divider} />

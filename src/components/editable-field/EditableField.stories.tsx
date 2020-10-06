@@ -16,6 +16,7 @@ Viewmode.args = {
   content: '123456',
   index: 'Index',
   mode: 'view',
+  isAdmin: true,
 }
 
 export const Editmode = Template.bind({})
@@ -23,4 +24,13 @@ Editmode.args = {
   content: '123456',
   index: 'Index',
   mode: 'edit',
+  isAdmin: true,
+}
+
+export const NotAdmin = Template.bind({})
+NotAdmin.args = {
+  content: '123456',
+  index: 'Index',
+  mode: 'edit',
+  isAdmin: false,
 }
