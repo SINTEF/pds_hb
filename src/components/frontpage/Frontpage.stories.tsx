@@ -16,7 +16,11 @@ generalFrontpage.args = {
 }
 
 export const operatorFrontpage = Template.bind({})
-operatorFrontpage.args = {}
+operatorFrontpage.args = {
+  userType: 'operator',
+}
 
 export const moderatorFrontpage = Template.bind({})
-operatorFrontpage.args = {}
+moderatorFrontpage.args = {
+  userType: 'moderator',
+}

@@ -6,12 +6,19 @@
 }
 
 .menu {
-  height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.generalMenu {
+  height: 240px;
+}
+
+.operatorMenu {
+  min-height: 418px;
 }
 
 .title {
