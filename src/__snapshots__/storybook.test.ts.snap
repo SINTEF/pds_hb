@@ -182,65 +182,80 @@ exports[`Storyshots Browse Standard 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="standard field  "
-      >
-        <label
-          className=""
-          htmlFor="Date of revision"
-          style={
-            Object {
-              "alignSelf": "",
-            }
-          }
+      <div>
+        <div
+          className="container"
         >
-          Date of revision
-        </label>
-        <input
-          id="Date of revision"
-          onChange={[Function]}
-          type="text"
-        />
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Date of revision: 
+            </label>
+            <label
+              className="content"
+            >
+              23.03.2020
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
       </div>
-      <div
-        className="standard field  "
-      >
-        <label
-          className=""
-          htmlFor="Remarks"
-          style={
-            Object {
-              "alignSelf": "",
-            }
-          }
+      <div>
+        <div
+          className="container"
         >
-          Remarks
-        </label>
-        <input
-          id="Remarks"
-          onChange={[Function]}
-          type="text"
-        />
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Remarks: 
+            </label>
+            <label
+              className="content"
+            >
+              Remark this
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
       </div>
-      <div
-        className="standard field  "
-      >
-        <label
-          className=""
-          htmlFor="Recommended values for calculation"
-          style={
-            Object {
-              "alignSelf": "",
-            }
-          }
+      <div>
+        <div
+          className="container"
         >
-          Recommended values for calculation
-        </label>
-        <input
-          id="Recommended values for calculation"
-          onChange={[Function]}
-          type="text"
-        />
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Recommended values for calculation: 
+            </label>
+            <label
+              className="content"
+            >
+              Recommended values
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
       </div>
       <div
         className="padding"
