@@ -1,5 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots AddDataPagePage Standard 1`] = `
+<div
+  className="container title"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose Facility
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="SearchField"
+  >
+    <div
+      className="secondary field"
+    >
+      <label>
+        Facility
+        :
+      </label>
+      <input
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Choose facility to register data to..."
+      />
+    </div>
+    <ul
+      className="filtered"
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Button Danger 1`] = `
 <div
   className="react-ripples"
@@ -260,6 +303,153 @@ exports[`Storyshots Components/display-field Standard 1`] = `
     >
       123456
     </label>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/editable-field Editmode 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <input
+        className="content input"
+        id="inputContent"
+        placeholder="123456"
+        type="text"
+      />
+    </div>
+    <div>
+      <button
+        aria-label="delete"
+        className="MuiButtonBase-root MuiIconButton-root icon MuiIconButton-sizeSmall"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <i
+            className="material-icons icon"
+          >
+            done
+          </i>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/editable-field Not Admin 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <label
+        className="content"
+      >
+        123456
+      </label>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/editable-field Viewmode 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <label
+        className="content"
+      >
+        123456
+      </label>
+    </div>
+    <div>
+      <button
+        aria-label="delete"
+        className="MuiButtonBase-root MuiIconButton-root iconbutton MuiIconButton-sizeSmall"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <i
+            className="material-icons icon"
+          >
+            edit
+          </i>
+        </span>
+      </button>
+    </div>
   </div>
   <div>
     <hr
@@ -1288,6 +1478,67 @@ exports[`Storyshots SideMenu Operator Side Menu 1`] = `
 </div>
 `;
 
+exports[`Storyshots Switch Checked 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    checked={true}
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Large 1`] = `
+<label
+  className="switch large"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Small 1`] = `
+<label
+  className="switch small"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Standard 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
 exports[`Storyshots Table Table Component 1`] = `
 <table
   className="dataTable"
@@ -1489,5 +1740,48 @@ exports[`Storyshots TextBox Small Admin Text Box 1`] = `
   <div>
     test
   </div>
+</div>
+`;
+
+exports[`Storyshots Title Dynamic 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title "
+    >
+      Failure data at
+    </div>
+    <div
+      className="dynamic"
+    >
+      Askeladden
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
+</div>
+`;
+
+exports[`Storyshots Title Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title notdynamic"
+    >
+      Choose Facility
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
 </div>
 `;

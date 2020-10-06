@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.index {
+  font-weight: bold;
+  font-size: 24px;
+  color: #000000;
+  padding-left: 10px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.content {
+  font-size: 34px;
+  color: #003d65;
+  width: 100%;
+}
+.divider {
+  margin: 5px;
+}
+.input:focus {
+  border: none;
+  outline: none;
+}
+.input {
+  border: none;
+  background-color: transparent;
+}
+.iconbutton {
+  float: right;
+}
+.icon {
+  font-size: 24px;
+}
