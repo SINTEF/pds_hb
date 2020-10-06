@@ -2873,7 +2873,10 @@
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.1.1.tgz#be148756d5480a84cde100324c03a86ae5739fb5"
   integrity sha512-2zs+O+UkDsJ1Vcp667pd3f8xearMdopz/z54i99wtRDI5KLmngk7vlrYZD0ZjKHaROR03EznlBbVY9PfAEyJIQ==
 
+<<<<<<< HEAD
 "@types/prop-types@*", "@types/prop-types@^15.7.3":
+=======
+>>>>>>> 5d67e2d99f3a9f31382ab8a702988dd151cc2408
   version "15.7.3"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
@@ -2911,17 +2914,24 @@
   dependencies:
     "@types/react" "*"
 
+<<<<<<< HEAD
 "@types/react-is@^16.7.1":
   version "16.7.1"
   resolved "https://registry.yarnpkg.com/@types/react-is/-/react-is-16.7.1.tgz#d3f1c68c358c00ce116b55ef5410cf486dd08539"
   integrity sha512-dMLFD2cCsxtDgMkTydQCM0PxDq8vwc6uN5M/jRktDfYvH3nQj6pjC9OrCXS2lKlYoYTNJorI/dI8x9dpLshexQ==
   dependencies:
     "@types/react" "*"
+=======
+>>>>>>> 5d67e2d99f3a9f31382ab8a702988dd151cc2408
 
 "@types/react-modal@^3.10.6":
   version "3.10.6"
   resolved "https://registry.yarnpkg.com/@types/react-modal/-/react-modal-3.10.6.tgz#76717220f32bc72769190692147814a540053c7e"
   integrity sha512-XpshhwVYir1TRZ2HS5EfmNotJjB8UEC2IkT3omNtiQzROOXSzVLz5xsjwEpACP8U+PctkpfZepX+WT5oDf0a9g==
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5d67e2d99f3a9f31382ab8a702988dd151cc2408
   dependencies:
     "@types/react" "*"
 
