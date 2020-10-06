@@ -7,6 +7,7 @@
   background-color: white;
   line-height: 0px;
   position: relative;
+  grid-template-columns: fit-content(120%);
 }
 
 .titlecontainer {
