@@ -6,6 +6,12 @@
   display: inline-grid;
   gap: 1rem;
   grid-auto-flow: column;
+  position: absolute;
+}
+
+.filter {
+  width: fit-content;
+  height: fit-content;
 }
 
 .content {
@@ -13,11 +19,13 @@
   flex-direction: column;
   align-items: left;
   width: inherit;
+  padding-top: 110px;
 }
 
 .description {
   position: relative;
   margin-left: auto;
+  padding-top: 30px;
 }
 
 .center {
@@ -25,5 +33,5 @@
 }
 
 .padding {
-  padding-top: 100px;
+  padding-top: 60px;
 }
