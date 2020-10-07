@@ -1,11 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './SearchField.module.css'
-import { useState } from 'react'
 
 export interface SearchFieldProps {
   onValueChanged: (value: string) => void
-
-  defaultValue: string
 
   label?: string
 
@@ -13,9 +10,11 @@ export interface SearchFieldProps {
 
   suggestions: Array<string>
 
-  icon: string
+  icon?: string
 
   variant: 'primary' | 'secondary'
+
+  onClick: (selectedComponent: string) => void
 }
 
 export const SearchField: React.FC<SearchFieldProps> = ({
@@ -24,24 +23,32 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   placeholder,
   suggestions,
   icon,
+  onClick,
+  onValueChanged,
 }: SearchFieldProps) => {
   const [filtered, setFiltered] = useState<Array<string>>([])
   const [chosen, setChosen] = useState<number>(0)
-  const handleKeyPress = (event: React.KeyboardEvent) => {
+  const [selected, setSelected] = useState<string>('')
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowDown' && chosen !== filtered.length - 1) {
       setChosen(chosen + 1)
     } else if (event.key === 'ArrowUp' && chosen > 0) {
       setChosen(chosen - 1)
     } else if (event.key === 'Enter' && filtered.length > 0) {
-      alert(filtered[chosen])
+      onClick(filtered[chosen])
+      setSelected(filtered[chosen])
+      setFiltered([])
     }
   }
-  const handleHanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.currentTarget.value
+    setSelected(input)
+    onValueChanged(input)
     if (input !== '') {
       setFiltered(
         suggestions.filter(
-          (s) => s.toLowerCase().indexOf(input.toLowerCase()) !== -1
+          (suggestion) =>
+            suggestion.toLowerCase().indexOf(input.toLowerCase()) !== -1
         )
       )
     } else {
@@ -49,34 +56,46 @@ export const SearchField: React.FC<SearchFieldProps> = ({
       setChosen(0)
     }
   }
-
+  const elementClicked = (event: React.MouseEvent) => {
+    event.preventDefault()
+  }
   return (
-    <div className={styles.SearchField}>
-      <div className={[styles[variant], styles.field].join(' ')}>
+    <div
+      className={[styles[variant], styles.SearchField].join(' ')}
+      onBlur={() => setFiltered([])}
+    >
+      <div className={styles.field}>
         {variant === 'secondary' ? <label>{label}:</label> : null}
         <input
           placeholder={placeholder}
-          onChange={handleHanged}
+          onChange={handleChanged}
           onKeyDown={handleKeyPress}
+          onFocus={handleChanged}
+          value={selected}
         ></input>
         {variant === 'primary' ? (
           <i className={'material-icons ' + styles.icon}>{icon}</i>
         ) : null}
       </div>
-      <ul className={styles.filtered}>
-        {filtered.map((s, i) => {
+      <ul>
+        {filtered.map((suggestion, index) => {
           let style = 'notCurrent'
-          if (i === chosen) {
+          if (index === chosen) {
             style = 'current'
           }
           return (
             <li
               className={styles[style]}
-              key={s}
-              onClick={() => alert(filtered[chosen])}
-              onMouseEnter={() => setChosen(i)}
+              key={suggestion}
+              onMouseEnter={() => setChosen(index)}
+              onMouseDown={elementClicked}
+              onClick={() => {
+                onClick(filtered[chosen])
+                setSelected(filtered[chosen])
+                setFiltered([])
+              }}
             >
-              {s}
+              {suggestion}
             </li>
           )
         })}

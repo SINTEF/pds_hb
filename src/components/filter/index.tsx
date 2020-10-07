@@ -7,11 +7,14 @@ export interface FilterProps {
   category: string
 
   filters: Array<string>
+
+  onClick: (SelectedMenuItem: string) => void
 }
 
 export const Filter: React.FC<FilterProps> = ({
   category,
   filters,
+  onClick,
 }: FilterProps) => {
   const [isClicked, setMode] = useState<boolean>(false)
   const [chosen, setChosen] = useState<string>(category)
@@ -26,15 +29,16 @@ export const Filter: React.FC<FilterProps> = ({
 
       {isClicked && (
         <ul className={styles.list}>
-          {filters.map((s) => {
+          {filters.map((filter) => {
             return (
-              <li className={styles.listItem} key={s}>
+              <li className={styles.listItem} key={filter}>
                 <MenuButton
                   onClick={() => {
                     setMode(!isClicked)
-                    setChosen(s)
+                    setChosen(filter)
+                    onClick(filter)
                   }}
-                  label={s}
+                  label={filter}
                 ></MenuButton>
               </li>
             )

@@ -28,3 +28,19 @@ Small.args = {
     'The detector includes the sensor and local electronics such as the address-/ interface unit.',
   size: 'small',
 }
+
+export const SmallAdminTextBox = Template.bind({})
+SmallAdminTextBox.args = {
+  title: 'Description',
+  content: 'test',
+  size: 'small',
+  isAdmin: true,
+}
+
+export const LargeAdminTextBox = Template.bind({})
+LargeAdminTextBox.args = {
+  title: 'Description',
+  content: 'test',
+  size: 'large',
+  isAdmin: true,
+}

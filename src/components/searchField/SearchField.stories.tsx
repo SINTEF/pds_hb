@@ -10,8 +10,8 @@ export default {
 
 const Template: Story<SearchFieldProps> = (args) => <SearchField {...args} />
 
-export const primaryInput = Template.bind({})
-primaryInput.args = {
+export const primarySearchField = Template.bind({})
+primarySearchField.args = {
   label: 'Search',
   variant: 'primary',
   placeholder: 'Search for component...',
@@ -24,10 +24,13 @@ primaryInput.args = {
     'Flamethrower',
     'banana',
   ],
+  onClick(s) {
+    alert(s)
+  },
 }
 
-export const secondaryInput = Template.bind({})
-secondaryInput.args = {
+export const secondarySearchField = Template.bind({})
+secondarySearchField.args = {
   label: 'Component',
   variant: 'secondary',
   placeholder: 'Set a component...',

@@ -1,5 +1,403 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots AddDataPagePage Standard 1`] = `
+<div
+  className="container title"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose Facility
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="secondary SearchField"
+    onBlur={[Function]}
+  >
+    <div
+      className="field"
+    >
+      <label>
+        Facility
+        :
+      </label>
+      <input
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Choose facility to register data to..."
+        value=""
+      />
+    </div>
+    <ul />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Browse Standard 1`] = `
+<div>
+  <div
+    className="path"
+  >
+    /Choose equipmentgroup /
+    Fire detectors
+  </div>
+  <div
+    className="filters padding"
+  >
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            Component
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            L1
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            L2
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            L3
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="content"
+    >
+      <div
+        className="padding center"
+      >
+        <div
+          className="container"
+        >
+          <div
+            className="titlecontainer"
+          >
+            <div
+              className="title notdynamic"
+            >
+              Smoke detector
+            </div>
+          </div>
+          <hr
+            className="line"
+          />
+        </div>
+      </div>
+      <div
+        className="description"
+      >
+        <div
+          className="container small"
+        >
+          <div
+            className="titlecontainer"
+          >
+            Description
+            <hr
+              className="line"
+            />
+          </div>
+          <div>
+            The detector includes the sensor and local electronics such as the address-/ interface unit.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          className="container"
+        >
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Date of revision: 
+            </label>
+            <label
+              className="content"
+            >
+              23.03.2020
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="container"
+        >
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Remarks: 
+            </label>
+            <label
+              className="content"
+            >
+              Remark this
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="container"
+        >
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Recommended values for calculation: 
+            </label>
+            <label
+              className="content"
+            >
+              Recommended values
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
+      </div>
+      <div
+        className="padding"
+      >
+        <div
+          className="container large"
+        >
+          <div
+            className="titlecontainer"
+          >
+            Definition of DU
+            <hr
+              className="line"
+            />
+          </div>
+          <div>
+            This is DU
+          </div>
+        </div>
+      </div>
+      <div
+        className="center padding"
+      >
+        <div
+          className="container"
+        >
+          <div
+            className="titlecontainer"
+          >
+            <div
+              className="title notdynamic"
+            >
+              Failure data
+            </div>
+          </div>
+          <hr
+            className="line"
+          />
+        </div>
+      </div>
+      <table
+        className="dataTable"
+      >
+        <tr>
+          <th>
+            Failure rates
+          </th>
+          <th>
+            Source
+          </th>
+          <th>
+            DU
+          </th>
+          <th>
+            T
+          </th>
+          <th>
+            Obs period
+          </th>
+          <th>
+            Population size
+          </th>
+          <th>
+            Comment
+          </th>
+        </tr>
+        <tr>
+          <td>
+            0,3
+          </td>
+          <td>
+            A
+          </td>
+          <td>
+            5
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            2006-2008
+          </td>
+          <td>
+            231
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+        <tr>
+          <td>
+            0,3
+          </td>
+          <td>
+            B
+          </td>
+          <td>
+            7
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            2013-2017
+          </td>
+          <td>
+            87
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+        <tr>
+          <td>
+            0,3
+          </td>
+          <td>
+            A
+          </td>
+          <td>
+            11
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            2012-2020
+          </td>
+          <td>
+            763
+          </td>
+          <td>
+            Fake news
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Button Danger 1`] = `
 <div
   className="react-ripples"
@@ -269,6 +667,153 @@ exports[`Storyshots Components/display-field Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots Components/editable-field Editmode 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <input
+        className="content input"
+        id="inputContent"
+        placeholder="123456"
+        type="text"
+      />
+    </div>
+    <div>
+      <button
+        aria-label="delete"
+        className="MuiButtonBase-root MuiIconButton-root icon MuiIconButton-sizeSmall"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <i
+            className="material-icons icon"
+          >
+            done
+          </i>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/editable-field Not Admin 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <label
+        className="content"
+      >
+        123456
+      </label>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/editable-field Viewmode 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <label
+        className="content"
+      >
+        123456
+      </label>
+    </div>
+    <div>
+      <button
+        aria-label="delete"
+        className="MuiButtonBase-root MuiIconButton-root iconbutton MuiIconButton-sizeSmall"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <i
+            className="material-icons icon"
+          >
+            edit
+          </i>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots DropDownMenu Company User 1`] = `
 <div>
   <div
@@ -371,6 +916,488 @@ exports[`Storyshots FilterButton Standard Filter Button 1`] = `
       expand_more
     </i>
   </button>
+</div>
+`;
+
+exports[`Storyshots Frontpage General Frontpage 1`] = `
+<div
+  className="frontpage"
+>
+  <div
+    className="title"
+  >
+    PDS Datahåndbok
+  </div>
+  <div
+    className="generalMenu menu"
+  >
+    <div
+      className="primary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <input
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Search for component..."
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        >
+          search
+        </i>
+      </div>
+      <ul />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Read PDS datahandbook
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse equipment data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Frontpage Moderator Frontpage 1`] = `
+<div
+  className="frontpage"
+>
+  <div
+    className="title"
+  >
+    PDS Datahåndbok
+  </div>
+  <div
+    className="generalMenu menu"
+  >
+    <div
+      className="primary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <input
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Search for component..."
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        >
+          search
+        </i>
+      </div>
+      <ul />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Read and edit PDS datahandbook
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse and edit equipment data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Frontpage Operator Frontpage 1`] = `
+<div
+  className="frontpage"
+>
+  <div
+    className="title"
+  >
+    PDS Datahåndbok
+  </div>
+  <div
+    className="operatorMenu menu"
+  >
+    <div
+      className="primary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <input
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Search for component..."
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        >
+          search
+        </i>
+      </div>
+      <ul />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Read PDS datahandbook
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse equipment data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse own equipment data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Add data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
 </div>
 `;
 
@@ -853,16 +1880,20 @@ exports[`Storyshots Pages/Login Start 1`] = `
 `;
 
 exports[`Storyshots Search field Primary Input 1`] = `
+exports[`Storyshots Search field Primary Search Field 1`] = `
 <div
-  className="SearchField"
+  className="primary SearchField"
+  onBlur={[Function]}
 >
   <div
-    className="primary field"
+    className="field"
   >
     <input
       onChange={[Function]}
+      onFocus={[Function]}
       onKeyDown={[Function]}
       placeholder="Search for component..."
+      value=""
     />
     <i
       className="material-icons icon"
@@ -870,18 +1901,17 @@ exports[`Storyshots Search field Primary Input 1`] = `
       search
     </i>
   </div>
-  <ul
-    className="filtered"
-  />
+  <ul />
 </div>
 `;
 
-exports[`Storyshots Search field Secondary Input 1`] = `
+exports[`Storyshots Search field Secondary Search Field 1`] = `
 <div
-  className="SearchField"
+  className="secondary SearchField"
+  onBlur={[Function]}
 >
   <div
-    className="secondary field"
+    className="field"
   >
     <label>
       Component
@@ -889,13 +1919,13 @@ exports[`Storyshots Search field Secondary Input 1`] = `
     </label>
     <input
       onChange={[Function]}
+      onFocus={[Function]}
       onKeyDown={[Function]}
       placeholder="Set a component..."
+      value=""
     />
   </div>
-  <ul
-    className="filtered"
-  />
+  <ul />
 </div>
 `;
 
@@ -1066,6 +2096,189 @@ exports[`Storyshots SideMenu Operator Side Menu 1`] = `
 </div>
 `;
 
+exports[`Storyshots Switch Checked 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    checked={true}
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Large 1`] = `
+<label
+  className="switch large"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Small 1`] = `
+<label
+  className="switch small"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Standard 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Table Table Component 1`] = `
+<table
+  className="dataTable"
+>
+  <tr>
+    <th>
+      Failure Rates
+    </th>
+    <th>
+      Source
+    </th>
+    <th>
+      DUobs
+    </th>
+    <th>
+      T
+    </th>
+    <th>
+      Observation Period
+    </th>
+    <th>
+      Population Size
+    </th>
+    <th>
+      Comment
+    </th>
+  </tr>
+  <tr>
+    <td>
+      0,3
+    </td>
+    <td>
+      Facility A
+    </td>
+    <td>
+      10
+    </td>
+    <td>
+      2,8*10^7 h
+    </td>
+    <td>
+      2006-2018
+    </td>
+    <td>
+      659
+    </td>
+    <td>
+      Very cool data
+    </td>
+  </tr>
+  <tr>
+    <td>
+      0,5
+    </td>
+    <td>
+      Facility C
+    </td>
+    <td>
+      8
+    </td>
+    <td>
+      2,8* 10^9 h
+    </td>
+    <td>
+      1999-2020
+    </td>
+    <td>
+      666
+    </td>
+    <td>
+      This data is data
+    </td>
+  </tr>
+  <tr>
+    <td>
+      0,8
+    </td>
+    <td>
+      Facility B
+    </td>
+    <td>
+      12
+    </td>
+    <td>
+      2,7* 10^5 h
+    </td>
+    <td>
+      2019-2020
+    </td>
+    <td>
+      123
+    </td>
+    <td>
+      Another instance of data
+    </td>
+  </tr>
+  <tr>
+    <td>
+      0,8
+    </td>
+    <td>
+      Facility B
+    </td>
+    <td>
+      12
+    </td>
+    <td>
+      2,7* 10^5 h
+    </td>
+    <td>
+      2019-2020
+    </td>
+    <td>
+      123
+    </td>
+    <td>
+      Even more data
+    </td>
+  </tr>
+</table>
+`;
+
 exports[`Storyshots TextBox Large 1`] = `
 <div
   className="container large"
@@ -1080,6 +2293,29 @@ exports[`Storyshots TextBox Large 1`] = `
   </div>
   <div>
     The detector includes the sensor and local electronics such as the address-/ interface unit.
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextBox Large Admin Text Box 1`] = `
+<div
+  className="container large"
+>
+  <div
+    className="material-icons icon"
+  >
+    editor
+  </div>
+  <div
+    className="titlecontainer"
+  >
+    Description
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    test
   </div>
 </div>
 `;
@@ -1099,5 +2335,71 @@ exports[`Storyshots TextBox Small 1`] = `
   <div>
     The detector includes the sensor and local electronics such as the address-/ interface unit.
   </div>
+</div>
+`;
+
+exports[`Storyshots TextBox Small Admin Text Box 1`] = `
+<div
+  className="container small"
+>
+  <div
+    className="material-icons icon"
+  >
+    editor
+  </div>
+  <div
+    className="titlecontainer"
+  >
+    Description
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    test
+  </div>
+</div>
+`;
+
+exports[`Storyshots Title Dynamic 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title "
+    >
+      Failure data at
+    </div>
+    <div
+      className="dynamic"
+    >
+      Askeladden
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
+</div>
+`;
+
+exports[`Storyshots Title Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title notdynamic"
+    >
+      Choose Facility
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
 </div>
 `;

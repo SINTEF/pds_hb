@@ -1,0 +1,36 @@
+.path {
+  cursor: pointer;
+}
+
+.filters {
+  display: inline-grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  position: absolute;
+}
+
+.filter {
+  width: fit-content;
+  height: fit-content;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: inherit;
+  padding-top: 110px;
+}
+
+.description {
+  position: relative;
+  margin-left: auto;
+}
+
+.center {
+  align-self: center;
+}
+
+.padding {
+  padding-top: 60px;
+}
