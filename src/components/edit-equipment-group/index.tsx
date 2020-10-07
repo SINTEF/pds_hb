@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Ripples from 'react-ripples'
-import { EquipmentGroup, EquipmentGroupForm } from '../equipment-group-form'
+import { IGroup, EquipmentGroupForm } from '../equipment-group-form'
 
 import styles from './EditEquipmentGroup.module.css'
 
 export type EditEquipmentGroupProps = {
-  equipmentGroup: EquipmentGroup
+  equipmentGroup: IGroup
 }
 
 export const EditEquipmentGroup: React.FC<EditEquipmentGroupProps> = ({
@@ -15,7 +15,7 @@ export const EditEquipmentGroup: React.FC<EditEquipmentGroupProps> = ({
 
   // TODO: Send data to server for creation
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSave = (formValue: EquipmentGroup) => {
+  const onSave = (formValue: IGroup) => {
     setModalOpen(false)
   }
   const onCancel = () => {
