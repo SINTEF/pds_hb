@@ -245,6 +245,81 @@ exports[`Storyshots Button Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots ChooseComponentPagePage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose equipment group
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="components"
+  >
+    <div
+      className="equipmentContainer"
+    >
+      <div>
+        <div
+          className="container"
+          onClick={[Function]}
+        >
+          <img
+            className="image"
+            src="https://www.svgrepo.com/show/131030/question-mark.svg"
+          />
+          Fire Equipment
+        </div>
+      </div>
+    </div>
+    <div
+      className="equipmentContainer"
+    >
+      <div>
+        <div
+          className="container"
+          onClick={[Function]}
+        >
+          <img
+            className="image"
+            src="https://www.svgrepo.com/show/131030/question-mark.svg"
+          />
+          Cake Equipment
+        </div>
+      </div>
+    </div>
+    <div
+      className="equipmentContainer"
+    >
+      <div>
+        <div
+          className="container"
+          onClick={[Function]}
+        >
+          <img
+            className="image"
+            src="https://www.svgrepo.com/show/131030/question-mark.svg"
+          />
+          Some other group
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Components/display-field Standard 1`] = `
 <div>
   <div
@@ -1007,83 +1082,6 @@ exports[`Storyshots Header Standard 1`] = `
 <div
   className="container"
 >
-exports[`Storyshots ChooseComponentPagePage Standard 1`] = `
-<div
-  className="container"
->
-  <div
-    className="container"
-  >
-    <div
-      className="titlecontainer"
-    >
-      <div
-        className="title notdynamic"
-      >
-        Choose equipment group
-      </div>
-    </div>
-    <hr
-      className="line"
-    />
-  </div>
-  <div
-    className="components"
-  >
-    <div
-      className="equipmentContainer"
-    >
-      <div>
-        <div
-          className="container"
-          onClick={[Function]}
-        >
-          <img
-            className="image"
-            src="https://www.svgrepo.com/show/131030/question-mark.svg"
-          />
-          Fire Equipment
-        </div>
-      </div>
-    </div>
-    <div
-      className="equipmentContainer"
-    >
-      <div>
-        <div
-          className="container"
-          onClick={[Function]}
-        >
-          <img
-            className="image"
-            src="https://www.svgrepo.com/show/131030/question-mark.svg"
-          />
-          Cake Equipment
-        </div>
-      </div>
-    </div>
-    <div
-      className="equipmentContainer"
-    >
-      <div>
-        <div
-          className="container"
-          onClick={[Function]}
-        >
-          <img
-            className="image"
-            src="https://www.svgrepo.com/show/131030/question-mark.svg"
-          />
-          Some other group
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components/display-field Standard 1`] = `
-<div>
   <div
     className="home"
   >
@@ -1406,9 +1404,9 @@ Array [
     >
       <i
         aria-label="menu"
-        aria-role="button"
         className="material-icons"
         onClick={[Function]}
+        role="button"
         style={
           Object {
             "cursor": "pointer",
@@ -1445,9 +1443,9 @@ Array [
     >
       <i
         aria-label="create"
-        aria-role="button"
         className="material-icons"
         onClick={[Function]}
+        role="button"
         style={
           Object {
             "cursor": "pointer",
@@ -1498,9 +1496,9 @@ Array [
     >
       <i
         aria-label="menu"
-        aria-role="button"
         className="material-icons"
         onClick={[Function]}
+        role="button"
         style={
           Object {
             "cursor": "pointer",
