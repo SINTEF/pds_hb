@@ -77,7 +77,11 @@ export const Read: React.FC<ReadProps> = ({ isAdmin }: ReadProps) => {
             onChanged={(value) => setCurrentValue(value)}
           />
         ) : (
-          <>{parse(currentValue)}</>
+          <>
+            {parse(
+              currentValue || "Oups! Looks like there's no content here yet."
+            )}
+          </>
         )}
       </div>
     </>
