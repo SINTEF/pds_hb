@@ -1,0 +1,25 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 0;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  width: 70vw;
+  margin: 10px 20px;
+}
+
+.sideMenu {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 10;
+}
+
+.content {
+  width: 60vw;
+  margin: auto;
+}
