@@ -1709,37 +1709,6 @@ exports[`Storyshots MenuButton Standard 1`] = `
 </div>
 `;
 
-exports[`Storyshots RegisteredDataField Standard 1`] = `
-<div
-  className="container"
->
-  <td>
-    <label>
-       test1 
-    </label>
-  </td>
-  <td>
-    <label
-      type="submit"
-    >
-      test2
-    </label>
-  </td>
-  <td>
-    <label>
-       test2 
-    </label>
-  </td>
-  <td>
-    <i
-      className="material-icons"
-    >
-      editor
-    </i>
-  </td>
-</div>
-`;
-
 exports[`Storyshots Search field Primary Search Field 1`] = `
 <div
   className="primary SearchField"
