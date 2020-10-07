@@ -29,10 +29,15 @@
   background-color: #ffffff;
 }
 
+.secondary {
+  width: 100%;
+}
+
 .secondary > div {
   outline: none;
   position: relative;
   padding-bottom: 25px;
+  border-bottom: 1px solid black;
 }
 
 .secondary input {
@@ -57,12 +62,16 @@
   overflow-y: visible;
   padding-left: 0px;
   position: absolute;
+  padding-bottom: 5px;
   z-index: 1;
-  margin-top: 0px;
+  margin-top: -1px;
   background-color: #eeeeee;
-  margin-left: -10px;
-  border-bottom: 1px solid black;
-  width: 100%;
+  border-bottom: 2px solid black;
+}
+
+.secondary ul li {
+  padding-left: 0;
+  padding-right: 50px;
 }
 
 .field {

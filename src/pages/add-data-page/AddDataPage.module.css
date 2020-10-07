@@ -15,14 +15,16 @@
   flex-direction: column;
   text-align: left;
   padding-top: 130px;
+  width: 100%;
 }
 
-.tilte {
+.title {
   min-width: 1040px;
   max-width: 1260px;
   padding-left: 30px;
   padding-right: 30px;
-  height: 400px;
+  height: 300px;
+  position: absolute;
 }
 
 .button {
