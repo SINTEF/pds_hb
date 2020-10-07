@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react'
 import { AddDataPage, AddDataPageProps } from '.'
 
 export default {
-  title: 'AddDataPagePage',
+  title: 'pages/AddDataPagePage',
   component: AddDataPage,
   argTypes: {
     backgroundColor: { control: 'color' },
