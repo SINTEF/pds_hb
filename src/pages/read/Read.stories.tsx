@@ -5,9 +5,6 @@ import { Read, ReadProps } from '.'
 export default {
   title: 'Pages/Read',
   component: Read,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as Meta
 
 const Template: Story<ReadProps> = (args) => <Read {...args} />

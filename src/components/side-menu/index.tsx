@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import styles from './sideMenu.module.css'
 
 export interface SideMenuProps {
   children: JSX.Element | JSX.Element[]
 }
 
-export const SideMenu: React.FC<SideMenuProps> = ({
-  children,
-}: SideMenuProps) => {
+const SideMenu: React.FC<SideMenuProps> = ({ children }: SideMenuProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.home}></div>
@@ -15,3 +13,18 @@ export const SideMenu: React.FC<SideMenuProps> = ({
     </div>
   )
 }
+
+const RefSideMenu = forwardRef<HTMLDivElement, SideMenuProps>(
+  ({ children }: SideMenuProps, ref) => {
+    return (
+      <div ref={ref} className={styles.container}>
+        <div className={styles.home}></div>
+        {children}
+      </div>
+    )
+  }
+)
+
+RefSideMenu.displayName = 'RefSideMenu'
+
+export { SideMenu, RefSideMenu }
