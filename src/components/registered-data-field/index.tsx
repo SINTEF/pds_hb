@@ -1,13 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import styles from './RegisteredDataField.module.css'
 
-RegisteredDataField.propTypes = {
-  children: PropTypes.node,
+export interface RegisteredDataFieldProps {
+  children: JSX.Element[]
 }
 
-export const RegisteredDataField: React.FC = ({ children }) => {
+export const RegisteredDataField: React.FC<RegisteredDataFieldProps> = ({
+  children,
+}: RegisteredDataFieldProps) => {
   return (
     <div className={styles.container}>
       {children.map((d, key) => (
