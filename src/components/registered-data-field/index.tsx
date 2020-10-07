@@ -1,52 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './RegisteredDataField.module.css'
 
-export interface RegisteredDataFieldProps {
-  component: string
-
-  period: string
-
-  t: number
-
-  tags: number
-
-  du: number
-
-  edited: string
-
-  icon?: string
-
-  onClick: () => void
+RegisteredDataField.propTypes = {
+  children: PropTypes.node,
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const RegisteredDataField: React.FC<RegisteredDataFieldProps> = ({
-  component,
-  period,
-  t,
-  tags,
-  du,
-  edited,
-  icon = 'editor',
-  onClick,
-}: RegisteredDataFieldProps) => {
+export const RegisteredDataField: React.FC = ({ children }) => {
   return (
     <div className={styles.container}>
-      <label className={styles.label}>{component}</label>
-      <label className={styles.label}>{period}</label>
-      <label className={styles.label}>{t}</label>
-      <label className={styles.label}>{tags}</label>
-      <label className={styles.label}>{du}</label>
-      <label className={styles.label}>{edited}</label>
-      <i
-        className={['material-icons', styles.icon].join(' ')}
-        onClick={onClick}
-      >
-        {icon}
-      </i>
+      {children.map((d, key) => (
+        <td key={key}>{d}</td>
+      ))}
     </div>
   )
 }
