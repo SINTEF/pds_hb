@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './Frontpage.module.css'
 import { SearchField } from '../searchField'
 import { Button } from '../button'
+import { useHistory } from 'react-router-dom'
+import MAIN_ROUTES from '../../routes/routes.constants'
 
 export interface FrontpageProps {
   onChange: (value: string) => void
@@ -16,6 +18,7 @@ export const Frontpage: React.FC<FrontpageProps> = ({
   userType = 'general',
   suggestions,
 }: FrontpageProps) => {
+  const history = useHistory()
   return (
     <div className={styles.frontpage}>
       <div className={styles.title}>{'PDS Datahåndbok'}</div>
@@ -29,8 +32,14 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
-          <Button label={'Read PDS datahandbook'}></Button>
-          <Button label={'Browse equipment data'}></Button>
+          <Button
+            label={'Read PDS datahandbook'}
+            onClick={() => history.push(MAIN_ROUTES.READ)}
+          />
+          <Button
+            label={'Browse equipment data'}
+            onClick={() => history.push(MAIN_ROUTES.BROWSE)}
+          />
         </div>
       ) : null}
       {userType === 'moderator' ? (
@@ -43,8 +52,14 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
-          <Button label={'Read and edit PDS datahandbook'}></Button>
-          <Button label={'Browse and edit equipment data'}></Button>
+          <Button
+            label={'Read and edit PDS datahandbook'}
+            onClick={() => history.push(MAIN_ROUTES.READ)}
+          />
+          <Button
+            label={'Browse and edit equipment data'}
+            onClick={() => history.push(MAIN_ROUTES.BROWSE)}
+          />
         </div>
       ) : null}
       {userType === 'operator' ? (
@@ -57,10 +72,22 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
-          <Button label={'Read PDS datahandbook'}></Button>
-          <Button label={'Browse equipment data'}></Button>
-          <Button label={'Browse own equipment data'}></Button>
-          <Button label={'Add data'}></Button>
+          <Button
+            label={'Read PDS datahandbook'}
+            onClick={() => history.push(MAIN_ROUTES.READ)}
+          />
+          <Button
+            label={'Browse equipment data'}
+            onClick={() => history.push(MAIN_ROUTES.BROWSE)}
+          />
+          <Button
+            label={'Browse own equipment data'}
+            onClick={() => history.push(MAIN_ROUTES.COMPANY)}
+          />
+          <Button
+            label={'Add data'}
+            onClick={() => history.push(MAIN_ROUTES.ADD)}
+          />
         </div>
       ) : null}
     </div>
