@@ -1659,6 +1659,61 @@ exports[`Storyshots Input field Standard With File 1`] = `
 </div>
 `;
 
+exports[`Storyshots Mange facilities Standard 1`] = `
+<div>
+  <div
+    className="title"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Manage facilities
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div
+    className="padding"
+  >
+    Enter an existing facilty to edit or enter a new one
+  </div>
+  <div
+    className="padding"
+  >
+    <div
+      className="secondary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <label>
+          Facilityname
+          :
+        </label>
+        <input
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Enter name of facility..."
+          value=""
+        />
+      </div>
+      <ul />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots MenuButton Log Out 1`] = `
 <div
   className="container"
