@@ -13,6 +13,9 @@ export default {
 const Template: Story<RichEditorProps> = (args) => <RichEditor {...args} />
 
 export const Standard = Template.bind({})
+Standard.parameters = {
+  storyshots: { disable: true },
+}
 Standard.args = {
   onChanged: (value) => value,
   value: `<h1>1 INTRODUCTION</h1>

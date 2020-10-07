@@ -15,7 +15,7 @@ export const RichEditor: React.FC<RichEditorProps> = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const joditConfig: any = {
     // all options from https://xdsoft.net/jodit/doc/
-    height: '100%',
+    height: '90vh',
     language: 'en',
     tabIndex: 1,
     showCharsCounter: false,
