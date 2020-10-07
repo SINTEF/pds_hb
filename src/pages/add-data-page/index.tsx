@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './AddDataPage.module.css'
 
 import { Title } from '../../components/title'
-import { SearchField } from '../../components/searchField'
+import { SearchField } from '../../components/search-field'
 import { InputField } from '../../components/input-field'
 import { Button } from '../../components/button'
 
