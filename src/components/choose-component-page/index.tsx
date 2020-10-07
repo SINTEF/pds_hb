@@ -7,11 +7,9 @@ import { EquipmentGroup } from '../equipment-group'
 export interface ChooseComponentPageProps {
   getComponents: () => Array<string>
   getEquipmentGroups: () => Array<string>
-  getModules: () => Array<string>
 }
 
 export const ChooseComponentPage: React.FC<ChooseComponentPageProps> = ({
-  getModules,
   getEquipmentGroups,
   getComponents,
 }: ChooseComponentPageProps) => {

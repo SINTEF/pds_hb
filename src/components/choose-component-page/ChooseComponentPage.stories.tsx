@@ -37,7 +37,7 @@ Standard.args = {
   getEquipmentGroups: () => [
     'Fire Equipment',
     'Cake Equipment',
-    'Some other eq group',
+    'Some other group',
   ],
   getModules: () => ['Input Devices', 'Control logic units'],
 }
