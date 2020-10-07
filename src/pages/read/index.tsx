@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import parse from 'html-react-parser'
 
 import { RichEditor } from '../../components/rich-editor'
-import { SideMenu } from '../../components/side-menu'
-
-import styles from './Read.module.css'
+import { RefSideMenu } from '../../components/side-menu'
 import { IconButton } from '../../components/icon-button'
 import { MenuButton } from '../../components/menu-button'
+
+import { useClickOutside } from '../../utils/hooks/useClickOutside'
+
+import styles from './Read.module.css'
 
 export interface ReadProps {
   isAdmin: boolean
@@ -32,6 +34,10 @@ export const Read: React.FC<ReadProps> = ({ isAdmin }: ReadProps) => {
       setCurrentValue(chapters[0])
     }
   }, [chapters])
+
+  const menuRef = useRef(null)
+
+  useClickOutside(menuRef, () => setNavigate(false))
 
   const save: () => void = () => {
     setEdit(false)
@@ -59,7 +65,7 @@ export const Read: React.FC<ReadProps> = ({ isAdmin }: ReadProps) => {
       </div>
       {navigate ? (
         <div className={styles.sideMenu}>
-          <SideMenu>
+          <RefSideMenu ref={menuRef}>
             {chapterTitles.map((title, index) => (
               <MenuButton
                 label={title}
@@ -67,7 +73,7 @@ export const Read: React.FC<ReadProps> = ({ isAdmin }: ReadProps) => {
                 onClick={() => changeChapter(index)}
               />
             ))}
-          </SideMenu>
+          </RefSideMenu>
         </div>
       ) : null}
       <div className={styles.content}>

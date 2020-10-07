@@ -19,7 +19,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
         className="material-icons"
         onClick={onClick}
         style={{ cursor: 'pointer', fontSize }}
-        aria-role="button"
+        role="button"
         aria-label={icon}
       >
         {icon}
