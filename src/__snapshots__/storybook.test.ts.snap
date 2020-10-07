@@ -1336,6 +1336,61 @@ exports[`Storyshots Input field Standard With File 1`] = `
 </div>
 `;
 
+exports[`Storyshots Mange facilities Standard 1`] = `
+<div>
+  <div
+    className="title"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Manage facilities
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div
+    className="padding"
+  >
+    Enter an existing facilty to edit or enter a new one
+  </div>
+  <div
+    className="padding"
+  >
+    <div
+      className="secondary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <label>
+          Facilityname
+          :
+        </label>
+        <input
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Enter name of facility..."
+          value=""
+        />
+      </div>
+      <ul />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots MenuButton Log Out 1`] = `
 <div
   className="container"
@@ -1384,151 +1439,6 @@ exports[`Storyshots MenuButton Standard 1`] = `
     Adapt premissions for user groups
   </button>
 </div>
-`;
-
-exports[`Storyshots Pages/Read Admin 1`] = `
-Array [
-  <div
-    className="controls"
-  >
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <i
-        aria-label="menu"
-        className="material-icons"
-        onClick={[Function]}
-        role="button"
-        style={
-          Object {
-            "cursor": "pointer",
-            "fontSize": "24px",
-          }
-        }
-      >
-        menu
-      </i>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <i
-        aria-label="create"
-        className="material-icons"
-        onClick={[Function]}
-        role="button"
-        style={
-          Object {
-            "cursor": "pointer",
-            "fontSize": "24px",
-          }
-        }
-      >
-        create
-      </i>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>,
-  <div
-    className="content"
-  >
-    Oups! Looks like there's no content here yet.
-  </div>,
-]
-`;
-
-exports[`Storyshots Pages/Read Standard 1`] = `
-Array [
-  <div
-    className="controls"
-  >
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <i
-        aria-label="menu"
-        className="material-icons"
-        onClick={[Function]}
-        role="button"
-        style={
-          Object {
-            "cursor": "pointer",
-            "fontSize": "24px",
-          }
-        }
-      >
-        menu
-      </i>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>,
-  <div
-    className="content"
-  >
-    Oups! Looks like there's no content here yet.
-  </div>,
-]
 `;
 
 exports[`Storyshots RegisteredDataField Standard 1`] = `
@@ -1824,64 +1734,6 @@ exports[`Storyshots Switch Small 1`] = `
 </label>
 `;
 
-exports[`Storyshots Mange facilities Standard 1`] = `
-<div>
-  <div
-    className="title"
-  >
-    <div
-      className="container"
-    >
-      <div
-        className="titlecontainer"
-      >
-        <div
-          className="title notdynamic"
-        >
-          Manage facilities
-        </div>
-      </div>
-      <hr
-        className="line"
-      />
-    </div>
-  </div>
-  <div
-    className="padding"
-  >
-    Enter an existing facilty to edit or enter a new one
-  </div>
-  <div
-    className="padding"
-  >
-    <div
-      className="secondary SearchField"
-      onBlur={[Function]}
-    >
-      <div
-        className="field"
-      >
-        <label>
-          Facilityname
-          :
-        </label>
-        <input
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          placeholder="Enter name of facility..."
-          value=""
-        />
-      </div>
-      <ul />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots MenuButton Log Out 1`] = `
-<div
-  className="container"
 exports[`Storyshots Switch Standard 1`] = `
 <label
   className="switch medium"
