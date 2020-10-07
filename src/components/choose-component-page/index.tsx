@@ -15,7 +15,6 @@ export const ChooseComponentPage: React.FC<ChooseComponentPageProps> = ({
 }: ChooseComponentPageProps) => {
   const [pageState, setPage] = useState<number>(1)
   const [button, setbutton] = useState<Array<string>>(getEquipmentGroups)
-  const [category, setCategory] = useState<Array<string>>(getEquipmentGroups)
   if (pageState === 1) {
     return (
       <div className={styles.container}>
