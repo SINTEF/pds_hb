@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react'
 import { BrowseComponentPage, BrowseComponentPageProps } from '.'
 
 export default {
-  title: 'Browse',
+  title: 'pages/Browse',
   Component: BrowseComponentPage,
 } as Meta
 
