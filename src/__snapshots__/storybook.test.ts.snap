@@ -1,403 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots AddDataPagePage Standard 1`] = `
-<div
-  className="container title"
->
-  <div
-    className="container"
-  >
-    <div
-      className="titlecontainer"
-    >
-      <div
-        className="title notdynamic"
-      >
-        Choose Facility
-      </div>
-    </div>
-    <hr
-      className="line"
-    />
-  </div>
-  <div
-    className="secondary SearchField"
-    onBlur={[Function]}
-  >
-    <div
-      className="field"
-    >
-      <label>
-        Facility
-        :
-      </label>
-      <input
-        onChange={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        placeholder="Choose facility to register data to..."
-        value=""
-      />
-    </div>
-    <ul />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Browse Standard 1`] = `
-<div>
-  <div
-    className="path"
-  >
-    /Choose equipmentgroup /
-    Fire detectors
-  </div>
-  <div
-    className="filters padding"
-  >
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            Component
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L1
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L2
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L3
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div
-      className="content"
-    >
-      <div
-        className="padding center"
-      >
-        <div
-          className="container"
-        >
-          <div
-            className="titlecontainer"
-          >
-            <div
-              className="title notdynamic"
-            >
-              Smoke detector
-            </div>
-          </div>
-          <hr
-            className="line"
-          />
-        </div>
-      </div>
-      <div
-        className="description"
-      >
-        <div
-          className="container small"
-        >
-          <div
-            className="titlecontainer"
-          >
-            Description
-            <hr
-              className="line"
-            />
-          </div>
-          <div>
-            The detector includes the sensor and local electronics such as the address-/ interface unit.
-          </div>
-        </div>
-      </div>
-      <div>
-        <div
-          className="container"
-        >
-          <div
-            className="container"
-          >
-            <label
-              className="index"
-            >
-              Date of revision: 
-            </label>
-            <label
-              className="content"
-            >
-              23.03.2020
-            </label>
-          </div>
-        </div>
-        <div>
-          <hr
-            className="divider"
-          />
-        </div>
-      </div>
-      <div>
-        <div
-          className="container"
-        >
-          <div
-            className="container"
-          >
-            <label
-              className="index"
-            >
-              Remarks: 
-            </label>
-            <label
-              className="content"
-            >
-              Remark this
-            </label>
-          </div>
-        </div>
-        <div>
-          <hr
-            className="divider"
-          />
-        </div>
-      </div>
-      <div>
-        <div
-          className="container"
-        >
-          <div
-            className="container"
-          >
-            <label
-              className="index"
-            >
-              Recommended values for calculation: 
-            </label>
-            <label
-              className="content"
-            >
-              Recommended values
-            </label>
-          </div>
-        </div>
-        <div>
-          <hr
-            className="divider"
-          />
-        </div>
-      </div>
-      <div
-        className="padding"
-      >
-        <div
-          className="container large"
-        >
-          <div
-            className="titlecontainer"
-          >
-            Definition of DU
-            <hr
-              className="line"
-            />
-          </div>
-          <div>
-            This is DU
-          </div>
-        </div>
-      </div>
-      <div
-        className="center padding"
-      >
-        <div
-          className="container"
-        >
-          <div
-            className="titlecontainer"
-          >
-            <div
-              className="title notdynamic"
-            >
-              Failure data
-            </div>
-          </div>
-          <hr
-            className="line"
-          />
-        </div>
-      </div>
-      <table
-        className="dataTable"
-      >
-        <tr>
-          <th>
-            Failure rates
-          </th>
-          <th>
-            Source
-          </th>
-          <th>
-            DU
-          </th>
-          <th>
-            T
-          </th>
-          <th>
-            Obs period
-          </th>
-          <th>
-            Population size
-          </th>
-          <th>
-            Comment
-          </th>
-        </tr>
-        <tr>
-          <td>
-            0,3
-          </td>
-          <td>
-            A
-          </td>
-          <td>
-            5
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            2006-2008
-          </td>
-          <td>
-            231
-          </td>
-          <td>
-            
-          </td>
-        </tr>
-        <tr>
-          <td>
-            0,3
-          </td>
-          <td>
-            B
-          </td>
-          <td>
-            7
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            2013-2017
-          </td>
-          <td>
-            87
-          </td>
-          <td>
-            
-          </td>
-        </tr>
-        <tr>
-          <td>
-            0,3
-          </td>
-          <td>
-            A
-          </td>
-          <td>
-            11
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            2012-2020
-          </td>
-          <td>
-            763
-          </td>
-          <td>
-            Fake news
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Storyshots Button Danger 1`] = `
 <div
   className="react-ripples"
@@ -1784,6 +1386,182 @@ exports[`Storyshots MenuButton Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots Pages/Read Admin 1`] = `
+Array [
+  <div
+    className="controls"
+  >
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <i
+        aria-label="menu"
+        className="material-icons"
+        onClick={[Function]}
+        role="button"
+        style={
+          Object {
+            "cursor": "pointer",
+            "fontSize": "24px",
+          }
+        }
+      >
+        menu
+      </i>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <i
+        aria-label="create"
+        className="material-icons"
+        onClick={[Function]}
+        role="button"
+        style={
+          Object {
+            "cursor": "pointer",
+            "fontSize": "24px",
+          }
+        }
+      >
+        create
+      </i>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>,
+  <div
+    className="content"
+  >
+    Oups! Looks like there's no content here yet.
+  </div>,
+]
+`;
+
+exports[`Storyshots Pages/Read Standard 1`] = `
+Array [
+  <div
+    className="controls"
+  >
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <i
+        aria-label="menu"
+        className="material-icons"
+        onClick={[Function]}
+        role="button"
+        style={
+          Object {
+            "cursor": "pointer",
+            "fontSize": "24px",
+          }
+        }
+      >
+        menu
+      </i>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>,
+  <div
+    className="content"
+  >
+    Oups! Looks like there's no content here yet.
+  </div>,
+]
+`;
+
+exports[`Storyshots RegisteredDataField Standard 1`] = `
+<div
+  className="container"
+>
+  <td>
+    <label>
+       test1 
+    </label>
+  </td>
+  <td>
+    <label
+      type="submit"
+    >
+      test2
+    </label>
+  </td>
+  <td>
+    <label>
+       test2 
+    </label>
+  </td>
+  <td>
+    <i
+      className="material-icons"
+    >
+      editor
+    </i>
+  </td>
+</div>
+`;
+
 exports[`Storyshots Search field Primary Search Field 1`] = `
 <div
   className="primary SearchField"
@@ -2305,5 +2083,403 @@ exports[`Storyshots Title Standard 1`] = `
   <hr
     className="line"
   />
+</div>
+`;
+
+exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
+<div
+  className="container title"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose Facility
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="secondary SearchField"
+    onBlur={[Function]}
+  >
+    <div
+      className="field"
+    >
+      <label>
+        Facility
+        :
+      </label>
+      <input
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Choose facility to register data to..."
+        value=""
+      />
+    </div>
+    <ul />
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/Browse Standard 1`] = `
+<div>
+  <div
+    className="path"
+  >
+    /Choose equipmentgroup /
+    Fire detectors
+  </div>
+  <div
+    className="filters padding"
+  >
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            Component
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            L1
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            L2
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            L3
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="content"
+    >
+      <div
+        className="padding center"
+      >
+        <div
+          className="container"
+        >
+          <div
+            className="titlecontainer"
+          >
+            <div
+              className="title notdynamic"
+            >
+              Smoke detector
+            </div>
+          </div>
+          <hr
+            className="line"
+          />
+        </div>
+      </div>
+      <div
+        className="description"
+      >
+        <div
+          className="container small"
+        >
+          <div
+            className="titlecontainer"
+          >
+            Description
+            <hr
+              className="line"
+            />
+          </div>
+          <div>
+            The detector includes the sensor and local electronics such as the address-/ interface unit.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          className="container"
+        >
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Date of revision: 
+            </label>
+            <label
+              className="content"
+            >
+              23.03.2020
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="container"
+        >
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Remarks: 
+            </label>
+            <label
+              className="content"
+            >
+              Remark this
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="container"
+        >
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Recommended values for calculation: 
+            </label>
+            <label
+              className="content"
+            >
+              Recommended values
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
+      </div>
+      <div
+        className="padding"
+      >
+        <div
+          className="container large"
+        >
+          <div
+            className="titlecontainer"
+          >
+            Definition of DU
+            <hr
+              className="line"
+            />
+          </div>
+          <div>
+            This is DU
+          </div>
+        </div>
+      </div>
+      <div
+        className="center padding"
+      >
+        <div
+          className="container"
+        >
+          <div
+            className="titlecontainer"
+          >
+            <div
+              className="title notdynamic"
+            >
+              Failure data
+            </div>
+          </div>
+          <hr
+            className="line"
+          />
+        </div>
+      </div>
+      <table
+        className="dataTable"
+      >
+        <tr>
+          <th>
+            Failure rates
+          </th>
+          <th>
+            Source
+          </th>
+          <th>
+            DU
+          </th>
+          <th>
+            T
+          </th>
+          <th>
+            Obs period
+          </th>
+          <th>
+            Population size
+          </th>
+          <th>
+            Comment
+          </th>
+        </tr>
+        <tr>
+          <td>
+            0,3
+          </td>
+          <td>
+            A
+          </td>
+          <td>
+            5
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            2006-2008
+          </td>
+          <td>
+            231
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+        <tr>
+          <td>
+            0,3
+          </td>
+          <td>
+            B
+          </td>
+          <td>
+            7
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            2013-2017
+          </td>
+          <td>
+            87
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+        <tr>
+          <td>
+            0,3
+          </td>
+          <td>
+            A
+          </td>
+          <td>
+            11
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            2012-2020
+          </td>
+          <td>
+            763
+          </td>
+          <td>
+            Fake news
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
 `;
