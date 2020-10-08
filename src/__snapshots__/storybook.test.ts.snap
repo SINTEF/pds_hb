@@ -1336,6 +1336,140 @@ exports[`Storyshots Input field Standard With File 1`] = `
 </div>
 `;
 
+exports[`Storyshots Manage staffmembers Standard 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Manage staffmembers
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+    <div
+      className="listtitles"
+    >
+      <div>
+        Name
+      </div>
+      <div>
+        Email
+      </div>
+      <div>
+        Joined
+      </div>
+      <div>
+              
+      </div>
+    </div>
+    <div
+      className="container"
+    >
+      <td>
+        <div>
+          Mona Lisa
+        </div>
+      </td>
+      <td>
+        <div>
+          mona.lisa@gmail.com
+        </div>
+      </td>
+      <td>
+        <div>
+          25.08.2020
+        </div>
+      </td>
+      <td>
+        <button
+          className="remove"
+          onClick={[Function]}
+        >
+          Remove
+        </button>
+      </td>
+    </div>
+    <div
+      className="container"
+    >
+      <td>
+        <div>
+          Da Vinci
+        </div>
+      </td>
+      <td>
+        <div>
+          da.vinci@gmail.com
+        </div>
+      </td>
+      <td>
+        <div>
+          12.06.2020
+        </div>
+      </td>
+      <td>
+        <button
+          className="remove"
+          onClick={[Function]}
+        >
+          Remove
+        </button>
+      </td>
+    </div>
+  </div>
+  <div
+    className="secondcontainer"
+  >
+    <div
+      className="usersleft"
+    >
+      Your company has 
+      <div
+        className="numberusersleft"
+      >
+        2
+      </div>
+       more possible users to add.
+    </div>
+    <div
+      className="standard field  "
+    >
+      <label
+        className=""
+        htmlFor="Email"
+        style={
+          Object {
+            "alignSelf": "",
+          }
+        }
+      >
+        Email
+      </label>
+      <input
+        id="Email"
+        onChange={[Function]}
+        placeholder="ola.nordmann@gmail.com"
+        type="text"
+      />
+    </div>
+  </div>
+  <div
+    className="button"
+  />
+</div>
+`;
+
 exports[`Storyshots MenuButton Log Out 1`] = `
 <div
   className="container"
@@ -1541,9 +1675,7 @@ exports[`Storyshots RegisteredDataField Standard 1`] = `
     </label>
   </td>
   <td>
-    <label
-      type="submit"
-    >
+    <label>
       test2
     </label>
   </td>
