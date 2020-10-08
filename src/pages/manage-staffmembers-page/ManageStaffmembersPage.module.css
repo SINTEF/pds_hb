@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.usersleft {
+  display: inline-grid;
+  gap: 10px;
+  grid-auto-flow: column;
+  width: fit-content;
+  padding-bottom: 10px;
+  cursor: default;
+  padding-top: 60px;
+}
+
+.numberusersleft {
+  color: #003d65;
+}
+
+.button {
+  position: relative;
+  width: 100%;
+  padding-top: 50px;
+  align-content: right;
+}
+
+.buttonContainer {
+  float: right;
+}
+
+.secondcontainer {
+  display: flex;
+  flex-direction: column;
+  align-content: left;
+  width: 100%;
+}
+
+.remove {
+  color: #e00c0c;
+  border: 0px;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.listtitles {
+  display: inline-grid;
+  grid-auto-flow: column;
+  width: 100%;
+  padding-bottom: 20px;
+  padding-left: 100px;
+}
