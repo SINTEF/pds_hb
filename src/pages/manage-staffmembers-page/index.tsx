@@ -60,12 +60,14 @@ export const ManageStaffmembersPage: React.FC<ManageStaffmembersPageProps> = ({
           </div>
           {' more possible users to add.'}
         </div>
-        <InputField
-          label="Email"
-          variant="standard"
-          placeholder="ola.nordmann@gmail.com"
-          onValueChanged={(value) => setForm(value as string)}
-        />
+        {getTotalStaffNumber() !== getStaff().length && (
+          <InputField
+            label="Email"
+            variant="standard"
+            placeholder="ola.nordmann@gmail.com"
+            onValueChanged={(value) => setForm(value as string)}
+          />
+        )}
       </div>
       <div className={styles.button}>
         {formState.includes('@gmail.com') ||
