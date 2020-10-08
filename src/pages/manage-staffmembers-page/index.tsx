@@ -73,13 +73,15 @@ export const ManageStaffmembersPage: React.FC<ManageStaffmembersPageProps> = ({
         {formState.includes('@gmail.com') ||
         formState.includes('@hotmail.com') ||
         formState.includes('@live.com') ? (
-          <Button
-            label="Send invite"
-            onClick={() => {
-              sendMail(formState)
-              setForm('')
-            }}
-          />
+          <div className={styles.buttonContainer}>
+            <Button
+              label="Send invite"
+              onClick={() => {
+                sendMail(formState)
+                setForm('')
+              }}
+            />
+          </div>
         ) : null}
       </div>
     </div>

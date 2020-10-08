@@ -20,9 +20,14 @@
 }
 
 .button {
-  position: absolute;
-  right: 120px;
-  bottom: 120px;
+  position: relative;
+  width: 100%;
+  padding-top: 50px;
+  align-content: right;
+}
+
+.buttonContainer {
+  float: right;
 }
 
 .secondcontainer {
