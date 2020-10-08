@@ -15,40 +15,58 @@ export interface ManageStaffmembersPageProps {
   }[]
   getTotalStaffNumber: () => number
   sendMail: (mail: string) => void
+  removeUser: (JSON: { name: string; mail: string; joined: string }) => void
 }
 
 export const ManageStaffmembersPage: React.FC<ManageStaffmembersPageProps> = ({
   getStaff,
   getTotalStaffNumber,
   sendMail,
+  removeUser,
 }: ManageStaffmembersPageProps) => {
-  const [formState, setForm] = useState<string>('ola.nordmann@gmail.com')
+  const [formState, setForm] = useState<string>('')
   return (
-    <div className={styles.container}>
-      <div className={[styles.padding, styles.center].join(' ')}>
+    <div>
+      <div className={styles.container}>
         <Title title="Manage staffmembers" />
-        {Object.keys(getStaff).map((user) => (
-          <RegisteredDataField
-            component={user}
-            period={user}
-            edited={user}
-            key={user}
-          />
+        <div className={styles.listtitles}>
+          <div>{'Name'}</div>
+          <div>{'Email'}</div>
+          <div>{'Joined'}</div>
+          <div>{'      '}</div>
+        </div>
+        {getStaff().map((user, idx) => (
+          <RegisteredDataField key={idx}>
+            {[
+              <div key={idx}>{user.name}</div>,
+              <div key={idx}>{user.mail}</div>,
+              <div key={idx}>{user.joined}</div>,
+              <button
+                className={styles.remove}
+                onClick={() => removeUser(user)}
+                key={idx}
+              >
+                {'Remove'}
+              </button>,
+            ]}
+          </RegisteredDataField>
         ))}
       </div>
-      <div className={styles.usersleft}>
-        {'Your company has '}
-        <div className={styles.numberusersleft}>
-          {getTotalStaffNumber() - getStaff().length}
+      <div className={styles.secondcontainer}>
+        <div className={styles.usersleft}>
+          {'Your company has '}
+          <div className={styles.numberusersleft}>
+            {getTotalStaffNumber() - getStaff().length}
+          </div>
+          {' more possible users to add.'}
         </div>
-        {' more possible users to add.'}
+        <InputField
+          label="Email"
+          variant="standard"
+          placeholder="ola.nordmann@gmail.com"
+          onValueChanged={(value) => setForm(value as string)}
+        />
       </div>
-      <InputField
-        label="Email"
-        variant="standard"
-        placeholder={formState}
-        onValueChanged={(value) => setForm(value as string)}
-      />
       <div className={styles.button}>
         {formState.includes('@gmail.com') ||
         formState.includes('@hotmail.com') ||
@@ -56,7 +74,7 @@ export const ManageStaffmembersPage: React.FC<ManageStaffmembersPageProps> = ({
           <Button
             label="Send invite"
             onClick={() => {
-              sendMail(formState) // remember to decrease numberOfUsersLeft
+              sendMail(formState)
               setForm('')
             }}
           />

@@ -29,4 +29,6 @@ export const Standard = Template.bind({})
 Standard.args = {
   getStaff: () => users,
   getTotalStaffNumber: () => 4,
+  removeUser: (user: { name: string; mail: string; joined: string }) =>
+    users.filter((item) => ![user].includes(item)),
 }
