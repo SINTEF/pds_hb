@@ -31,6 +31,7 @@ export const ManageFacilitiesPage: React.FC<ManageFacilitiesPageProps> = ({
           variant="secondary"
           label="Facilityname"
           placeholder="Enter name of facility..."
+          allowAllInputs={true}
           suggestions={getFacilities()}
           onValueChanged={(value) => setFacility(value)}
           onClick={(selected) => {
