@@ -4,6 +4,9 @@ import { InputField } from '../../components/input-field'
 import { Button } from '../../components/button'
 
 import styles from './Login.module.css'
+import useFetch from 'use-http'
+import useLocalStorage from '../../utils/hooks/useLocalStorage'
+import { useHistory } from 'react-router-dom'
 
 export interface LoginForm {
   username: string
@@ -11,15 +14,21 @@ export interface LoginForm {
 }
 
 export const Login: React.FC = () => {
+  const { post, response } = useFetch('/user/login')
+  const { setValue } = useLocalStorage<string>('token', '')
+  const history = useHistory()
   const [form, setForm] = useState<LoginForm>({
     username: '',
     password: '',
   })
 
-  const [success, setSuccess] = useState<boolean>(false)
-
-  const login: () => void = () => {
-    setSuccess(true)
+  const loginUser: () => Promise<void> = async () => {
+    await post(form)
+    if (response.status === 200) {
+      const token = (response.data.token as string).split('Bearer')[1].trim()
+      setValue(token)
+      setTimeout(() => history.push('/'), 750)
+    }
   }
 
   return (
@@ -32,7 +41,7 @@ export const Login: React.FC = () => {
           onValueChanged={(value) =>
             setForm({ ...form, username: value as string })
           }
-          success={success}
+          success={response.status === 200}
         />
 
         <InputField
@@ -42,11 +51,11 @@ export const Login: React.FC = () => {
           onValueChanged={(value) =>
             setForm({ ...form, password: value as string })
           }
-          success={success}
+          success={response.status === 200}
         />
       </div>
       <div className={styles.buttonGroup}>
-        <Button label={'Log in'} type={'primary'} onClick={() => login()} />
+        <Button label={'Log in'} type={'primary'} onClick={() => loginUser()} />
         <Button
           label={'Register new user'}
           onClick={() => {
