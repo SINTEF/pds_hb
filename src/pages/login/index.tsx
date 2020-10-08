@@ -4,7 +4,7 @@ import { InputField } from '../../components/input-field'
 import { Button } from '../../components/button'
 
 import styles from './Login.module.css'
-import useFetch from 'use-http'
+import useFetch, { CachePolicies } from 'use-http'
 import useLocalStorage from '../../utils/hooks/useLocalStorage'
 import { useHistory } from 'react-router-dom'
 
@@ -14,7 +14,10 @@ export interface LoginForm {
 }
 
 export const Login: React.FC = () => {
-  const { post, response } = useFetch('/user/login')
+  const { post, response } = useFetch('/user/login', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
   const { setValue } = useLocalStorage<string>('token', '')
   const history = useHistory()
   const [form, setForm] = useState<LoginForm>({
