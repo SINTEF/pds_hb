@@ -2,7 +2,6 @@
   background-color: white;
   border: 4px solid #000000;
   height: 60px;
-  display: table;
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
