@@ -1531,6 +1531,195 @@ Array [
 ]
 `;
 
+exports[`Storyshots RegisteredData Standard 1`] = `
+<div>
+  <div
+    className="path"
+  >
+    /Choose equipmentgroup /
+    Fire detectors
+  </div>
+  <div
+    className="filters padding"
+  >
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            Component
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            L1
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            L2
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+    <div
+      className="open"
+    >
+      <div
+        className="container"
+      >
+        <button
+          className="button standard"
+          onClick={[Function]}
+        >
+          <div>
+            L3
+          </div>
+          <i
+            className="material-icons icon"
+          >
+            expand_more
+          </i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="content"
+    >
+      <div
+        className="container"
+      >
+        <td>
+          <label>
+            Smoke detector
+          </label>
+        </td>
+        <td>
+          <label>
+            2013-2020
+          </label>
+        </td>
+        <td>
+          <label>
+            123456
+          </label>
+        </td>
+        <td>
+          <label>
+            99
+          </label>
+        </td>
+        <td>
+          <label>
+            5
+          </label>
+        </td>
+        <td>
+          <label>
+            24.12.2010
+          </label>
+        </td>
+        <td>
+          <i
+            className="material-icons icon"
+            id="object1"
+          >
+            editor
+          </i>
+        </td>
+      </div>
+      <div
+        className="container"
+      >
+        <td>
+          <label>
+            Smoke detector
+          </label>
+        </td>
+        <td>
+          <label>
+            2015-2029
+          </label>
+        </td>
+        <td>
+          <label>
+            654321
+          </label>
+        </td>
+        <td>
+          <label>
+            29
+          </label>
+        </td>
+        <td>
+          <label>
+            3
+          </label>
+        </td>
+        <td>
+          <label>
+            23.11.2016
+          </label>
+        </td>
+        <td>
+          <i
+            className="material-icons icon"
+            id="object2"
+          >
+            editor
+          </i>
+        </td>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots RegisteredDataField Standard 1`] = `
 <div
   className="container"
