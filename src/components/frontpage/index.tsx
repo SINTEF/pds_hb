@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './Frontpage.module.css'
 import { SearchField } from '../search-field'
 import { Button } from '../button'
+import { useHistory } from 'react-router-dom'
+import MAIN_ROUTES from '../../routes/routes.constants'
 
 export interface FrontpageProps {
   onChange: (value: string) => void
@@ -17,8 +19,8 @@ export const Frontpage: React.FC<FrontpageProps> = ({
   onChange,
   userType = 'general',
   suggestions,
-  onClick,
 }: FrontpageProps) => {
+  const history = useHistory()
   return (
     <div className={styles.frontpage}>
       <div className={styles.title}>{'PDS Datahåndbok'}</div>
@@ -32,8 +34,14 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
-          <Button label={'Read PDS datahandbook'} onClick={onClick}></Button>
-          <Button label={'Browse equipment data'} onClick={onClick}></Button>
+          <Button
+            label={'Read PDS datahandbook'}
+            onClick={() => history.push(MAIN_ROUTES.READ)}
+          />
+          <Button
+            label={'Browse equipment data'}
+            onClick={() => history.push(MAIN_ROUTES.BROWSE)}
+          />
         </div>
       ) : null}
       {userType === 'moderator' ? (
@@ -48,12 +56,12 @@ export const Frontpage: React.FC<FrontpageProps> = ({
           ></SearchField>
           <Button
             label={'Read and edit PDS datahandbook'}
-            onClick={onClick}
-          ></Button>
+            onClick={() => history.push(MAIN_ROUTES.READ)}
+          />
           <Button
             label={'Browse and edit equipment data'}
-            onClick={onClick}
-          ></Button>
+            onClick={() => history.push(MAIN_ROUTES.BROWSE)}
+          />
         </div>
       ) : null}
       {userType === 'operator' ? (
@@ -66,13 +74,22 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
-          <Button label={'Read PDS datahandbook'} onClick={onClick}></Button>
-          <Button label={'Browse equipment data'} onClick={onClick}></Button>
+          <Button
+            label={'Read PDS datahandbook'}
+            onClick={() => history.push(MAIN_ROUTES.READ)}
+          />
+          <Button
+            label={'Browse equipment data'}
+            onClick={() => history.push(MAIN_ROUTES.BROWSE)}
+          />
           <Button
             label={'Browse own equipment data'}
-            onClick={onClick}
-          ></Button>
-          <Button label={'Add data'} onClick={onClick}></Button>
+            onClick={() => history.push(MAIN_ROUTES.COMPANY)}
+          />
+          <Button
+            label={'Add data'}
+            onClick={() => history.push(MAIN_ROUTES.ADD)}
+          />
         </div>
       ) : null}
     </div>

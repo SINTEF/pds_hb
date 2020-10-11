@@ -18,26 +18,39 @@ const Template: Story<ChooseComponentPageProps> = (args) => (
 export const Standard = Template.bind({})
 Standard.args = {
   getComponents: () => [
-    'Fire detector',
-    'Flame detector',
-    'Smoke detector',
-    'more',
-    'even more',
-    'testing,',
-    'cake',
-    'eigwubrivbgwbgu2',
-    'iwbfbefye',
-    'detectorini',
-    'frbyggggggggggg',
-    'cake',
-    'eigwubrivbgwbgu2',
-    'iwbfbefye',
-    'detectorini',
+    {
+      id: 'fsfsa',
+      name: 'Fire equipment',
+    },
+    {
+      id: 'fsfssdafsda',
+      name: 'Flame equipment',
+    },
+    {
+      id: 'fsfsaaafavcsdva',
+      name: 'Smoke equipment',
+    },
+    {
+      id: 'fsfsafsadnb,',
+      name: 'Test equipment',
+    },
+    {
+      id: 'fsfsaasdf',
+      name: 'afkjhaslkjf equipment',
+    },
+    {
+      id: 'fsfsasfk',
+      name: 'Jada equipment',
+    },
   ],
   getEquipmentGroups: () => [
-    'Fire Equipment',
-    'Cake Equipment',
-    'Some other group',
+    {
+      id: 'fsfsa',
+      name: 'Fire equipment',
+    },
+    {
+      id: 'fsfssdafsda',
+      name: 'Flame equipment',
+    },
   ],
-  getModules: () => ['Input Devices', 'Control logic units'],
 }
