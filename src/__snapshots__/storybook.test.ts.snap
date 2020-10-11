@@ -1373,60 +1373,68 @@ exports[`Storyshots Manage staffmembers Standard 1`] = `
               
       </div>
     </div>
-    <div
+    <table
       className="container"
     >
-      <td>
-        <div>
-          Mona Lisa
-        </div>
-      </td>
-      <td>
-        <div>
-          mona.lisa@gmail.com
-        </div>
-      </td>
-      <td>
-        <div>
-          25.08.2020
-        </div>
-      </td>
-      <td>
-        <button
-          className="remove"
-          onClick={[Function]}
-        >
-          Remove
-        </button>
-      </td>
-    </div>
-    <div
+      <tbody>
+        <tr>
+          <td>
+            <div>
+              Mona Lisa
+            </div>
+          </td>
+          <td>
+            <div>
+              mona.lisa@gmail.com
+            </div>
+          </td>
+          <td>
+            <div>
+              25.08.2020
+            </div>
+          </td>
+          <td>
+            <button
+              className="remove"
+              onClick={[Function]}
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
       className="container"
     >
-      <td>
-        <div>
-          Da Vinci
-        </div>
-      </td>
-      <td>
-        <div>
-          da.vinci@gmail.com
-        </div>
-      </td>
-      <td>
-        <div>
-          12.06.2020
-        </div>
-      </td>
-      <td>
-        <button
-          className="remove"
-          onClick={[Function]}
-        >
-          Remove
-        </button>
-      </td>
-    </div>
+      <tbody>
+        <tr>
+          <td>
+            <div>
+              Da Vinci
+            </div>
+          </td>
+          <td>
+            <div>
+              da.vinci@gmail.com
+            </div>
+          </td>
+          <td>
+            <div>
+              12.06.2020
+            </div>
+          </td>
+          <td>
+            <button
+              className="remove"
+              onClick={[Function]}
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div
     className="secondcontainer"
@@ -1666,32 +1674,36 @@ Array [
 `;
 
 exports[`Storyshots RegisteredDataField Standard 1`] = `
-<div
+<table
   className="container"
 >
-  <td>
-    <label>
-       test1 
-    </label>
-  </td>
-  <td>
-    <label>
-      test2
-    </label>
-  </td>
-  <td>
-    <label>
-       test2 
-    </label>
-  </td>
-  <td>
-    <i
-      className="material-icons"
-    >
-      editor
-    </i>
-  </td>
-</div>
+  <tbody>
+    <tr>
+      <td>
+        <label>
+           test1 
+        </label>
+      </td>
+      <td>
+        <label>
+          test2
+        </label>
+      </td>
+      <td>
+        <label>
+           test2 
+        </label>
+      </td>
+      <td>
+        <i
+          className="material-icons"
+        >
+          editor
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;
 
 exports[`Storyshots Search field Primary Search Field 1`] = `
