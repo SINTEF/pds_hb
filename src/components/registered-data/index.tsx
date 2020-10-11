@@ -8,6 +8,7 @@ import { RegisteredDataField } from '../registered-data-field'
 export interface RegisteredDataProps {
   component: string //this comes from the parentpage in somehow or from userinput by homepage-search
   equipmentgroup: string // this should also come from above
+  company: string
   getComponents: (equipmentGroup: string) => Array<string>
   getFilters: (component: string) => Array<string>
   getValuesForFilter: (filter: string) => Array<string>
@@ -16,7 +17,6 @@ export interface RegisteredDataProps {
     filters: Array<Record<string, string>>
   ) => Array<Array<string>>
   redirect: () => void
-  getUser: () => string
   onClick: () => void
 }
 
@@ -28,6 +28,7 @@ export const RegisteredData: React.FC<RegisteredDataProps> = ({
   component,
   equipmentgroup,
   getComponents,
+  company,
   getFilters,
   getValuesForFilter,
   getFailureData,
@@ -77,7 +78,7 @@ export const RegisteredData: React.FC<RegisteredDataProps> = ({
       </div>
       <div>
         <div className={styles.content}>
-          {getFailureData(compState).map((data) => (
+          {getFailureData(compState, company).map((data) => (
             <RegisteredDataField key={data._id}>
               <label>{component}</label>
               <label>{data.period}</label>
