@@ -4,8 +4,7 @@ import { Story, Meta } from '@storybook/react'
 import { ManageStaffmembersPage, ManageStaffmembersPageProps } from '.'
 
 export default {
-  title: 'Manage staffmembers',
-  page: ManageStaffmembersPage,
+  title: 'pages/Manage staffmembers',
 } as Meta
 
 const users = [
