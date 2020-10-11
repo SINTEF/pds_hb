@@ -11,3 +11,6 @@ export default {
 const Template: Story = (args) => <Header {...args} />
 
 export const Standard = Template.bind({})
+Standard.parameters = {
+  storyshots: { disable: true },
+}
