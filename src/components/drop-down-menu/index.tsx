@@ -26,7 +26,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({
   const [isClicked, setMode] = useState<boolean>(false)
   const history = useHistory()
 
-  const [set] = useLocalStorage('token', '')
+  const [, set] = useLocalStorage('token', '')
   const userContext = useContext(UserContext) as IUserContext
 
   const menuRef = useRef<HTMLDivElement>(null)
