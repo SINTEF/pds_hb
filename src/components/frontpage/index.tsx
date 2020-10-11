@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Frontpage.module.css'
-import { SearchField } from '../searchField'
+import { SearchField } from '../search-field'
 import { Button } from '../button'
 import { useHistory } from 'react-router-dom'
 import MAIN_ROUTES from '../../routes/routes.constants'
@@ -11,6 +11,8 @@ export interface FrontpageProps {
   userType: 'general' | 'operator' | 'moderator'
 
   suggestions: Array<string>
+
+  onClick: () => void
 }
 
 export const Frontpage: React.FC<FrontpageProps> = ({

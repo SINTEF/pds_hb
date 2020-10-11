@@ -5,7 +5,7 @@ import { BrowseComponentPage, BrowseComponentPageProps } from '.'
 
 export default {
   title: 'pages/Browse',
-  Component: BrowseComponentPage,
+  Page: BrowseComponentPage,
 } as Meta
 
 const Template: Story<BrowseComponentPageProps> = (args) => (

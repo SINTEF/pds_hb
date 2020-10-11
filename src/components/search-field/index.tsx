@@ -15,6 +15,8 @@ export interface SearchFieldProps {
   variant: 'primary' | 'secondary'
 
   onClick: (selectedComponent: string) => void
+
+  allowAllInputs?: boolean
 }
 
 export const SearchField: React.FC<SearchFieldProps> = ({
@@ -23,6 +25,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   placeholder,
   suggestions,
   icon,
+  allowAllInputs,
   onClick,
   onValueChanged,
 }: SearchFieldProps) => {
@@ -38,6 +41,9 @@ export const SearchField: React.FC<SearchFieldProps> = ({
       onClick(filtered[chosen])
       setSelected(filtered[chosen])
       setFiltered([])
+    } else if (event.key === 'Enter' && allowAllInputs) {
+      onClick(event.currentTarget.value)
+      setSelected(event.currentTarget.value)
     }
   }
   const handleChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
