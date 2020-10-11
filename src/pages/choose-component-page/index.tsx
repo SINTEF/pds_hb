@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styles from './ChooseComponentPage.module.css'
 
-import { Title } from '../title'
-import { EquipmentGroup } from '../equipment-group'
+import { Title } from '../../components/title'
+import { EquipmentGroup } from '../../components/equipment-group'
 
 export interface ChooseComponentPageProps {
   getComponents: () => Array<string>

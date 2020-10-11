@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react'
 import { ChooseComponentPage, ChooseComponentPageProps } from '.'
 
 export default {
-  title: 'ChooseComponentPagePage',
+  title: 'pages/ChooseComponentPagePage',
   component: ChooseComponentPage,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react'
 import { ManageFacilitiesPage, ManageFacilitiesPageProps } from '.'
 
 export default {
-  title: 'Mange facilities',
+  title: 'pages/Mange facilities',
   Page: ManageFacilitiesPage,
 } as Meta
 

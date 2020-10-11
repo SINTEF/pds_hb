@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react'
 import { Frontpage, FrontpageProps } from '.'
 
 export default {
-  title: 'Frontpage',
+  title: 'pages/Frontpage',
   component: Frontpage,
 } as Meta
 
