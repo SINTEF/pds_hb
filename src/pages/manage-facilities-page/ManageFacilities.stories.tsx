@@ -5,7 +5,7 @@ import { ManageFacilitiesPage, ManageFacilitiesPageProps } from '.'
 
 export default {
   title: 'Mange facilities',
-  Page: ManageFacilitiesPage,
+  page: ManageFacilitiesPage,
 } as Meta
 
 const Template: Story<ManageFacilitiesPageProps> = (args) => (
