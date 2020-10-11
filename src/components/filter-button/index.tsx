@@ -4,9 +4,9 @@ import styles from './FilterButton.module.css'
 export interface FilterButtonProps {
   label: string
 
-  icon: string
+  icon?: string
 
-  icon2: string
+  icon2?: string
 
   open: boolean
 

@@ -245,6 +245,32 @@ exports[`Storyshots Button Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots ChooseComponentPagePage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose equipment group
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="components"
+  />
+</div>
+`;
+
 exports[`Storyshots Components/display-field Standard 1`] = `
 <div>
   <div
@@ -431,53 +457,6 @@ exports[`Storyshots DropDownMenu Company User 1`] = `
 </div>
 `;
 
-exports[`Storyshots EquipmentGroup Editable 1`] = `
-<div>
-  <div
-    className="container"
-  >
-    <img
-      className="image"
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
-    />
-    Fire equipment
-    <i
-      className="material-icons icon"
-    >
-      editor
-    </i>
-  </div>
-</div>
-`;
-
-exports[`Storyshots EquipmentGroup No Img 1`] = `
-<div>
-  <div
-    className="container"
-  >
-    <img
-      className="image"
-      src="https://www.svgrepo.com/show/131030/question-mark.svg"
-    />
-    Fire equipment
-  </div>
-</div>
-`;
-
-exports[`Storyshots EquipmentGroup Standard 1`] = `
-<div>
-  <div
-    className="container"
-  >
-    <img
-      className="image"
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
-    />
-    Fire equipment
-  </div>
-</div>
-`;
-
 exports[`Storyshots Filter Filter Component 1`] = `
 <div
   className="open"
@@ -540,6 +519,101 @@ exports[`Storyshots Header Standard 1`] = `
       >
         J
       </div>
+      <ul />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Read PDS datahandbook
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse equipment data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
     </div>
   </div>
 </div>
@@ -850,6 +924,9 @@ Array [
         className="material-icons"
         onClick={[Function]}
         role="button"
+      <button
+        className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
@@ -889,6 +966,9 @@ Array [
         className="material-icons"
         onClick={[Function]}
         role="button"
+      <button
+        className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
@@ -942,6 +1022,9 @@ Array [
         className="material-icons"
         onClick={[Function]}
         role="button"
+      <button
+        className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
@@ -996,6 +1079,28 @@ exports[`Storyshots RegisteredDataField Standard 1`] = `
         </label>
       </td>
       <td>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse equipment data
         <i
           className="material-icons"
         >
@@ -1027,6 +1132,89 @@ exports[`Storyshots Search field Primary Search Field 1`] = `
     >
       search
     </i>
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse own equipment data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Add data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
   </div>
   <ul />
 </div>
@@ -1057,6 +1245,99 @@ exports[`Storyshots Search field Secondary Search Field 1`] = `
 `;
 
 exports[`Storyshots SideMenu Admin Side Menu 1`] = `
+exports[`Storyshots Group Editable 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="container"
+  >
+    <img
+      alt="Icon for group Fire equipment"
+      className="image"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
+    />
+    Fire equipment
+  </div>
+  <div
+    className="icon"
+  >
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <i
+        className="material-icons icon"
+        onClick={[Function]}
+      >
+        create
+      </i>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Group No Img 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="container"
+  >
+    <img
+      alt="Icon for group Fire equipment"
+      className="image"
+      src="https://www.svgrepo.com/show/131030/question-mark.svg"
+    />
+    Fire equipment
+  </div>
+  <div
+    className="icon"
+  />
+</div>
+`;
+
+exports[`Storyshots Group Standard 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="container"
+  >
+    <img
+      alt="Icon for group Fire equipment"
+      className="image"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
+    />
+    Fire equipment
+  </div>
+  <div
+    className="icon"
+  />
+</div>
+`;
+
+exports[`Storyshots Header Standard 1`] = `
 <div
   className="container"
 >
@@ -1149,6 +1430,85 @@ exports[`Storyshots SideMenu General Side Menu 1`] = `
     >
       My account
     </button>
+exports[`Storyshots Input field Primary Input 1`] = `
+<div
+  className="primary  "
+>
+  <div
+    className="primaryContent"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      id="Input Label"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Primary Text Area 1`] = `
+<div
+  className="primary  fieldPadding"
+>
+  <div
+    className="primaryContent"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "flex-start",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <textarea
+      cols={40}
+      id="Input Label"
+      onChange={[Function]}
+      rows={10}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Primary With Default 1`] = `
+<div
+  className="primary  "
+>
+  <div
+    className="primaryContent"
+  >
+    <label
+      className="labelTuck"
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      defaultValue="Default value"
+      id="Input Label"
+      onChange={[Function]}
+      type="text"
+    />
   </div>
 </div>
 `;
@@ -1219,6 +1579,65 @@ exports[`Storyshots SideMenu Operator Side Menu 1`] = `
     >
       Manage facilities
     </button>
+  className="primary  "
+>
+  <div
+    className="primaryContent"
+  >
+    <label
+      className="labelTuck"
+      htmlFor="Input label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input label
+    </label>
+    <input
+      id="Input label"
+      onChange={[Function]}
+      type="file"
+    />
+    <i
+      className="material-icons icon"
+    >
+      add_photo_alternate
+    </i>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Primary With Icon 1`] = `
+<div
+  className="primary  "
+>
+  <div
+    className="primaryContent"
+  >
+    <label
+      className="labelTuck"
+      htmlFor="Input label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input label
+    </label>
+    <input
+      defaultValue="Default value"
+      id="Input label"
+      onChange={[Function]}
+      type="text"
+    />
+    <i
+      className="material-icons icon"
+    >
+      search
+    </i>
   </div>
 </div>
 `;
@@ -1282,6 +1701,126 @@ exports[`Storyshots Switch Standard 1`] = `
      
   </span>
 </label>
+exports[`Storyshots Input field Standard Input 1`] = `
+<div
+  className="standard  "
+>
+  <div
+    className="field"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      id="Input Label"
+      onChange={[Function]}
+      placeholder="Input placeholder"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Standard Input With Icon 1`] = `
+<div
+  className="standard  "
+>
+  <div
+    className="field"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      id="Input Label"
+      onChange={[Function]}
+      placeholder="Input placeholder"
+      type="text"
+    />
+    <i
+      className="material-icons icon"
+    >
+      add_photo_alternate
+    </i>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Standard Text Area 1`] = `
+<div
+  className="standard  fieldPadding"
+>
+  <div
+    className="field"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "flex-start",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <textarea
+      cols={40}
+      id="Input Label"
+      onChange={[Function]}
+      placeholder="Input placeholder"
+      rows={10}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Standard With File 1`] = `
+<div
+  className="standard  "
+>
+  <div
+    className="field"
+  >
+    <label
+      className=""
+      htmlFor="Input label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input label
+    </label>
+    <input
+      id="Input label"
+      onChange={[Function]}
+      type="file"
+    />
+    <i
+      className="material-icons icon"
+    >
+      add_photo_alternate
+    </i>
+  </div>
+</div>
 `;
 
 exports[`Storyshots Table Table Component 1`] = `
@@ -1420,6 +1959,42 @@ exports[`Storyshots TextBox Large 1`] = `
   </div>
   <div>
     The detector includes the sensor and local electronics such as the address-/ interface unit.
+    <div
+      className="usersleft"
+    >
+      Your company has 
+      <div
+        className="numberusersleft"
+      >
+        2
+      </div>
+       more possible users to add.
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Email"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Email
+        </label>
+        <input
+          id="Email"
+          onChange={[Function]}
+          placeholder="ola.nordmann@gmail.com"
+          type="text"
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -1535,6 +2110,178 @@ exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
 <div
   className="container title"
 >
+exports[`Storyshots Pages/Login Start 1`] = `
+<div
+  className="main"
+>
+  <h1>
+    PDS Data Handbook
+  </h1>
+  <div
+    className="inputGroup"
+  >
+    <div
+      className="primary  "
+    >
+      <div
+        className="primaryContent"
+      >
+        <label
+          className=""
+          htmlFor="Username"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Username
+        </label>
+        <input
+          id="Username"
+          onChange={[Function]}
+          type="text"
+        />
+        <i
+          className="material-icons icon"
+        >
+          face
+        </i>
+      </div>
+    </div>
+    <div
+      className="primary  "
+    >
+      <div
+        className="primaryContent"
+      >
+        <label
+          className=""
+          htmlFor="Password"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Password
+        </label>
+        <input
+          id="Password"
+          onChange={[Function]}
+          type="password"
+        />
+        <i
+          className="material-icons icon"
+        >
+          lock
+        </i>
+      </div>
+    </div>
+  </div>
+  <div
+    className="buttonGroup"
+  >
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium primary"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Log in
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Register new user
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Read Admin 1`] = `
+Array [
   <div
     className="container"
   >
