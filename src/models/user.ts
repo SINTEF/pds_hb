@@ -16,5 +16,5 @@ export interface IUserGroup {
 
 export interface IUserContext {
   user: IUser | undefined
-  setUser: (value: IUser) => void
+  setUser: (value: IUser | undefined) => void
 }
