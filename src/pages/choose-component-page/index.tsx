@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styles from './ChooseComponentPage.module.css'
 
-<<<<<<< HEAD:src/pages/choose-component-page/index.tsx
 import { Title } from '../../components/title'
-import { EquipmentGroup } from '../../components/equipment-group'
-=======
-import { Title } from '../title'
-import { Group } from '../group'
-import { IGroup } from '../equipment-group-form'
->>>>>>> ae11f7863aaa26522631015917c4e15a6f2ab721:src/components/choose-component-page/index.tsx
+
+import { Group } from '../../components/group'
+import { IGroup } from '../../components/equipment-group-form'
 
 export interface ChooseComponentPageProps {
   getComponents: () => IGroup[]

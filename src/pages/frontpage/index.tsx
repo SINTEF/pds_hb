@@ -1,14 +1,9 @@
 import React from 'react'
 import styles from './Frontpage.module.css'
-<<<<<<< HEAD:src/pages/frontpage/index.tsx
 import { SearchField } from '../../components/search-field'
 import { Button } from '../../components/button'
-=======
-import { SearchField } from '../search-field'
-import { Button } from '../button'
 import { useHistory } from 'react-router-dom'
 import MAIN_ROUTES from '../../routes/routes.constants'
->>>>>>> ae11f7863aaa26522631015917c4e15a6f2ab721:src/components/frontpage/index.tsx
 
 export interface FrontpageProps {
   onChange: (value: string) => void

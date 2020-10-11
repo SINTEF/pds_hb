@@ -245,32 +245,6 @@ exports[`Storyshots Button Standard 1`] = `
 </div>
 `;
 
-exports[`Storyshots ChooseComponentPagePage Standard 1`] = `
-<div
-  className="container"
->
-  <div
-    className="container"
-  >
-    <div
-      className="titlecontainer"
-    >
-      <div
-        className="title notdynamic"
-      >
-        Choose equipment group
-      </div>
-    </div>
-    <hr
-      className="line"
-    />
-  </div>
-  <div
-    className="components"
-  />
-</div>
-`;
-
 exports[`Storyshots Components/display-field Standard 1`] = `
 <div>
   <div
@@ -500,751 +474,6 @@ exports[`Storyshots FilterButton Standard Filter Button 1`] = `
 </div>
 `;
 
-exports[`Storyshots Header Standard 1`] = `
-<div
-  className="container"
->
-  <div
-    className="home"
-  >
-    PDS Datahandbook
-  </div>
-  <div>
-    <div
-      className="title notClicked"
-    >
-      <div
-        className="usersymbol"
-        onClick={[Function]}
-      >
-        J
-      </div>
-      <ul />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Read PDS datahandbook
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse equipment data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Input field Primary Input 1`] = `
-<div
-  className="primary field  "
->
-  <label
-    className=""
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
-  >
-    Input Label
-  </label>
-  <input
-    id="Input Label"
-    onChange={[Function]}
-    type="text"
-  />
-</div>
-`;
-
-exports[`Storyshots Input field Primary Text Area 1`] = `
-<div
-  className="primary field  fieldPadding"
->
-  <label
-    className=""
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "flex-start",
-      }
-    }
-  >
-    Input Label
-  </label>
-  <textarea
-    cols={40}
-    id="Input Label"
-    onChange={[Function]}
-    rows={10}
-  />
-</div>
-`;
-
-exports[`Storyshots Input field Primary With Default 1`] = `
-<div
-  className="primary field  "
->
-  <label
-    className="labelTuck"
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
-  >
-    Input Label
-  </label>
-  <input
-    defaultValue="Default value"
-    id="Input Label"
-    onChange={[Function]}
-    type="text"
-  />
-</div>
-`;
-
-exports[`Storyshots Input field Primary With File 1`] = `
-<div
-  className="primary field  "
->
-  <label
-    className="labelTuck"
-    htmlFor="Input label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
-  >
-    Input label
-  </label>
-  <input
-    id="Input label"
-    onChange={[Function]}
-    type="file"
-  />
-  <i
-    className="material-icons icon"
-  >
-    add_photo_alternate
-  </i>
-</div>
-`;
-
-exports[`Storyshots Input field Primary With Icon 1`] = `
-<div
-  className="primary field  "
->
-  <label
-    className="labelTuck"
-    htmlFor="Input label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
-  >
-    Input label
-  </label>
-  <input
-    defaultValue="Default value"
-    id="Input label"
-    onChange={[Function]}
-    type="text"
-  />
-  <i
-    className="material-icons icon"
-  >
-    search
-  </i>
-</div>
-`;
-
-exports[`Storyshots Input field Standard Input 1`] = `
-<div
-  className="standard field  "
->
-  <label
-    className=""
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
-  >
-    Input Label
-  </label>
-  <input
-    id="Input Label"
-    onChange={[Function]}
-    placeholder="Input placeholder"
-    type="text"
-  />
-</div>
-`;
-
-exports[`Storyshots Input field Standard Input With Icon 1`] = `
-<div
-  className="standard field  "
->
-  <label
-    className=""
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
-  >
-    Input Label
-  </label>
-  <input
-    id="Input Label"
-    onChange={[Function]}
-    placeholder="Input placeholder"
-    type="text"
-  />
-  <i
-    className="material-icons icon"
-  >
-    add_photo_alternate
-  </i>
-</div>
-`;
-
-exports[`Storyshots Input field Standard Text Area 1`] = `
-<div
-  className="standard field  fieldPadding"
->
-  <label
-    className=""
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "flex-start",
-      }
-    }
-  >
-    Input Label
-  </label>
-  <textarea
-    cols={40}
-    id="Input Label"
-    onChange={[Function]}
-    placeholder="Input placeholder"
-    rows={10}
-  />
-</div>
-`;
-
-exports[`Storyshots Input field Standard With File 1`] = `
-<div
-  className="standard field  "
->
-  <label
-    className=""
-    htmlFor="Input label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
-  >
-    Input label
-  </label>
-  <input
-    id="Input label"
-    onChange={[Function]}
-    type="file"
-  />
-  <i
-    className="material-icons icon"
-  >
-    add_photo_alternate
-  </i>
-</div>
-`;
-
-exports[`Storyshots MenuButton Log Out 1`] = `
-<div
-  className="container"
->
-  <hr
-    className="line"
-  />
-  <button
-    className="button logout "
-  >
-    Log out
-  </button>
-</div>
-`;
-
-exports[`Storyshots MenuButton Notify 1`] = `
-<div
-  className="container"
->
-  <hr
-    className="line"
-  />
-  <button
-    className="button standard notify"
-  >
-    Approve new users
-    <div
-      className="notifysignal"
-    >
-      1
-    </div>
-  </button>
-</div>
-`;
-
-exports[`Storyshots MenuButton Standard 1`] = `
-<div
-  className="container"
->
-  <hr
-    className="line"
-  />
-  <button
-    className="button standard "
-  >
-    Adapt premissions for user groups
-  </button>
-</div>
-`;
-
-exports[`Storyshots Pages/Read Admin 1`] = `
-Array [
-  <div
-    className="controls"
-  >
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <i
-        aria-label="menu"
-        className="material-icons"
-        onClick={[Function]}
-        role="button"
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "cursor": "pointer",
-            "fontSize": "24px",
-          }
-        }
-      >
-        menu
-      </i>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <i
-        aria-label="create"
-        className="material-icons"
-        onClick={[Function]}
-        role="button"
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "cursor": "pointer",
-            "fontSize": "24px",
-          }
-        }
-      >
-        create
-      </i>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>,
-  <div
-    className="content"
-  >
-    Oups! Looks like there's no content here yet.
-  </div>,
-]
-`;
-
-exports[`Storyshots Pages/Read Standard 1`] = `
-Array [
-  <div
-    className="controls"
-  >
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <i
-        aria-label="menu"
-        className="material-icons"
-        onClick={[Function]}
-        role="button"
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "cursor": "pointer",
-            "fontSize": "24px",
-          }
-        }
-      >
-        menu
-      </i>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>,
-  <div
-    className="content"
-  >
-    Oups! Looks like there's no content here yet.
-  </div>,
-]
-`;
-
-exports[`Storyshots RegisteredDataField Standard 1`] = `
-<table
-  className="container"
->
-  <tbody>
-    <tr>
-      <td>
-        <label>
-           test1 
-        </label>
-      </td>
-      <td>
-        <label>
-          test2
-        </label>
-      </td>
-      <td>
-        <label>
-           test2 
-        </label>
-      </td>
-      <td>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse equipment data
-        <i
-          className="material-icons"
-        >
-          editor
-        </i>
-      </td>
-    </tr>
-  </tbody>
-</table>
-`;
-
-exports[`Storyshots Search field Primary Search Field 1`] = `
-<div
-  className="primary SearchField"
-  onBlur={[Function]}
->
-  <div
-    className="field"
-  >
-    <input
-      onChange={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      placeholder="Search for component..."
-      value=""
-    />
-    <i
-      className="material-icons icon"
-    >
-      search
-    </i>
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse own equipment data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Add data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>
-  <ul />
-</div>
-`;
-
-exports[`Storyshots Search field Secondary Search Field 1`] = `
-<div
-  className="secondary SearchField"
-  onBlur={[Function]}
->
-  <div
-    className="field"
-  >
-    <label>
-      Component
-      :
-    </label>
-    <input
-      onChange={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      placeholder="Set a component..."
-      value=""
-    />
-  </div>
-  <ul />
-</div>
-`;
-
-exports[`Storyshots SideMenu Admin Side Menu 1`] = `
 exports[`Storyshots Group Editable 1`] = `
 <div
   className="wrapper"
@@ -1343,93 +572,24 @@ exports[`Storyshots Header Standard 1`] = `
 >
   <div
     className="home"
-  />
-  <div
-    className="container"
   >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard "
-    >
-      My account
-    </button>
+    PDS Datahandbook
   </div>
-  <div
-    className="container"
-  >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard "
+  <div>
+    <div
+      className="title notClicked"
     >
-      Review next release
-    </button>
-  </div>
-  <div
-    className="container"
-  >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard "
-    >
-      Adapt premissions for user groups
-    </button>
-  </div>
-  <div
-    className="container"
-  >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard "
-    >
-      Add new companies
-    </button>
-  </div>
-  <div
-    className="container"
-  >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard notify"
-    >
-      Approve new users
       <div
-        className="notifysignal"
+        className="usersymbol"
+        onClick={[Function]}
       >
-        2
+        J
       </div>
-    </button>
+    </div>
   </div>
 </div>
 `;
 
-exports[`Storyshots SideMenu General Side Menu 1`] = `
-<div
-  className="container"
->
-  <div
-    className="home"
-  />
-  <div
-    className="container"
-  >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard "
-    >
-      My account
-    </button>
 exports[`Storyshots Input field Primary Input 1`] = `
 <div
   className="primary  "
@@ -1513,72 +673,8 @@ exports[`Storyshots Input field Primary With Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots SideMenu Operator Side Menu 1`] = `
+exports[`Storyshots Input field Primary With File 1`] = `
 <div
-  className="container"
->
-  <div
-    className="home"
-  />
-  <div
-    className="container"
-  >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard "
-    >
-      My account
-    </button>
-  </div>
-  <div
-    className="container"
-  >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard "
-    >
-      Browse own equipment data
-    </button>
-  </div>
-  <div
-    className="container"
-  >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard "
-    >
-      Company account
-    </button>
-  </div>
-  <div
-    className="container"
-  >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard "
-    >
-      Manage staffmember
-    </button>
-  </div>
-  <div
-    className="container"
-  >
-    <hr
-      className="line"
-    />
-    <button
-      className="button standard "
-    >
-      Manage facilities
-    </button>
   className="primary  "
 >
   <div
@@ -1642,65 +738,6 @@ exports[`Storyshots Input field Primary With Icon 1`] = `
 </div>
 `;
 
-exports[`Storyshots Switch Checked 1`] = `
-<label
-  className="switch medium"
->
-  <input
-    checked={true}
-    type="checkbox"
-  />
-  <span
-    className="slider round"
-  >
-     
-  </span>
-</label>
-`;
-
-exports[`Storyshots Switch Large 1`] = `
-<label
-  className="switch large"
->
-  <input
-    type="checkbox"
-  />
-  <span
-    className="slider round"
-  >
-     
-  </span>
-</label>
-`;
-
-exports[`Storyshots Switch Small 1`] = `
-<label
-  className="switch small"
->
-  <input
-    type="checkbox"
-  />
-  <span
-    className="slider round"
-  >
-     
-  </span>
-</label>
-`;
-
-exports[`Storyshots Switch Standard 1`] = `
-<label
-  className="switch medium"
->
-  <input
-    type="checkbox"
-  />
-  <span
-    className="slider round"
-  >
-     
-  </span>
-</label>
 exports[`Storyshots Input field Standard Input 1`] = `
 <div
   className="standard  "
@@ -1823,293 +860,56 @@ exports[`Storyshots Input field Standard With File 1`] = `
 </div>
 `;
 
-exports[`Storyshots Table Table Component 1`] = `
-<table
-  className="dataTable"
->
-  <tr>
-    <th>
-      Failure Rates
-    </th>
-    <th>
-      Source
-    </th>
-    <th>
-      DUobs
-    </th>
-    <th>
-      T
-    </th>
-    <th>
-      Observation Period
-    </th>
-    <th>
-      Population Size
-    </th>
-    <th>
-      Comment
-    </th>
-  </tr>
-  <tr>
-    <td>
-      0,3
-    </td>
-    <td>
-      Facility A
-    </td>
-    <td>
-      10
-    </td>
-    <td>
-      2,8*10^7 h
-    </td>
-    <td>
-      2006-2018
-    </td>
-    <td>
-      659
-    </td>
-    <td>
-      Very cool data
-    </td>
-  </tr>
-  <tr>
-    <td>
-      0,5
-    </td>
-    <td>
-      Facility C
-    </td>
-    <td>
-      8
-    </td>
-    <td>
-      2,8* 10^9 h
-    </td>
-    <td>
-      1999-2020
-    </td>
-    <td>
-      666
-    </td>
-    <td>
-      This data is data
-    </td>
-  </tr>
-  <tr>
-    <td>
-      0,8
-    </td>
-    <td>
-      Facility B
-    </td>
-    <td>
-      12
-    </td>
-    <td>
-      2,7* 10^5 h
-    </td>
-    <td>
-      2019-2020
-    </td>
-    <td>
-      123
-    </td>
-    <td>
-      Another instance of data
-    </td>
-  </tr>
-  <tr>
-    <td>
-      0,8
-    </td>
-    <td>
-      Facility B
-    </td>
-    <td>
-      12
-    </td>
-    <td>
-      2,7* 10^5 h
-    </td>
-    <td>
-      2019-2020
-    </td>
-    <td>
-      123
-    </td>
-    <td>
-      Even more data
-    </td>
-  </tr>
-</table>
-`;
-
-exports[`Storyshots TextBox Large 1`] = `
-<div
-  className="container large"
->
-  <div
-    className="titlecontainer"
-  >
-    Description
-    <hr
-      className="line"
-    />
-  </div>
-  <div>
-    The detector includes the sensor and local electronics such as the address-/ interface unit.
-    <div
-      className="usersleft"
-    >
-      Your company has 
-      <div
-        className="numberusersleft"
-      >
-        2
-      </div>
-       more possible users to add.
-    </div>
-    <div
-      className="standard  "
-    >
-      <div
-        className="field"
-      >
-        <label
-          className=""
-          htmlFor="Email"
-          style={
-            Object {
-              "alignSelf": "",
-            }
-          }
-        >
-          Email
-        </label>
-        <input
-          id="Email"
-          onChange={[Function]}
-          placeholder="ola.nordmann@gmail.com"
-          type="text"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots TextBox Large Admin Text Box 1`] = `
-<div
-  className="container large"
->
-  <div
-    className="material-icons icon"
-  >
-    editor
-  </div>
-  <div
-    className="titlecontainer"
-  >
-    Description
-    <hr
-      className="line"
-    />
-  </div>
-  <div>
-    test
-  </div>
-</div>
-`;
-
-exports[`Storyshots TextBox Small 1`] = `
-<div
-  className="container small"
->
-  <div
-    className="titlecontainer"
-  >
-    Description
-    <hr
-      className="line"
-    />
-  </div>
-  <div>
-    The detector includes the sensor and local electronics such as the address-/ interface unit.
-  </div>
-</div>
-`;
-
-exports[`Storyshots TextBox Small Admin Text Box 1`] = `
-<div
-  className="container small"
->
-  <div
-    className="material-icons icon"
-  >
-    editor
-  </div>
-  <div
-    className="titlecontainer"
-  >
-    Description
-    <hr
-      className="line"
-    />
-  </div>
-  <div>
-    test
-  </div>
-</div>
-`;
-
-exports[`Storyshots Title Dynamic 1`] = `
+exports[`Storyshots MenuButton Log Out 1`] = `
 <div
   className="container"
 >
-  <div
-    className="titlecontainer"
-  >
-    <div
-      className="title "
-    >
-      Failure data at
-    </div>
-    <div
-      className="dynamic"
-    >
-      Askeladden
-    </div>
-  </div>
   <hr
     className="line"
   />
+  <button
+    className="button logout "
+  >
+    Log out
+  </button>
 </div>
 `;
 
-exports[`Storyshots Title Standard 1`] = `
+exports[`Storyshots MenuButton Notify 1`] = `
 <div
   className="container"
 >
-  <div
-    className="titlecontainer"
-  >
-    <div
-      className="title notdynamic"
-    >
-      Choose Facility
-    </div>
-  </div>
   <hr
     className="line"
   />
+  <button
+    className="button standard notify"
+  >
+    Approve new users
+    <div
+      className="notifysignal"
+    >
+      1
+    </div>
+  </button>
 </div>
 `;
 
-exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
+exports[`Storyshots MenuButton Standard 1`] = `
 <div
-  className="container title"
+  className="container"
 >
+  <hr
+    className="line"
+  />
+  <button
+    className="button standard "
+  >
+    Adapt premissions for user groups
+  </button>
+</div>
+`;
+
 exports[`Storyshots Pages/Login Start 1`] = `
 <div
   className="main"
@@ -2282,6 +1082,710 @@ exports[`Storyshots Pages/Login Start 1`] = `
 
 exports[`Storyshots Pages/Read Admin 1`] = `
 Array [
+  <div
+    className="controls"
+  >
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <i
+        aria-label="menu"
+        className="material-icons"
+        onClick={[Function]}
+        role="button"
+        style={
+          Object {
+            "cursor": "pointer",
+            "fontSize": "24px",
+          }
+        }
+      >
+        menu
+      </i>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <i
+        aria-label="create"
+        className="material-icons"
+        onClick={[Function]}
+        role="button"
+        style={
+          Object {
+            "cursor": "pointer",
+            "fontSize": "24px",
+          }
+        }
+      >
+        create
+      </i>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>,
+  <div
+    className="content"
+  >
+    Oups! Looks like there's no content here yet.
+  </div>,
+]
+`;
+
+exports[`Storyshots Pages/Read Standard 1`] = `
+Array [
+  <div
+    className="controls"
+  >
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <i
+        aria-label="menu"
+        className="material-icons"
+        onClick={[Function]}
+        role="button"
+        style={
+          Object {
+            "cursor": "pointer",
+            "fontSize": "24px",
+          }
+        }
+      >
+        menu
+      </i>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>,
+  <div
+    className="content"
+  >
+    Oups! Looks like there's no content here yet.
+  </div>,
+]
+`;
+
+exports[`Storyshots RegisteredDataField Standard 1`] = `
+<table
+  className="container"
+>
+  <tbody>
+    <tr>
+      <td>
+        <label>
+           test1 
+        </label>
+      </td>
+      <td>
+        <label>
+          test2
+        </label>
+      </td>
+      <td>
+        <label>
+           test2 
+        </label>
+      </td>
+      <td>
+        <i
+          className="material-icons"
+        >
+          editor
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Storyshots Search field Primary Search Field 1`] = `
+<div
+  className="primary SearchField"
+  onBlur={[Function]}
+>
+  <div
+    className="field"
+  >
+    <input
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      placeholder="Search for component..."
+      value=""
+    />
+    <i
+      className="material-icons icon"
+    >
+      search
+    </i>
+  </div>
+  <ul />
+</div>
+`;
+
+exports[`Storyshots Search field Secondary Search Field 1`] = `
+<div
+  className="secondary SearchField"
+  onBlur={[Function]}
+>
+  <div
+    className="field"
+  >
+    <label>
+      Component
+      :
+    </label>
+    <input
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      placeholder="Set a component..."
+      value=""
+    />
+  </div>
+  <ul />
+</div>
+`;
+
+exports[`Storyshots SideMenu Admin Side Menu 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+  />
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      My account
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Review next release
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Adapt premissions for user groups
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Add new companies
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard notify"
+    >
+      Approve new users
+      <div
+        className="notifysignal"
+      >
+        2
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SideMenu General Side Menu 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+  />
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      My account
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SideMenu Operator Side Menu 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+  />
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      My account
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Browse own equipment data
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Company account
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Manage staffmember
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Manage facilities
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Switch Checked 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    checked={true}
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Large 1`] = `
+<label
+  className="switch large"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Small 1`] = `
+<label
+  className="switch small"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Standard 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Table Table Component 1`] = `
+<table
+  className="dataTable"
+>
+  <tr>
+    <th>
+      Failure Rates
+    </th>
+    <th>
+      Source
+    </th>
+    <th>
+      DUobs
+    </th>
+    <th>
+      T
+    </th>
+    <th>
+      Observation Period
+    </th>
+    <th>
+      Population Size
+    </th>
+    <th>
+      Comment
+    </th>
+  </tr>
+  <tr>
+    <td>
+      0,3
+    </td>
+    <td>
+      Facility A
+    </td>
+    <td>
+      10
+    </td>
+    <td>
+      2,8*10^7 h
+    </td>
+    <td>
+      2006-2018
+    </td>
+    <td>
+      659
+    </td>
+    <td>
+      Very cool data
+    </td>
+  </tr>
+  <tr>
+    <td>
+      0,5
+    </td>
+    <td>
+      Facility C
+    </td>
+    <td>
+      8
+    </td>
+    <td>
+      2,8* 10^9 h
+    </td>
+    <td>
+      1999-2020
+    </td>
+    <td>
+      666
+    </td>
+    <td>
+      This data is data
+    </td>
+  </tr>
+  <tr>
+    <td>
+      0,8
+    </td>
+    <td>
+      Facility B
+    </td>
+    <td>
+      12
+    </td>
+    <td>
+      2,7* 10^5 h
+    </td>
+    <td>
+      2019-2020
+    </td>
+    <td>
+      123
+    </td>
+    <td>
+      Another instance of data
+    </td>
+  </tr>
+  <tr>
+    <td>
+      0,8
+    </td>
+    <td>
+      Facility B
+    </td>
+    <td>
+      12
+    </td>
+    <td>
+      2,7* 10^5 h
+    </td>
+    <td>
+      2019-2020
+    </td>
+    <td>
+      123
+    </td>
+    <td>
+      Even more data
+    </td>
+  </tr>
+</table>
+`;
+
+exports[`Storyshots TextBox Large 1`] = `
+<div
+  className="container large"
+>
+  <div
+    className="titlecontainer"
+  >
+    Description
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    The detector includes the sensor and local electronics such as the address-/ interface unit.
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextBox Large Admin Text Box 1`] = `
+<div
+  className="container large"
+>
+  <div
+    className="material-icons icon"
+  >
+    editor
+  </div>
+  <div
+    className="titlecontainer"
+  >
+    Description
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    test
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextBox Small 1`] = `
+<div
+  className="container small"
+>
+  <div
+    className="titlecontainer"
+  >
+    Description
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    The detector includes the sensor and local electronics such as the address-/ interface unit.
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextBox Small Admin Text Box 1`] = `
+<div
+  className="container small"
+>
+  <div
+    className="material-icons icon"
+  >
+    editor
+  </div>
+  <div
+    className="titlecontainer"
+  >
+    Description
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    test
+  </div>
+</div>
+`;
+
+exports[`Storyshots Title Dynamic 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title "
+    >
+      Failure data at
+    </div>
+    <div
+      className="dynamic"
+    >
+      Askeladden
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
+</div>
+`;
+
+exports[`Storyshots Title Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title notdynamic"
+    >
+      Choose Facility
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
+</div>
+`;
+
+exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
+<div
+  className="container title"
+>
   <div
     className="container"
   >
@@ -2698,56 +2202,7 @@ exports[`Storyshots pages/ChooseComponentPagePage Standard 1`] = `
   </div>
   <div
     className="components"
-  >
-    <div
-      className="equipmentContainer"
-    >
-      <div>
-        <div
-          className="container"
-          onClick={[Function]}
-        >
-          <img
-            className="image"
-            src="https://www.svgrepo.com/show/131030/question-mark.svg"
-          />
-          Fire Equipment
-        </div>
-      </div>
-    </div>
-    <div
-      className="equipmentContainer"
-    >
-      <div>
-        <div
-          className="container"
-          onClick={[Function]}
-        >
-          <img
-            className="image"
-            src="https://www.svgrepo.com/show/131030/question-mark.svg"
-          />
-          Cake Equipment
-        </div>
-      </div>
-    </div>
-    <div
-      className="equipmentContainer"
-    >
-      <div>
-        <div
-          className="container"
-          onClick={[Function]}
-        >
-          <img
-            className="image"
-            src="https://www.svgrepo.com/show/131030/question-mark.svg"
-          />
-          Some other group
-        </div>
-      </div>
-    </div>
-  </div>
+  />
 </div>
 `;
 
@@ -2798,6 +2253,7 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
     >
       <button
         className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "backgroundColor": undefined,
@@ -2844,6 +2300,7 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
     >
       <button
         className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "backgroundColor": undefined,
@@ -2928,6 +2385,7 @@ exports[`Storyshots pages/Frontpage Moderator Frontpage 1`] = `
     >
       <button
         className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "backgroundColor": undefined,
@@ -2974,6 +2432,7 @@ exports[`Storyshots pages/Frontpage Moderator Frontpage 1`] = `
     >
       <button
         className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "backgroundColor": undefined,
@@ -3058,6 +2517,7 @@ exports[`Storyshots pages/Frontpage Operator Frontpage 1`] = `
     >
       <button
         className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "backgroundColor": undefined,
@@ -3104,6 +2564,7 @@ exports[`Storyshots pages/Frontpage Operator Frontpage 1`] = `
     >
       <button
         className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "backgroundColor": undefined,
@@ -3150,6 +2611,7 @@ exports[`Storyshots pages/Frontpage Operator Frontpage 1`] = `
     >
       <button
         className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "backgroundColor": undefined,
@@ -3196,6 +2658,7 @@ exports[`Storyshots pages/Frontpage Operator Frontpage 1`] = `
     >
       <button
         className="button medium standard"
+        onClick={[Function]}
         style={
           Object {
             "backgroundColor": undefined,
@@ -3348,25 +2811,29 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
        more possible users to add.
     </div>
     <div
-      className="standard field  "
+      className="standard  "
     >
-      <label
-        className=""
-        htmlFor="Email"
-        style={
-          Object {
-            "alignSelf": "",
-          }
-        }
+      <div
+        className="field"
       >
-        Email
-      </label>
-      <input
-        id="Email"
-        onChange={[Function]}
-        placeholder="ola.nordmann@gmail.com"
-        type="text"
-      />
+        <label
+          className=""
+          htmlFor="Email"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Email
+        </label>
+        <input
+          id="Email"
+          onChange={[Function]}
+          placeholder="ola.nordmann@gmail.com"
+          type="text"
+        />
+      </div>
     </div>
   </div>
   <div
