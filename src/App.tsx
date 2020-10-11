@@ -4,6 +4,7 @@ import { Provider, Options } from 'use-http'
 
 import './App.css'
 import { Login } from './pages/login'
+import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
 import useLocalStorage from './utils/hooks/useLocalStorage'
@@ -34,10 +35,10 @@ function App(): JSX.Element {
       <UserProvider>
         <BrowserRouter>
           <Switch>
-            <Route path="/login">
+            <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
             </Route>
-            <AuthRoute path="/">
+            <AuthRoute path={MAIN_ROUTES.HOME}>
               <p>Home</p>
             </AuthRoute>
           </Switch>
