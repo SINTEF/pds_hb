@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Route, Redirect, RouteProps } from 'react-router-dom'
-import useLocalStorage from '@rooks/use-localstorage'
+import useLocalStorage from './hooks/useLocalStorage'
 import jwt_decode from 'jwt-decode'
 
 export interface AuthRouteProps extends RouteProps {
@@ -12,10 +12,10 @@ export const AuthRoute: React.FC<AuthRouteProps> = ({
   component,
   ...rest
 }: AuthRouteProps) => {
-  const [value] = useLocalStorage('token', '')
-  if (value) {
+  const { storedValue: token } = useLocalStorage('token', '')
+  if (token) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const decodedToken = jwt_decode(value) as any
+    const decodedToken = jwt_decode(token) as any
     const valid = decodedToken.exp > Date.now() / 1000
     if (valid) {
       return <Route {...rest} component={component} />

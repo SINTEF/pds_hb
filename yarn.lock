@@ -1803,11 +1803,6 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@rooks/use-localstorage@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@rooks/use-localstorage/-/use-localstorage-3.6.0.tgz#a65c42e34f61c962dd88e5b14b55efb0b6a8bdec"
-  integrity sha512-mAFcYRq1A2Midk8LlcFmXH/KXGyjyuoZU3funKkkPDNROY6TzURlWqAFwLoA35hF3EGIbTgEaXqNbfDJd25wEA==
-
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.3.tgz#5405ee8e444ed212db44e79351f0c70a582aae25"
