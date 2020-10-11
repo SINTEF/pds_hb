@@ -5,6 +5,7 @@ import { ManageStaffmembersPage, ManageStaffmembersPageProps } from '.'
 
 export default {
   title: 'pages/Manage staffmembers',
+  component: ManageStaffmembersPage,
 } as Meta
 
 const users = [
