@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 
 import { MenuButton } from '../menu-button'
 import { useState } from 'react'
@@ -9,6 +9,7 @@ import { IUserContext } from '../../models/user'
 import MAIN_ROUTES from '../../routes/routes.constants'
 
 import styles from './DropDownMenu.module.css'
+import { useClickOutside } from '../../utils/hooks/useClickOutside'
 
 export interface DropDownMenuProps {
   isCompanyUser: boolean
@@ -27,6 +28,9 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({
 
   const [set] = useLocalStorage('token', '')
   const userContext = useContext(UserContext) as IUserContext
+
+  const menuRef = useRef<HTMLDivElement>(null)
+  useClickOutside(menuRef, () => setMode(false))
 
   const logout: () => void = () => {
     set('')
@@ -56,7 +60,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({
         </div>
       </div>
       {isClicked && (
-        <div className={styles.dropDownMenu}>
+        <div className={styles.dropDownMenu} ref={menuRef}>
           <MenuButton
             label={'My account'}
             onClick={() => navigateTo(MAIN_ROUTES.COMPANY)}
