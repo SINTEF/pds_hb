@@ -16,8 +16,7 @@ export const AuthRoute: React.FC<AuthRouteProps> = ({
   if (token) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const decodedToken = jwt_decode(token) as any
-    const expiration = new Date(decodedToken.exp)
-    const valid = expiration > new Date()
+    const valid = decodedToken.exp > Date.now() / 1000
     if (valid) {
       return <Route {...rest} component={component} />
     }
