@@ -7,10 +7,12 @@
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  margin-bottom: 30px;
 }
 td {
   display: table-cell;
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
   align-content: center;
+  padding-left: 50px;
 }
