@@ -245,81 +245,6 @@ exports[`Storyshots Button Standard 1`] = `
 </div>
 `;
 
-exports[`Storyshots ChooseComponentPagePage Standard 1`] = `
-<div
-  className="container"
->
-  <div
-    className="container"
-  >
-    <div
-      className="titlecontainer"
-    >
-      <div
-        className="title notdynamic"
-      >
-        Choose equipment group
-      </div>
-    </div>
-    <hr
-      className="line"
-    />
-  </div>
-  <div
-    className="components"
-  >
-    <div
-      className="equipmentContainer"
-    >
-      <div>
-        <div
-          className="container"
-          onClick={[Function]}
-        >
-          <img
-            className="image"
-            src="https://www.svgrepo.com/show/131030/question-mark.svg"
-          />
-          Fire Equipment
-        </div>
-      </div>
-    </div>
-    <div
-      className="equipmentContainer"
-    >
-      <div>
-        <div
-          className="container"
-          onClick={[Function]}
-        >
-          <img
-            className="image"
-            src="https://www.svgrepo.com/show/131030/question-mark.svg"
-          />
-          Cake Equipment
-        </div>
-      </div>
-    </div>
-    <div
-      className="equipmentContainer"
-    >
-      <div>
-        <div
-          className="container"
-          onClick={[Function]}
-        >
-          <img
-            className="image"
-            src="https://www.svgrepo.com/show/131030/question-mark.svg"
-          />
-          Some other group
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Storyshots Components/display-field Standard 1`] = `
 <div>
   <div
@@ -506,53 +431,6 @@ exports[`Storyshots DropDownMenu Company User 1`] = `
 </div>
 `;
 
-exports[`Storyshots EquipmentGroup Editable 1`] = `
-<div>
-  <div
-    className="container"
-  >
-    <img
-      className="image"
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
-    />
-    Fire equipment
-    <i
-      className="material-icons icon"
-    >
-      editor
-    </i>
-  </div>
-</div>
-`;
-
-exports[`Storyshots EquipmentGroup No Img 1`] = `
-<div>
-  <div
-    className="container"
-  >
-    <img
-      className="image"
-      src="https://www.svgrepo.com/show/131030/question-mark.svg"
-    />
-    Fire equipment
-  </div>
-</div>
-`;
-
-exports[`Storyshots EquipmentGroup Standard 1`] = `
-<div>
-  <div
-    className="container"
-  >
-    <img
-      className="image"
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
-    />
-    Fire equipment
-  </div>
-</div>
-`;
-
 exports[`Storyshots Filter Filter Component 1`] = `
 <div
   className="open"
@@ -596,41 +474,24 @@ exports[`Storyshots FilterButton Standard Filter Button 1`] = `
 </div>
 `;
 
-exports[`Storyshots Frontpage General Frontpage 1`] = `
+exports[`Storyshots Group Editable 1`] = `
 <div
-  className="frontpage"
+  className="wrapper"
 >
   <div
-    className="title"
+    className="container"
   >
-    PDS Datahåndbok
+    <img
+      alt="Icon for group Fire equipment"
+      className="image"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
+    />
+    Fire equipment
   </div>
   <div
-    className="generalMenu menu"
+    className="icon"
   >
     <div
-      className="primary SearchField"
-      onBlur={[Function]}
-    >
-      <div
-        className="field"
-      >
-        <input
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          placeholder="Search for component..."
-          value=""
-        />
-        <i
-          className="material-icons icon"
-        >
-          search
-        </i>
-      </div>
-      <ul />
-    </div>
-    <div
       className="react-ripples"
       onClick={[Function]}
       style={
@@ -641,73 +502,12 @@ exports[`Storyshots Frontpage General Frontpage 1`] = `
         }
       }
     >
-      <button
-        className="button medium standard"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
+      <i
+        className="material-icons icon"
+        onClick={[Function]}
       >
-        Read PDS datahandbook
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse equipment data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
+        create
+      </i>
       <s
         style={
           Object {
@@ -726,355 +526,43 @@ exports[`Storyshots Frontpage General Frontpage 1`] = `
 </div>
 `;
 
-exports[`Storyshots Frontpage Moderator Frontpage 1`] = `
+exports[`Storyshots Group No Img 1`] = `
 <div
-  className="frontpage"
+  className="wrapper"
 >
   <div
-    className="title"
+    className="container"
   >
-    PDS Datahåndbok
+    <img
+      alt="Icon for group Fire equipment"
+      className="image"
+      src="https://www.svgrepo.com/show/131030/question-mark.svg"
+    />
+    Fire equipment
   </div>
   <div
-    className="generalMenu menu"
-  >
-    <div
-      className="primary SearchField"
-      onBlur={[Function]}
-    >
-      <div
-        className="field"
-      >
-        <input
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          placeholder="Search for component..."
-          value=""
-        />
-        <i
-          className="material-icons icon"
-        >
-          search
-        </i>
-      </div>
-      <ul />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Read and edit PDS datahandbook
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse and edit equipment data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>
+    className="icon"
+  />
 </div>
 `;
 
-exports[`Storyshots Frontpage Operator Frontpage 1`] = `
+exports[`Storyshots Group Standard 1`] = `
 <div
-  className="frontpage"
+  className="wrapper"
 >
   <div
-    className="title"
+    className="container"
   >
-    PDS Datahåndbok
+    <img
+      alt="Icon for group Fire equipment"
+      className="image"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
+    />
+    Fire equipment
   </div>
   <div
-    className="operatorMenu menu"
-  >
-    <div
-      className="primary SearchField"
-      onBlur={[Function]}
-    >
-      <div
-        className="field"
-      >
-        <input
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          placeholder="Search for component..."
-          value=""
-        />
-        <i
-          className="material-icons icon"
-        >
-          search
-        </i>
-      </div>
-      <ul />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Read PDS datahandbook
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse equipment data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse own equipment data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Add data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>
+    className="icon"
+  />
 </div>
 `;
 
@@ -1104,423 +592,270 @@ exports[`Storyshots Header Standard 1`] = `
 
 exports[`Storyshots Input field Primary Input 1`] = `
 <div
-  className="primary field  "
+  className="primary  "
 >
-  <label
-    className=""
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
+  <div
+    className="primaryContent"
   >
-    Input Label
-  </label>
-  <input
-    id="Input Label"
-    onChange={[Function]}
-    type="text"
-  />
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      id="Input Label"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
 </div>
 `;
 
 exports[`Storyshots Input field Primary Text Area 1`] = `
 <div
-  className="primary field  fieldPadding"
+  className="primary  fieldPadding"
 >
-  <label
-    className=""
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "flex-start",
-      }
-    }
+  <div
+    className="primaryContent"
   >
-    Input Label
-  </label>
-  <textarea
-    cols={40}
-    id="Input Label"
-    onChange={[Function]}
-    rows={10}
-  />
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "flex-start",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <textarea
+      cols={40}
+      id="Input Label"
+      onChange={[Function]}
+      rows={10}
+    />
+  </div>
 </div>
 `;
 
 exports[`Storyshots Input field Primary With Default 1`] = `
 <div
-  className="primary field  "
+  className="primary  "
 >
-  <label
-    className="labelTuck"
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
+  <div
+    className="primaryContent"
   >
-    Input Label
-  </label>
-  <input
-    defaultValue="Default value"
-    id="Input Label"
-    onChange={[Function]}
-    type="text"
-  />
+    <label
+      className="labelTuck"
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      defaultValue="Default value"
+      id="Input Label"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
 </div>
 `;
 
 exports[`Storyshots Input field Primary With File 1`] = `
 <div
-  className="primary field  "
+  className="primary  "
 >
-  <label
-    className="labelTuck"
-    htmlFor="Input label"
-    style={
-      Object {
-        "alignSelf": "",
+  <div
+    className="primaryContent"
+  >
+    <label
+      className="labelTuck"
+      htmlFor="Input label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
       }
-    }
-  >
-    Input label
-  </label>
-  <input
-    id="Input label"
-    onChange={[Function]}
-    type="file"
-  />
-  <i
-    className="material-icons icon"
-  >
-    add_photo_alternate
-  </i>
+    >
+      Input label
+    </label>
+    <input
+      id="Input label"
+      onChange={[Function]}
+      type="file"
+    />
+    <i
+      className="material-icons icon"
+    >
+      add_photo_alternate
+    </i>
+  </div>
 </div>
 `;
 
 exports[`Storyshots Input field Primary With Icon 1`] = `
 <div
-  className="primary field  "
+  className="primary  "
 >
-  <label
-    className="labelTuck"
-    htmlFor="Input label"
-    style={
-      Object {
-        "alignSelf": "",
+  <div
+    className="primaryContent"
+  >
+    <label
+      className="labelTuck"
+      htmlFor="Input label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
       }
-    }
-  >
-    Input label
-  </label>
-  <input
-    defaultValue="Default value"
-    id="Input label"
-    onChange={[Function]}
-    type="text"
-  />
-  <i
-    className="material-icons icon"
-  >
-    search
-  </i>
+    >
+      Input label
+    </label>
+    <input
+      defaultValue="Default value"
+      id="Input label"
+      onChange={[Function]}
+      type="text"
+    />
+    <i
+      className="material-icons icon"
+    >
+      search
+    </i>
+  </div>
 </div>
 `;
 
 exports[`Storyshots Input field Standard Input 1`] = `
 <div
-  className="standard field  "
+  className="standard  "
 >
-  <label
-    className=""
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
+  <div
+    className="field"
   >
-    Input Label
-  </label>
-  <input
-    id="Input Label"
-    onChange={[Function]}
-    placeholder="Input placeholder"
-    type="text"
-  />
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      id="Input Label"
+      onChange={[Function]}
+      placeholder="Input placeholder"
+      type="text"
+    />
+  </div>
 </div>
 `;
 
 exports[`Storyshots Input field Standard Input With Icon 1`] = `
 <div
-  className="standard field  "
+  className="standard  "
 >
-  <label
-    className=""
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "",
+  <div
+    className="field"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
       }
-    }
-  >
-    Input Label
-  </label>
-  <input
-    id="Input Label"
-    onChange={[Function]}
-    placeholder="Input placeholder"
-    type="text"
-  />
-  <i
-    className="material-icons icon"
-  >
-    add_photo_alternate
-  </i>
+    >
+      Input Label
+    </label>
+    <input
+      id="Input Label"
+      onChange={[Function]}
+      placeholder="Input placeholder"
+      type="text"
+    />
+    <i
+      className="material-icons icon"
+    >
+      add_photo_alternate
+    </i>
+  </div>
 </div>
 `;
 
 exports[`Storyshots Input field Standard Text Area 1`] = `
 <div
-  className="standard field  fieldPadding"
+  className="standard  fieldPadding"
 >
-  <label
-    className=""
-    htmlFor="Input Label"
-    style={
-      Object {
-        "alignSelf": "flex-start",
-      }
-    }
+  <div
+    className="field"
   >
-    Input Label
-  </label>
-  <textarea
-    cols={40}
-    id="Input Label"
-    onChange={[Function]}
-    placeholder="Input placeholder"
-    rows={10}
-  />
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "flex-start",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <textarea
+      cols={40}
+      id="Input Label"
+      onChange={[Function]}
+      placeholder="Input placeholder"
+      rows={10}
+    />
+  </div>
 </div>
 `;
 
 exports[`Storyshots Input field Standard With File 1`] = `
 <div
-  className="standard field  "
+  className="standard  "
 >
-  <label
-    className=""
-    htmlFor="Input label"
-    style={
-      Object {
-        "alignSelf": "",
-      }
-    }
-  >
-    Input label
-  </label>
-  <input
-    id="Input label"
-    onChange={[Function]}
-    type="file"
-  />
-  <i
-    className="material-icons icon"
-  >
-    add_photo_alternate
-  </i>
-</div>
-`;
-
-exports[`Storyshots Manage staffmembers Standard 1`] = `
-<div>
   <div
-    className="container"
+    className="field"
   >
-    <div
-      className="container"
-    >
-      <div
-        className="titlecontainer"
-      >
-        <div
-          className="title notdynamic"
-        >
-          Manage staffmembers
-        </div>
-      </div>
-      <hr
-        className="line"
-      />
-    </div>
-    <div
-      className="listtitles"
-    >
-      <div>
-        Name
-      </div>
-      <div>
-        Email
-      </div>
-      <div>
-        Joined
-      </div>
-      <div>
-              
-      </div>
-    </div>
-    <div
-      className="container"
-    >
-      <td>
-        <div>
-          Mona Lisa
-        </div>
-      </td>
-      <td>
-        <div>
-          mona.lisa@gmail.com
-        </div>
-      </td>
-      <td>
-        <div>
-          25.08.2020
-        </div>
-      </td>
-      <td>
-        <button
-          className="remove"
-          onClick={[Function]}
-        >
-          Remove
-        </button>
-      </td>
-    </div>
-    <div
-      className="container"
-    >
-      <td>
-        <div>
-          Da Vinci
-        </div>
-      </td>
-      <td>
-        <div>
-          da.vinci@gmail.com
-        </div>
-      </td>
-      <td>
-        <div>
-          12.06.2020
-        </div>
-      </td>
-      <td>
-        <button
-          className="remove"
-          onClick={[Function]}
-        >
-          Remove
-        </button>
-      </td>
-    </div>
-  </div>
-  <div
-    className="secondcontainer"
-  >
-    <div
-      className="usersleft"
-    >
-      Your company has 
-      <div
-        className="numberusersleft"
-      >
-        2
-      </div>
-       more possible users to add.
-    </div>
-    <div
-      className="standard field  "
-    >
-      <label
-        className=""
-        htmlFor="Email"
-        style={
-          Object {
-            "alignSelf": "",
-          }
+    <label
+      className=""
+      htmlFor="Input label"
+      style={
+        Object {
+          "alignSelf": "",
         }
-      >
-        Email
-      </label>
-      <input
-        id="Email"
-        onChange={[Function]}
-        placeholder="ola.nordmann@gmail.com"
-        type="text"
-      />
-    </div>
-  </div>
-  <div
-    className="button"
-  />
-</div>
-`;
-
-exports[`Storyshots Mange facilities Standard 1`] = `
-<div>
-  <div
-    className="title"
-  >
-    <div
-      className="container"
+      }
     >
-      <div
-        className="titlecontainer"
-      >
-        <div
-          className="title notdynamic"
-        >
-          Manage facilities
-        </div>
-      </div>
-      <hr
-        className="line"
-      />
-    </div>
-  </div>
-  <div
-    className="padding"
-  >
-    Enter an existing facilty to edit or enter a new one
-  </div>
-  <div
-    className="padding"
-  >
-    <div
-      className="secondary SearchField"
-      onBlur={[Function]}
+      Input label
+    </label>
+    <input
+      id="Input label"
+      onChange={[Function]}
+      type="file"
+    />
+    <i
+      className="material-icons icon"
     >
-      <div
-        className="field"
-      >
-        <label>
-          Facilityname
-          :
-        </label>
-        <input
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          placeholder="Enter name of facility..."
-          value=""
-        />
-      </div>
-      <ul />
-    </div>
+      add_photo_alternate
+    </i>
   </div>
 </div>
 `;
@@ -1572,6 +907,176 @@ exports[`Storyshots MenuButton Standard 1`] = `
   >
     Adapt premissions for user groups
   </button>
+</div>
+`;
+
+exports[`Storyshots Pages/Login Start 1`] = `
+<div
+  className="main"
+>
+  <h1>
+    PDS Data Handbook
+  </h1>
+  <div
+    className="inputGroup"
+  >
+    <div
+      className="primary  "
+    >
+      <div
+        className="primaryContent"
+      >
+        <label
+          className=""
+          htmlFor="Username"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Username
+        </label>
+        <input
+          id="Username"
+          onChange={[Function]}
+          type="text"
+        />
+        <i
+          className="material-icons icon"
+        >
+          face
+        </i>
+      </div>
+    </div>
+    <div
+      className="primary  "
+    >
+      <div
+        className="primaryContent"
+      >
+        <label
+          className=""
+          htmlFor="Password"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Password
+        </label>
+        <input
+          id="Password"
+          onChange={[Function]}
+          type="password"
+        />
+        <i
+          className="material-icons icon"
+        >
+          lock
+        </i>
+      </div>
+    </div>
+  </div>
+  <div
+    className="buttonGroup"
+  >
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium primary"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Log in
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Register new user
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
 </div>
 `;
 
@@ -1721,32 +1226,36 @@ Array [
 `;
 
 exports[`Storyshots RegisteredDataField Standard 1`] = `
-<div
+<table
   className="container"
 >
-  <td>
-    <label>
-       test1 
-    </label>
-  </td>
-  <td>
-    <label>
-      test2
-    </label>
-  </td>
-  <td>
-    <label>
-       test2 
-    </label>
-  </td>
-  <td>
-    <i
-      className="material-icons"
-    >
-      editor
-    </i>
-  </td>
-</div>
+  <tbody>
+    <tr>
+      <td>
+        <label>
+           test1 
+        </label>
+      </td>
+      <td>
+        <label>
+          test2
+        </label>
+      </td>
+      <td>
+        <label>
+           test2 
+        </label>
+      </td>
+      <td>
+        <i
+          className="material-icons"
+        >
+          editor
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;
 
 exports[`Storyshots Search field Primary Search Field 1`] = `

@@ -1,19 +1,23 @@
+.wrapper {
+  max-width: 190px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 190px;
   background-color: transparent;
   align-items: center;
+  cursor: pointer;
 }
 
 .image {
   background-color: transparent;
   max-height: 83px;
-  cursor: pointer;
 }
 
 .icon {
-  font-size: 30px;
-  cursor: pointer;
-  margin-left: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

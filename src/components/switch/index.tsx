@@ -4,7 +4,7 @@ import styles from './Switch.module.css'
 export interface SwitchProps {
   checked: boolean
 
-  diasabled: boolean
+  disabled: boolean
 
   handleChange: () => void
 
@@ -13,7 +13,7 @@ export interface SwitchProps {
 
 export const Switch: React.FC<SwitchProps> = ({
   checked,
-  diasabled,
+  disabled,
   handleChange,
   size = 'medium',
 }: SwitchProps) => {
@@ -23,7 +23,7 @@ export const Switch: React.FC<SwitchProps> = ({
         type="checkbox"
         onChange={handleChange}
         checked={checked}
-        diasabled={diasabled}
+        disabled={disabled}
       ></input>
       <span className={[styles.slider, styles.round].join(' ')}> </span>
     </label>
