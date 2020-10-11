@@ -5,6 +5,7 @@ import { Provider, Options } from 'use-http'
 import './App.css'
 import { Login } from './pages/login'
 import { AuthRoute } from './utils/AuthRoute'
+import { UserProvider } from './utils/context/userContext'
 import useLocalStorage from './utils/hooks/useLocalStorage'
 
 function App(): JSX.Element {
@@ -30,16 +31,18 @@ function App(): JSX.Element {
       url={process.env.REACT_APP_API_URL || 'http://localhost:5000'}
       options={options}
     >
-      <BrowserRouter>
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <AuthRoute path="/">
-            <p>Home</p>
-          </AuthRoute>
-        </Switch>
-      </BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <AuthRoute path="/">
+              <p>Home</p>
+            </AuthRoute>
+          </Switch>
+        </BrowserRouter>
+      </UserProvider>
     </Provider>
   )
 }

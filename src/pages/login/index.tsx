@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import useFetch, { CachePolicies } from 'use-http'
+import { useHistory } from 'react-router-dom'
 
 import { InputField } from '../../components/input-field'
 import { Button } from '../../components/button'
+import { UserContext } from '../../utils/context/userContext'
+import useLocalStorage from '../../utils/hooks/useLocalStorage'
 
 import styles from './Login.module.css'
-import useFetch, { CachePolicies } from 'use-http'
-import useLocalStorage from '../../utils/hooks/useLocalStorage'
-import { useHistory } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
+import { IUser, IUserContext } from '../../models/user'
 
 export interface LoginForm {
   username: string
@@ -20,6 +23,7 @@ export const Login: React.FC = () => {
   })
   const { setValue } = useLocalStorage<string>('token', '')
   const history = useHistory()
+  const userContext = useContext(UserContext) as IUserContext
   const [form, setForm] = useState<LoginForm>({
     username: '',
     password: '',
@@ -30,6 +34,8 @@ export const Login: React.FC = () => {
     if (response.status === 200) {
       const token = (response.data.token as string).split('Bearer')[1].trim()
       setValue(token)
+      const decodedToken = jwt_decode(token) as IUser
+      userContext.setUser(decodedToken)
       setTimeout(() => history.push('/'), 750)
     }
   }
