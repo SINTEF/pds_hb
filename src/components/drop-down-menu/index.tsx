@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { MenuButton } from '../menu-button'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import useLocalStorage from '../../utils/hooks/useLocalStorage'
+import useLocalStorage from '@rooks/use-localstorage'
 import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
 import MAIN_ROUTES from '../../routes/routes.constants'
@@ -25,11 +25,11 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({
   const [isClicked, setMode] = useState<boolean>(false)
   const history = useHistory()
 
-  const { setValue } = useLocalStorage('token', '')
+  const [set] = useLocalStorage('token', '')
   const userContext = useContext(UserContext) as IUserContext
 
   const logout: () => void = () => {
-    setValue('')
+    set('')
     userContext.setUser(undefined)
     setMode(false)
     history.push(MAIN_ROUTES.LOGIN)

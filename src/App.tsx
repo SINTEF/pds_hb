@@ -8,10 +8,10 @@ import { Login } from './pages/login'
 import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
-import useLocalStorage from './utils/hooks/useLocalStorage'
+import useLocalStorage from '@rooks/use-localstorage'
 
 function App(): JSX.Element {
-  const { storedValue: token } = useLocalStorage<string>('token', '')
+  const [value] = useLocalStorage('token', '')
 
   const options: Partial<Options> = {
     interceptors: {
@@ -21,7 +21,7 @@ function App(): JSX.Element {
       request: ({ options }) => {
         options.headers = {
           ...options.headers,
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${value}`,
         }
 
         return options
