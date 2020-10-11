@@ -6,9 +6,6 @@ import { AddDataPage, AddDataPageProps } from '.'
 export default {
   title: 'pages/AddDataPagePage',
   component: AddDataPage,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as Meta
 
 const Template: Story<AddDataPageProps> = (args) => <AddDataPage {...args} />
