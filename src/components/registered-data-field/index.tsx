@@ -10,10 +10,14 @@ export const RegisteredDataField: React.FC<RegisteredDataFieldProps> = ({
   children,
 }: RegisteredDataFieldProps) => {
   return (
-    <div className={styles.container}>
-      {children.map((d, key) => (
-        <td key={key}>{d}</td>
-      ))}
-    </div>
+    <table className={styles.container}>
+      <tbody>
+        <tr>
+          {children.map((d, key) => (
+            <td key={key}>{d}</td>
+          ))}
+        </tr>
+      </tbody>
+    </table>
   )
 }
