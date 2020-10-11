@@ -9,18 +9,19 @@ import styles from './EquipmentGroupForm.module.css'
 
 Modal.setAppElement(document.getElementById('root') as HTMLElement)
 
-export interface EquipmentGroup {
+export interface IGroup {
   id: string
   name: string
   symbol?: File
+  symbolUrl?: string
 }
 
 export interface EquipmentGroupFormProps {
   isOpen: boolean
-  onSave: (formValue: EquipmentGroup) => void
+  onSave: (formValue: IGroup) => void
   onCancel: () => void
   onDelete?: () => void
-  equipmentGroup?: EquipmentGroup
+  equipmentGroup?: IGroup
 }
 
 export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
