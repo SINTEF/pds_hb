@@ -1631,6 +1631,37 @@ exports[`Storyshots RegisteredData Standard 1`] = `
     <div
       className="content"
     >
+      <div>
+        <table
+          className="headers"
+        >
+          <tbody>
+            <tr>
+              <td>
+                Component
+              </td>
+              <td>
+                Period
+              </td>
+              <td>
+                T
+              </td>
+              <td>
+                Tags
+              </td>
+              <td>
+                DU
+              </td>
+              <td>
+                Edited
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div
         className="container"
       >
@@ -1667,7 +1698,7 @@ exports[`Storyshots RegisteredData Standard 1`] = `
         <td>
           <i
             className="material-icons icon"
-            id="object1"
+            onClick={[Function]}
           >
             editor
           </i>
@@ -1709,7 +1740,7 @@ exports[`Storyshots RegisteredData Standard 1`] = `
         <td>
           <i
             className="material-icons icon"
-            id="object2"
+            onClick={[Function]}
           >
             editor
           </i>

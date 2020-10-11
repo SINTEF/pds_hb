@@ -22,18 +22,24 @@
   padding-top: 150px;
 }
 
-.description {
-  position: relative;
-  margin-left: auto;
-}
-
-.center {
-  align-self: center;
-}
-
 .padding {
   padding-top: 60px;
 }
 .icon {
   cursor: pointer;
+}
+
+.headers {
+  height: 60px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  align-content: center;
 }

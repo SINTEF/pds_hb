@@ -8,7 +8,6 @@ import { RegisteredDataField } from '../registered-data-field'
 export interface RegisteredDataProps {
   component: string //this comes from the parentpage in somehow or from userinput by homepage-search
   equipmentgroup: string // this should also come from above
-  company: string
   getComponents: (equipmentGroup: string) => Array<string>
   getFilters: (component: string) => Array<string>
   getValuesForFilter: (filter: string) => Array<string>
@@ -17,7 +16,7 @@ export interface RegisteredDataProps {
     filters: Array<Record<string, string>>
   ) => Array<Array<string>>
   redirect: () => void
-  onClick: () => void
+  editData: () => void
 }
 
 export interface Form {
@@ -28,12 +27,11 @@ export const RegisteredData: React.FC<RegisteredDataProps> = ({
   component,
   equipmentgroup,
   getComponents,
-  company,
   getFilters,
   getValuesForFilter,
   getFailureData,
   redirect,
-  onClick,
+  editData,
 }: RegisteredDataProps) => {
   const [compState, setComp] = useState<string>(component)
   const [filterState, setFilter] = useState<Form>({
@@ -78,8 +76,23 @@ export const RegisteredData: React.FC<RegisteredDataProps> = ({
       </div>
       <div>
         <div className={styles.content}>
-          {getFailureData(compState, company).map((data) => (
-            <RegisteredDataField key={data._id}>
+          <div>
+            <table className={styles.headers}>
+              <tbody>
+                <tr>
+                  <td>{'Component'}</td>
+                  <td>{'Period'}</td>
+                  <td>{'T'}</td>
+                  <td>{'Tags'}</td>
+                  <td>{'DU'}</td>
+                  <td>{'Edited'}</td>
+                  <td> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {getFailureData(compState).map((data, key) => (
+            <RegisteredDataField key={key}>
               <label>{component}</label>
               <label>{data.period}</label>
               <label>{data.t}</label>
@@ -87,8 +100,7 @@ export const RegisteredData: React.FC<RegisteredDataProps> = ({
               <label>{data.du}</label>
               <label>{data.edited}</label>
               <i
-                onClick={onClick}
-                id={data._id}
+                onClick={() => editData(data)}
                 className={'material-icons ' + styles.icon}
               >
                 {'editor'}
