@@ -245,32 +245,6 @@ exports[`Storyshots Button Standard 1`] = `
 </div>
 `;
 
-exports[`Storyshots ChooseComponentPagePage Standard 1`] = `
-<div
-  className="container"
->
-  <div
-    className="container"
-  >
-    <div
-      className="titlecontainer"
-    >
-      <div
-        className="title notdynamic"
-      >
-        Choose equipment group
-      </div>
-    </div>
-    <hr
-      className="line"
-    />
-  </div>
-  <div
-    className="components"
-  />
-</div>
-`;
-
 exports[`Storyshots Components/display-field Standard 1`] = `
 <div>
   <div
@@ -497,496 +471,6 @@ exports[`Storyshots FilterButton Standard Filter Button 1`] = `
       expand_more
     </i>
   </button>
-</div>
-`;
-
-exports[`Storyshots Frontpage General Frontpage 1`] = `
-<div
-  className="frontpage"
->
-  <div
-    className="title"
-  >
-    PDS Datahåndbok
-  </div>
-  <div
-    className="generalMenu menu"
-  >
-    <div
-      className="primary SearchField"
-      onBlur={[Function]}
-    >
-      <div
-        className="field"
-      >
-        <input
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          placeholder="Search for component..."
-          value=""
-        />
-        <i
-          className="material-icons icon"
-        >
-          search
-        </i>
-      </div>
-      <ul />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Read PDS datahandbook
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse equipment data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Frontpage Moderator Frontpage 1`] = `
-<div
-  className="frontpage"
->
-  <div
-    className="title"
-  >
-    PDS Datahåndbok
-  </div>
-  <div
-    className="generalMenu menu"
-  >
-    <div
-      className="primary SearchField"
-      onBlur={[Function]}
-    >
-      <div
-        className="field"
-      >
-        <input
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          placeholder="Search for component..."
-          value=""
-        />
-        <i
-          className="material-icons icon"
-        >
-          search
-        </i>
-      </div>
-      <ul />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Read and edit PDS datahandbook
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse and edit equipment data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Frontpage Operator Frontpage 1`] = `
-<div
-  className="frontpage"
->
-  <div
-    className="title"
-  >
-    PDS Datahåndbok
-  </div>
-  <div
-    className="operatorMenu menu"
-  >
-    <div
-      className="primary SearchField"
-      onBlur={[Function]}
-    >
-      <div
-        className="field"
-      >
-        <input
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          placeholder="Search for component..."
-          value=""
-        />
-        <i
-          className="material-icons icon"
-        >
-          search
-        </i>
-      </div>
-      <ul />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Read PDS datahandbook
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse equipment data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Browse own equipment data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Add data
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>
 </div>
 `;
 
@@ -2691,6 +2175,522 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           </td>
         </tr>
       </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/ChooseComponentPagePage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose equipment group
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="components"
+  />
+</div>
+`;
+
+exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
+<div
+  className="frontpage"
+>
+  <div
+    className="title"
+  >
+    PDS Datahåndbok
+  </div>
+  <div
+    className="generalMenu menu"
+  >
+    <div
+      className="primary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <input
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Search for component..."
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        >
+          search
+        </i>
+      </div>
+      <ul />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Read PDS datahandbook
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse equipment data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/Frontpage Moderator Frontpage 1`] = `
+<div
+  className="frontpage"
+>
+  <div
+    className="title"
+  >
+    PDS Datahåndbok
+  </div>
+  <div
+    className="generalMenu menu"
+  >
+    <div
+      className="primary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <input
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Search for component..."
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        >
+          search
+        </i>
+      </div>
+      <ul />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Read and edit PDS datahandbook
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse and edit equipment data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/Frontpage Operator Frontpage 1`] = `
+<div
+  className="frontpage"
+>
+  <div
+    className="title"
+  >
+    PDS Datahåndbok
+  </div>
+  <div
+    className="operatorMenu menu"
+  >
+    <div
+      className="primary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <input
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Search for component..."
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        >
+          search
+        </i>
+      </div>
+      <ul />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Read PDS datahandbook
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse equipment data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Browse own equipment data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Add data
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
     </div>
   </div>
 </div>

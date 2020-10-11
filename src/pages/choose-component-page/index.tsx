@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styles from './ChooseComponentPage.module.css'
 
-import { Title } from '../title'
-import { Group } from '../group'
-import { IGroup } from '../equipment-group-form'
+import { Title } from '../../components/title'
+
+import { Group } from '../../components/group'
+import { IGroup } from '../../components/equipment-group-form'
 
 export interface ChooseComponentPageProps {
   getComponents: () => IGroup[]

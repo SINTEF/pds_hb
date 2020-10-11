@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Frontpage.module.css'
-import { SearchField } from '../search-field'
-import { Button } from '../button'
+import { SearchField } from '../../components/search-field'
+import { Button } from '../../components/button'
 import { useHistory } from 'react-router-dom'
 import MAIN_ROUTES from '../../routes/routes.constants'
 
