@@ -12,7 +12,7 @@ export default {
 const Template: Story<RegisteredDataFieldProps> = (args) => (
   <RegisteredDataField {...args}>
     <label> test1 </label>
-    <label type="submit">test2</label>
+    <label>test2</label>
     <label> test2 </label>
     <i className={['material-icons'].join(' ')}>{'editor'}</i>
   </RegisteredDataField>

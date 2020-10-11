@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Frontpage.module.css'
-import { SearchField } from '../searchField'
+import { SearchField } from '../search-field'
 import { Button } from '../button'
 
 export interface FrontpageProps {
@@ -9,12 +9,15 @@ export interface FrontpageProps {
   userType: 'general' | 'operator' | 'moderator'
 
   suggestions: Array<string>
+
+  onClick: () => void
 }
 
 export const Frontpage: React.FC<FrontpageProps> = ({
   onChange,
   userType = 'general',
   suggestions,
+  onClick,
 }: FrontpageProps) => {
   return (
     <div className={styles.frontpage}>
@@ -29,8 +32,8 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
-          <Button label={'Read PDS datahandbook'}></Button>
-          <Button label={'Browse equipment data'}></Button>
+          <Button label={'Read PDS datahandbook'} onClick={onClick}></Button>
+          <Button label={'Browse equipment data'} onClick={onClick}></Button>
         </div>
       ) : null}
       {userType === 'moderator' ? (
@@ -43,8 +46,14 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
-          <Button label={'Read and edit PDS datahandbook'}></Button>
-          <Button label={'Browse and edit equipment data'}></Button>
+          <Button
+            label={'Read and edit PDS datahandbook'}
+            onClick={onClick}
+          ></Button>
+          <Button
+            label={'Browse and edit equipment data'}
+            onClick={onClick}
+          ></Button>
         </div>
       ) : null}
       {userType === 'operator' ? (
@@ -57,10 +66,13 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             onValueChanged={(value) => onChange(value)}
             onClick={() => false}
           ></SearchField>
-          <Button label={'Read PDS datahandbook'}></Button>
-          <Button label={'Browse equipment data'}></Button>
-          <Button label={'Browse own equipment data'}></Button>
-          <Button label={'Add data'}></Button>
+          <Button label={'Read PDS datahandbook'} onClick={onClick}></Button>
+          <Button label={'Browse equipment data'} onClick={onClick}></Button>
+          <Button
+            label={'Browse own equipment data'}
+            onClick={onClick}
+          ></Button>
+          <Button label={'Add data'} onClick={onClick}></Button>
         </div>
       ) : null}
     </div>
