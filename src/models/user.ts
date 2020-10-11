@@ -5,6 +5,9 @@ export interface IUser {
   companyId?: string
   userGroupId: string
   userGroup?: IUserGroup
+  sub: string
+  iat: number
+  exp: number
 }
 
 export interface IUserGroup {
