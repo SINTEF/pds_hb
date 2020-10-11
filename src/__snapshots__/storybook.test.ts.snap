@@ -863,16 +863,18 @@ exports[`Storyshots Input field Standard With File 1`] = `
 exports[`Storyshots MenuButton Log Out 1`] = `
 <div
   className="container"
+>>>>>>> 5b46761a7a0f8e116baa01e25c7d5df183403aff
 >
-  <hr
-    className="line"
+  <input
+    checked={true}
+    type="checkbox"
   />
-  <button
-    className="button logout "
+  <span
+    className="slider round"
   >
-    Log out
-  </button>
-</div>
+     
+  </span>
+</label>
 `;
 
 exports[`Storyshots MenuButton Notify 1`] = `
@@ -1423,6 +1425,7 @@ exports[`Storyshots SideMenu Operator Side Menu 1`] = `
       My account
     </button>
   </div>
+<<<<<<< HEAD
   <div
     className="container"
   >
@@ -1477,17 +1480,8 @@ exports[`Storyshots SideMenu Operator Side Menu 1`] = `
 exports[`Storyshots Switch Checked 1`] = `
 <label
   className="switch medium"
->
-  <input
-    checked={true}
-    type="checkbox"
-  />
-  <span
-    className="slider round"
-  >
-     
-  </span>
-</label>
+=======
+</div>
 `;
 
 exports[`Storyshots Switch Large 1`] = `
