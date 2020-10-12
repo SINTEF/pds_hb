@@ -5,7 +5,7 @@ import { CompanyUserPage, CompanyUserPageProps } from '.'
 
 export default {
   title: 'pages/companyuser',
-  Page: CompanyUserPage,
+  Component: CompanyUserPage,
 } as Meta
 
 const Template: Story<CompanyUserPageProps> = (args) => (
