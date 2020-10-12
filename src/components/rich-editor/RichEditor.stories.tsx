@@ -5,9 +5,6 @@ import { RichEditor, RichEditorProps } from '.'
 export default {
   title: 'Rich text editor',
   component: RichEditor,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as Meta
 
 const Template: Story<RichEditorProps> = (args) => <RichEditor {...args} />
