@@ -4,6 +4,7 @@ import { Provider, Options } from 'use-http'
 
 import './App.css'
 import { Login } from './pages/login'
+import { NotFound } from './pages/not-found'
 import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
@@ -38,8 +39,11 @@ function App(): JSX.Element {
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
             </Route>
-            <AuthRoute path={MAIN_ROUTES.HOME}>
+            <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <p>Home</p>
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
+              <NotFound />
             </AuthRoute>
           </Switch>
         </BrowserRouter>
