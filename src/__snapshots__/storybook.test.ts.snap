@@ -2873,6 +2873,32 @@ exports[`Storyshots pages/Mange facilities Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots pages/Not found (404) Standard 1`] = `
+<div
+  className="pageContainer"
+>
+  <h1>
+    404
+  </h1>
+  <h2>
+    Oups!
+  </h2>
+  <p>
+    Looks like we couldn't find the page you were looking for.
+  </p>
+  <p>
+    Let's go back to 
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      the front page
+    </a>
+    !
+  </p>
+</div>
+`;
+
 exports[`Storyshots pages/companyuser Equinor 1`] = `
 <div
   className="container"
