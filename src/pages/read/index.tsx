@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 
 import parse from 'html-react-parser'
 
@@ -10,19 +10,17 @@ import { MenuButton } from '../../components/menu-button'
 import { useClickOutside } from '../../utils/hooks/useClickOutside'
 
 import styles from './Read.module.css'
+import { UserContext } from '../../utils/context/userContext'
 
-export interface ReadProps {
-  isAdmin: boolean
-}
-
-export const Read: React.FC<ReadProps> = ({ isAdmin }: ReadProps) => {
+export const Read: React.FC = () => {
   const [currentValue, setCurrentValue] = useState<string>('')
   const [edit, setEdit] = useState<boolean>(false)
   const [navigate, setNavigate] = useState<boolean>(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [chapters, setChapters] = useState<string[]>([])
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [chapterTitles, setChapterTitles] = useState<string[]>([])
+
+  const userContext = useContext(UserContext)
+  const isAdmin = userContext?.user?.userGroupId === 'admin'
 
   useEffect(() => {
     // Get data from server here
@@ -66,13 +64,22 @@ export const Read: React.FC<ReadProps> = ({ isAdmin }: ReadProps) => {
       {navigate ? (
         <div className={styles.sideMenu}>
           <RefSideMenu ref={menuRef}>
-            {chapterTitles.map((title, index) => (
-              <MenuButton
-                label={title}
-                key={title}
-                onClick={() => changeChapter(index)}
-              />
-            ))}
+            <>
+              {chapterTitles.map((title, index) => (
+                <MenuButton
+                  label={title}
+                  key={title}
+                  onClick={() => changeChapter(index)}
+                />
+              ))}
+              {isAdmin ? (
+                <MenuButton
+                  label="+ Add new chapter"
+                  key="Add new chapter"
+                  onClick={() => console.log('Click!')}
+                />
+              ) : null}
+            </>
           </RefSideMenu>
         </div>
       ) : null}

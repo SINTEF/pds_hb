@@ -4,6 +4,7 @@ import { Provider, Options } from 'use-http'
 
 import './App.css'
 import { Login } from './pages/login'
+import { Read } from './pages/read'
 import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
@@ -37,6 +38,9 @@ function App(): JSX.Element {
           <Switch>
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
+            </Route>
+            <Route path={MAIN_ROUTES.READ}>
+              <Read />
             </Route>
             <AuthRoute path={MAIN_ROUTES.HOME}>
               <p>Home</p>
