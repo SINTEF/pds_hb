@@ -2213,7 +2213,7 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
   <div
     className="title"
   >
-    PDS Datahåndbok
+    PDS Datahandbook
   </div>
   <div
     className="generalMenu menu"
@@ -2345,7 +2345,7 @@ exports[`Storyshots pages/Frontpage Moderator Frontpage 1`] = `
   <div
     className="title"
   >
-    PDS Datahåndbok
+    PDS Datahandbook
   </div>
   <div
     className="generalMenu menu"
@@ -2477,7 +2477,7 @@ exports[`Storyshots pages/Frontpage Operator Frontpage 1`] = `
   <div
     className="title"
   >
-    PDS Datahåndbok
+    PDS Datahandbook
   </div>
   <div
     className="operatorMenu menu"
