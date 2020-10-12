@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider, Options } from 'use-http'
 
 import './App.css'
+import { Frontpage } from './pages/frontpage'
 import { Login } from './pages/login'
 import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
@@ -39,7 +40,17 @@ function App(): JSX.Element {
               <Login />
             </Route>
             <AuthRoute path={MAIN_ROUTES.HOME}>
-              <p>Home</p>
+              <Frontpage
+                suggestions={[
+                  'Flame detector',
+                  'Smoke detector',
+                  'Cake detector',
+                  'Metal detector',
+                  'Flamethrower',
+                  'banana',
+                ]}
+                userType={'operator'}
+              />
             </AuthRoute>
           </Switch>
         </BrowserRouter>

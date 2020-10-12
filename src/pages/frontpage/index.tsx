@@ -6,24 +6,20 @@ import { useHistory } from 'react-router-dom'
 import MAIN_ROUTES from '../../routes/routes.constants'
 
 export interface FrontpageProps {
-  onChange: (value: string) => void
 
   userType: 'general' | 'operator' | 'moderator'
 
   suggestions: Array<string>
-
-  onClick: () => void
 }
 
 export const Frontpage: React.FC<FrontpageProps> = ({
-  onChange,
   userType = 'general',
   suggestions,
 }: FrontpageProps) => {
   const history = useHistory()
   return (
     <div className={styles.frontpage}>
-      <div className={styles.title}>{'PDS Datahåndbok'}</div>
+      <div className={styles.title}>{'PDS Datahandbook'}</div>
       {userType === 'general' ? (
         <div className={[styles.generalMenu, styles.menu].join(' ')}>
           <SearchField
@@ -31,8 +27,8 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             icon={'search'}
             placeholder="Search for component..."
             suggestions={suggestions}
-            onValueChanged={(value) => onChange(value)}
-            onClick={() => false}
+            onValueChanged={() => false}
+            onClick={() => history.push(MAIN_ROUTES.BROWSE)}
           ></SearchField>
           <Button
             label={'Read PDS datahandbook'}
@@ -51,8 +47,8 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             icon={'search'}
             placeholder="Search for component..."
             suggestions={suggestions}
-            onValueChanged={(value) => onChange(value)}
-            onClick={() => false}
+            onValueChanged={() => false}
+            onClick={() => history.push(MAIN_ROUTES.BROWSE)}
           ></SearchField>
           <Button
             label={'Read and edit PDS datahandbook'}
@@ -71,8 +67,8 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             icon={'search'}
             placeholder="Search for component..."
             suggestions={suggestions}
-            onValueChanged={(value) => onChange(value)}
-            onClick={() => false}
+            onValueChanged={() => false}
+            onClick={() => history.push(MAIN_ROUTES.BROWSE)}
           ></SearchField>
           <Button
             label={'Read PDS datahandbook'}
