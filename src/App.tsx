@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider, Options } from 'use-http'
 
 import './App.css'
+import { Header } from './components/header'
 import { Login } from './pages/login'
 import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
@@ -34,6 +35,7 @@ function App(): JSX.Element {
     >
       <UserProvider>
         <BrowserRouter>
+          <Header />
           <Switch>
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
