@@ -2,8 +2,8 @@ export interface IUser {
   username: string
   email: string
   phoneNr?: string
-  companyId?: string
-  userGroupType: string
+  companyName?: string
+  userGroupType: 'general_user' | 'admin' | 'operator' | 'vendor'
   sub: string
   iat: number
   exp: number

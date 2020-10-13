@@ -48,7 +48,7 @@ export const Frontpage: React.FC = () => {
           />
         </div>
       ) : null}
-      {userContext.user?.userGroupType === 'moderator' ? (
+      {userContext.user?.userGroupType === 'admin' ? (
         <div className={[styles.generalMenu, styles.menu].join(' ')}>
           {loading && 'Loading...'}
           <SearchField
