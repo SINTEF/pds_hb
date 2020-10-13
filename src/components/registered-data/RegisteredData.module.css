@@ -1,0 +1,45 @@
+.path {
+  cursor: pointer;
+}
+
+.filters {
+  display: inline-grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  position: absolute;
+}
+
+.filter {
+  width: fit-content;
+  height: fit-content;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: inherit;
+  padding-top: 150px;
+}
+
+.padding {
+  padding-top: 60px;
+}
+.icon {
+  cursor: pointer;
+}
+
+.headers {
+  height: 60px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  align-content: center;
+}

@@ -23,9 +23,6 @@ export default function useLocalStorage<T>(
     } catch (error) {
       // If error also return initialValue
 
-      // eslint-disable-next-line no-console
-      console.log(error)
-
       return initialValue
     }
   })
@@ -47,7 +44,7 @@ export default function useLocalStorage<T>(
 
       // Save to local storage
 
-      window.localStorage.setItem(key, JSON.stringify(valueToStore))
+      window.localStorage.setItem(key, JSON.stringify(valueToStore || ''))
     } catch (error) {
       // A more advanced implementation would handle the error case
 

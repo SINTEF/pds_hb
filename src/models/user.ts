@@ -5,6 +5,9 @@ export interface IUser {
   companyId?: string
   userGroupId: string
   userGroup?: IUserGroup
+  sub: string
+  iat: number
+  exp: number
 }
 
 export interface IUserGroup {
@@ -16,5 +19,5 @@ export interface IUserGroup {
 
 export interface IUserContext {
   user: IUser | undefined
-  setUser: (value: IUser) => void
+  setUser: (value: IUser | undefined) => void
 }

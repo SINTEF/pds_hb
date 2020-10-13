@@ -4,7 +4,9 @@ import { Provider, Options } from 'use-http'
 
 import './App.css'
 import { Frontpage } from './pages/frontpage'
+import { Header } from './components/header'
 import { Login } from './pages/login'
+import { NotFound } from './pages/not-found'
 import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
@@ -35,6 +37,7 @@ function App(): JSX.Element {
     >
       <UserProvider>
         <BrowserRouter>
+          <Header />
           <Switch>
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
@@ -51,6 +54,9 @@ function App(): JSX.Element {
                 ]}
                 userType={'operator'}
               />
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
+              <NotFound />
             </AuthRoute>
           </Switch>
         </BrowserRouter>
