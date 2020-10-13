@@ -3,12 +3,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider, Options } from 'use-http'
 
 import './App.css'
-import { BrowseComponentPage } from './pages/browse-component-page'
-import { ChooseComponentPage } from './pages/choose-component-page'
-import { Login } from './pages/login'
-import MAIN_ROUTES, { SUB_ROUTES } from './routes/routes.constants'
 import { Header } from './components/header'
+import { Login } from './pages/login'
 import { NotFound } from './pages/not-found'
+import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
 import useLocalStorage from './utils/hooks/useLocalStorage'
@@ -45,16 +43,6 @@ function App(): JSX.Element {
             </Route>
             <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <p>Home</p>
-            </AuthRoute>
-            <AuthRoute path={MAIN_ROUTES.BROWSE}>
-              <Switch>
-                <AuthRoute path={SUB_ROUTES.CHOOSE_COMP}>
-                  <ChooseComponentPage />
-                </AuthRoute>
-                <AuthRoute path={SUB_ROUTES.VIEW}>
-                  <BrowseComponentPage />
-                </AuthRoute>
-              </Switch>
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />
