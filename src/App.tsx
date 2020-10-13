@@ -32,7 +32,7 @@ function App(): JSX.Element {
   }
   return (
     <Provider
-      url={process.env.REACT_APP_API_URL || 'http://localhost:3000'}
+      url={process.env.REACT_APP_API_URL || 'http://localhost:5000'}
       options={options}
     >
       <UserProvider>
