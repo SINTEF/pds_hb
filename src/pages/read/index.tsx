@@ -11,54 +11,111 @@ import { useClickOutside } from '../../utils/hooks/useClickOutside'
 
 import styles from './Read.module.css'
 import { UserContext } from '../../utils/context/userContext'
+import useFetch, { CachePolicies } from 'use-http'
+import { APIResponse } from '../../models/api-response'
+import { IChapter } from '../../models/chapter'
 
 export const Read: React.FC = () => {
-  const [currentValue, setCurrentValue] = useState<string>('')
+  const [currentChapter, setCurrentChapter] = useState<number>(0)
   const [edit, setEdit] = useState<boolean>(false)
   const [navigate, setNavigate] = useState<boolean>(false)
-  const [chapters, setChapters] = useState<string[]>([])
+  const [chapters, setChapters] = useState<IChapter[]>([])
   const [chapterTitles, setChapterTitles] = useState<string[]>([])
 
   const userContext = useContext(UserContext)
-  const isAdmin = userContext?.user?.userGroupId === 'admin'
+  // const isAdmin = userContext?.user?.userGroupId === 'admin'
+  const isAdmin = true
 
-  useEffect(() => {
-    // Get data from server here
-    // Extract titles from server data here also, by parsing the incoming HTML and looking for H1-tags
-  }, [])
+  const { loading, error, response, get, post, put } = useFetch<
+    APIResponse<IChapter[]>
+  >('/pds-handbook', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
-  useEffect(() => {
-    if (chapters[0]) {
-      setCurrentValue(chapters[0])
+  const loadChapters = async () => {
+    const chaptersResponse = (await get()) as APIResponse<IChapter[]>
+    if (response.ok) {
+      setChapters(chaptersResponse.data)
+      extractTitles(chaptersResponse.data)
     }
-  }, [chapters])
+  }
+
+  const extractTitles = (chaptersData: IChapter[]) => {
+    const titles: string[] = []
+    const parser = new DOMParser()
+    for (const chapter of chaptersData) {
+      let title: string
+      const parsedText = parser.parseFromString(chapter.text, 'text/html')
+      const headings = parsedText.getElementsByTagName('h1')
+      if (headings.length > 0) title = headings[0].textContent as string
+      else {
+        title = parsedText.getElementsByTagName('body')[0].textContent as string
+      }
+      if (title) titles.push(title)
+    }
+    setChapterTitles(titles)
+  }
+
+  useEffect(() => {
+    loadChapters()
+  }, [])
 
   const menuRef = useRef(null)
 
   useClickOutside(menuRef, () => setNavigate(false))
 
-  const save: () => void = () => {
+  const save = async () => {
     setEdit(false)
-    // TODO: Send value to server and refetch chapters to reflect changes.
+    await put(
+      `/${chapters[currentChapter].chapterId}`,
+      chapters[currentChapter]
+    )
+    if (response.ok) {
+      await loadChapters()
+      extractTitles(chapters)
+    }
   }
 
-  const changeChapter: (index: number) => void = (index) => {
-    setCurrentValue(chapters[index])
+  const addChapter = async () => {
+    const newChapter: IChapter = {
+      chapterId: chapters.length + 1,
+      text: ' ',
+      editedBy: userContext?.user?.username,
+    }
+    await post(newChapter)
+    if (response.ok) {
+      await loadChapters()
+      extractTitles(chapters)
+      changeChapter(chapters.length - 1)
+      setEdit(true)
+    }
+  }
+
+  const deleteChapter = () => {
+    console.log('Click!')
+  }
+
+  const changeChapter = (index: number) => {
+    setCurrentChapter(index)
     setNavigate(false)
   }
 
   return (
-    <>
+    <div>
       <div className={styles.controls}>
         {!navigate ? (
           <IconButton onClick={() => setNavigate(true)} icon="menu" />
         ) : null}
         {isAdmin ? (
-          edit ? (
-            <IconButton onClick={save} icon="save" />
-          ) : (
-            <IconButton onClick={() => setEdit(true)} icon="create" />
-          )
+          <div>
+            {edit ? (
+              <IconButton onClick={save} icon="save" />
+            ) : (
+              <IconButton onClick={() => setEdit(true)} icon="create" />
+            )}
+            <IconButton onClick={() => deleteChapter()} icon="delete" />
+          </div>
         ) : null}
       </div>
       {navigate ? (
@@ -76,7 +133,7 @@ export const Read: React.FC = () => {
                 <MenuButton
                   label="+ Add new chapter"
                   key="Add new chapter"
-                  onClick={() => console.log('Click!')}
+                  onClick={() => addChapter()}
                 />
               ) : null}
             </>
@@ -84,19 +141,29 @@ export const Read: React.FC = () => {
         </div>
       ) : null}
       <div className={styles.content}>
-        {edit ? (
+        {chapters === [] && loading ? (
+          <p>Loading ...</p>
+        ) : edit ? (
           <RichEditor
-            value={currentValue}
-            onChanged={(value) => setCurrentValue(value)}
+            value={chapters[currentChapter]?.text || ''}
+            onChanged={(value) => {
+              const chaptersCopy = chapters
+              chaptersCopy.splice(currentChapter, 1, {
+                ...chapters[currentChapter],
+                text: value,
+              })
+              setChapters(chaptersCopy)
+            }}
           />
         ) : (
           <>
             {parse(
-              currentValue || "Oups! Looks like there's no content here yet."
+              chapters[currentChapter]?.text ||
+                "Oups! Looks like there's no content here yet."
             )}
           </>
         )}
       </div>
-    </>
+    </div>
   )
 }
