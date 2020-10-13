@@ -33,7 +33,7 @@ export const Read: React.FC = () => {
   // const isAdmin = userContext?.user?.userGroupId === 'admin'
   const isAdmin = true
 
-  const { loading, error, response, get, post, put } = useFetch<
+  const { loading, error, response, get, post, put, del } = useFetch<
     APIResponse<IChapter[]>
   >('/pds-handbook', (options) => {
     options.cachePolicy = CachePolicies.NO_CACHE
@@ -108,8 +108,20 @@ export const Read: React.FC = () => {
     setChapters(chaptersCopy)
   }
 
-  const deleteChapter = () => {
-    return 'test'
+  const deleteChapter = async () => {
+    if (edit) {
+      setEdit(false)
+    }
+    await del(`/${chapters[currentChapter].chapterId}`)
+    if (response.ok) {
+      await loadChapters()
+      const nextChapter = currentChapter - 1
+      if (currentChapter >= 0) {
+        setCurrentChapter(nextChapter)
+      } else {
+        setCurrentChapter(0)
+      }
+    }
   }
 
   const changeChapter = (index: number) => {
