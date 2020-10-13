@@ -16,7 +16,7 @@ export const Frontpage: React.FC = () => {
     '/components',
     []
   )
-  const userContext = useContext(UserContext) as IUserContext 
+  const userContext = useContext(UserContext) as IUserContext
   const suggestions = data?.data.map((component) => component.name) ?? []
   return (
     <div className={styles.frontpage}>
