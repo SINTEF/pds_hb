@@ -37,3 +37,18 @@
   width: 60vw;
   margin: auto;
 }
+.content > table {
+  border-collapse: collapse;
+}
+
+.content > table {
+  border: 1px solid black;
+}
+
+.content th {
+  border: 1px solid black;
+}
+
+.content td {
+  border: 1px solid black;
+}
