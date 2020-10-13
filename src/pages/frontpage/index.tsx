@@ -1,38 +1,42 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Frontpage.module.css'
 import { SearchField } from '../../components/search-field'
 import { Button } from '../../components/button'
 import { useHistory } from 'react-router-dom'
-import MAIN_ROUTES from '../../routes/routes.constants'
+import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
+import useFetch from 'use-http'
+import { IComponent } from '../../models/component'
+import { UserContext } from '../../utils/context/userContext'
+import { IUserContext } from '../../models/user'
+import { APIResponse } from '../../models/api-response'
 
-export interface FrontpageProps {
-  onChange: (value: string) => void
-
-  userType: 'general' | 'operator' | 'moderator'
-
-  suggestions: Array<string>
-
-  onClick: () => void
-}
-
-export const Frontpage: React.FC<FrontpageProps> = ({
-  onChange,
-  userType = 'general',
-  suggestions,
-}: FrontpageProps) => {
+export const Frontpage: React.FC = () => {
   const history = useHistory()
+  const { loading, error, data } = useFetch<APIResponse<IComponent[]>>(
+    '/components',
+    []
+  )
+  const userContext = useContext(UserContext) as IUserContext
+  const suggestions = data?.data.map((component) => component.name) ?? []
   return (
     <div className={styles.frontpage}>
-      <div className={styles.title}>{'PDS Datahåndbok'}</div>
-      {userType === 'general' ? (
+      <div className={styles.title}>{'PDS Datahandbook'}</div>
+      {userContext.user?.userGroupId === 'general_user' ? (
         <div className={[styles.generalMenu, styles.menu].join(' ')}>
           <SearchField
             variant="primary"
             icon={'search'}
             placeholder="Search for component..."
             suggestions={suggestions}
-            onValueChanged={(value) => onChange(value)}
-            onClick={() => false}
+            onValueChanged={() => false}
+            onClick={(componentName) =>
+              history.push(
+                `${MAIN_ROUTES.BROWSE}${SUB_ROUTES.VIEW}/`.replace(
+                  ':componentName',
+                  componentName.replace(' ', '+')
+                )
+              )
+            }
           ></SearchField>
           <Button
             label={'Read PDS datahandbook'}
@@ -44,15 +48,23 @@ export const Frontpage: React.FC<FrontpageProps> = ({
           />
         </div>
       ) : null}
-      {userType === 'moderator' ? (
+      {userContext.user?.userGroupId === 'moderator' ? (
         <div className={[styles.generalMenu, styles.menu].join(' ')}>
+          {loading && 'Loading...'}
           <SearchField
             variant="primary"
             icon={'search'}
             placeholder="Search for component..."
             suggestions={suggestions}
-            onValueChanged={(value) => onChange(value)}
-            onClick={() => false}
+            onValueChanged={() => false}
+            onClick={(componentName) =>
+              history.push(
+                `${MAIN_ROUTES.BROWSE}${SUB_ROUTES.VIEW}/`.replace(
+                  ':componentName',
+                  componentName.replace(' ', '+')
+                )
+              )
+            }
           ></SearchField>
           <Button
             label={'Read and edit PDS datahandbook'}
@@ -64,15 +76,23 @@ export const Frontpage: React.FC<FrontpageProps> = ({
           />
         </div>
       ) : null}
-      {userType === 'operator' ? (
+      {userContext.user?.userGroupId === 'operator' ? (
         <div className={[styles.operatorMenu, styles.menu].join(' ')}>
+          {loading && 'Loading...'}
           <SearchField
             variant="primary"
             icon={'search'}
             placeholder="Search for component..."
             suggestions={suggestions}
-            onValueChanged={(value) => onChange(value)}
-            onClick={() => false}
+            onValueChanged={() => false}
+            onClick={(componentName) =>
+              history.push(
+                `${MAIN_ROUTES.BROWSE}${SUB_ROUTES.VIEW}/`.replace(
+                  ':componentName',
+                  componentName.replace(' ', '+')
+                )
+              )
+            }
           ></SearchField>
           <Button
             label={'Read PDS datahandbook'}
@@ -91,7 +111,9 @@ export const Frontpage: React.FC<FrontpageProps> = ({
             onClick={() => history.push(MAIN_ROUTES.ADD)}
           />
         </div>
-      ) : null}
+      ) : (
+        error && 'Error!'
+      )}
     </div>
   )
 }

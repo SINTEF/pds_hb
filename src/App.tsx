@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider, Options } from 'use-http'
 
 import './App.css'
+import { Frontpage } from './pages/frontpage'
 import { Header } from './components/header'
 import { Login } from './pages/login'
 import { Read } from './pages/read'
@@ -46,7 +47,7 @@ function App(): JSX.Element {
               <Read />
             </Route>
             <AuthRoute exact path={MAIN_ROUTES.HOME}>
-              <p>Home</p>
+              <Frontpage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />
