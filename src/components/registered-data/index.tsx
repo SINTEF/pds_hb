@@ -5,6 +5,14 @@ import styles from './RegisteredData.module.css'
 import { Filter } from '../filter'
 import { RegisteredDataField } from '../registered-data-field'
 
+export interface Data {
+  period: string | number
+  t: string | number
+  tags: string | number
+  du: string | number
+  edited: string | number
+}
+
 export interface RegisteredDataProps {
   component: string //this comes from the parentpage in somehow or from userinput by homepage-search
   equipmentgroup: string // this should also come from above
@@ -14,9 +22,15 @@ export interface RegisteredDataProps {
   getFailureData: (
     component: string,
     filters: Array<Record<string, string>>
-  ) => Array<Array<string>>
+  ) => Array<{
+    period: string | number
+    t: string | number
+    tags: string | number
+    du: string | number
+    edited: string | number
+  }>
   redirect: () => void
-  editData: () => void
+  editData: (arg0: Data) => void
 }
 
 export interface Form {
@@ -91,7 +105,7 @@ export const RegisteredData: React.FC<RegisteredDataProps> = ({
               </tbody>
             </table>
           </div>
-          {getFailureData(compState).map((data, key) => (
+          {getFailureData(compState, filterState.filters).map((data, key) => (
             <RegisteredDataField key={key}>
               <label>{component}</label>
               <label>{data.period}</label>
