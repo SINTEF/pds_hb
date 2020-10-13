@@ -30,7 +30,6 @@ Standard.args = {
   getComponents: () => ['Smoke detector', 'Flame detector'],
   getFilters: (component) => filters[component],
   getValuesForFilter: (filter) => values[filter],
-  getUserGroup: () => 'Operator',
   getFailureData: () => [
     {
       _id: 'object1',
