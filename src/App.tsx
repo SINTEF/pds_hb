@@ -6,6 +6,7 @@ import './App.css'
 import { Frontpage } from './pages/frontpage'
 import { Header } from './components/header'
 import { Login } from './pages/login'
+import { Read } from './pages/read'
 import { NotFound } from './pages/not-found'
 import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
@@ -42,7 +43,10 @@ function App(): JSX.Element {
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
             </Route>
-            <AuthRoute path={MAIN_ROUTES.HOME}>
+            <Route path={MAIN_ROUTES.READ}>
+              <Read />
+            </Route>
+            <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <Frontpage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>

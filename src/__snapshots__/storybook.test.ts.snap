@@ -1056,100 +1056,8 @@ exports[`Storyshots Pages/Login Start 1`] = `
 </div>
 `;
 
-exports[`Storyshots Pages/Read Admin 1`] = `
-Array [
-  <div
-    className="controls"
-  >
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <i
-        aria-label="menu"
-        className="material-icons"
-        onClick={[Function]}
-        role="button"
-        style={
-          Object {
-            "cursor": "pointer",
-            "fontSize": "24px",
-          }
-        }
-      >
-        menu
-      </i>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <i
-        aria-label="create"
-        className="material-icons"
-        onClick={[Function]}
-        role="button"
-        style={
-          Object {
-            "cursor": "pointer",
-            "fontSize": "24px",
-          }
-        }
-      >
-        create
-      </i>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>,
-  <div
-    className="content"
-  >
-    Oups! Looks like there's no content here yet.
-  </div>,
-]
-`;
-
 exports[`Storyshots Pages/Read Standard 1`] = `
-Array [
+<div>
   <div
     className="controls"
   >
@@ -1192,13 +1100,18 @@ Array [
         }
       />
     </div>
-  </div>,
+    <div>
+      <span
+        className="error"
+      >
+        
+      </span>
+    </div>
+  </div>
   <div
     className="content"
-  >
-    Oups! Looks like there's no content here yet.
-  </div>,
-]
+  />
+</div>
 `;
 
 exports[`Storyshots RegisteredData Standard 1`] = `

@@ -12,8 +12,6 @@ import styles from './DropDownMenu.module.css'
 import { useClickOutside } from '../../utils/hooks/useClickOutside'
 
 export interface DropDownMenuProps {
-  isCompanyUser: boolean
-
   username: string
 
   company?: string

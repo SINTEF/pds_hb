@@ -15,7 +15,6 @@ const Template: Story<DropDownMenuProps> = (args) => <DropDownMenu {...args} />
 
 export const CompanyUser = Template.bind({})
 CompanyUser.args = {
-  isCompanyUser: true,
   username: 'Steve Jobs',
   company: 'Equinor AS',
 }
