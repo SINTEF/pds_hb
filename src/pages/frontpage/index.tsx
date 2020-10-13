@@ -29,9 +29,12 @@ export const Frontpage: React.FC = () => {
             placeholder="Search for component..."
             suggestions={suggestions}
             onValueChanged={() => false}
-            onClick={(s) =>
+            onClick={(componentName) =>
               history.push(
-                MAIN_ROUTES.BROWSE + SUB_ROUTES.VIEW + '/' + s.replace(' ', '+')
+                `${MAIN_ROUTES.BROWSE}${SUB_ROUTES.VIEW}/`.replace(
+                  ':componentName',
+                  componentName.replace(' ', '+')
+                )
               )
             }
           ></SearchField>
@@ -54,9 +57,12 @@ export const Frontpage: React.FC = () => {
             placeholder="Search for component..."
             suggestions={suggestions}
             onValueChanged={() => false}
-            onClick={(s) =>
+            onClick={(componentName) =>
               history.push(
-                MAIN_ROUTES.BROWSE + SUB_ROUTES.VIEW + '/' + s.replace(' ', '+')
+                `${MAIN_ROUTES.BROWSE}${SUB_ROUTES.VIEW}/`.replace(
+                  ':componentName',
+                  componentName.replace(' ', '+')
+                )
               )
             }
           ></SearchField>
@@ -79,9 +85,12 @@ export const Frontpage: React.FC = () => {
             placeholder="Search for component..."
             suggestions={suggestions}
             onValueChanged={() => false}
-            onClick={(s) =>
+            onClick={(componentName) =>
               history.push(
-                MAIN_ROUTES.BROWSE + SUB_ROUTES.VIEW + '/' + s.replace(' ', '+')
+                `${MAIN_ROUTES.BROWSE}${SUB_ROUTES.VIEW}/`.replace(
+                  ':componentName',
+                  componentName.replace(' ', '+')
+                )
               )
             }
           ></SearchField>
