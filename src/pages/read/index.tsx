@@ -68,7 +68,7 @@ export const Read: React.FC = () => {
   const save = async () => {
     setEdit(false)
     await put(
-      `/${chapters[currentChapter].chapterId}`,
+      `/${chapters[currentChapter]?.chapterId}`,
       chapters[currentChapter]
     )
     if (response.ok) {
@@ -107,16 +107,23 @@ export const Read: React.FC = () => {
         {!navigate ? (
           <IconButton onClick={() => setNavigate(true)} icon="menu" />
         ) : null}
-        {isAdmin ? (
-          <div>
-            {edit ? (
-              <IconButton onClick={save} icon="save" />
-            ) : (
-              <IconButton onClick={() => setEdit(true)} icon="create" />
-            )}
-            <IconButton onClick={() => deleteChapter()} icon="delete" />
-          </div>
-        ) : null}
+        <div>
+          <span className={styles.error}>
+            {error
+              ? "Hmm, that didn't go according to plan. Try again later!"
+              : ''}
+          </span>
+          {isAdmin ? (
+            <>
+              {edit ? (
+                <IconButton onClick={save} icon="save" />
+              ) : (
+                <IconButton onClick={() => setEdit(true)} icon="create" />
+              )}
+              <IconButton onClick={() => deleteChapter()} icon="delete" />
+            </>
+          ) : null}
+        </div>
       </div>
       {navigate ? (
         <div className={styles.sideMenu}>
@@ -141,7 +148,7 @@ export const Read: React.FC = () => {
         </div>
       ) : null}
       <div className={styles.content}>
-        {chapters === [] && loading ? (
+        {chapters.length === 0 && loading ? (
           <p>Loading ...</p>
         ) : edit ? (
           <RichEditor
@@ -157,10 +164,12 @@ export const Read: React.FC = () => {
           />
         ) : (
           <>
-            {parse(
-              chapters[currentChapter]?.text ||
-                "Oups! Looks like there's no content here yet."
-            )}
+            {chapters[currentChapter]
+              ? parse(
+                  chapters[currentChapter]?.text ||
+                    "Oups! Looks like there's no content here yet."
+                )
+              : null}
           </>
         )}
       </div>

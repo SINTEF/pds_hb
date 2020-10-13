@@ -12,8 +12,16 @@
 
 .controls > div {
   display: flex;
-  width: 75px;
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+
+.controls > div > * {
+  margin-left: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 0.75em;
 }
 
 .sideMenu {
