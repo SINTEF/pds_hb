@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  useCallback,
+} from 'react'
+import Loader from 'react-loader-spinner'
 
 import parse from 'html-react-parser'
 
@@ -33,13 +40,13 @@ export const Read: React.FC = () => {
     return options
   })
 
-  const loadChapters = async () => {
+  const loadChapters = useCallback(async () => {
     const chaptersResponse = (await get()) as APIResponse<IChapter[]>
-    if (response.ok) {
+    if (chaptersResponse.success) {
       setChapters(chaptersResponse.data)
       extractTitles(chaptersResponse.data)
     }
-  }
+  }, [get])
 
   const extractTitles = (chaptersData: IChapter[]) => {
     const titles: string[] = []
@@ -59,7 +66,7 @@ export const Read: React.FC = () => {
 
   useEffect(() => {
     loadChapters()
-  }, [])
+  }, [loadChapters])
 
   const menuRef = useRef(null)
 
@@ -78,22 +85,31 @@ export const Read: React.FC = () => {
   }
 
   const addChapter = async () => {
+    const newChapterID = chapters[chapters.length - 1]?.chapterId + 1
     const newChapter: IChapter = {
-      chapterId: chapters.length + 1,
-      text: ' ',
+      chapterId: newChapterID,
+      text: '<h1>New Chapter</h1>',
       editedBy: userContext?.user?.username,
     }
     await post(newChapter)
     if (response.ok) {
       await loadChapters()
       extractTitles(chapters)
-      changeChapter(chapters.length - 1)
+      changeChapter(chapters.length)
       setEdit(true)
     }
   }
+  const handleRTEValueChanged = (value: string) => {
+    const chaptersCopy = chapters
+    chaptersCopy.splice(currentChapter, 1, {
+      ...chapters[currentChapter],
+      text: value,
+    })
+    setChapters(chaptersCopy)
+  }
 
   const deleteChapter = () => {
-    console.log('Click!')
+    return 'test'
   }
 
   const changeChapter = (index: number) => {
@@ -104,15 +120,14 @@ export const Read: React.FC = () => {
   return (
     <div>
       <div className={styles.controls}>
-        {!navigate ? (
-          <IconButton onClick={() => setNavigate(true)} icon="menu" />
-        ) : null}
+        <IconButton onClick={() => setNavigate(true)} icon="menu" />
         <div>
           <span className={styles.error}>
             {error
               ? "Hmm, that didn't go according to plan. Try again later!"
               : ''}
           </span>
+          <Loader height={24} color="grey" type="Grid" visible={loading} />
           {isAdmin ? (
             <>
               {edit ? (
@@ -140,7 +155,7 @@ export const Read: React.FC = () => {
                 <MenuButton
                   label="+ Add new chapter"
                   key="Add new chapter"
-                  onClick={() => addChapter()}
+                  onClick={addChapter}
                 />
               ) : null}
             </>
@@ -153,14 +168,7 @@ export const Read: React.FC = () => {
         ) : edit ? (
           <RichEditor
             value={chapters[currentChapter]?.text || ''}
-            onChanged={(value) => {
-              const chaptersCopy = chapters
-              chaptersCopy.splice(currentChapter, 1, {
-                ...chapters[currentChapter],
-                text: value,
-              })
-              setChapters(chaptersCopy)
-            }}
+            onChanged={handleRTEValueChanged}
           />
         ) : (
           <>
