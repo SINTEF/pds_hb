@@ -1057,7 +1057,7 @@ exports[`Storyshots Pages/Login Start 1`] = `
 `;
 
 exports[`Storyshots Pages/Read Standard 1`] = `
-Array [
+<div>
   <div
     className="controls"
   >
@@ -1100,13 +1100,18 @@ Array [
         }
       />
     </div>
-  </div>,
+    <div>
+      <span
+        className="error"
+      >
+        
+      </span>
+    </div>
+  </div>
   <div
     className="content"
-  >
-    Oups! Looks like there's no content here yet.
-  </div>,
-]
+  />
+</div>
 `;
 
 exports[`Storyshots RegisteredData Standard 1`] = `
