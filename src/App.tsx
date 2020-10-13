@@ -3,8 +3,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider, Options } from 'use-http'
 
 import './App.css'
+import { Header } from './components/header'
 import { Login } from './pages/login'
 import { Read } from './pages/read'
+import { NotFound } from './pages/not-found'
 import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
@@ -35,6 +37,7 @@ function App(): JSX.Element {
     >
       <UserProvider>
         <BrowserRouter>
+          <Header />
           <Switch>
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
@@ -42,8 +45,11 @@ function App(): JSX.Element {
             <Route path={MAIN_ROUTES.READ}>
               <Read />
             </Route>
-            <AuthRoute path={MAIN_ROUTES.HOME}>
+            <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <p>Home</p>
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
+              <NotFound />
             </AuthRoute>
           </Switch>
         </BrowserRouter>

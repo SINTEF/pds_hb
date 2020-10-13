@@ -1,18 +1,16 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { Header, HeaderProps } from '.'
+import { Header } from '.'
 
 export default {
   title: 'Header',
   component: Header,
 } as Meta
 
-const Template: Story<HeaderProps> = (args) => <Header {...args} />
+const Template: Story = (args) => <Header {...args} />
 
 export const Standard = Template.bind({})
-Standard.args = {
-  isCompanyUser: true,
-  username: 'Johnny Bravvo',
-  company: 'Cartoon Network',
+Standard.parameters = {
+  storyshots: { disable: true },
 }
