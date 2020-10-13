@@ -4,6 +4,7 @@ import { Provider, Options } from 'use-http'
 
 import './App.css'
 import { Header } from './components/header'
+import { CompanyPage } from './pages/company-page'
 import { Login } from './pages/login'
 import { NotFound } from './pages/not-found'
 import MAIN_ROUTES from './routes/routes.constants'
@@ -46,6 +47,9 @@ function App(): JSX.Element {
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.COMPANY}>
+              <CompanyPage />
             </AuthRoute>
           </Switch>
         </BrowserRouter>

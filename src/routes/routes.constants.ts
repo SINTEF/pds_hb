@@ -9,4 +9,11 @@ const MAIN_ROUTES = {
   NOT_FOUND: '*',
 }
 
+export const COMPANY_SUB_ROUTES = {
+  REG_DATA: '/registered-data',
+  USER: '/user',
+  MANAGE_FAC: '/manage-facility',
+  MANAGE_STAFF: '/manage-staff',
+}
+
 export default MAIN_ROUTES

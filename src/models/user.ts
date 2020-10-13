@@ -1,8 +1,9 @@
 export interface IUser {
+  _id: string
   username: string
   email: string
   phoneNr?: string
-  companyId?: string
+  companyName?: string
   userGroupId: string
   userGroup?: IUserGroup
   sub: string
