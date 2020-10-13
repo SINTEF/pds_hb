@@ -30,8 +30,7 @@ export const Read: React.FC = () => {
   const [chapterTitles, setChapterTitles] = useState<string[]>([])
 
   const userContext = useContext(UserContext)
-  // const isAdmin = userContext?.user?.userGroupId === 'admin'
-  const isAdmin = true
+  const isAdmin = userContext?.user?.userGroupType === 'admin'
 
   const { loading, error, response, get, post, put, del } = useFetch<
     APIResponse<IChapter[]>
