@@ -4,8 +4,8 @@ import { Story, Meta } from '@storybook/react'
 import { ManageFacilitiesPage, ManageFacilitiesPageProps } from '.'
 
 export default {
-  title: 'Mange facilities',
-  Page: ManageFacilitiesPage,
+  title: 'pages/Mange facilities',
+  component: ManageFacilitiesPage,
 } as Meta
 
 const Template: Story<ManageFacilitiesPageProps> = (args) => (

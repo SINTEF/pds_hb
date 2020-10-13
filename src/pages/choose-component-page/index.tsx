@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './ChooseComponentPage.module.css'
 
-import { Title } from '../title'
-import { EquipmentGroup } from '../equipment-group'
+import { Title } from '../../components/title'
+
+import { Group } from '../../components/group'
+import { IGroup } from '../../components/equipment-group-form'
 
 export interface ChooseComponentPageProps {
-  getComponents: () => Array<string>
-  getEquipmentGroups: () => Array<string>
+  getComponents: () => IGroup[]
+  getEquipmentGroups: () => IGroup[]
 }
 
 export const ChooseComponentPage: React.FC<ChooseComponentPageProps> = ({
@@ -14,26 +16,29 @@ export const ChooseComponentPage: React.FC<ChooseComponentPageProps> = ({
   getComponents,
 }: ChooseComponentPageProps) => {
   const [pageState, setPage] = useState<number>(1)
-  const [button, setbutton] = useState<Array<string>>(getEquipmentGroups)
+  const [groups, setGroups] = useState<IGroup[]>([])
+  const [components, setComponents] = useState<IGroup[]>([])
+
+  useEffect(() => {
+    setGroups(getEquipmentGroups())
+  }, [getEquipmentGroups])
+
   if (pageState === 1) {
     return (
       <div className={styles.container}>
         <Title title="Choose equipment group"> </Title>
         <div className={styles.components}>
-          {button.map((group, index) => {
+          {groups.map((group, index) => {
             return (
               <div key={index} className={styles.equipmentContainer}>
-                <EquipmentGroup
+                <Group
                   isAdmin={false}
-                  name={group}
-                  symbol={
-                    'https://www.svgrepo.com/show/131030/question-mark.svg'
-                  }
+                  group={group}
                   onClick={() => {
                     setPage(2)
-                    setbutton(getComponents)
+                    setComponents(getComponents)
                   }}
-                ></EquipmentGroup>
+                ></Group>
               </div>
             )
           })}
@@ -46,17 +51,14 @@ export const ChooseComponentPage: React.FC<ChooseComponentPageProps> = ({
       <div className={styles.container}>
         <Title title="Choose equipment group"> </Title>
         <div className={styles.components}>
-          {button.map((group, index) => {
+          {components.map((group, index) => {
             return (
               <div key={index} className={styles.equipmentContainer}>
-                <EquipmentGroup
+                <Group
                   isAdmin={false}
-                  name={group}
-                  symbol={
-                    'https://www.svgrepo.com/show/131030/question-mark.svg'
-                  }
+                  group={group}
                   onClick={() => setPage(2)}
-                ></EquipmentGroup>
+                ></Group>
               </div>
             )
           })}

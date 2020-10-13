@@ -1,25 +1,56 @@
 import React from 'react'
-import logo from './logo.svg'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Provider, Options } from 'use-http'
+
 import './App.css'
+import { Header } from './components/header'
+import { Login } from './pages/login'
+import { NotFound } from './pages/not-found'
+import MAIN_ROUTES from './routes/routes.constants'
+import { AuthRoute } from './utils/AuthRoute'
+import { UserProvider } from './utils/context/userContext'
+import useLocalStorage from './utils/hooks/useLocalStorage'
 
 function App(): JSX.Element {
+  const { storedValue: token } = useLocalStorage<string>('token', '')
+
+  const options: Partial<Options> = {
+    interceptors: {
+      // every time we make an http request, this will run 1st before the request is made
+      // url, path and route are supplied to the interceptor
+      // request options can be modified and must be returned
+      request: ({ options }) => {
+        options.headers = {
+          ...options.headers,
+          Authorization: `Bearer ${token}`,
+        }
+
+        return options
+      },
+    },
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider
+      url={process.env.REACT_APP_API_URL || 'http://localhost:5000'}
+      options={options}
+    >
+      <UserProvider>
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route path={MAIN_ROUTES.LOGIN}>
+              <Login />
+            </Route>
+            <AuthRoute exact path={MAIN_ROUTES.HOME}>
+              <p>Home</p>
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
+              <NotFound />
+            </AuthRoute>
+          </Switch>
+        </BrowserRouter>
+      </UserProvider>
+    </Provider>
   )
 }
 
