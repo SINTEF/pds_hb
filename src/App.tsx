@@ -43,9 +43,9 @@ function App(): JSX.Element {
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
             </Route>
-            <Route path={MAIN_ROUTES.READ}>
+            <AuthRoute path={MAIN_ROUTES.READ}>
               <Read />
-            </Route>
+            </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <Frontpage />
             </AuthRoute>
