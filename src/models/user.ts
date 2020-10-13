@@ -4,8 +4,7 @@ export interface IUser {
   email: string
   phoneNr?: string
   companyName?: string
-  userGroupId: string
-  userGroup?: IUserGroup
+  userGroupType: 'general_user' | 'admin' | 'operator' | 'vendor'
   sub: string
   iat: number
   exp: number

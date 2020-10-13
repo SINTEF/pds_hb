@@ -3,9 +3,11 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider, Options } from 'use-http'
 
 import './App.css'
+import { Frontpage } from './pages/frontpage'
 import { Header } from './components/header'
 import { CompanyPage } from './pages/company-page'
 import { Login } from './pages/login'
+import { Read } from './pages/read'
 import { NotFound } from './pages/not-found'
 import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
@@ -42,8 +44,11 @@ function App(): JSX.Element {
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
             </Route>
+            <AuthRoute path={MAIN_ROUTES.READ}>
+              <Read />
+            </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.HOME}>
-              <p>Home</p>
+              <Frontpage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />

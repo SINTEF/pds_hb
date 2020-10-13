@@ -24,7 +24,6 @@ export const Header: React.FC = () => {
       {showUserMenu ? (
         <div className={styles.dropdown}>
           <DropDownMenu
-            isCompanyUser={userContext.user?.userGroupId === 'company_user'}
             username={userContext.user?.username || ''}
             company={userContext.user?.companyName}
           ></DropDownMenu>

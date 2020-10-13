@@ -16,4 +16,9 @@ export const COMPANY_SUB_ROUTES = {
   MANAGE_STAFF: '/manage-staff',
 }
 
+export const SUB_ROUTES = {
+  CHOOSE_COMP: '/choose_component',
+  VIEW: '/view/:componentName',
+}
+
 export default MAIN_ROUTES

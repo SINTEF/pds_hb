@@ -13,6 +13,10 @@
   text-align: center;
 }
 
+.inputGroup > :first-child {
+  margin-top: 40px;
+}
+
 .inputGroup > :not(:first-child) {
   margin-top: 20px;
 }
@@ -22,10 +26,19 @@
   flex-direction: column;
 }
 
-.buttonGroup > :first-child {
-  margin-top: 60px;
-}
-
 .buttonGroup > :not(:first-child) {
   margin-top: 20px;
+}
+
+.feedbackGroup {
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+  align-self: center;
+  justify-content: space-around;
+}
+
+.feedbackGroup > p {
+  color: red;
+  font-size: 0.75em;
 }
