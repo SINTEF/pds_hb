@@ -2419,10 +2419,10 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
   >
     PDS Datahandbook
   </div>
-  Loading...
   <div
     className="operatorMenu menu"
   >
+    Loading...
     <div
       className="primary SearchField"
       onBlur={[Function]}

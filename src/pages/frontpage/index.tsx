@@ -8,16 +8,19 @@ import useFetch from 'use-http'
 import { IComponent } from '../../models/component'
 import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
+import { APIResponse } from '../../models/api-response'
 
 export const Frontpage: React.FC = () => {
   const history = useHistory()
-  const { loading, error, data = [] } = useFetch('/component', [])
+  const { loading, error, data } = useFetch<APIResponse<IComponent[]>>(
+    '/components',
+    []
+  )
   const userContext = useContext(UserContext) as IUserContext 
-  const suggestions = data.map((component: IComponent) => component.name)
+  const suggestions = data?.data.map((component) => component.name) ?? []
   return (
     <div className={styles.frontpage}>
       <div className={styles.title}>{'PDS Datahandbook'}</div>
-      {loading && 'Loading...'}
       {userContext.user?.userGroupId === 'general_user' ? (
         <div className={[styles.generalMenu, styles.menu].join(' ')}>
           <SearchField
@@ -27,7 +30,9 @@ export const Frontpage: React.FC = () => {
             suggestions={suggestions}
             onValueChanged={() => false}
             onClick={(s) =>
-              history.push(MAIN_ROUTES.BROWSE + SUB_ROUTES.VIEW + s)
+              history.push(
+                MAIN_ROUTES.BROWSE + SUB_ROUTES.VIEW + '/' + s.replace(' ', '+')
+              )
             }
           ></SearchField>
           <Button
@@ -42,6 +47,7 @@ export const Frontpage: React.FC = () => {
       ) : null}
       {userContext.user?.userGroupId === 'moderator' ? (
         <div className={[styles.generalMenu, styles.menu].join(' ')}>
+          {loading && 'Loading...'}
           <SearchField
             variant="primary"
             icon={'search'}
@@ -49,7 +55,9 @@ export const Frontpage: React.FC = () => {
             suggestions={suggestions}
             onValueChanged={() => false}
             onClick={(s) =>
-              history.push(MAIN_ROUTES.BROWSE + SUB_ROUTES.VIEW + s)
+              history.push(
+                MAIN_ROUTES.BROWSE + SUB_ROUTES.VIEW + '/' + s.replace(' ', '+')
+              )
             }
           ></SearchField>
           <Button
@@ -62,8 +70,9 @@ export const Frontpage: React.FC = () => {
           />
         </div>
       ) : null}
-      {1===1 ? (
+      {userContext.user?.userGroupId === 'operator' ? (
         <div className={[styles.operatorMenu, styles.menu].join(' ')}>
+          {loading && 'Loading...'}
           <SearchField
             variant="primary"
             icon={'search'}
@@ -71,7 +80,9 @@ export const Frontpage: React.FC = () => {
             suggestions={suggestions}
             onValueChanged={() => false}
             onClick={(s) =>
-              history.push(MAIN_ROUTES.BROWSE + SUB_ROUTES.VIEW + s)
+              history.push(
+                MAIN_ROUTES.BROWSE + SUB_ROUTES.VIEW + '/' + s.replace(' ', '+')
+              )
             }
           ></SearchField>
           <Button
