@@ -7,6 +7,8 @@ import { BrowseComponentPage } from './pages/browse-component-page'
 import { ChooseComponentPage } from './pages/choose-component-page'
 import { Login } from './pages/login'
 import MAIN_ROUTES, { SUB_ROUTES } from './routes/routes.constants'
+import { Header } from './components/header'
+import { NotFound } from './pages/not-found'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
 import useLocalStorage from './utils/hooks/useLocalStorage'
@@ -36,11 +38,12 @@ function App(): JSX.Element {
     >
       <UserProvider>
         <BrowserRouter>
+          <Header />
           <Switch>
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
             </Route>
-            <AuthRoute path={MAIN_ROUTES.HOME}>
+            <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <p>Home</p>
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.BROWSE}>
@@ -52,6 +55,9 @@ function App(): JSX.Element {
                   <BrowseComponentPage />
                 </AuthRoute>
               </Switch>
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
+              <NotFound />
             </AuthRoute>
           </Switch>
         </BrowserRouter>
