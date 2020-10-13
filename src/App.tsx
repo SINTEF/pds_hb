@@ -43,17 +43,7 @@ function App(): JSX.Element {
               <Login />
             </Route>
             <AuthRoute path={MAIN_ROUTES.HOME}>
-              <Frontpage
-                suggestions={[
-                  'Flame detector',
-                  'Smoke detector',
-                  'Cake detector',
-                  'Metal detector',
-                  'Flamethrower',
-                  'banana',
-                ]}
-                userType={'operator'}
-              />
+              <Frontpage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />

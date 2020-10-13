@@ -9,4 +9,9 @@ const MAIN_ROUTES = {
   NOT_FOUND: '*',
 }
 
+export const SUB_ROUTES = {
+  CHOOSE_COMP: '/choose_component',
+  VIEW: '/view/:componentName',
+}
+
 export default MAIN_ROUTES
