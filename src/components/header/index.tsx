@@ -14,6 +14,7 @@ export const Header: React.FC = () => {
     exact: true,
   })
   const showUserMenu = !useRouteMatch(MAIN_ROUTES.LOGIN)
+  const isOperator = userContext.user?.companyName ? true : false
   return (
     <div className={styles.container}>
       {showHomeLink ? (
@@ -26,6 +27,7 @@ export const Header: React.FC = () => {
           <DropDownMenu
             username={userContext.user?.username || ''}
             company={userContext.user?.companyName}
+            isCompanyUser={isOperator}
           ></DropDownMenu>
         </div>
       ) : null}

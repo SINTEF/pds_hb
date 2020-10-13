@@ -81,7 +81,7 @@ export const AddDataPage: React.FC<AddDataPageProps> = ({
               dataState.period ? undefined : 'dd.mm.yyyy - dd.mm.yyyy...'
             }
             onValueChanged={(value) => {
-              setData({ ...dataState, period: value as number })
+              setData({ ...dataState, period: Number(value as string) })
             }}
           />
           <InputField
@@ -90,7 +90,7 @@ export const AddDataPage: React.FC<AddDataPageProps> = ({
             label="T"
             placeholder={dataState.t ? undefined : 'Set a time T in hours...'}
             onValueChanged={(value) => {
-              setData({ ...dataState, t: value as number })
+              setData({ ...dataState, t: Number(value as string) })
             }}
           />
           <InputField
@@ -99,7 +99,7 @@ export const AddDataPage: React.FC<AddDataPageProps> = ({
             label="DU value"
             placeholder={dataState.du ? undefined : 'Set a DU-value...'}
             onValueChanged={(value) => {
-              setData({ ...dataState, du: value as number })
+              setData({ ...dataState, du: Number(value as string) })
             }}
           />
           <InputField
@@ -110,7 +110,7 @@ export const AddDataPage: React.FC<AddDataPageProps> = ({
               dataState.populationsize ? undefined : 'Set a populationsize...'
             }
             onValueChanged={(value) => {
-              setData({ ...dataState, populationsize: value as number })
+              setData({ ...dataState, populationsize: Number(value as string) })
             }}
           />
         </div>
