@@ -25,13 +25,13 @@ export const CompanyPage: React.FC = () => {
         </>
       </SideMenu>
       <Switch>
-        <Route>
+        <Route path={COMPANY_SUB_ROUTES.USER}>
           <CompanyUserPage />
         </Route>
-        <Route>
+        <Route path={COMPANY_SUB_ROUTES.MANAGE_FAC}>
           <ManageFacilitiesPage />
         </Route>
-        <Route>
+        <Route path={COMPANY_SUB_ROUTES.MANAGE_STAFF}>
           <ManageStaffmembersPage />
         </Route>
       </Switch>
