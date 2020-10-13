@@ -3,8 +3,7 @@ export interface IUser {
   email: string
   phoneNr?: string
   companyId?: string
-  userGroupId: string
-  userGroup?: IUserGroup
+  userGroupType: string
   sub: string
   iat: number
   exp: number
