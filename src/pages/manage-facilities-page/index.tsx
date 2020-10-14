@@ -9,10 +9,7 @@ import useFetch from 'use-http'
 import { IUserContext } from '../../models/user'
 import { UserContext } from '../../utils/context/userContext'
 
-export interface ManageFacilitiesPageProps {
-  editFacilities: (editFacilties: string | Record<string, string>) => void // send all facilities to backend, evt. including the changed one
-}
-
+//TO FIX: Needs types for facility and communications with server
 export const ManageFacilitiesPage: React.FC = () => {
   const [facilityState, setFacility] = useState<string>('')
   const [pageState, setPage] = useState<string>('')

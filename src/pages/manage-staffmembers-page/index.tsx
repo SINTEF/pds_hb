@@ -12,17 +12,18 @@ import useFetch from 'use-http'
 import { APIResponse } from '../../models/api-response'
 import { ICompany } from '../../models/company'
 
+// TO FIX: Needs error and loading handling
 export const ManageStaffmembersPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
   const companyName = userContext.user?.companyName
 
   const { data: companyData } = useFetch<APIResponse<ICompany>>(
-    '/company/?companyId=' + companyName,
+    '/company/' + companyName,
     []
   )
 
   const { get: staffGet, data: staffData } = useFetch<APIResponse<IUser[]>>(
-    '/user/?companyId=' + companyName,
+    '/user/users',
     []
   )
 
@@ -48,34 +49,35 @@ export const ManageStaffmembersPage: React.FC = () => {
           <div>{'Joined'}</div>
           <div>{'      '}</div>
         </div>
-        {staffData?.data.map(
-          (
-            user,
-            idx // type any?
-          ) =>
+        {staffData?.data &&
+          staffData?.data.map(
             (
-              <RegisteredDataField key={idx}>
-                {[
-                  <div key={idx}>{user.username}</div>,
-                  <div key={idx}>{user.email}</div>,
-                  <div key={idx}>{user.phoneNr}</div>,
-                  <button
-                    className={styles.remove}
-                    onClick={() => removeUser(user._id)}
-                    key={idx}
-                  >
-                    {'Remove'}
-                  </button>,
-                ]}
-              </RegisteredDataField>
-            ) ?? []
-        )}
+              user,
+              idx // type any?
+            ) =>
+              (
+                <RegisteredDataField key={idx}>
+                  {[
+                    <div key={idx}>{user.username}</div>,
+                    <div key={idx}>{user.email}</div>,
+                    <div key={idx}>{user.phoneNr}</div>,
+                    <button
+                      className={styles.remove}
+                      onClick={() => removeUser(user._id)}
+                      key={idx}
+                    >
+                      {'Remove'}
+                    </button>,
+                  ]}
+                </RegisteredDataField>
+              ) ?? []
+          )}
       </div>
       <div className={styles.secondcontainer}>
         <div className={styles.usersleft}>
           {'Your company has '}
           <div className={styles.numberusersleft}>
-            {companyData?.data.maxUsers ?? 0 - (staffData?.data ?? []).length}
+            {(companyData?.data.maxUsers ?? 0) - (staffData?.data?.length ?? 0)}
           </div>
           {' more possible users to add.'}
         </div>
@@ -83,6 +85,7 @@ export const ManageStaffmembersPage: React.FC = () => {
           <InputField
             label="Email"
             variant="standard"
+            type="email"
             placeholder="ola.nordmann@gmail.com"
             onValueChanged={(value) => setMail(value as string)}
           />
