@@ -22,23 +22,23 @@ export const CompanyPage: React.FC = () => {
             <>
               <MenuButton
                 onClick={() => history.push(url + COMPANY_SUB_ROUTES.REG_DATA)}
-                label="Registered data"
+                label="Browse own equipment data"
               />
               <MenuButton
                 onClick={() => history.push(url + COMPANY_SUB_ROUTES.USER)}
-                label="User page"
-              />
-              <MenuButton
-                onClick={() =>
-                  history.push(url + COMPANY_SUB_ROUTES.MANAGE_FAC)
-                }
-                label="Manage Facilities"
+                label="Company user"
               />
               <MenuButton
                 onClick={() =>
                   history.push(url + COMPANY_SUB_ROUTES.MANAGE_STAFF)
                 }
-                label="Manage staff"
+                label="Manage staffmembers"
+              />
+              <MenuButton
+                onClick={() =>
+                  history.push(url + COMPANY_SUB_ROUTES.MANAGE_FAC)
+                }
+                label="Manage facilities"
               />
             </>
           </SideMenu>
@@ -49,14 +49,14 @@ export const CompanyPage: React.FC = () => {
           <Route path={path + COMPANY_SUB_ROUTES.REG_DATA}>
             {/* <RegisteredData />  this component needs some work before it can be used*/}
           </Route>
-          <Route path={path + COMPANY_SUB_ROUTES.USER}>
-            <CompanyUserPage />
-          </Route>
           <Route path={path + COMPANY_SUB_ROUTES.MANAGE_FAC}>
             <ManageFacilitiesPage />
           </Route>
           <Route path={path + COMPANY_SUB_ROUTES.MANAGE_STAFF}>
             <ManageStaffmembersPage />
+          </Route>
+          <Route path={[path + COMPANY_SUB_ROUTES.USER, path]}>
+            <CompanyUserPage />
           </Route>
         </Switch>
       </div>
