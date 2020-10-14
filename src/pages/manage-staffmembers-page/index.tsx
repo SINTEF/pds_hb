@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import styles from './ManageStaffmembersPage.module.css'
 
@@ -6,25 +6,39 @@ import { Title } from '../../components/title'
 import { Button } from '../../components/button'
 import { InputField } from '../../components/input-field'
 import { RegisteredDataField } from '../../components/registered-data-field'
+import { IUser, IUserContext } from '../../models/user'
+import { UserContext } from '../../utils/context/userContext'
+import useFetch from 'use-http'
+import { APIResponse } from '../../models/api-response'
+import { ICompany } from '../../models/company'
 
-export interface ManageStaffmembersPageProps {
-  getStaff: () => {
-    name: string
-    mail: string
-    joined: string
-  }[]
-  getTotalStaffNumber: () => number
-  sendMail: (mail: string) => void
-  removeUser: (JSON: { name: string; mail: string; joined: string }) => void
-}
+// TO FIX: Needs error and loading handling
+export const ManageStaffmembersPage: React.FC = () => {
+  const userContext = useContext(UserContext) as IUserContext
+  const companyName = userContext.user?.companyName
 
-export const ManageStaffmembersPage: React.FC<ManageStaffmembersPageProps> = ({
-  getStaff,
-  getTotalStaffNumber,
-  sendMail,
-  removeUser,
-}: ManageStaffmembersPageProps) => {
-  const [formState, setForm] = useState<string>('')
+  const { data: companyData } = useFetch<APIResponse<ICompany>>(
+    '/company/' + companyName,
+    []
+  )
+
+  const { get: staffGet, data: staffData } = useFetch<APIResponse<IUser[]>>(
+    '/user/users',
+    []
+  )
+
+  const { del, response: facilitiesResponse } = useFetch('/update')
+
+  const removeUser = async (user: string) => {
+    await del(user)
+    if (facilitiesResponse.ok) staffGet()
+  }
+
+  const [mailState, setMail] = useState<string>('')
+
+  const sendMail = (email: string) => {
+    return email
+  } //send to backend
   return (
     <div>
       <div className={styles.container}>
@@ -35,50 +49,58 @@ export const ManageStaffmembersPage: React.FC<ManageStaffmembersPageProps> = ({
           <div>{'Joined'}</div>
           <div>{'      '}</div>
         </div>
-        {getStaff().map((user, idx) => (
-          <RegisteredDataField key={idx}>
-            {[
-              <div key={idx}>{user.name}</div>,
-              <div key={idx}>{user.mail}</div>,
-              <div key={idx}>{user.joined}</div>,
-              <button
-                className={styles.remove}
-                onClick={() => removeUser(user)}
-                key={idx}
-              >
-                {'Remove'}
-              </button>,
-            ]}
-          </RegisteredDataField>
-        ))}
+        {staffData?.data &&
+          staffData?.data.map(
+            (
+              user,
+              idx // type any?
+            ) =>
+              (
+                <RegisteredDataField key={idx}>
+                  {[
+                    <div key={idx}>{user.username}</div>,
+                    <div key={idx}>{user.email}</div>,
+                    <div key={idx}>{user.phoneNr}</div>,
+                    <button
+                      className={styles.remove}
+                      onClick={() => removeUser(user._id)}
+                      key={idx}
+                    >
+                      {'Remove'}
+                    </button>,
+                  ]}
+                </RegisteredDataField>
+              ) ?? []
+          )}
       </div>
       <div className={styles.secondcontainer}>
         <div className={styles.usersleft}>
           {'Your company has '}
           <div className={styles.numberusersleft}>
-            {getTotalStaffNumber() - getStaff().length}
+            {(companyData?.data.maxUsers ?? 0) - (staffData?.data?.length ?? 0)}
           </div>
           {' more possible users to add.'}
         </div>
-        {getTotalStaffNumber() !== getStaff().length && (
+        {companyData?.data.maxUsers !== staffData?.data?.length && (
           <InputField
             label="Email"
             variant="standard"
+            type="email"
             placeholder="ola.nordmann@gmail.com"
-            onValueChanged={(value) => setForm(value as string)}
+            onValueChanged={(value) => setMail(value as string)}
           />
         )}
       </div>
       <div className={styles.button}>
-        {formState.includes('@gmail.com') ||
-        formState.includes('@hotmail.com') ||
-        formState.includes('@live.com') ? (
+        {mailState.includes('@gmail.com') ||
+        mailState.includes('@hotmail.com') ||
+        mailState.includes('@live.com') ? (
           <div className={styles.buttonContainer}>
             <Button
               label="Send invite"
               onClick={() => {
-                sendMail(formState)
-                setForm('')
+                sendMail(mailState)
+                setMail('')
               }}
             />
           </div>

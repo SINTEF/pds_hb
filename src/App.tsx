@@ -6,13 +6,14 @@ import './App.css'
 import { Frontpage } from './pages/frontpage'
 import { Login } from './pages/login'
 import { Read } from './pages/read'
-import MAIN_ROUTES from './routes/routes.constants'
 import { Header } from './components/header'
 import { NotFound } from './pages/not-found'
+import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
 import useLocalStorage from './utils/hooks/useLocalStorage'
 import { Browse } from './pages/browse-page'
+import { CompanyPage } from './pages/company-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -49,6 +50,9 @@ function App(): JSX.Element {
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.READ}>
               <Read />
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.COMPANY}>
+              <CompanyPage />
             </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <Frontpage />
