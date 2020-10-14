@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FC } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useRouteMatch } from 'react-router-dom'
 import styles from './ChooseComponentPage.module.css'
 import { SUB_ROUTES } from '../../routes/routes.constants'
 
@@ -14,6 +14,7 @@ import { IModule } from '../../models/module'
 
 export const ChooseComponentPage: FC = () => {
   const history = useHistory()
+  const { url } = useRouteMatch()
   const [pageState, setPage] = useState<number>(1)
   const [modules, setModules] = useState<IModule[]>([])
   const [equipmentgroup, setEquipmentGroup] = useState<IGroup[]>([])
@@ -21,11 +22,11 @@ export const ChooseComponentPage: FC = () => {
 
   const { get: componentGet, response: componentResponse } = useFetch<
     APIResponse<IComponent>
-  >('/component')
+  >('/components')
 
   const { get: moduleGet, response: moduleResponse } = useFetch<
     APIResponse<IModule>
-  >('/module')
+  >('/modules')
 
   useEffect(() => {
     loadComponents()
@@ -37,12 +38,12 @@ export const ChooseComponentPage: FC = () => {
 
   const loadComponents = async () => {
     const components = await componentGet()
-    if (componentResponse.ok) setAllComponents(components)
+    if (componentResponse.ok) setAllComponents(components.data)
   }
 
   const loadModules = async () => {
-    const components = await moduleGet()
-    if (moduleResponse.ok) setModules(components)
+    const modules = await moduleGet()
+    if (moduleResponse.ok) setModules(modules.data)
   }
 
   const getEquipmentGroup = (group: string) =>
@@ -54,33 +55,32 @@ export const ChooseComponentPage: FC = () => {
     return (
       <div className={styles.container}>
         <Title title="Choose equipment group"> </Title>
-        <div className={styles.components}>
-          {modules.map((module) => (
-            <div key={module.name}>
-              {module.name}
-
+        {modules.map((module) => (
+          <>
+            <span className={styles.moduletitle}>{module.name}</span>
+            <div className={styles.components} key={module.name}>
               {module.equipmentGroups.map((group, index) => (
                 <div key={index} className={styles.equipmentContainer}>
                   <Group
                     isAdmin={false}
                     group={{ name: group }}
                     onClick={() => {
-                      setPage(2)
                       setEquipmentGroup(getEquipmentGroup(group))
+                      setPage(2)
                     }}
-                  ></Group>
+                  />
                 </div>
               ))}
             </div>
-          ))}
-        </div>
+          </>
+        ))}
       </div>
     )
   }
   if (pageState === 2) {
     return (
       <div className={styles.container}>
-        <Title title="Choose equipment group"> </Title>
+        <Title title="Choose component"> </Title>
         <div className={styles.components}>
           {equipmentgroup.map((component, index) => {
             return (
@@ -90,7 +90,11 @@ export const ChooseComponentPage: FC = () => {
                   group={component}
                   onClick={() =>
                     history.push(
-                      SUB_ROUTES.VIEW + '/' + component.name.replace(' ', '+')
+                      url +
+                        SUB_ROUTES.VIEW.replace(
+                          ':componentName',
+                          component.name.replace(' ', '+')
+                        )
                     )
                   }
                 ></Group>

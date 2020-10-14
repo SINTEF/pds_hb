@@ -25,9 +25,9 @@ export const Group: React.FC<GroupProps> = ({
         <img
           className={styles.image}
           src={'https://www.svgrepo.com/show/131030/question-mark.svg'}
-          alt={`Icon for group ${group}`}
+          alt={`Icon for group ${group.name}`}
         />
-        {group}
+        {group.name.replace('-', ' ')}
       </div>
       <div className={styles.icon}>
         {isAdmin && <EditEquipmentGroup equipmentGroup={group} />}

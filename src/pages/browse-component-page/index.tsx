@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import useFetch from 'use-http'
-import { SUB_ROUTES } from '../../routes/routes.constants'
+import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
 
 import styles from './BrowseComponentPage.module.css'
 
@@ -14,6 +14,7 @@ import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
 import { IComponent } from '../../models/component'
 import { IDataInstance } from '../../models/datainstance'
+import { APIResponse } from '../../models/api-response'
 
 export interface Form {
   filters: { filter: string; value: string }[]
@@ -22,56 +23,13 @@ export interface Form {
 export const BrowseComponentPage: React.FC = () => {
   const { componentName } = useParams<{ componentName: string }>()
 
-  // {name: string, size: string, design: string, revisionDate: string, remarks: string,
-  // description: string, updated: string, data: {}, module:  string, equipmentGroup: string,
-  // filters: {måleprinsipp: [guge, beta, alfa], medium: [fejiugo, fsf ] }}
-  // size and design is filters?
-  const {
-    get: componentGet,
-    response: componentResponse,
-    loading: componentLoad,
-  } = useFetch('/component')
-
-  const {
-    get: datainstanceGet,
-    response: datainstanceResponse,
-    loading: datainstanceLoad,
-  } = useFetch('/datainstance')
-
-  useEffect(() => {
-    loadComponents()
-  })
-
-  useEffect(() => {
-    loadDatainstances()
-  }, [])
-
-  const loadComponents = async () => {
-    const initialComp = await componentGet('/?name=' + componentName)
-    if (componentResponse.ok) {
-      setComp(initialComp)
-      setFilter({
-        filters: [{ filter: 'Component', value: compState?.name as string }],
-      })
-    }
-    const components = await componentGet()
-    if (componentResponse.ok) setComponents(components)
-  }
-
-  const loadDatainstances = async () => {
-    const initialData = await datainstanceGet('/?component=' + compState)
-    if (datainstanceResponse.ok) setDatainstances(initialData)
-  }
-
-  const userContext = useContext(UserContext) as IUserContext
-
   const [compState, setComp] = useState<IComponent>()
-  const [components, setComponents] = useState<IComponent[]>()
+  const [components, setComponents] = useState<IComponent[]>([])
   const [, setDatainstances] = useState<IDataInstance[]>()
   const [filterState, setFilter] = useState<Form>()
   const equipmentGroup = compState?.equipmentGroup
   const componentNames = components
-    ?.filter((component) => component.equipmentGroup === equipmentGroup)
+    .filter((component) => component.equipmentGroup === equipmentGroup)
     .map((component) => component.name)
   const headers = [
     'Failure rates',
@@ -83,6 +41,43 @@ export const BrowseComponentPage: React.FC = () => {
     'Comment',
   ]
   const history = useHistory()
+
+  // {name: string, size: string, design: string, revisionDate: string, remarks: string,
+  // description: string, updated: string, data: {}, module:  string, equipmentGroup: string,
+  // filters: {måleprinsipp: [guge, beta, alfa], medium: [fejiugo, fsf ] }}
+  // size and design is filters?
+  const {
+    get: componentGet,
+    response: componentResponse,
+    loading: componentLoad,
+  } = useFetch<APIResponse<IComponent>>('/components')
+
+  const {
+    get: datainstanceGet,
+    response: datainstanceResponse,
+    loading: datainstanceLoad,
+  } = useFetch('/data-instances')
+
+  useEffect(() => {
+    loadComponents()
+  }, [])
+
+  const loadComponents = async () => {
+    const initialComp = await componentGet('/?name=' + componentName)
+    if (componentResponse.ok) {
+      setComp(initialComp.data[0])
+      setFilter({
+        filters: [{ filter: 'Component', value: initialComp.data[0].name }],
+      })
+    }
+    const components = await componentGet()
+    if (componentResponse.ok) setComponents(components.data)
+
+    const initialData = await datainstanceGet('/?component=' + componentName)
+    if (datainstanceResponse.ok) setDatainstances(initialData.data)
+  }
+
+  const userContext = useContext(UserContext) as IUserContext
 
   const getComponent = (name: string) => {
     return components?.filter((comp) => (comp.name = name))[0]
@@ -97,20 +92,19 @@ export const BrowseComponentPage: React.FC = () => {
   return componentLoad ? (
     <p>loading...</p>
   ) : (
-    <div>
+    <div className={styles.container}>
       <div
         className={styles.path}
-        onClick={() => history.push(SUB_ROUTES.CHOOSE_COMP)}
+        onClick={() =>
+          history.push(MAIN_ROUTES.BROWSE + SUB_ROUTES.CHOOSE_COMP)
+        }
       >
         {'/Choose equipmentgroup /'}
-        {compState?.equipmentGroup}
+        <span>{compState?.equipmentGroup}</span>
       </div>
       <div className={[styles.filters, styles.padding].join(' ')}>
-        {
-          // think i need a isChecked var to set/unset the filter
-        }
         <Filter
-          category="Component"
+          category="Component" // think i need a isChecked var to set/unset the filter
           filters={componentNames as string[]}
           onClick={(newcomp) => setComp(getComponent(newcomp))}
         />
@@ -155,21 +149,21 @@ export const BrowseComponentPage: React.FC = () => {
           </div>
           <EditableField
             index="Date of revision"
-            content={(compState?.revisionDate as unknown) as string}
+            content={compState?.revisionDate?.toString().substring(0, 10)}
             mode="view"
-            isAdmin={userContext?.user?.userGroupId === 'Admin'}
+            isAdmin={userContext?.user?.userGroupType === 'admin'}
           />
           <EditableField
             index="Remarks"
             content={compState?.remarks}
             mode="view"
-            isAdmin={userContext?.user?.userGroupId === 'Admin'}
+            isAdmin={userContext?.user?.userGroupType === 'admin'}
           />
           <EditableField
             index="Recommended values for calculation"
             content={compState?.name} //reccomended vslues not in db
             mode="view"
-            isAdmin={userContext?.user?.userGroupId === 'Admin'}
+            isAdmin={userContext?.user?.userGroupType === 'admin'}
           />
           <div className={styles.padding}>
             <TextBox

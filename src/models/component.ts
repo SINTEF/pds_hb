@@ -24,5 +24,4 @@ export interface IComponent {
   module: string
   equipmentGroup: string
   created?: Date
-  symbolUrl?: string
 }

@@ -1,3 +1,10 @@
+.container {
+  margin-left: 40px;
+  margin-right: 40px;
+  align-content: center;
+  padding-top: 40px;
+}
+
 .path {
   cursor: pointer;
 }
