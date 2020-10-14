@@ -8,6 +8,7 @@
   top: 16px;
   padding-bottom: 16px;
   text-decoration: none;
+  z-index: 5;
 }
 
 .container {

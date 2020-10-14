@@ -20,7 +20,6 @@ Standard.parameters = {
 }
 Standard.args = {
   equipmentGroup: {
-    id: 'rwesdfa',
     name: 'nameNespm',
   },
 }

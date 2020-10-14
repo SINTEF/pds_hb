@@ -484,7 +484,7 @@ exports[`Storyshots Group Editable 1`] = `
     <img
       alt="Icon for group Fire equipment"
       className="image"
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
+      src="https://www.svgrepo.com/show/131030/question-mark.svg"
     />
     Fire equipment
   </div>
@@ -556,7 +556,7 @@ exports[`Storyshots Group Standard 1`] = `
     <img
       alt="Icon for group Fire equipment"
       className="image"
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
+      src="https://www.svgrepo.com/show/131030/question-mark.svg"
     />
     Fire equipment
   </div>
@@ -1949,12 +1949,15 @@ exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
 `;
 
 exports[`Storyshots pages/Browse Standard 1`] = `
-<div>
+<div
+  className="container"
+>
   <div
     className="path"
+    onClick={[Function]}
   >
     /Choose equipmentgroup /
-    Fire detectors
+    <span />
   </div>
   <div
     className="filters padding"
@@ -1980,69 +1983,6 @@ exports[`Storyshots pages/Browse Standard 1`] = `
         </button>
       </div>
     </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L1
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L2
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L3
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
   </div>
   <div>
     <div
@@ -2059,9 +1999,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           >
             <div
               className="title notdynamic"
-            >
-              Smoke detector
-            </div>
+            />
           </div>
           <hr
             className="line"
@@ -2082,9 +2020,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
               className="line"
             />
           </div>
-          <div>
-            The detector includes the sensor and local electronics such as the address-/ interface unit.
-          </div>
+          <div />
         </div>
       </div>
       <div>
@@ -2101,9 +2037,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             </label>
             <label
               className="content"
-            >
-              23.03.2020
-            </label>
+            />
           </div>
         </div>
         <div>
@@ -2126,9 +2060,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             </label>
             <label
               className="content"
-            >
-              Remark this
-            </label>
+            />
           </div>
         </div>
         <div>
@@ -2151,9 +2083,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             </label>
             <label
               className="content"
-            >
-              Recommended values
-            </label>
+            />
           </div>
         </div>
         <div>
@@ -2176,9 +2106,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
               className="line"
             />
           </div>
-          <div>
-            This is DU
-          </div>
+          <div />
         </div>
       </div>
       <div
@@ -2229,71 +2157,68 @@ exports[`Storyshots pages/Browse Standard 1`] = `
         </tr>
         <tr>
           <td>
-            0,3
+            0.3
           </td>
           <td>
             A
           </td>
           <td>
-            5
+            6
           </td>
           <td>
-            0
+            2,8*10^6
           </td>
           <td>
-            2006-2008
+            2006
           </td>
           <td>
-            231
+            2018
           </td>
           <td>
-            
-          </td>
-        </tr>
-        <tr>
-          <td>
-            0,3
-          </td>
-          <td>
-            B
-          </td>
-          <td>
-            7
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            2013-2017
-          </td>
-          <td>
-            87
-          </td>
-          <td>
-            
+            689
           </td>
         </tr>
         <tr>
           <td>
-            0,3
+            0.6
+          </td>
+          <td>
+            C
+          </td>
+          <td>
+            3
+          </td>
+          <td>
+            3,7*10^6
+          </td>
+          <td>
+            2003
+          </td>
+          <td>
+            2019
+          </td>
+          <td>
+            36
+          </td>
+        </tr>
+        <tr>
+          <td>
+            0.5
           </td>
           <td>
             A
           </td>
           <td>
-            11
+            2,4*10^6
           </td>
           <td>
-            0
+            2010
           </td>
           <td>
-            2012-2020
+            2015
           </td>
           <td>
-            763
-          </td>
-          <td>
-            Fake news
+            456
           </td>
         </tr>
       </table>
@@ -2322,9 +2247,6 @@ exports[`Storyshots pages/ChooseComponentPagePage Standard 1`] = `
       className="line"
     />
   </div>
-  <div
-    className="components"
-  />
 </div>
 `;
 
@@ -2377,68 +2299,6 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
               
       </div>
     </div>
-    <table
-      className="container"
-    >
-      <tbody>
-        <tr>
-          <td>
-            <div>
-              Mona Lisa
-            </div>
-          </td>
-          <td>
-            <div>
-              mona.lisa@gmail.com
-            </div>
-          </td>
-          <td>
-            <div>
-              25.08.2020
-            </div>
-          </td>
-          <td>
-            <button
-              className="remove"
-              onClick={[Function]}
-            >
-              Remove
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table
-      className="container"
-    >
-      <tbody>
-        <tr>
-          <td>
-            <div>
-              Da Vinci
-            </div>
-          </td>
-          <td>
-            <div>
-              da.vinci@gmail.com
-            </div>
-          </td>
-          <td>
-            <div>
-              12.06.2020
-            </div>
-          </td>
-          <td>
-            <button
-              className="remove"
-              onClick={[Function]}
-            >
-              Remove
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
   <div
     className="secondcontainer"
@@ -2450,34 +2310,9 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
       <div
         className="numberusersleft"
       >
-        2
+        0
       </div>
        more possible users to add.
-    </div>
-    <div
-      className="standard  "
-    >
-      <div
-        className="field"
-      >
-        <label
-          className=""
-          htmlFor="Email"
-          style={
-            Object {
-              "alignSelf": "",
-            }
-          }
-        >
-          Email
-        </label>
-        <input
-          id="Email"
-          onChange={[Function]}
-          placeholder="ola.nordmann@gmail.com"
-          type="text"
-        />
-      </div>
     </div>
   </div>
   <div
@@ -2567,267 +2402,149 @@ exports[`Storyshots pages/Not found (404) Standard 1`] = `
 </div>
 `;
 
-exports[`Storyshots pages/companyuser Equinor 1`] = `
+exports[`Storyshots pages/companyuser Start 1`] = `
 <div
   className="container"
 >
   <div
-    className="container"
+    aria-busy="true"
+    className=""
+    style={Object {}}
   >
-    <div
-      className="titlecontainer"
+    <svg
+      aria-label="audio-loading"
+      fill="grey"
+      height={80}
+      viewBox="0 0 105 105"
+      width={80}
     >
-      <div
-        className="title notdynamic"
+      <circle
+        cx="12.5"
+        cy="12.5"
+        r={12.5}
       >
-        Company user
-      </div>
-    </div>
-    <hr
-      className="line"
-    />
-  </div>
-  <div
-    className="photocontainer"
-  >
-    <div
-      className="photo"
-    >
-      E
-    </div>
-    <i
-      className="material-icons  editphoto"
-    >
-      camera_alt
-    </i>
-  </div>
-  <div
-    className="width"
-  >
-    <div>
-      <div
-        className="container"
-      >
-        <div
-          className="container"
-        >
-          <label
-            className="index"
-          >
-            Name: 
-          </label>
-          <label
-            className="content"
-          >
-            Equinor AS
-          </label>
-        </div>
-        <div>
-          <button
-            aria-label="delete"
-            className="MuiButtonBase-root MuiIconButton-root iconbutton MuiIconButton-sizeSmall"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <i
-                className="material-icons icon"
-              >
-                edit
-              </i>
-            </span>
-          </button>
-        </div>
-      </div>
-      <div>
-        <hr
-          className="divider"
+        <animate
+          attributeName="fill-opacity"
+          begin="0s"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
         />
-      </div>
-    </div>
-    <div>
-      <div
-        className="container"
+      </circle>
+      <circle
+        cx="12.5"
+        cy="52.5"
+        r={12.5}
       >
-        <div
-          className="container"
-        >
-          <label
-            className="index"
-          >
-            Email: 
-          </label>
-          <label
-            className="content"
-          >
-            post@Equinor.com
-          </label>
-        </div>
-        <div>
-          <button
-            aria-label="delete"
-            className="MuiButtonBase-root MuiIconButton-root iconbutton MuiIconButton-sizeSmall"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <i
-                className="material-icons icon"
-              >
-                edit
-              </i>
-            </span>
-          </button>
-        </div>
-      </div>
-      <div>
-        <hr
-          className="divider"
+        <animate
+          attributeName="fill-opacity"
+          begin="100ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
         />
-      </div>
-    </div>
-    <div>
-      <div
-        className="container"
+      </circle>
+      <circle
+        cx="52.5"
+        cy="12.5"
+        r={12.5}
       >
-        <div
-          className="container"
-        >
-          <label
-            className="index"
-          >
-            Phone: 
-          </label>
-          <label
-            className="content"
-          >
-            22225555
-          </label>
-        </div>
-        <div>
-          <button
-            aria-label="delete"
-            className="MuiButtonBase-root MuiIconButton-root iconbutton MuiIconButton-sizeSmall"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <i
-                className="material-icons icon"
-              >
-                edit
-              </i>
-            </span>
-          </button>
-        </div>
-      </div>
-      <div>
-        <hr
-          className="divider"
+        <animate
+          attributeName="fill-opacity"
+          begin="300ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
         />
-      </div>
-    </div>
-    <div>
-      <div
-        className="container"
+      </circle>
+      <circle
+        cx="52.5"
+        cy="52.5"
+        r={12.5}
       >
-        <div
-          className="container"
-        >
-          <label
-            className="index"
-          >
-            Description: 
-          </label>
-          <label
-            className="content"
-          >
-            This is a description of the company Equinor AS.
-          </label>
-        </div>
-        <div>
-          <button
-            aria-label="delete"
-            className="MuiButtonBase-root MuiIconButton-root iconbutton MuiIconButton-sizeSmall"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <i
-                className="material-icons icon"
-              >
-                edit
-              </i>
-            </span>
-          </button>
-        </div>
-      </div>
-      <div>
-        <hr
-          className="divider"
+        <animate
+          attributeName="fill-opacity"
+          begin="600ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
         />
-      </div>
-    </div>
+      </circle>
+      <circle
+        cx="92.5"
+        cy="12.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="800ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="92.5"
+        cy="52.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="400ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="12.5"
+        cy="92.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="700ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="52.5"
+        cy="92.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="500ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="92.5"
+        cy="92.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="200ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+    </svg>
   </div>
 </div>
 `;

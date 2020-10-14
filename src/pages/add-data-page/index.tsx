@@ -120,7 +120,7 @@ export const AddDataPage: React.FC = () => {
             label="DU value"
             placeholder={dataState.du ? undefined : 'Set a DU-value...'}
             onValueChanged={(value) => {
-              setData({ ...dataState, du: value as number })
+              setData({ ...dataState, du: Number(value as string) })
             }}
           />
           <InputField
@@ -131,7 +131,7 @@ export const AddDataPage: React.FC = () => {
               dataState.populationsize ? undefined : 'Set a populationsize...'
             }
             onValueChanged={(value) => {
-              setData({ ...dataState, populationsize: value as number })
+              setData({ ...dataState, populationsize: Number(value as string) })
             }}
           />
         </div>
