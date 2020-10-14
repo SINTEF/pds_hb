@@ -11,9 +11,15 @@ export const UserContext = createContext<IUserContext | undefined>(undefined)
 export const UserProvider: FC<UserProviderProps> = ({
   children,
 }: UserProviderProps): JSX.Element => {
-  const [user, setUser] = useState<IUser | undefined>(
-    jwt_decode(localStorage.getItem('token') ?? '')
-  )
+  const getJWTOrUndefined = (): IUser | undefined => {
+    try {
+      return jwt_decode(localStorage.getItem('token') ?? '') as IUser
+    } catch {
+      return undefined
+    }
+  }
+
+  const [user, setUser] = useState<IUser | undefined>(getJWTOrUndefined())
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
