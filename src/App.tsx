@@ -4,14 +4,15 @@ import { Provider, Options } from 'use-http'
 
 import './App.css'
 import { Frontpage } from './pages/frontpage'
-import { Header } from './components/header'
 import { Login } from './pages/login'
 import { Read } from './pages/read'
-import { NotFound } from './pages/not-found'
 import MAIN_ROUTES from './routes/routes.constants'
+import { Header } from './components/header'
+import { NotFound } from './pages/not-found'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
 import useLocalStorage from './utils/hooks/useLocalStorage'
+import { Browse } from './pages/browse-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -43,6 +44,9 @@ function App(): JSX.Element {
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
             </Route>
+            <AuthRoute path={MAIN_ROUTES.BROWSE}>
+              <Browse />
+            </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.READ}>
               <Read />
             </AuthRoute>
