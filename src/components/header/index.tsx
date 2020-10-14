@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
           <DropDownMenu
             isCompanyUser={userContext.user?.userGroupId === 'company_user'}
             username={userContext.user?.username || ''}
-            company={userContext.user?.companyId}
+            company={userContext.user?.companyName}
           ></DropDownMenu>
         </div>
       ) : null}

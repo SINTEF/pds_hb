@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
+import useFetch from 'use-http'
+import { SUB_ROUTES } from '../../routes/routes.constants'
 
 import styles from './BrowseComponentPage.module.css'
 
@@ -7,134 +10,190 @@ import { TextBox } from '../../components/text-box'
 import { EditableField } from '../../components/editable-field'
 import { Filter } from '../../components/filter'
 import { Table } from '../../components/table'
-
-export interface BrowseComponentPageProps {
-  component: string //this comes from the parentpage in somehow or from userinput by homepage-search
-  equipmentgroup: string // this should also come from above
-  getComponents: (equipmentGroup: string) => Array<string>
-  getFilters: (component: string) => Array<string>
-  getValuesForFilter: (filter: string) => Array<string>
-  getDescription: (component: string) => string
-  getDateOfRevision: (component: string) => string
-  getRemarks: (component: string) => string
-  getRecommendedValues: (component: string) => string
-  getDefinitionDU: (component: string) => string
-  getHeaders: (component: string) => Array<string>
-  getFailureData: (
-    component: string,
-    filters: Array<Record<string, string>>
-  ) => Array<Array<string>>
-  onChange: (value: string) => void
-  redirect: () => void
-  getUserGroup: () => string
-}
+import { UserContext } from '../../utils/context/userContext'
+import { IUserContext } from '../../models/user'
+import { IComponent } from '../../models/component'
+import { IDataInstance } from '../../models/datainstance'
 
 export interface Form {
   filters: { filter: string; value: string }[]
 }
 
-export const BrowseComponentPage: React.FC<BrowseComponentPageProps> = ({
-  component,
-  equipmentgroup,
-  getComponents,
-  getFilters,
-  getValuesForFilter,
-  getDescription,
-  onChange,
-  getDateOfRevision,
-  getRemarks,
-  getRecommendedValues,
-  getDefinitionDU,
-  getHeaders,
-  getFailureData,
-  redirect,
-  getUserGroup,
-}: BrowseComponentPageProps) => {
-  const [compState, setComp] = useState<string>(component)
-  const [filterState, setFilter] = useState<Form>({
-    filters: [{ filter: 'Component', value: compState }],
+export const BrowseComponentPage: React.FC = () => {
+  const { componentName } = useParams<{ componentName: string }>()
+
+  // {name: string, size: string, design: string, revisionDate: string, remarks: string,
+  // description: string, updated: string, data: {}, module:  string, equipmentGroup: string,
+  // filters: {måleprinsipp: [guge, beta, alfa], medium: [fejiugo, fsf ] }}
+  // size and design is filters?
+  const {
+    get: componentGet,
+    response: componentResponse,
+    loading: componentLoad,
+  } = useFetch('/component')
+
+  const {
+    get: datainstanceGet,
+    response: datainstanceResponse,
+    loading: datainstanceLoad,
+  } = useFetch('/datainstance')
+
+  useEffect(() => {
+    loadComponents()
   })
-  return (
+
+  useEffect(() => {
+    loadDatainstances()
+  }, [])
+
+  const loadComponents = async () => {
+    const initialComp = await componentGet('/?name=' + componentName)
+    if (componentResponse.ok) {
+      setComp(initialComp)
+      setFilter({
+        filters: [{ filter: 'Component', value: compState?.name as string }],
+      })
+    }
+    const components = await componentGet()
+    if (componentResponse.ok) setComponents(components)
+  }
+
+  const loadDatainstances = async () => {
+    const initialData = await datainstanceGet('/?component=' + compState)
+    if (datainstanceResponse.ok) setDatainstances(initialData)
+  }
+
+  const userContext = useContext(UserContext) as IUserContext
+
+  const [compState, setComp] = useState<IComponent>()
+  const [components, setComponents] = useState<IComponent[]>()
+  const [, setDatainstances] = useState<IDataInstance[]>()
+  const [filterState, setFilter] = useState<Form>()
+  const equipmentGroup = compState?.equipmentGroup
+  const componentNames = components
+    ?.filter((component) => component.equipmentGroup === equipmentGroup)
+    .map((component) => component.name)
+  const headers = [
+    'Failure rates',
+    'Source',
+    'DU',
+    'T',
+    'Obs period',
+    'Population size',
+    'Comment',
+  ]
+  const history = useHistory()
+
+  const getComponent = (name: string) => {
+    return components?.filter((comp) => (comp.name = name))[0]
+  }
+
+  //const getFailureData = () => {
+  //  return datainstances?.filter((data) =>
+  //    filterState?.filters.forEach((filter, idx) => Object.keys(data.L3)[filter.filter] ? filter.value : )
+  //  )
+  //}
+
+  return componentLoad ? (
+    <p>loading...</p>
+  ) : (
     <div>
-      <div className={styles.path} onClick={redirect}>
+      <div
+        className={styles.path}
+        onClick={() => history.push(SUB_ROUTES.CHOOSE_COMP)}
+      >
         {'/Choose equipmentgroup /'}
-        {equipmentgroup}
+        {compState?.equipmentGroup}
       </div>
       <div className={[styles.filters, styles.padding].join(' ')}>
         {
-          //filters - use getFilters and for each filter return a
-          // FilterComponent
           // think i need a isChecked var to set/unset the filter
         }
         <Filter
           category="Component"
-          filters={getComponents(equipmentgroup)}
-          onClick={(newcomp) => setComp(newcomp)}
+          filters={componentNames as string[]}
+          onClick={(newcomp) => setComp(getComponent(newcomp))}
         />
-        {getFilters(compState).map((filter) => (
-          <Filter
-            category={filter}
-            filters={getValuesForFilter(filter)}
-            onClick={(selected) =>
-              setFilter({
-                filters: [
-                  ...filterState.filters,
-                  {
-                    filter: filter,
-                    value: selected,
-                  },
-                ],
-              })
-            }
-            key={filter}
-          />
-        ))}
+        {Object.entries(compState?.L3 ?? {})
+          .filter(([, filters]) => filters !== undefined)
+          .map(([filterName, filters]) => (
+            <Filter
+              category={filterName}
+              filters={filters as string[]}
+              onClick={(selected) => {
+                if (filterState) {
+                  setFilter({
+                    filters: [
+                      ...filterState.filters,
+                      {
+                        filter: filterName,
+                        value: selected,
+                      },
+                    ],
+                  })
+                } else {
+                  setFilter({
+                    filters: [{ filter: filterName, value: selected }],
+                  })
+                }
+              }}
+              key={filterName}
+            />
+          ))}
       </div>
       <div>
         <div className={styles.content}>
           <div className={[styles.padding, styles.center].join(' ')}>
-            <Title title={compState} />
+            <Title title={compState?.name as string} />
           </div>
           <div className={styles.description}>
             <TextBox
               title="Description"
-              content={getDescription(compState)}
+              content={compState?.description as string}
               size="small"
             />
           </div>
           <EditableField
             index="Date of revision"
-            content={getDateOfRevision(compState)}
+            content={(compState?.revisionDate as unknown) as string}
             mode="view"
-            isAdmin={getUserGroup() === 'Admin'}
+            isAdmin={userContext?.user?.userGroupId === 'Admin'}
           />
           <EditableField
             index="Remarks"
-            content={getRemarks(compState)}
+            content={compState?.remarks}
             mode="view"
-            isAdmin={getUserGroup() === 'Admin'}
+            isAdmin={userContext?.user?.userGroupId === 'Admin'}
           />
           <EditableField
             index="Recommended values for calculation"
-            content={getRecommendedValues(compState)}
+            content={compState?.name} //reccomended vslues not in db
             mode="view"
-            isAdmin={getUserGroup() === 'Admin'}
+            isAdmin={userContext?.user?.userGroupId === 'Admin'}
           />
           <div className={styles.padding}>
             <TextBox
               title="Definition of DU"
-              content={getDefinitionDU(compState)}
+              content={compState?.name as string} // definition of DU not in db
               size="large"
             />
           </div>
           <div className={[styles.center, styles.padding].join(' ')}>
             <Title title="Failure data" />
           </div>
-          <Table
-            headers={getHeaders(compState)}
-            data={getFailureData(compState, filterState.filters)}
-            onValueChanged={(value) => onChange(value)}
-          />
+          {datainstanceLoad ? (
+            <p>loading...</p>
+          ) : (
+            <Table
+              headers={headers}
+              data={[
+                ['0.3', 'A', '6', '2,8*10^6', '2006', '2018', '689'],
+                ['0.6', 'C', '3', '3,7*10^6', '2003', '2019', '36'],
+                ['0.5', 'A', '2,4*10^6', '2010', '2015', '456'],
+              ]}
+              onValueChanged={() => false}
+            />
+          )}
         </div>
       </div>
     </div>

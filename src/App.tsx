@@ -3,15 +3,15 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider, Options } from 'use-http'
 
 import './App.css'
-import { BrowseComponentPage } from './pages/browse-component-page'
-import { ChooseComponentPage } from './pages/choose-component-page'
+import { Frontpage } from './pages/frontpage'
 import { Login } from './pages/login'
-import MAIN_ROUTES, { SUB_ROUTES } from './routes/routes.constants'
+import MAIN_ROUTES from './routes/routes.constants'
 import { Header } from './components/header'
 import { NotFound } from './pages/not-found'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
 import useLocalStorage from './utils/hooks/useLocalStorage'
+import { Browse } from './pages/browse-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -43,18 +43,11 @@ function App(): JSX.Element {
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
             </Route>
-            <AuthRoute exact path={MAIN_ROUTES.HOME}>
-              <p>Home</p>
+            <AuthRoute path={MAIN_ROUTES.HOME}>
+              <Frontpage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.BROWSE}>
-              <Switch>
-                <AuthRoute path={SUB_ROUTES.CHOOSE_COMP}>
-                  <ChooseComponentPage />
-                </AuthRoute>
-                <AuthRoute path={SUB_ROUTES.VIEW}>
-                  <BrowseComponentPage />
-                </AuthRoute>
-              </Switch>
+              <Browse />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />

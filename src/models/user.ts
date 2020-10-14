@@ -2,7 +2,7 @@ export interface IUser {
   username: string
   email: string
   phoneNr?: string
-  companyId?: string
+  companyName?: string
   userGroupId: string
   userGroup?: IUserGroup
   sub: string
