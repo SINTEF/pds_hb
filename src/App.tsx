@@ -47,14 +47,14 @@ function App(): JSX.Element {
             <AuthRoute path={MAIN_ROUTES.READ}>
               <Read />
             </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.COMPANY}>
+              <CompanyPage />
+            </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <Frontpage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />
-            </AuthRoute>
-            <AuthRoute path={MAIN_ROUTES.COMPANY}>
-              <CompanyPage />
             </AuthRoute>
           </Switch>
         </BrowserRouter>
