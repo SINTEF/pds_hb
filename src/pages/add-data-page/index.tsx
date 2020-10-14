@@ -1,42 +1,75 @@
-import React, { useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styles from './AddDataPage.module.css'
-
+import useFetch from 'use-http'
 import { Title } from '../../components/title'
 import { SearchField } from '../../components/search-field'
 import { InputField } from '../../components/input-field'
 import { Button } from '../../components/button'
 
-export interface AddDataPageProps {
-  onChange: (value: string) => void
-  getFacilities: () => Array<string>
-  getComponents: () => Array<string>
-  updateData: () => void
-}
+import { UserContext } from '../../utils/context/userContext'
+import { IUserContext } from '../../models/user'
+
+import { IComponent } from '../../models/component'
 
 export interface Form {
   facility: string | null
   component: string | null
-  period: number | null
-  t: number | null
+  T: number | null
   du: number | null
   populationsize: number | null
+  company: string | undefined
 }
 
-export const AddDataPage: React.FC<AddDataPageProps> = ({
-  onChange,
-  updateData,
-  getFacilities,
-  getComponents,
-}: AddDataPageProps) => {
+export const AddDataPage: React.FC = () => {
+  const { post, get } = useFetch()
+
+  const userContext = useContext(UserContext) as IUserContext
+
   const [pageState, setPage] = useState<number>(1)
+  const [components, setComponents] = useState<string[]>([])
+  const [facilities, setFacilities] = useState<string[]>([])
+
   const [dataState, setData] = useState<Form>({
     facility: null,
     component: null,
-    period: null,
-    t: null,
+    T: null,
     du: null,
     populationsize: null,
+    company: undefined,
   })
+
+  useEffect(() => {
+    getComponents().then((componentNames) => {
+      setComponents(componentNames)
+    })
+  }, [])
+
+  useEffect(() => {
+    getFacilities().then((names) => {
+      setFacilities(names)
+    })
+  }, [userContext.user?.companyName])
+
+  const updateData = async (form: Form): Promise<void> => {
+    form = { ...form, company: userContext.user?.companyName }
+    await post('/data-instances', form)
+  }
+
+  const getComponents = async (): Promise<Array<string>> => {
+    const components = await get('/components')
+    const componentNames = components['data'].map(
+      (component: IComponent) => component.name
+    )
+    return componentNames
+  }
+
+  const getFacilities = async (): Promise<Array<string>> => {
+    if (userContext.user) {
+      const companies = await get(`company/${userContext.user?.companyName}`)
+      return companies.data.facilities
+    }
+    return []
+  }
   //const navigateToFacility: () => setData(1);
   if (pageState === 1) {
     return (
@@ -46,10 +79,11 @@ export const AddDataPage: React.FC<AddDataPageProps> = ({
           label="Facility"
           variant="secondary"
           placeholder="Choose facility to register data to..."
-          suggestions={getFacilities()}
-          onValueChanged={(value) => onChange(value)}
+          suggestions={facilities}
+          onValueChanged={() => false}
           onClick={(facility) => {
             setData({ ...dataState, facility: facility })
+
             setPage(2)
           }}
         />
@@ -65,32 +99,19 @@ export const AddDataPage: React.FC<AddDataPageProps> = ({
             variant="secondary"
             label="Component"
             placeholder={dataState.component ? undefined : 'Set a component...'}
-            suggestions={getComponents()}
-            onValueChanged={(value) => {
-              onChange(value)
-            }}
+            suggestions={components}
+            onValueChanged={() => false}
             onClick={(component) =>
               setData({ ...dataState, component: component })
             }
           />
           <InputField
             variant="standard"
-            type="text"
-            label="Period"
-            placeholder={
-              dataState.period ? undefined : 'dd.mm.yyyy - dd.mm.yyyy...'
-            }
-            onValueChanged={(value) => {
-              setData({ ...dataState, period: Number(value as string) })
-            }}
-          />
-          <InputField
-            variant="standard"
             type="number"
             label="T"
-            placeholder={dataState.t ? undefined : 'Set a time T in hours...'}
+            placeholder={dataState.T ? undefined : 'Set a time T in hours...'}
             onValueChanged={(value) => {
-              setData({ ...dataState, t: Number(value as string) })
+              setData({ ...dataState, T: value as number })
             }}
           />
           <InputField
@@ -116,20 +137,18 @@ export const AddDataPage: React.FC<AddDataPageProps> = ({
         </div>
         {
           //dataState.component &&
-          dataState.period &&
-            dataState.t &&
-            dataState.du &&
-            dataState.populationsize && (
-              <div className={styles.button}>
-                <Button
-                  onClick={() => {
-                    setPage(3)
-                    updateData()
-                  }}
-                  label="Add data"
-                />
-              </div>
-            )
+
+          dataState.T && dataState.du && dataState.populationsize && (
+            <div className={styles.button}>
+              <Button
+                onClick={() => {
+                  setPage(3)
+                  updateData(dataState)
+                }}
+                label="Add data"
+              />
+            </div>
+          )
         }
       </div>
     )
@@ -142,8 +161,6 @@ export const AddDataPage: React.FC<AddDataPageProps> = ({
           {
             //want onClick to take function navigate as argument - setPage(1)
           }
-          <Button onClick={updateData} label={'Add more data'} />
-          <Button onClick={updateData} label={'View at company page'} />
         </div>
       </div>
     )
