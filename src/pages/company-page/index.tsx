@@ -9,7 +9,7 @@ import { ManageStaffmembersPage } from '../manage-staffmembers-page'
 
 // TO FIX: Needs styling for menu
 export const CompanyPage: React.FC = () => {
-  const { url } = useRouteMatch()
+  const { url, path } = useRouteMatch()
   return (
     <div>
       <SideMenu>
@@ -27,14 +27,13 @@ export const CompanyPage: React.FC = () => {
         </>
       </SideMenu>
       <Switch>
-        {/* None of these routes currntly work */}
-        <Route path={COMPANY_SUB_ROUTES.USER}>
+        <Route path={path + COMPANY_SUB_ROUTES.USER}>
           <CompanyUserPage />
         </Route>
-        <Route path={COMPANY_SUB_ROUTES.MANAGE_FAC}>
+        <Route path={path + COMPANY_SUB_ROUTES.MANAGE_FAC}>
           <ManageFacilitiesPage />
         </Route>
-        <Route path={COMPANY_SUB_ROUTES.MANAGE_STAFF}>
+        <Route path={path + COMPANY_SUB_ROUTES.MANAGE_STAFF}>
           <ManageStaffmembersPage />
         </Route>
       </Switch>

@@ -81,7 +81,7 @@ export const ManageStaffmembersPage: React.FC = () => {
           </div>
           {' more possible users to add.'}
         </div>
-        {companyData?.data.maxUsers !== staffData?.data.length && (
+        {companyData?.data.maxUsers !== staffData?.data?.length && (
           <InputField
             label="Email"
             variant="standard"
