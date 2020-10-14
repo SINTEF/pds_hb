@@ -69,7 +69,12 @@ export const Login: React.FC = () => {
       </div>
       <div className={styles.feedbackGroup}>
         <Loader height={24} type="Grid" color="grey" visible={loading} />
-        {error ? <p>{response.data.message ?? error.message}</p> : null}
+        {error ? (
+          <p>
+            {response.data?.message ??
+              "Hmm. Doesn't look like we can connect to the server. Try again later."}
+          </p>
+        ) : null}
       </div>
       <div className={styles.buttonGroup}>
         <div>
