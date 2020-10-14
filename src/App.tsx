@@ -11,6 +11,7 @@ import { NotFound } from './pages/not-found'
 import MAIN_ROUTES from './routes/routes.constants'
 import { AuthRoute } from './utils/AuthRoute'
 import { UserProvider } from './utils/context/userContext'
+import { AddDataPage } from './pages/add-data-page'
 import useLocalStorage from './utils/hooks/useLocalStorage'
 
 function App(): JSX.Element {
@@ -48,6 +49,9 @@ function App(): JSX.Element {
             </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <Frontpage />
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.ADD}>
+              <AddDataPage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />

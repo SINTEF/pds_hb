@@ -10,7 +10,6 @@ import useLocalStorage from '../../utils/hooks/useLocalStorage'
 import styles from './Login.module.css'
 import jwt_decode from 'jwt-decode'
 import { IUser, IUserContext } from '../../models/user'
-import Loader from 'react-loader-spinner'
 
 export interface LoginForm {
   username: string
@@ -18,13 +17,10 @@ export interface LoginForm {
 }
 
 export const Login: React.FC = () => {
-  const { post, response, loading, error } = useFetch(
-    '/user/login',
-    (options) => {
-      options.cachePolicy = CachePolicies.NO_CACHE
-      return options
-    }
-  )
+  const { post, response } = useFetch('/user/login', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
   const { setValue } = useLocalStorage<string>('token', '')
   const history = useHistory()
   const userContext = useContext(UserContext) as IUserContext
@@ -36,7 +32,7 @@ export const Login: React.FC = () => {
   const loginUser: () => Promise<void> = async () => {
     await post(form)
     if (response.status === 200) {
-      const token = response.data.token.split('Bearer')[1].trim()
+      const token = (response.data.token as string).split('Bearer')[1].trim()
       setValue(token)
       const decodedToken = jwt_decode(token) as IUser
       userContext.setUser(decodedToken)
@@ -67,23 +63,8 @@ export const Login: React.FC = () => {
           success={response.status === 200}
         />
       </div>
-      <div className={styles.feedbackGroup}>
-        <Loader height={24} type="Grid" color="grey" visible={loading} />
-        {error ? (
-          <p>
-            {response.data?.message ??
-              "Hmm. Doesn't look like we can connect to the server. Try again later."}
-          </p>
-        ) : null}
-      </div>
       <div className={styles.buttonGroup}>
-        <div>
-          <Button
-            label={'Log in'}
-            type={'primary'}
-            onClick={() => loginUser()}
-          />
-        </div>
+        <Button label={'Log in'} type={'primary'} onClick={() => loginUser()} />
         <Button
           label={'Register new user'}
           onClick={() => {
