@@ -35,7 +35,7 @@ export const AddDataPage: React.FC = () => {
     T: null,
     du: null,
     populationsize: null,
-    company: userContext.user?.companyName,
+    company: undefined,
   })
 
   useEffect(() => {
@@ -48,9 +48,10 @@ export const AddDataPage: React.FC = () => {
     getFacilities().then((names) => {
       setFacilities(names)
     })
-  }, [])
+  }, [userContext.user?.companyName])
 
   const updateData = async (form: Form): Promise<void> => {
+    form = { ...form, company: userContext.user?.companyName }
     await post('/data-instances', form)
   }
 
@@ -63,8 +64,11 @@ export const AddDataPage: React.FC = () => {
   }
 
   const getFacilities = async (): Promise<Array<string>> => {
-    const companies = await get(`company/${userContext.user?.companyName}`)
-    return companies.data.facilities
+    if (userContext.user) {
+      const companies = await get(`company/${userContext.user?.companyName}`)
+      return companies.data.facilities
+    }
+    return []
   }
   //const navigateToFacility: () => setData(1);
   if (pageState === 1) {
