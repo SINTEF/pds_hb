@@ -5,6 +5,7 @@ import { Provider, Options } from 'use-http'
 import './App.css'
 import { Frontpage } from './pages/frontpage'
 import { Login } from './pages/login'
+import { Read } from './pages/read'
 import MAIN_ROUTES from './routes/routes.constants'
 import { Header } from './components/header'
 import { NotFound } from './pages/not-found'
@@ -43,11 +44,14 @@ function App(): JSX.Element {
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
             </Route>
-            <AuthRoute path={MAIN_ROUTES.HOME}>
-              <Frontpage />
-            </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.BROWSE}>
               <Browse />
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.READ}>
+              <Read />
+            </AuthRoute>
+            <AuthRoute exact path={MAIN_ROUTES.HOME}>
+              <Frontpage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />

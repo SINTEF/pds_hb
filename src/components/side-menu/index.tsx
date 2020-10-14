@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import styles from './sideMenu.module.css'
 
 export interface SideMenuProps {
-  children: JSX.Element | JSX.Element[]
+  children: React.ReactElement
 }
 
 const SideMenu: React.FC<SideMenuProps> = ({ children }: SideMenuProps) => {

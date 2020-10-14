@@ -21,28 +21,38 @@ GeneralSideMenu.args = {
 
 export const OperatorSideMenu = Template.bind({})
 OperatorSideMenu.args = {
-  children: [
-    'My account',
-    'Browse own equipment data',
-    'Company account',
-    'Manage staffmember',
-    'Manage facilities',
-  ].map((title) => <MenuButton label={title} key={title} />),
+  children: (
+    <>
+      {[
+        'My account',
+        'Browse own equipment data',
+        'Company account',
+        'Manage staffmember',
+        'Manage facilities',
+      ].map((title) => (
+        <MenuButton label={title} key={title} />
+      ))}
+    </>
+  ),
 }
 
 export const AdminSideMenu = Template.bind({})
 AdminSideMenu.args = {
-  children: [
-    ...[
-      'My account',
-      'Review next release',
-      'Adapt premissions for user groups',
-      'Add new companies',
-    ].map((title) => <MenuButton label={title} key={title} />),
-    <MenuButton
-      label="Approve new users"
-      alert={2}
-      key={'Approve new users'}
-    />,
-  ],
+  children: (
+    <>
+      {[
+        'My account',
+        'Review next release',
+        'Adapt premissions for user groups',
+        'Add new companies',
+      ].map((title) => (
+        <MenuButton label={title} key={title} />
+      ))}
+      <MenuButton
+        label="Approve new users"
+        alert={2}
+        key={'Approve new users'}
+      />
+    </>
+  ),
 }

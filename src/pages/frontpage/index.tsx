@@ -21,7 +21,7 @@ export const Frontpage: React.FC = () => {
   return (
     <div className={styles.frontpage}>
       <div className={styles.title}>{'PDS Datahandbook'}</div>
-      {userContext.user?.userGroupId === 'general_user' ? (
+      {userContext.user?.userGroupType === 'general_user' ? (
         <div className={[styles.generalMenu, styles.menu].join(' ')}>
           <SearchField
             variant="primary"
@@ -48,7 +48,7 @@ export const Frontpage: React.FC = () => {
           />
         </div>
       ) : null}
-      {userContext.user?.userGroupId === 'moderator' ? (
+      {userContext.user?.userGroupType === 'admin' ? (
         <div className={[styles.generalMenu, styles.menu].join(' ')}>
           {loading && 'Loading...'}
           <SearchField
@@ -76,7 +76,7 @@ export const Frontpage: React.FC = () => {
           />
         </div>
       ) : null}
-      {userContext.user?.userGroupId === 'operator' ? (
+      {userContext.user?.userGroupType === 'operator' ? (
         <div className={[styles.operatorMenu, styles.menu].join(' ')}>
           {loading && 'Loading...'}
           <SearchField
