@@ -8,8 +8,6 @@ import { InputField } from '../../components/input-field'
 import useFetch from 'use-http'
 import { IUserContext } from '../../models/user'
 import { UserContext } from '../../utils/context/userContext'
-import { APIResponse } from '../../models/api-response'
-import { ICompany } from '../../models/company'
 
 //TO FIX: Needs types for facility and communications with server
 export const ManageFacilitiesPage: React.FC = () => {
