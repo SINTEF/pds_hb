@@ -7,4 +7,5 @@ export interface ICompany {
   facilities?: Array<string>
   created?: Date
   maxUsers: number
+  photo: string
 }
