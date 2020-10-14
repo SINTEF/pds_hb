@@ -8,6 +8,8 @@ import { InputField } from '../../components/input-field'
 import useFetch from 'use-http'
 import { IUserContext } from '../../models/user'
 import { UserContext } from '../../utils/context/userContext'
+import { APIResponse } from '../../models/api-response'
+import { ICompany } from '../../models/company'
 
 //TO FIX: Needs types for facility and communications with server
 export const ManageFacilitiesPage: React.FC = () => {
@@ -29,12 +31,10 @@ export const ManageFacilitiesPage: React.FC = () => {
     if (facilitiesResponse.ok) get()
   }
 
+  const facilities = companyData.data?.facilities ?? []
+
   const changeFacility = (facility: string) => {
-    companyData.facilities.splice(
-      companyData.facilities.indexOf(facilityState),
-      1,
-      facility
-    )
+    facilities.splice(facilities.indexOf(facilityState), 1, facility)
   }
 
   return (
@@ -51,11 +51,11 @@ export const ManageFacilitiesPage: React.FC = () => {
           label="Facilityname"
           placeholder="Enter name of facility..."
           allowAllInputs={true}
-          suggestions={companyData.facilities}
+          suggestions={facilities}
           onValueChanged={(value) => setFacility(value)}
           onClick={(selected) => {
             setFacility(selected)
-            companyData.indexOf(selected) > -1
+            facilities.indexOf(selected) > -1
               ? setPage('Update facilityname')
               : setPage('Create new facility')
           }}
@@ -66,9 +66,7 @@ export const ManageFacilitiesPage: React.FC = () => {
           <div className={styles.button}>
             <Button
               label="Add new facility"
-              onClick={() =>
-                updateFacilitites([...companyData.facilities, facilityState])
-              }
+              onClick={() => updateFacilitites([...facilities, facilityState])}
             />
           </div>
         </div>
@@ -88,7 +86,7 @@ export const ManageFacilitiesPage: React.FC = () => {
               label="Assign new name"
               onClick={() => {
                 setFacility(' ')
-                updateFacilitites(companyData.facilities.splice())
+                updateFacilitites(facilities.splice())
               }}
             />
             <Button
