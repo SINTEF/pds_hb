@@ -30,7 +30,6 @@ WithGroup.parameters = {
 WithGroup.args = {
   ...Standard.args,
   equipmentGroup: {
-    id: 'dfrewre',
     name: 'Fire detectors',
   },
 }

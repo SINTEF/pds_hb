@@ -484,7 +484,7 @@ exports[`Storyshots Group Editable 1`] = `
     <img
       alt="Icon for group Fire equipment"
       className="image"
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
+      src="https://www.svgrepo.com/show/131030/question-mark.svg"
     />
     Fire equipment
   </div>
@@ -556,7 +556,7 @@ exports[`Storyshots Group Standard 1`] = `
     <img
       alt="Icon for group Fire equipment"
       className="image"
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png"
+      src="https://www.svgrepo.com/show/131030/question-mark.svg"
     />
     Fire equipment
   </div>
@@ -1949,12 +1949,15 @@ exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
 `;
 
 exports[`Storyshots pages/Browse Standard 1`] = `
-<div>
+<div
+  className="container"
+>
   <div
     className="path"
+    onClick={[Function]}
   >
     /Choose equipmentgroup /
-    Fire detectors
+    <span />
   </div>
   <div
     className="filters padding"
@@ -1980,69 +1983,6 @@ exports[`Storyshots pages/Browse Standard 1`] = `
         </button>
       </div>
     </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L1
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L2
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L3
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
   </div>
   <div>
     <div
@@ -2059,9 +1999,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           >
             <div
               className="title notdynamic"
-            >
-              Smoke detector
-            </div>
+            />
           </div>
           <hr
             className="line"
@@ -2082,9 +2020,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
               className="line"
             />
           </div>
-          <div>
-            The detector includes the sensor and local electronics such as the address-/ interface unit.
-          </div>
+          <div />
         </div>
       </div>
       <div>
@@ -2101,9 +2037,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             </label>
             <label
               className="content"
-            >
-              23.03.2020
-            </label>
+            />
           </div>
         </div>
         <div>
@@ -2126,9 +2060,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             </label>
             <label
               className="content"
-            >
-              Remark this
-            </label>
+            />
           </div>
         </div>
         <div>
@@ -2151,9 +2083,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             </label>
             <label
               className="content"
-            >
-              Recommended values
-            </label>
+            />
           </div>
         </div>
         <div>
@@ -2176,9 +2106,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
               className="line"
             />
           </div>
-          <div>
-            This is DU
-          </div>
+          <div />
         </div>
       </div>
       <div
@@ -2229,71 +2157,68 @@ exports[`Storyshots pages/Browse Standard 1`] = `
         </tr>
         <tr>
           <td>
-            0,3
+            0.3
           </td>
           <td>
             A
           </td>
           <td>
-            5
+            6
           </td>
           <td>
-            0
+            2,8*10^6
           </td>
           <td>
-            2006-2008
+            2006
           </td>
           <td>
-            231
+            2018
           </td>
           <td>
-            
-          </td>
-        </tr>
-        <tr>
-          <td>
-            0,3
-          </td>
-          <td>
-            B
-          </td>
-          <td>
-            7
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            2013-2017
-          </td>
-          <td>
-            87
-          </td>
-          <td>
-            
+            689
           </td>
         </tr>
         <tr>
           <td>
-            0,3
+            0.6
+          </td>
+          <td>
+            C
+          </td>
+          <td>
+            3
+          </td>
+          <td>
+            3,7*10^6
+          </td>
+          <td>
+            2003
+          </td>
+          <td>
+            2019
+          </td>
+          <td>
+            36
+          </td>
+        </tr>
+        <tr>
+          <td>
+            0.5
           </td>
           <td>
             A
           </td>
           <td>
-            11
+            2,4*10^6
           </td>
           <td>
-            0
+            2010
           </td>
           <td>
-            2012-2020
+            2015
           </td>
           <td>
-            763
-          </td>
-          <td>
-            Fake news
+            456
           </td>
         </tr>
       </table>
@@ -2322,9 +2247,6 @@ exports[`Storyshots pages/ChooseComponentPagePage Standard 1`] = `
       className="line"
     />
   </div>
-  <div
-    className="components"
-  />
 </div>
 `;
 

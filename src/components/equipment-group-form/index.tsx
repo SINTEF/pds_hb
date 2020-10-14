@@ -10,7 +10,6 @@ import styles from './EquipmentGroupForm.module.css'
 Modal.setAppElement(document.getElementById('root') as HTMLElement)
 
 export interface IGroup {
-  id: string
   name: string
   symbol?: File
   symbolUrl?: string
