@@ -3,7 +3,10 @@ import styles from './Frontpage.module.css'
 import { SearchField } from '../../components/search-field'
 import { Button } from '../../components/button'
 import { useHistory } from 'react-router-dom'
-import MAIN_ROUTES, { COMPANY_SUB_ROUTES, SUB_ROUTES } from '../../routes/routes.constants'
+import MAIN_ROUTES, {
+  COMPANY_SUB_ROUTES,
+  SUB_ROUTES,
+} from '../../routes/routes.constants'
 import useFetch from 'use-http'
 import { IComponent } from '../../models/component'
 import { UserContext } from '../../utils/context/userContext'
