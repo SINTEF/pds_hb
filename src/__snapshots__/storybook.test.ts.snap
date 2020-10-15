@@ -2322,7 +2322,9 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
 `;
 
 exports[`Storyshots pages/Mange facilities Standard 1`] = `
-<div>
+<div
+  className="container"
+>
   <div
     className="title"
   >
