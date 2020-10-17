@@ -15,6 +15,7 @@ import { IUserContext } from '../../models/user'
 import { IComponent } from '../../models/component'
 import { IDataInstance } from '../../models/datainstance'
 import { APIResponse } from '../../models/api-response'
+import { Button } from '../../components/button'
 
 export interface Form {
   filters: { filter: string; value: string }[]
@@ -25,18 +26,19 @@ export const BrowseComponentPage: React.FC = () => {
 
   const [compState, setComp] = useState<IComponent>()
   const [components, setComponents] = useState<IComponent[]>([])
-  const [, setDatainstances] = useState<IDataInstance[]>()
+  const [failuredataState, setFailuredata] = useState<IDataInstance[]>()
   const [filterState, setFilter] = useState<Form>()
   const equipmentGroup = compState?.equipmentGroup
   const componentNames = components
     .filter((component) => component.equipmentGroup === equipmentGroup)
-    .map((component) => component.name)
+    .map((component) => component.name.replace('-', ' '))
   const headers = [
     'Failure rates',
     'Source',
     'DU',
     'T',
-    'Obs period',
+    'Observation start',
+    'Observation end',
     'Population size',
     'Comment',
   ]
@@ -56,7 +58,7 @@ export const BrowseComponentPage: React.FC = () => {
     get: datainstanceGet,
     response: datainstanceResponse,
     loading: datainstanceLoad,
-  } = useFetch('/data-instances')
+  } = useFetch<APIResponse<IDataInstance>>('/data-instances')
 
   useEffect(() => {
     loadComponents()
@@ -67,15 +69,37 @@ export const BrowseComponentPage: React.FC = () => {
     if (componentResponse.ok) {
       setComp(initialComp.data[0])
       setFilter({
-        filters: [{ filter: 'Component', value: initialComp.data[0].name }],
+        filters: [{ filter: 'component', value: initialComp.data[0].name }],
       })
     }
     const components = await componentGet()
     if (componentResponse.ok) setComponents(components.data)
-
-    const initialData = await datainstanceGet('/?component=' + componentName)
-    if (datainstanceResponse.ok) setDatainstances(initialData.data)
+    getFailureData()
   }
+
+  const getFailureData = async () => {
+    const dataRequestArray = filterState?.filters.map(
+      (filter) => filter.filter + '=' + filter.value
+    )
+    const dataRequest = '/?' + dataRequestArray?.join('&')
+    const failureData = await datainstanceGet(dataRequest)
+    if (datainstanceResponse.ok) setFailuredata(failureData.data)
+  }
+
+  const requestToData = (request: IDataInstance[]) => {
+    return (request ?? []).map((data) => [
+      data.failureRates?.toString(10),
+      data.facility?.toString,
+      data.du?.toString(10),
+      data.T?.toString(10),
+      data.startPeriod?.toString,
+      data.endPeriod?.toString,
+      data.populationSize?.toString(10),
+      data.comment?.toString,
+    ])
+  }
+
+  const data = requestToData(failuredataState as IDataInstance[])
 
   const userContext = useContext(UserContext) as IUserContext
 
@@ -83,62 +107,36 @@ export const BrowseComponentPage: React.FC = () => {
     return components?.filter((comp) => (comp.name = name))[0]
   }
 
-  //const getFailureData = () => {
-  //  return datainstances?.filter((data) =>
-  //    filterState?.filters.forEach((filter, idx) => Object.keys(data.L3)[filter.filter] ? filter.value : )
-  //  )
-  //}
-
   return componentLoad ? (
     <p>loading...</p>
   ) : (
     <div className={styles.container}>
-      <div
-        className={styles.path}
-        onClick={() =>
-          history.push(MAIN_ROUTES.BROWSE + SUB_ROUTES.CHOOSE_COMP)
-        }
-      >
-        {'/Choose equipmentgroup /'}
-        <span>{compState?.equipmentGroup}</span>
-      </div>
-      <div className={[styles.filters, styles.padding].join(' ')}>
-        <Filter
-          category="Component" // think i need a isChecked var to set/unset the filter
-          filters={componentNames as string[]}
-          onClick={(newcomp) => setComp(getComponent(newcomp))}
+      <div className={styles.path}>
+        <Button
+          label={'Back to equipmentsgroup'}
+          onClick={() => history.push(MAIN_ROUTES.BROWSE)}
         />
-        {Object.entries(compState?.L3 ?? {})
-          .filter(([, filters]) => filters !== undefined)
-          .map(([filterName, filters]) => (
-            <Filter
-              category={filterName}
-              filters={filters as string[]}
-              onClick={(selected) => {
-                if (filterState) {
-                  setFilter({
-                    filters: [
-                      ...filterState.filters,
-                      {
-                        filter: filterName,
-                        value: selected,
-                      },
-                    ],
-                  })
-                } else {
-                  setFilter({
-                    filters: [{ filter: filterName, value: selected }],
-                  })
-                }
-              }}
-              key={filterName}
-            />
-          ))}
       </div>
       <div>
         <div className={styles.content}>
           <div className={[styles.padding, styles.center].join(' ')}>
-            <Title title={compState?.name as string} />
+            <Title title={compState?.name.replace('-', ' ') as string} />
+          </div>
+          <div>
+            <Filter
+              category="Component" // think i need a isChecked var to set/unset the filter
+              filters={componentNames as string[]}
+              onClick={(newcomp) => {
+                setComp(getComponent(newcomp))
+                history.push(
+                  MAIN_ROUTES.BROWSE +
+                    SUB_ROUTES.VIEW.replace(
+                      ':componentName',
+                      newcomp.replace(' ', '-')
+                    )
+                )
+              }}
+            />
           </div>
           <div className={styles.description}>
             <TextBox
@@ -178,15 +176,45 @@ export const BrowseComponentPage: React.FC = () => {
           {datainstanceLoad ? (
             <p>loading...</p>
           ) : (
-            <Table
-              headers={headers}
-              data={[
-                ['0.3', 'A', '6', '2,8*10^6', '2006', '2018', '689'],
-                ['0.6', 'C', '3', '3,7*10^6', '2003', '2019', '36'],
-                ['0.5', 'A', '2,4*10^6', '2010', '2015', '456'],
-              ]}
-              onValueChanged={() => false}
-            />
+            <div>
+              <div className={[styles.filters, styles.padding].join(' ')}>
+                {Object.entries(compState?.L3 ?? {})
+                  .filter(([, filters]) => filters !== undefined)
+                  .map(([filterName, filters]) => (
+                    <Filter
+                      category={filterName}
+                      filters={filters as string[]}
+                      onClick={(selected) => {
+                        if (filterState) {
+                          setFilter({
+                            filters: [
+                              ...filterState.filters,
+                              {
+                                filter: filterName,
+                                value: selected,
+                              },
+                            ],
+                          })
+                          getFailureData()
+                        } else {
+                          setFilter({
+                            filters: [{ filter: filterName, value: selected }],
+                          })
+                          getFailureData()
+                        }
+                      }}
+                      key={filterName}
+                    />
+                  ))}
+              </div>
+              <div className={styles.table}>
+                <Table
+                  headers={headers}
+                  data={data}
+                  onValueChanged={() => false}
+                />
+              </div>
+            </div>
           )}
         </div>
       </div>

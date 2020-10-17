@@ -17,7 +17,6 @@ export const COMPANY_SUB_ROUTES = {
 }
 
 export const SUB_ROUTES = {
-  CHOOSE_COMP: '/choose_component',
   VIEW: '/view/:componentName',
 }
 

@@ -1954,34 +1954,53 @@ exports[`Storyshots pages/Browse Standard 1`] = `
 >
   <div
     className="path"
-    onClick={[Function]}
-  >
-    /Choose equipmentgroup /
-    <span />
-  </div>
-  <div
-    className="filters padding"
   >
     <div
-      className="open"
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
     >
-      <div
-        className="container"
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
       >
-        <button
-          className="button standard"
-          onClick={[Function]}
+        Back to equipmentsgroup
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
         >
-          <div>
-            Component
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
     </div>
   </div>
   <div>
@@ -2004,6 +2023,29 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           <hr
             className="line"
           />
+        </div>
+      </div>
+      <div>
+        <div
+          className="open"
+        >
+          <div
+            className="container"
+          >
+            <button
+              className="button standard"
+              onClick={[Function]}
+            >
+              <div>
+                Component
+              </div>
+              <i
+                className="material-icons icon"
+              >
+                expand_more
+              </i>
+            </button>
+          </div>
         </div>
       </div>
       <div
@@ -2129,99 +2171,45 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           />
         </div>
       </div>
-      <table
-        className="dataTable"
-      >
-        <tr>
-          <th>
-            Failure rates
-          </th>
-          <th>
-            Source
-          </th>
-          <th>
-            DU
-          </th>
-          <th>
-            T
-          </th>
-          <th>
-            Obs period
-          </th>
-          <th>
-            Population size
-          </th>
-          <th>
-            Comment
-          </th>
-        </tr>
-        <tr>
-          <td>
-            0.3
-          </td>
-          <td>
-            A
-          </td>
-          <td>
-            6
-          </td>
-          <td>
-            2,8*10^6
-          </td>
-          <td>
-            2006
-          </td>
-          <td>
-            2018
-          </td>
-          <td>
-            689
-          </td>
-        </tr>
-        <tr>
-          <td>
-            0.6
-          </td>
-          <td>
-            C
-          </td>
-          <td>
-            3
-          </td>
-          <td>
-            3,7*10^6
-          </td>
-          <td>
-            2003
-          </td>
-          <td>
-            2019
-          </td>
-          <td>
-            36
-          </td>
-        </tr>
-        <tr>
-          <td>
-            0.5
-          </td>
-          <td>
-            A
-          </td>
-          <td>
-            2,4*10^6
-          </td>
-          <td>
-            2010
-          </td>
-          <td>
-            2015
-          </td>
-          <td>
-            456
-          </td>
-        </tr>
-      </table>
+      <div>
+        <div
+          className="filters padding"
+        />
+        <div
+          className="table"
+        >
+          <table
+            className="dataTable"
+          >
+            <tr>
+              <th>
+                Failure rates
+              </th>
+              <th>
+                Source
+              </th>
+              <th>
+                DU
+              </th>
+              <th>
+                T
+              </th>
+              <th>
+                Observation start
+              </th>
+              <th>
+                Observation end
+              </th>
+              <th>
+                Population size
+              </th>
+              <th>
+                Comment
+              </th>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -8,11 +8,13 @@
   background-color: transparent;
   align-items: center;
   cursor: pointer;
+  text-align: center;
 }
 
 .image {
   background-color: transparent;
   max-height: 83px;
+  padding-bottom: 10px;
 }
 
 .icon {
