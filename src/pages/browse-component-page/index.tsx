@@ -7,7 +7,7 @@ import styles from './BrowseComponentPage.module.css'
 
 import { Title } from '../../components/title'
 import { TextBox } from '../../components/text-box'
-import { EditableField } from '../../components/editable-field'
+import { EditableField, FieldForm } from '../../components/editable-field'
 import { Filter } from '../../components/filter'
 import { Table } from '../../components/table'
 import { UserContext } from '../../utils/context/userContext'
@@ -58,6 +58,12 @@ export const BrowseComponentPage: React.FC = () => {
     loading: datainstanceLoad,
   } = useFetch('/data-instances')
 
+  const {
+    put: updateData,
+    response: updateDataResponse,
+    error: updateDataError,
+  } = useFetch(`/components`)
+
   useEffect(() => {
     loadComponents()
   }, [])
@@ -81,6 +87,12 @@ export const BrowseComponentPage: React.FC = () => {
 
   const getComponent = (name: string) => {
     return components?.filter((comp) => (comp.name = name))[0]
+  }
+
+  const handleUpdate = (form: FieldForm) => {
+    const data: { [id: string]: string } = {}
+    data[form.index.toLowerCase()] = form.content
+    updateData(compState?.name, data)
   }
 
   //const getFailureData = () => {
@@ -152,19 +164,33 @@ export const BrowseComponentPage: React.FC = () => {
             content={compState?.revisionDate?.toString().substring(0, 10)}
             mode="view"
             isAdmin={userContext?.user?.userGroupType === 'admin'}
+            onSubmit={handleUpdate}
           />
           <EditableField
             index="Remarks"
             content={compState?.remarks}
             mode="view"
             isAdmin={userContext?.user?.userGroupType === 'admin'}
+            onSubmit={handleUpdate}
           />
           <EditableField
             index="Recommended values for calculation"
             content={compState?.name} //reccomended vslues not in db
             mode="view"
             isAdmin={userContext?.user?.userGroupType === 'admin'}
+            onSubmit={handleUpdate}
           />
+
+          {updateDataResponse.ok ? (
+            <p className={styles.responseOk}>
+              {updateDataResponse.data?.message}
+            </p>
+          ) : null}
+          {updateDataError ? (
+            <p className={styles.responseError}>
+              {updateDataResponse.data?.message}
+            </p>
+          ) : null}
           <div className={styles.padding}>
             <TextBox
               title="Definition of DU"

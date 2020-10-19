@@ -41,3 +41,11 @@
 .padding {
   padding-top: 60px;
 }
+
+.responseOk {
+  color: chartreuse;
+}
+
+.responseError {
+  color: red;
+}
