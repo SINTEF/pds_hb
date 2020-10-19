@@ -42,3 +42,11 @@
 .width {
   width: 100%;
 }
+
+.responseOk {
+  color: chartreuse;
+}
+
+.responseError {
+  color: red;
+}
