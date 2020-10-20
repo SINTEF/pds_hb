@@ -1,8 +1,9 @@
 .container {
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-left: 70px;
+  margin-right: 70px;
   align-content: center;
   padding-top: 40px;
+  padding-bottom: 200px;
 }
 
 .path {
@@ -26,7 +27,6 @@
   flex-direction: column;
   align-items: left;
   width: inherit;
-  padding-top: 110px;
 }
 
 .description {
@@ -39,5 +39,9 @@
 }
 
 .padding {
-  padding-top: 60px;
+  padding-top: 30px;
+}
+
+.table {
+  padding-top: 160px;
 }

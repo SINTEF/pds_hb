@@ -13,7 +13,7 @@ export const Browse: React.FC = () => {
         <Route path={path + SUB_ROUTES.VIEW}>
           <BrowseComponentPage />
         </Route>
-        <Route path={[path + SUB_ROUTES.CHOOSE_COMP, path]}>
+        <Route path={path}>
           <ChooseComponentPage />
         </Route>
       </Switch>
