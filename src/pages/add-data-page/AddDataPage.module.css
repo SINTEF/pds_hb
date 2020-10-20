@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-left: 70px;
-  margin-right: 70px;
+  margin-left: 150px;
+  margin-right: 150px;
   padding-bottom: 200px;
-  width: 100%;
+  width: auto;
 }
 
 .buttoncontainer {
@@ -23,7 +23,7 @@
 }
 
 .title {
-  max-width: 95%;
+  max-width: 80%;
   padding-left: 30px;
   padding-right: 30px;
   height: 300px;
@@ -35,4 +35,15 @@
   width: 90%;
   padding-top: 60px;
   justify-content: flex-end;
+}
+
+.facilitycontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 300px;
+  width: auto;
+  padding-left: 200px;
+  padding-right: 200px;
 }

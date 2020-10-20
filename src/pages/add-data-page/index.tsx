@@ -70,10 +70,10 @@ export const AddDataPage: React.FC = () => {
     }
     return []
   }
-  //const navigateToFacility: () => setData(1);
+
   if (pageState === 1) {
     return (
-      <div className={[styles.container, styles.title].join(' ')}>
+      <div className={styles.facilitycontainer}>
         <Title title="Choose Facility" />
         <SearchField
           label="Facility"
@@ -158,9 +158,20 @@ export const AddDataPage: React.FC = () => {
         <Title title={'Failure data at'} dynamic={dataState.facility} />
         <div className={[styles.container, styles.buttoncontainer].join(' ')}>
           {'Data successfully added!'}
-          {
-            //want onClick to take function navigate as argument - setPage(1)
-          }
+          <Button
+            label={'Add more data'}
+            onClick={() => {
+              setPage(2)
+              setData({
+                facility: dataState.facility,
+                component: null,
+                T: null,
+                du: null,
+                populationsize: null,
+                company: dataState.company,
+              })
+            }}
+          />
         </div>
       </div>
     )
