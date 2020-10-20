@@ -1,8 +1,8 @@
 .container {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  padding-top: 10px;
+  padding-top: 25px;
 }
 .index {
   font-weight: bold;
@@ -14,9 +14,10 @@
   font-size: 34px;
   color: #003d65;
   width: 100%;
+  padding-left: 15px;
 }
 .divider {
-  margin: 5px;
+  margin-top: 5px;
 }
 .input:focus {
   border: none;
@@ -24,7 +25,6 @@
 }
 .input {
   border: none;
-  background-color: transparent;
 }
 .iconbutton {
   float: right;
