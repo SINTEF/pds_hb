@@ -116,7 +116,6 @@ export const BrowseComponentPage: React.FC = () => {
     return components?.filter((comp) => (comp.name = name))[0]
   }
 
-
   const handleUpdate = (form: FieldForm) => {
     const data: { [id: string]: string } = {}
     data[form.index.toLowerCase()] = form.content
