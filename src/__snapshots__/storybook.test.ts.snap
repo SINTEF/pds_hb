@@ -284,9 +284,10 @@ exports[`Storyshots Components/editable-field Editmode 1`] = `
       </label>
       <input
         className="content input"
-        id="inputContent"
-        placeholder="123456"
+        id="content"
+        onChange={[Function]}
         type="text"
+        value="123456"
       />
     </div>
     <div>
@@ -2081,7 +2082,9 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             </label>
             <label
               className="content"
-            />
+            >
+              
+            </label>
           </div>
         </div>
         <div>
@@ -2104,7 +2107,9 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             </label>
             <label
               className="content"
-            />
+            >
+              
+            </label>
           </div>
         </div>
         <div>
@@ -2127,7 +2132,9 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             </label>
             <label
               className="content"
-            />
+            >
+              
+            </label>
           </div>
         </div>
         <div>
