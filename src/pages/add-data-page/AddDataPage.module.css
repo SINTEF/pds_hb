@@ -6,6 +6,7 @@
   margin-left: 70px;
   margin-right: 70px;
   padding-bottom: 200px;
+  width: 100%;
 }
 
 .buttoncontainer {
@@ -17,13 +18,12 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding-top: 80px;
-  width: 100%;
+  padding-top: 100px;
+  width: 90%;
 }
 
 .title {
-  min-width: 1040px;
-  max-width: 1260px;
+  max-width: 95%;
   padding-left: 30px;
   padding-right: 30px;
   height: 300px;
@@ -31,10 +31,8 @@
 }
 
 .button {
-  position: absolute;
-  right: 120px;
-  bottom: 120px;
-}
-
-.searchfield {
+  display: flex;
+  width: 90%;
+  padding-top: 60px;
+  justify-content: flex-end;
 }

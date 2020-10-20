@@ -36,7 +36,7 @@ export const ManageFacilitiesPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.title}>
         <Title title="Manage facilities" />
       </div>
