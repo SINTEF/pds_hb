@@ -2025,7 +2025,9 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           />
         </div>
       </div>
-      <div>
+      <div
+        className="filters padding"
+      >
         <div
           className="open"
         >

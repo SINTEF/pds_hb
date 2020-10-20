@@ -64,6 +64,10 @@ export const BrowseComponentPage: React.FC = () => {
     loadComponents()
   }, [])
 
+  useEffect(() => {
+    getFailureData()
+  }, [filterState])
+
   const loadComponents = async () => {
     const initialComp = await componentGet('/?name=' + componentName)
     if (componentResponse.ok) {
@@ -74,7 +78,6 @@ export const BrowseComponentPage: React.FC = () => {
     }
     const components = await componentGet()
     if (componentResponse.ok) setComponents(components.data)
-    getFailureData()
   }
 
   const getFailureData = async () => {
@@ -89,7 +92,7 @@ export const BrowseComponentPage: React.FC = () => {
   const requestToData = (request: IDataInstance[]) => {
     return (request ?? []).map((data) => [
       data.failureRates?.toString(10),
-      data.facility?.toString,
+      data.facility,
       data.du?.toString(10),
       data.T?.toString(10),
       data.startPeriod?.toString,
@@ -122,7 +125,7 @@ export const BrowseComponentPage: React.FC = () => {
           <div className={[styles.padding, styles.center].join(' ')}>
             <Title title={compState?.name.replace('-', ' ') as string} />
           </div>
-          <div>
+          <div className={[styles.filters, styles.padding].join(' ')}>
             <Filter
               category="Component" // think i need a isChecked var to set/unset the filter
               filters={componentNames as string[]}
