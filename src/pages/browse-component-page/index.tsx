@@ -107,7 +107,7 @@ export const BrowseComponentPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
 
   const getComponent = (name: string) => {
-    return components?.filter((comp) => (comp.name = name))[0]
+    return components?.filter((comp) => comp.name === name)[0]
   }
 
   return componentLoad ? (
