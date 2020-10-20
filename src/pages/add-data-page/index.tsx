@@ -14,10 +14,17 @@ import { IComponent } from '../../models/component'
 export interface Form {
   facility: string | null
   component: string | null
-  T: number | null
+  startdate: number | null
+  enddate: number | null
   du: number | null
   populationsize: number | null
   company: string | undefined
+  l3: { filter: string; value: string }[] | null
+}
+
+interface componentReq {
+  names: string[]
+  components: IComponent[]
 }
 
 export const AddDataPage: React.FC = () => {
@@ -26,21 +33,26 @@ export const AddDataPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
 
   const [pageState, setPage] = useState<number>(1)
-  const [components, setComponents] = useState<string[]>([])
+  const [components, setComponents] = useState<IComponent[]>([])
+  const [componentNames, setComponentNames] = useState<string[]>([])
   const [facilities, setFacilities] = useState<string[]>([])
 
   const [dataState, setData] = useState<Form>({
     facility: null,
     component: null,
-    T: null,
+    startdate: null,
+    enddate: null,
     du: null,
     populationsize: null,
     company: undefined,
+    l3: [],
   })
 
   useEffect(() => {
-    getComponents().then((componentNames) => {
-      setComponents(componentNames)
+    getComponents().then((obj) => {
+      const { names, components } = obj
+      setComponents(components)
+      setComponentNames(names)
     })
   }, [])
 
@@ -50,17 +62,21 @@ export const AddDataPage: React.FC = () => {
     })
   }, [userContext.user?.companyName])
 
+  useEffect(() => {
+    getL3()
+  }, [])
+
   const updateData = async (form: Form): Promise<void> => {
     form = { ...form, company: userContext.user?.companyName }
     await post('/data-instances', form)
   }
 
-  const getComponents = async (): Promise<Array<string>> => {
+  const getComponents = async (): Promise<componentReq> => {
     const components = await get('/components')
     const componentNames = components['data'].map(
       (component: IComponent) => component.name
     )
-    return componentNames
+    return { names: componentNames, components: components.data }
   }
 
   const getFacilities = async (): Promise<Array<string>> => {
@@ -70,6 +86,17 @@ export const AddDataPage: React.FC = () => {
     }
     return []
   }
+
+  const getL3 = () => {
+    if (dataState.component) {
+      return components.filter(
+        (component) => component.name === dataState.component
+      )[0].L3
+    } else {
+      return []
+    }
+  }
+
   //const navigateToFacility: () => setData(1);
   if (pageState === 1) {
     return (
@@ -99,7 +126,7 @@ export const AddDataPage: React.FC = () => {
             variant="secondary"
             label="Component"
             placeholder={dataState.component ? undefined : 'Set a component...'}
-            suggestions={components}
+            suggestions={componentNames}
             onValueChanged={() => false}
             onClick={(component) =>
               setData({ ...dataState, component: component })
@@ -108,10 +135,19 @@ export const AddDataPage: React.FC = () => {
           <InputField
             variant="standard"
             type="number"
-            label="T"
-            placeholder={dataState.T ? undefined : 'Set a time T in hours...'}
+            label="Start period"
+            placeholder={dataState.startdate ? undefined : 'dd.mm.yyyy...'}
             onValueChanged={(value) => {
-              setData({ ...dataState, T: value as number })
+              setData({ ...dataState, startdate: value as number })
+            }}
+          />
+          <InputField
+            variant="standard"
+            type="number"
+            label="End period"
+            placeholder={dataState.enddate ? undefined : 'dd.mm.yyyy...'}
+            onValueChanged={(value) => {
+              setData({ ...dataState, enddate: value as number })
             }}
           />
           <InputField
@@ -134,21 +170,44 @@ export const AddDataPage: React.FC = () => {
               setData({ ...dataState, populationsize: Number(value as string) })
             }}
           />
+          {Object.entries(getL3() ?? []).map(([filter, values]) => (
+            <SearchField
+              variant="secondary"
+              label={filter}
+              suggestions={values as string[]}
+              placeholder={
+                dataState.l3
+                  ? undefined
+                  : 'Choose ' + filter.replace('-', ' ') + '...'
+              }
+              onValueChanged={() => false}
+              onClick={(value) => {
+                setData({
+                  ...dataState,
+                  l3: [{ filter: filter, value: value }],
+                })
+              }}
+              key={filter}
+            />
+          ))}
         </div>
         {
           //dataState.component &&
 
-          dataState.T && dataState.du && dataState.populationsize && (
-            <div className={styles.button}>
-              <Button
-                onClick={() => {
-                  setPage(3)
-                  updateData(dataState)
-                }}
-                label="Add data"
-              />
-            </div>
-          )
+          dataState.startdate &&
+            dataState.enddate &&
+            dataState.du &&
+            dataState.populationsize && (
+              <div className={styles.button}>
+                <Button
+                  onClick={() => {
+                    setPage(3)
+                    updateData(dataState)
+                  }}
+                  label="Add data"
+                />
+              </div>
+            )
         }
       </div>
     )

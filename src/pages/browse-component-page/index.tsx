@@ -193,7 +193,7 @@ export const BrowseComponentPage: React.FC = () => {
                             filters: [
                               ...filterState.filters,
                               {
-                                filter: filterName,
+                                filter: 'L3.' + filterName,
                                 value: selected,
                               },
                             ],
@@ -201,7 +201,9 @@ export const BrowseComponentPage: React.FC = () => {
                           getFailureData()
                         } else {
                           setFilter({
-                            filters: [{ filter: filterName, value: selected }],
+                            filters: [
+                              { filter: 'L3.' + filterName, value: selected },
+                            ],
                           })
                           getFailureData()
                         }
