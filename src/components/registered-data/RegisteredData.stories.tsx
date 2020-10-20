@@ -12,12 +12,6 @@ const Template: Story<RegisteredDataProps> = (args) => (
   <RegisteredData {...args} />
 )
 
-const values: Record<string, string[]> = {
-  L1: ['V1', 'V2', 'V3'],
-  L2: ['V2', 'V3'],
-  L3: ['V4', 'V5'],
-}
-
 const filters: Record<string, string[]> = {
   'Smoke detector': ['L1', 'L2', 'L3'],
   'Flame detector': ['L2', 'L3'],
@@ -29,7 +23,6 @@ Standard.args = {
   equipmentgroup: 'Fire detectors',
   getComponents: () => ['Smoke detector', 'Flame detector'],
   getFilters: (component) => filters[component],
-  getValuesForFilter: (filter) => values[filter],
   getFailureData: () => [
     {
       _id: 'object1',
