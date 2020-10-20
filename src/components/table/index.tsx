@@ -4,7 +4,7 @@ import styles from './Table.module.css'
 export interface TableProps {
   onValueChanged: (value: string) => void
 
-  data: Array<Array<string>>
+  data: (string | (() => string) | undefined)[][]
 
   headers: Array<string>
 }

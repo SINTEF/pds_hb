@@ -7,6 +7,8 @@ export interface IDataInstance {
   T: number
   du: number
   populationSize?: number
+  failureRates?: number
+  comment?: string
   L3: {
     measuringPrinciple?: string
     designMountingPrinciple?: string

@@ -8,6 +8,7 @@
   line-height: 0px;
   position: relative;
   grid-template-columns: fit-content(120%);
+  min-height: 100px;
 }
 
 .titlecontainer {
@@ -32,7 +33,7 @@
 }
 
 .large {
-  max-width: 1264px;
+  max-width: 100%;
 }
 
 .small {

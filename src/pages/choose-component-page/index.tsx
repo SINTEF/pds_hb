@@ -81,6 +81,12 @@ export const ChooseComponentPage: FC = () => {
     return (
       <div className={styles.container}>
         <Title title="Choose component"> </Title>
+        <span className={styles.moduletitle}>
+          {
+            allComponents.find((comp) => comp.name === equipmentgroup[0].name)
+              ?.equipmentGroup
+          }
+        </span>
         <div className={styles.components}>
           {equipmentgroup.map((component, index) => {
             return (
