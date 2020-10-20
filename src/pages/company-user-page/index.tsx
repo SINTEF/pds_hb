@@ -3,13 +3,20 @@ import React, { useContext } from 'react'
 import styles from './CompanyUserPage.module.css'
 
 import { Title } from '../../components/title'
-import { EditableField } from '../../components/editable-field'
+import { EditableField, FieldForm } from '../../components/editable-field'
 import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
 import useFetch from 'use-http'
 import Loader from 'react-loader-spinner'
 import { APIResponse } from '../../models/api-response'
 import { ICompany } from '../../models/company'
+
+enum indexes {
+  Name = 'name',
+  Email = 'email',
+  Phone = 'phoneNr',
+  Description = 'description',
+}
 
 // TO COMPLETE: Needs communication with server to save changes
 export const CompanyUserPage: React.FC = () => {
@@ -19,6 +26,34 @@ export const CompanyUserPage: React.FC = () => {
     '/company/' + userContext.user?.companyName,
     []
   )
+
+  const {
+    put: updateData,
+    response: updateDataResponse,
+    error: updateDataError,
+  } = useFetch('/company/' + userContext.user?.companyName)
+
+  const handleUpdate = (form: FieldForm) => {
+    const data: { [id: string]: string } = {}
+    const index = form.index
+
+    switch (index) {
+      case 'Name':
+        data[indexes.Name] = form.content
+        break
+      case 'Description':
+        data[indexes.Description] = form.content
+        break
+      case 'Phone':
+        data[indexes.Phone] = form.content
+        break
+      case 'Email':
+        data[indexes.Email] = form.content
+        break
+    }
+
+    updateData(data)
+  }
 
   const uploadImg = () => {
     return ''
@@ -53,25 +88,39 @@ export const CompanyUserPage: React.FC = () => {
               content={companyData?.data.name}
               mode="view"
               isAdmin={true}
+              onSubmit={handleUpdate}
             />
             <EditableField
               index="Email"
               content={companyData?.data.email}
               mode="view"
               isAdmin={true}
+              onSubmit={handleUpdate}
             />
             <EditableField
               index="Phone"
               content={companyData?.data.phoneNr}
               mode="view"
               isAdmin={true}
+              onSubmit={handleUpdate}
             />
             <EditableField
               index="Description"
               content={companyData?.data.description}
               mode="view"
               isAdmin={true}
+              onSubmit={handleUpdate}
             />
+            {updateDataResponse.ok ? (
+              <p className={styles.responseOk}>
+                {updateDataResponse.data?.message}
+              </p>
+            ) : null}
+            {updateDataError ? (
+              <p className={styles.responseError}>
+                {updateDataResponse.data?.message}
+              </p>
+            ) : null}
           </div>
         </>
       )}
