@@ -1907,7 +1907,7 @@ exports[`Storyshots Title Standard 1`] = `
 
 exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
 <div
-  className="container title"
+  className="facilitycontainer"
 >
   <div
     className="container"
