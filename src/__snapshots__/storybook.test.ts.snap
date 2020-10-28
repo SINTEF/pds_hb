@@ -641,10 +641,10 @@ exports[`Storyshots Input field Primary With Default 1`] = `
       Input Label
     </label>
     <input
-      defaultValue="Default value"
       id="Input Label"
       onChange={[Function]}
       type="text"
+      value="Default value"
     />
   </div>
 </div>
@@ -701,10 +701,10 @@ exports[`Storyshots Input field Primary With Icon 1`] = `
       Input label
     </label>
     <input
-      defaultValue="Default value"
       id="Input label"
       onChange={[Function]}
       type="text"
+      value="Default value"
     />
     <i
       className="material-icons icon"
@@ -918,6 +918,7 @@ exports[`Storyshots Pages/Login Start 1`] = `
           id="Username"
           onChange={[Function]}
           type="text"
+          value=""
         />
         <i
           className="material-icons icon"
@@ -947,6 +948,7 @@ exports[`Storyshots Pages/Login Start 1`] = `
           id="Password"
           onChange={[Function]}
           type="password"
+          value=""
         />
         <i
           className="material-icons icon"

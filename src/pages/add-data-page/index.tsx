@@ -110,6 +110,7 @@ export const AddDataPage: React.FC = () => {
             type="number"
             label="T"
             placeholder={dataState.T ? undefined : 'Set a time T in hours...'}
+            value={dataState.T ?? undefined}
             onValueChanged={(value) => {
               setData({ ...dataState, T: value as number })
             }}
@@ -119,6 +120,7 @@ export const AddDataPage: React.FC = () => {
             type="number"
             label="DU value"
             placeholder={dataState.du ? undefined : 'Set a DU-value...'}
+            value={dataState.du ?? undefined}
             onValueChanged={(value) => {
               setData({ ...dataState, du: Number(value as string) })
             }}
@@ -130,6 +132,7 @@ export const AddDataPage: React.FC = () => {
             placeholder={
               dataState.populationsize ? undefined : 'Set a populationsize...'
             }
+            value={dataState.populationsize ?? undefined}
             onValueChanged={(value) => {
               setData({ ...dataState, populationsize: Number(value as string) })
             }}
