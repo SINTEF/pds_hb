@@ -1,0 +1,41 @@
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'title title' 'inputfields description' 'definition definition' '. buttons';
+  row-gap: 20px;
+  column-gap: 10px;
+  margin: 0 20vw;
+  height: 100vh;
+}
+
+.title {
+  align-self: center;
+  grid-area: title;
+}
+
+.inputfields {
+  grid-area: inputfields;
+}
+
+.description {
+  grid-area: description;
+}
+
+.definition {
+  grid-area: definition;
+}
+
+.buttons {
+  grid-area: buttons;
+}
+
+.buttons > * {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    margin: 0 10vw;
+  }
+}
