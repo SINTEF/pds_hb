@@ -15,3 +15,10 @@
   right: 80px;
   bottom: 40px;
 }
+
+.center {
+  align-items: center;
+  height: 200px;
+  justify-content: space-between;
+  padding-top: 100px;
+}

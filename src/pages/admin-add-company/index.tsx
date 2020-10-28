@@ -47,6 +47,14 @@ export const AddCompanyPage: React.FC = () => {
     }
     if (!companyResponse.ok) {
       setPage(3)
+      setCompany({
+        name: null,
+        organizationNr: null,
+        //companyEmail: null,
+        //ceoEmail: null,
+        email: null,
+        maxUsers: null,
+      })
     }
   }
 
@@ -78,6 +86,7 @@ export const AddCompanyPage: React.FC = () => {
           />
           <InputField
             variant="standard"
+            type="number"
             label="Organisation Number"
             placeholder="Enter the orgNr for the new company..."
             onValueChanged={(value) =>
@@ -110,6 +119,7 @@ export const AddCompanyPage: React.FC = () => {
           />
           <InputField
             variant="standard"
+            type="number"
             label="Max users"
             placeholder="Enter a number for max users for the new company..."
             onValueChanged={(value) =>
@@ -128,8 +138,21 @@ export const AddCompanyPage: React.FC = () => {
           )}
         </div>
       )}
-      {pageState === 2 && <div>{'Company successfully added'}</div>}
-      {pageState === 3 && <div>{'Oh no, could not add company...'}</div>}
+      {pageState === 2 && (
+        <div className={[styles.container, styles.center].join(' ')}>
+          {'Company successfully added'}
+          <Button label="Add another comapny" onClick={() => setPage(1)} />
+        </div>
+      )}
+      {pageState === 3 && (
+        <div className={[styles.container, styles.center].join(' ')}>
+          {'Oh no, could not add company...'}
+          <Button
+            label="Try adding another comapny"
+            onClick={() => setPage(1)}
+          />
+        </div>
+      )}
     </div>
   )
 }
