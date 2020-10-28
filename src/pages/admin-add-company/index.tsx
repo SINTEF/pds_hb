@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from './AddCompanyPage.module.css'
 import useFetch from 'use-http'
 import { Title } from '../../components/title'
 import { InputField } from '../../components/input-field'
@@ -46,6 +47,9 @@ export const AddCompanyPage: React.FC = () => {
         maxUsers: null,
       })
     }
+    if (!companyResponse.ok) {
+      setPage(3)
+    }
   }
 
   const validCompany = () => {
@@ -59,11 +63,12 @@ export const AddCompanyPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <Title title="Add new companies" />
       {pageState === 1 && (
         <div>
           <InputField
+            variant="standard"
             label="Company name"
             placeholder="Enter a name for the new company..."
             onValueChanged={(value) =>
@@ -71,6 +76,7 @@ export const AddCompanyPage: React.FC = () => {
             }
           />
           <InputField
+            variant="standard"
             label="Organisation Number"
             placeholder="Enter the orgNr for the new company..."
             onValueChanged={(value) =>
@@ -78,6 +84,7 @@ export const AddCompanyPage: React.FC = () => {
             }
           />
           <InputField
+            variant="standard"
             label="Company email"
             placeholder="Enter an email for the new company..."
             onValueChanged={(value) =>
@@ -85,6 +92,7 @@ export const AddCompanyPage: React.FC = () => {
             }
           />
           <InputField
+            variant="standard"
             label="CEO email"
             placeholder="Enter an email for the CEO of the new company..."
             onValueChanged={(value) =>
@@ -92,6 +100,7 @@ export const AddCompanyPage: React.FC = () => {
             }
           />
           <InputField
+            variant="standard"
             label="Max users"
             placeholder="Enter a number for max users for the new company..."
             onValueChanged={(value) =>
@@ -99,11 +108,17 @@ export const AddCompanyPage: React.FC = () => {
             }
           />
           {validCompany && (
-            <Button label="Add company" onClick={handleNewCompany} />
+            <Button
+              label="Add company"
+              onClick={() => {
+                handleNewCompany()
+              }}
+            />
           )}
         </div>
       )}
       {pageState === 2 && <div>{'Company successfully added'}</div>}
+      {pageState === 3 && <div>{'Oh no, could not add company...'}</div>}
     </div>
   )
 }

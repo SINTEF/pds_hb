@@ -20,4 +20,11 @@ export const SUB_ROUTES = {
   VIEW: '/view/:componentName',
 }
 
+export const ADMIN_SUB_ROUTES = {
+  SEE_ALL_EDITS: '/edits',
+  USER: '/user', // this can be the same as for comapny but the userpage should be dynamic dependng on usergrouptype
+  ADD_COMPANY: '/add-company',
+  APPROVE_USERS: '/approve-users',
+}
+
 export default MAIN_ROUTES
