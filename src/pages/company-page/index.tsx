@@ -7,6 +7,7 @@ import { COMPANY_SUB_ROUTES } from '../../routes/routes.constants'
 import { CompanyUserPage } from '../company-user-page'
 import { ManageFacilitiesPage } from '../manage-facilities-page'
 import { ManageStaffmembersPage } from '../manage-staffmembers-page'
+import { OwnDataPage } from '../own-data'
 
 import styles from './CompanyPage.module.css'
 
@@ -47,7 +48,7 @@ export const CompanyPage: React.FC = () => {
       <div className={styles.content}>
         <Switch>
           <Route path={path + COMPANY_SUB_ROUTES.REG_DATA}>
-            {/* <RegisteredData />  this component needs some work before it can be used*/}
+            <OwnDataPage />
           </Route>
           <Route path={path + COMPANY_SUB_ROUTES.MANAGE_FAC}>
             <ManageFacilitiesPage />
