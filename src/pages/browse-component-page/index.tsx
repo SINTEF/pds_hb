@@ -94,10 +94,11 @@ export const BrowseComponentPage: React.FC = () => {
       (filter) =>
         Object.entries(filterState[filter])
           .filter(([, value]) => value)
-          .map(([name]) => filter + '=' + name)
+          .map(([name]) => `L3.${filter}=${name}`)
     )
-    const dataRequest =
-      '/?name=' + componentName + '&' + dataRequestArray?.join('&')
+    let dataRequest = '/?component=' + componentName
+    dataRequest +=
+      dataRequestArray.length > 0 ? '&' + dataRequestArray.join('&') : ''
     const failureData = await datainstanceGet(dataRequest)
     if (datainstanceResponse.ok) setFailuredata(failureData.data)
   }
