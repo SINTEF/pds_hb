@@ -13,9 +13,7 @@ import { APIResponse } from '../../models/api-response'
 import { IModule } from '../../models/module'
 import { IUserContext } from '../../models/user'
 import { UserContext } from '../../utils/context/userContext'
-import { ICompany } from '../../models/company'
 import { IDataInstance } from '../../models/datainstance'
-import { group } from 'console'
 
 export const OwnDataPage: FC = () => {
   const history = useHistory()
@@ -35,13 +33,9 @@ export const OwnDataPage: FC = () => {
     APIResponse<IModule>
   >('/modules')
 
-  const {
-    get: datainstanceGet,
-    response: datainstanceResponse,
-    loading: datainstanceLoad,
-  } = useFetch<APIResponse<IDataInstance>>(
-    '/data-instances/?company=' + userContext.user?.companyName
-  )
+  const { get: datainstanceGet, response: datainstanceResponse } = useFetch<
+    APIResponse<IDataInstance>
+  >('/data-instances/?company=' + userContext.user?.companyName)
 
   useEffect(() => {
     loadComponents()
@@ -80,13 +74,6 @@ export const OwnDataPage: FC = () => {
   const components = allComponents.filter((component) =>
     componentNames.includes(component.name)
   )
-
-  const moduleNames = components.map((instance) => instance.module)
-
-  const relevantModules = modules.filter((module) =>
-    moduleNames.includes(module.name)
-  )
-
   const equipmentGroupNames = components.map(
     (instance) => instance.equipmentGroup
   )
