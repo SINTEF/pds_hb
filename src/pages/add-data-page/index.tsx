@@ -70,10 +70,10 @@ export const AddDataPage: React.FC = () => {
     }
     return []
   }
-  //const navigateToFacility: () => setData(1);
+
   if (pageState === 1) {
     return (
-      <div className={[styles.container, styles.title].join(' ')}>
+      <div className={styles.facilitycontainer}>
         <Title title="Choose Facility" />
         <SearchField
           label="Facility"
@@ -110,6 +110,7 @@ export const AddDataPage: React.FC = () => {
             type="number"
             label="T"
             placeholder={dataState.T ? undefined : 'Set a time T in hours...'}
+            value={dataState.T ?? undefined}
             onValueChanged={(value) => {
               setData({ ...dataState, T: value as number })
             }}
@@ -119,6 +120,7 @@ export const AddDataPage: React.FC = () => {
             type="number"
             label="DU value"
             placeholder={dataState.du ? undefined : 'Set a DU-value...'}
+            value={dataState.du ?? undefined}
             onValueChanged={(value) => {
               setData({ ...dataState, du: Number(value as string) })
             }}
@@ -130,6 +132,7 @@ export const AddDataPage: React.FC = () => {
             placeholder={
               dataState.populationsize ? undefined : 'Set a populationsize...'
             }
+            value={dataState.populationsize ?? undefined}
             onValueChanged={(value) => {
               setData({ ...dataState, populationsize: Number(value as string) })
             }}
@@ -158,9 +161,20 @@ export const AddDataPage: React.FC = () => {
         <Title title={'Failure data at'} dynamic={dataState.facility} />
         <div className={[styles.container, styles.buttoncontainer].join(' ')}>
           {'Data successfully added!'}
-          {
-            //want onClick to take function navigate as argument - setPage(1)
-          }
+          <Button
+            label={'Add more data'}
+            onClick={() => {
+              setPage(2)
+              setData({
+                facility: dataState.facility,
+                component: null,
+                T: null,
+                du: null,
+                populationsize: null,
+                company: dataState.company,
+              })
+            }}
+          />
         </div>
       </div>
     )

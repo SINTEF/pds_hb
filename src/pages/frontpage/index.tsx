@@ -3,7 +3,10 @@ import styles from './Frontpage.module.css'
 import { SearchField } from '../../components/search-field'
 import { Button } from '../../components/button'
 import { useHistory } from 'react-router-dom'
-import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
+import MAIN_ROUTES, {
+  COMPANY_SUB_ROUTES,
+  SUB_ROUTES,
+} from '../../routes/routes.constants'
 import useFetch from 'use-http'
 import { IComponent } from '../../models/component'
 import { UserContext } from '../../utils/context/userContext'
@@ -104,7 +107,9 @@ export const Frontpage: React.FC = () => {
           />
           <Button
             label={'Browse own equipment data'}
-            onClick={() => history.push(MAIN_ROUTES.COMPANY)}
+            onClick={() =>
+              history.push(MAIN_ROUTES.COMPANY + COMPANY_SUB_ROUTES.REG_DATA)
+            }
           />
           <Button
             label={'Add data'}

@@ -66,6 +66,7 @@ export const ContactForm: React.FC = () => {
               variant={'standard'}
               label={'Subject'}
               placeholder={'The subject of your message'}
+              value={values.subject}
               onValueChanged={(subject) =>
                 setValues({ ...values, subject: subject as string })
               }
@@ -75,6 +76,7 @@ export const ContactForm: React.FC = () => {
               type={'email'}
               label={'Your e-mail'}
               placeholder={'hans@hansen.no'}
+              value={values.senderEmail}
               onValueChanged={(email) =>
                 setValues({ ...values, senderEmail: email as string })
               }
@@ -83,6 +85,7 @@ export const ContactForm: React.FC = () => {
               variant={'standard'}
               type={'textarea'}
               label={'Message'}
+              value={values.message}
               onValueChanged={(message) =>
                 setValues({ ...values, message: message as string })
               }
