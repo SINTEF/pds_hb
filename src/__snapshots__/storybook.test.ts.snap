@@ -2244,6 +2244,9 @@ exports[`Storyshots pages/ChooseComponentPagePage Standard 1`] = `
       className="line"
     />
   </div>
+  <div
+    className="components"
+  />
 </div>
 `;
 
