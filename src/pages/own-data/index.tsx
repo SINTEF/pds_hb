@@ -19,7 +19,6 @@ export const OwnDataPage: FC = () => {
   const history = useHistory()
   const { url } = useRouteMatch()
   const [pageState, setPage] = useState<number>(1)
-  const [modules, setModules] = useState<IModule[]>([])
   const [equipmentgroup, setEquipmentGroup] = useState<IGroup[]>([])
   const [allComponents, setAllComponents] = useState<IComponent[]>([])
   const [dataInstances, setDatainstances] = useState<IDataInstance[]>([])
