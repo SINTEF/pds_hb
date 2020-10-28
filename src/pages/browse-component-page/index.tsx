@@ -59,49 +59,47 @@ export const BrowseComponentPage: React.FC = () => {
   } = useFetch<APIResponse<IDataInstance>>('/data-instances')
 
   useEffect(() => {
+    const loadComponents = async () => {
+      const initialComp: APIResponse<IComponent[]> = await componentGet(
+        '/?name=' + componentName
+      )
+      if (componentResponse.ok) {
+        setComp(initialComp.data[0])
+        setFilter(
+          Object.entries(initialComp.data[0].L3).reduce(
+            (object, [key, value]) => ({
+              ...object,
+              [key]: value?.reduce(
+                (object, filterValue) => ({ ...object, [filterValue]: false }),
+                {}
+              ),
+            }),
+            {}
+          )
+        )
+      }
+      const components = await componentGet()
+      if (componentResponse.ok) setComponents(components.data)
+    }
     loadComponents()
-  }, [])
+  }, [componentGet, componentName, componentResponse])
 
   useEffect(() => {
-    getFailureData()
-  }, [filterState])
-
-  const loadComponents = async () => {
-    const initialComp: APIResponse<IComponent[]> = await componentGet(
-      '/?name=' + componentName
-    )
-    if (componentResponse.ok) {
-      setComp(initialComp.data[0])
-      setFilter(
-        Object.entries(initialComp.data[0].L3).reduce(
-          (object, [key, value]) => ({
-            ...object,
-            [key]: value?.reduce(
-              (object, filterValue) => ({ ...object, [filterValue]: false }),
-              {}
-            ),
-          }),
-          {}
-        )
+    const getFailureData = async () => {
+      const dataRequestArray: string[] = Object.keys(filterState).flatMap(
+        (filter) =>
+          Object.entries(filterState[filter])
+            .filter(([, value]) => value)
+            .map(([name]) => `L3.${filter}=${name}`)
       )
+      const filters =
+        dataRequestArray.length > 0 ? '&' + dataRequestArray.join('&') : ''
+      const dataRequest = `/?component=${componentName}${filters}`
+      const failureData = await datainstanceGet(dataRequest)
+      if (datainstanceResponse.ok) setFailuredata(failureData.data)
     }
-    const components = await componentGet()
-    if (componentResponse.ok) setComponents(components.data)
-  }
-
-  const getFailureData = async () => {
-    const dataRequestArray: string[] = Object.keys(filterState).flatMap(
-      (filter) =>
-        Object.entries(filterState[filter])
-          .filter(([, value]) => value)
-          .map(([name]) => `L3.${filter}=${name}`)
-    )
-    let dataRequest = '/?component=' + componentName
-    dataRequest +=
-      dataRequestArray.length > 0 ? '&' + dataRequestArray.join('&') : ''
-    const failureData = await datainstanceGet(dataRequest)
-    if (datainstanceResponse.ok) setFailuredata(failureData.data)
-  }
+    getFailureData()
+  }, [componentName, datainstanceGet, datainstanceResponse, filterState])
 
   const requestToData = (request: IDataInstance[]) => {
     return (request ?? []).map((data) => [
