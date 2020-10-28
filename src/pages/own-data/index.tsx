@@ -10,7 +10,6 @@ import { IGroup } from '../../components/equipment-group-form'
 import useFetch from 'use-http'
 import { IComponent } from '../../models/component'
 import { APIResponse } from '../../models/api-response'
-import { IModule } from '../../models/module'
 import { IUserContext } from '../../models/user'
 import { UserContext } from '../../utils/context/userContext'
 import { IDataInstance } from '../../models/datainstance'
@@ -28,20 +27,12 @@ export const OwnDataPage: FC = () => {
     APIResponse<IComponent>
   >('/components')
 
-  const { get: moduleGet, response: moduleResponse } = useFetch<
-    APIResponse<IModule>
-  >('/modules')
-
   const { get: datainstanceGet, response: datainstanceResponse } = useFetch<
     APIResponse<IDataInstance>
   >('/data-instances/?company=' + userContext.user?.companyName)
 
   useEffect(() => {
     loadComponents()
-  }, [])
-
-  useEffect(() => {
-    loadModules()
   }, [])
 
   useEffect(() => {
@@ -56,11 +47,6 @@ export const OwnDataPage: FC = () => {
   const loadComponents = async () => {
     const components = await componentGet()
     if (componentResponse.ok) setAllComponents(components.data)
-  }
-
-  const loadModules = async () => {
-    const modules = await moduleGet()
-    if (moduleResponse.ok) setModules(modules.data)
   }
 
   const componentNames = dataInstances.map((instance) => instance.component)
