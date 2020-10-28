@@ -10,14 +10,15 @@ import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
 
 import { IComponent } from '../../models/component'
+import { formatCamelCase } from '../../utils/casing'
 
 export interface Form {
   facility: string | null
   component: string | null
-  startdate: number | null
-  enddate: number | null
+  startDate: number | null
+  endDate: number | null
   du: number | null
-  populationsize: number | null
+  populationSize: number | null
   company: string | undefined
   l3: { filter: string; value: string }[] | null
 }
@@ -40,51 +41,47 @@ export const AddDataPage: React.FC = () => {
   const [dataState, setData] = useState<Form>({
     facility: null,
     component: null,
-    startdate: null,
-    enddate: null,
+    startDate: null,
+    endDate: null,
     du: null,
-    populationsize: null,
+    populationSize: null,
     company: undefined,
     l3: [],
   })
 
   useEffect(() => {
+    const getComponents = async (): Promise<componentReq> => {
+      const components = await get('/components')
+      const componentNames = components['data'].map(
+        (component: IComponent) => component.name
+      )
+      return { names: componentNames, components: components.data }
+    }
+
     getComponents().then((obj) => {
       const { names, components } = obj
       setComponents(components)
       setComponentNames(names)
     })
-  }, [])
+  }, [get])
 
   useEffect(() => {
+    const getFacilities = async (): Promise<Array<string>> => {
+      if (userContext.user) {
+        const companies = await get(`company/${userContext.user?.companyName}`)
+        return companies.data.facilities
+      }
+      return []
+    }
+
     getFacilities().then((names) => {
       setFacilities(names)
     })
-  }, [userContext.user?.companyName])
-
-  useEffect(() => {
-    getL3()
-  }, [])
+  }, [get, userContext])
 
   const updateData = async (form: Form): Promise<void> => {
     form = { ...form, company: userContext.user?.companyName }
     await post('/data-instances', form)
-  }
-
-  const getComponents = async (): Promise<componentReq> => {
-    const components = await get('/components')
-    const componentNames = components['data'].map(
-      (component: IComponent) => component.name
-    )
-    return { names: componentNames, components: components.data }
-  }
-
-  const getFacilities = async (): Promise<Array<string>> => {
-    if (userContext.user) {
-      const companies = await get(`company/${userContext.user?.companyName}`)
-      return companies.data.facilities
-    }
-    return []
   }
 
   const getL3 = () => {
@@ -136,18 +133,18 @@ export const AddDataPage: React.FC = () => {
             variant="standard"
             type="number"
             label="Start period"
-            placeholder={dataState.startdate ? undefined : 'dd.mm.yyyy...'}
+            placeholder={dataState.startDate ? undefined : 'dd.mm.yyyy...'}
             onValueChanged={(value) => {
-              setData({ ...dataState, startdate: value as number })
+              setData({ ...dataState, startDate: value as number })
             }}
           />
           <InputField
             variant="standard"
             type="number"
             label="End period"
-            placeholder={dataState.enddate ? undefined : 'dd.mm.yyyy...'}
+            placeholder={dataState.endDate ? undefined : 'dd.mm.yyyy...'}
             onValueChanged={(value) => {
-              setData({ ...dataState, enddate: value as number })
+              setData({ ...dataState, endDate: value as number })
             }}
           />
           <InputField
@@ -164,16 +161,16 @@ export const AddDataPage: React.FC = () => {
             type="number"
             label="Population size"
             placeholder={
-              dataState.populationsize ? undefined : 'Set a populationsize...'
+              dataState.populationSize ? undefined : 'Set a population size...'
             }
             onValueChanged={(value) => {
-              setData({ ...dataState, populationsize: Number(value as string) })
+              setData({ ...dataState, populationSize: Number(value as string) })
             }}
           />
           {Object.entries(getL3() ?? []).map(([filter, values]) => (
             <SearchField
               variant="secondary"
-              label={filter}
+              label={formatCamelCase(filter)}
               suggestions={values as string[]}
               placeholder={
                 dataState.l3
@@ -194,10 +191,10 @@ export const AddDataPage: React.FC = () => {
         {
           //dataState.component &&
 
-          dataState.startdate &&
-            dataState.enddate &&
+          dataState.startDate &&
+            dataState.endDate &&
             dataState.du &&
-            dataState.populationsize && (
+            dataState.populationSize && (
               <div className={styles.button}>
                 <Button
                   onClick={() => {
@@ -225,10 +222,10 @@ export const AddDataPage: React.FC = () => {
                 facility: dataState.facility,
                 component: null,
                 du: null,
-                populationsize: null,
+                populationSize: null,
                 company: dataState.company,
-                startdate: null,
-                enddate: null,
+                startDate: null,
+                endDate: null,
                 l3: [],
               })
             }}
