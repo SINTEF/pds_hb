@@ -21,6 +21,7 @@ export interface Form {
   populationSize: number | null
   company: string | undefined
   l3: { filter: string; value: string }[] | null
+  comment: string | null
 }
 
 interface componentReq {
@@ -46,7 +47,8 @@ export const AddDataPage: React.FC = () => {
     du: null,
     populationSize: null,
     company: undefined,
-    l3: [],
+    l3: null,
+    comment: null,
   })
 
   const valid_datainstance = () => {
@@ -90,7 +92,26 @@ export const AddDataPage: React.FC = () => {
 
   const updateData = async (form: Form): Promise<void> => {
     form = { ...form, company: userContext.user?.companyName }
-    await post('/data-instances', form)
+    //const filterReq = form.l3.
+    const postReq =
+      'facility=' +
+      form.facility +
+      '&' +
+      'component=' +
+      form.component +
+      '&' +
+      'startPeriod=' +
+      form.startDate?.toDateString +
+      '&' +
+      'endPeriod=' +
+      form.endDate?.toDateString +
+      '&' +
+      'du=' +
+      form.du?.toString +
+      '&' +
+      'populationSize=' +
+      form.populationSize?.toString
+    await post('/data-instances/?' + postReq)
   }
 
   const getL3 = () => {
@@ -141,7 +162,7 @@ export const AddDataPage: React.FC = () => {
             variant="standard"
             type="number"
             label="Start period"
-            placeholder={dataState.startDate ? undefined : 'dd.mm.yyyy...'}
+            placeholder={dataState.startDate ? undefined : 'yyyy-mm-dd...'}
             onValueChanged={(value) => {
               setData({ ...dataState, startDate: value as Date })
             }}
@@ -150,7 +171,7 @@ export const AddDataPage: React.FC = () => {
             variant="standard"
             type="number"
             label="End period"
-            placeholder={dataState.endDate ? undefined : 'dd.mm.yyyy...'}
+            placeholder={dataState.endDate ? undefined : 'yyyy-mm-dd...'}
             onValueChanged={(value) => {
               setData({ ...dataState, endDate: value as Date })
             }}
@@ -173,6 +194,15 @@ export const AddDataPage: React.FC = () => {
             }
             onValueChanged={(value) => {
               setData({ ...dataState, populationSize: Number(value as string) })
+            }}
+          />
+          <InputField
+            variant="standard"
+            type="text"
+            label="Comment"
+            placeholder={dataState.comment ? undefined : 'Provide a comment...'}
+            onValueChanged={(value) => {
+              setData({ ...dataState, comment: value as string })
             }}
           />
           {Object.entries(getL3() ?? []).map(([filter, values]) => (
@@ -228,6 +258,7 @@ export const AddDataPage: React.FC = () => {
                 startDate: null,
                 endDate: null,
                 l3: [],
+                comment: null,
               })
             }}
           />
