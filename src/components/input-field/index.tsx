@@ -3,7 +3,7 @@ import styles from './InputField.module.css'
 
 export interface InputProps {
   defaultValue?: string
-  onValueChanged: (value: string | number | FileList | null) => void
+  onValueChanged: (value: string | number | Date | FileList | null) => void
   type?: 'text' | 'textarea' | 'number' | 'email' | 'password' | 'file'
   variant?: 'primary' | 'standard'
   label: string

@@ -14,8 +14,8 @@ import { IComponent } from '../../models/component'
 export interface Form {
   facility: string | null
   component: string | null
-  startdate: number | null
-  enddate: number | null
+  startdate: Date | null
+  enddate: Date | null
   du: number | null
   populationsize: number | null
   company: string | undefined
@@ -47,6 +47,15 @@ export const AddDataPage: React.FC = () => {
     company: undefined,
     l3: [],
   })
+
+  const valid_datainstance = () => {
+    return (
+      dataState.startdate &&
+      dataState.enddate &&
+      dataState.du &&
+      dataState.populationsize
+    )
+  }
 
   useEffect(() => {
     getComponents().then((obj) => {
@@ -97,7 +106,6 @@ export const AddDataPage: React.FC = () => {
     }
   }
 
-  //const navigateToFacility: () => setData(1);
   if (pageState === 1) {
     return (
       <div className={styles.facilitycontainer}>
@@ -138,7 +146,7 @@ export const AddDataPage: React.FC = () => {
             label="Start period"
             placeholder={dataState.startdate ? undefined : 'dd.mm.yyyy...'}
             onValueChanged={(value) => {
-              setData({ ...dataState, startdate: value as number })
+              setData({ ...dataState, startdate: value as Date })
             }}
           />
           <InputField
@@ -147,7 +155,7 @@ export const AddDataPage: React.FC = () => {
             label="End period"
             placeholder={dataState.enddate ? undefined : 'dd.mm.yyyy...'}
             onValueChanged={(value) => {
-              setData({ ...dataState, enddate: value as number })
+              setData({ ...dataState, enddate: value as Date })
             }}
           />
           <InputField
@@ -191,24 +199,17 @@ export const AddDataPage: React.FC = () => {
             />
           ))}
         </div>
-        {
-          //dataState.component &&
-
-          dataState.startdate &&
-            dataState.enddate &&
-            dataState.du &&
-            dataState.populationsize && (
-              <div className={styles.button}>
-                <Button
-                  onClick={() => {
-                    setPage(3)
-                    updateData(dataState)
-                  }}
-                  label="Add data"
-                />
-              </div>
-            )
-        }
+        {valid_datainstance && (
+          <div className={styles.button}>
+            <Button
+              onClick={() => {
+                setPage(3)
+                updateData(dataState)
+              }}
+              label="Add data"
+            />
+          </div>
+        )}
       </div>
     )
   } else if (pageState === 3) {
