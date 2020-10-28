@@ -16,6 +16,23 @@ const filters: Record<string, string[]> = {
   'Smoke detector': ['L1', 'L2', 'L3'],
   'Flame detector': ['L2', 'L3'],
 }
+const filterValues: Record<string, Record<string, boolean>> = {
+  L1: {
+    A1: true,
+    A2: false,
+    A3: true,
+  },
+  L2: {
+    A1: true,
+    A2: false,
+    A3: true,
+  },
+  L3: {
+    A1: true,
+    A2: false,
+    A3: true,
+  },
+}
 
 export const Standard = Template.bind({})
 Standard.args = {
@@ -23,6 +40,7 @@ Standard.args = {
   equipmentgroup: 'Fire detectors',
   getComponents: () => ['Smoke detector', 'Flame detector'],
   getFilters: (component) => filters[component],
+  getValuesForFilter: (filter) => filterValues[filter],
   getFailureData: () => [
     {
       _id: 'object1',
