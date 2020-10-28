@@ -9,24 +9,22 @@ import { APIResponse } from '../../models/api-response'
 
 interface companyForm {
   name: string | null
-  organisationNr: string | null
-  companyEmail: string | null
-  ceoEmail: string | null //send a mail to this user making it a company user with connection to the new company
+  organizationNr: string | null
+  // companyEmail: string | null
+  // ceoEmail: string | null //send a mail to this user making it a company user with connection to the new company
   // the ceo adds a phonenumber, description and an array of facilities
-  created: Date
+  email: string | null
   maxUsers: number | null
 }
 
 export const AddCompanyPage: React.FC = () => {
-  const today = new Date()
-
   const [pageState, setPage] = useState<number>(1)
   const [companyState, setCompany] = useState<companyForm>({
     name: null,
-    organisationNr: null,
-    companyEmail: null,
-    ceoEmail: null,
-    created: today,
+    organizationNr: null,
+    //companyEmail: null,
+    //ceoEmail: null,
+    email: null,
     maxUsers: null,
   })
 
@@ -40,10 +38,10 @@ export const AddCompanyPage: React.FC = () => {
       setPage(2)
       setCompany({
         name: null,
-        organisationNr: null,
-        companyEmail: null,
-        ceoEmail: null,
-        created: today,
+        organizationNr: null,
+        //companyEmail: null,
+        //ceoEmail: null,
+        email: null,
         maxUsers: null,
       })
     }
@@ -54,17 +52,20 @@ export const AddCompanyPage: React.FC = () => {
 
   const validCompany = () => {
     return (
-      companyState.organisationNr &&
+      companyState.organizationNr &&
       companyState.name &&
-      companyState.companyEmail &&
-      companyState.ceoEmail &&
+      //companyState.companyEmail &&
+      //companyState.ceoEmail &&
+      companyState.email &&
       companyState.maxUsers
     )
   }
 
   return (
     <div className={styles.container}>
-      <Title title="Add new companies" />
+      <div className={styles.title}>
+        <Title title="Add new companies" />
+      </div>
       {pageState === 1 && (
         <div>
           <InputField
@@ -80,23 +81,31 @@ export const AddCompanyPage: React.FC = () => {
             label="Organisation Number"
             placeholder="Enter the orgNr for the new company..."
             onValueChanged={(value) =>
-              setCompany({ ...companyState, organisationNr: value as string })
+              setCompany({ ...companyState, organizationNr: value as string })
             }
           />
-          <InputField
+          {/*<InputField
             variant="standard"
             label="Company email"
             placeholder="Enter an email for the new company..."
             onValueChanged={(value) =>
               setCompany({ ...companyState, companyEmail: value as string })
             }
-          />
-          <InputField
+        />*/}
+          {/*<InputField
             variant="standard"
             label="CEO email"
             placeholder="Enter an email for the CEO of the new company..."
             onValueChanged={(value) =>
               setCompany({ ...companyState, ceoEmail: value as string })
+            }
+        />*/}
+          <InputField
+            variant="standard"
+            label="Email"
+            placeholder="Enter an email for the new company..."
+            onValueChanged={(value) =>
+              setCompany({ ...companyState, email: value as string })
             }
           />
           <InputField
@@ -107,13 +116,15 @@ export const AddCompanyPage: React.FC = () => {
               setCompany({ ...companyState, maxUsers: value as number })
             }
           />
-          {validCompany && (
-            <Button
-              label="Add company"
-              onClick={() => {
-                handleNewCompany()
-              }}
-            />
+          {validCompany() && (
+            <div className={styles.button}>
+              <Button
+                label="Add company"
+                onClick={() => {
+                  handleNewCompany()
+                }}
+              />
+            </div>
           )}
         </div>
       )}

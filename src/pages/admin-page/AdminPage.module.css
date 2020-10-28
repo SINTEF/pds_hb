@@ -1,0 +1,16 @@
+.page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+}
+
+.content {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+}

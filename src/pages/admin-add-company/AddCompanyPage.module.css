@@ -1,4 +1,17 @@
-.title {
+.container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+  padding-right: 70px;
+}
+
+.title {
+  align-self: center;
+}
+
+.button {
+  position: absolute;
+  right: 80px;
+  bottom: 40px;
 }
