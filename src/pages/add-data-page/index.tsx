@@ -15,8 +15,8 @@ import { formatCamelCase } from '../../utils/casing'
 export interface Form {
   facility: string | null
   component: string | null
-  startDate: Date | null
-  endDate: Date | null
+  startDate: Date
+  endDate: Date
   du: number | null
   populationSize: number | null
   company: string | undefined
@@ -42,8 +42,8 @@ export const AddDataPage: React.FC = () => {
   const [dataState, setData] = useState<Form>({
     facility: null,
     component: null,
-    startDate: null,
-    endDate: null,
+    startDate: new Date(),
+    endDate: new Date(),
     du: null,
     populationSize: null,
     company: undefined,
@@ -160,18 +160,20 @@ export const AddDataPage: React.FC = () => {
           />
           <InputField
             variant="standard"
-            type="number"
+            type="date"
             label="Start period"
             placeholder={dataState.startDate ? undefined : 'yyyy-mm-dd...'}
+            value={dataState.startDate}
             onValueChanged={(value) => {
               setData({ ...dataState, startDate: value as Date })
             }}
           />
           <InputField
             variant="standard"
-            type="number"
+            type="date"
             label="End period"
             placeholder={dataState.endDate ? undefined : 'yyyy-mm-dd...'}
+            value={dataState.endDate}
             onValueChanged={(value) => {
               setData({ ...dataState, endDate: value as Date })
             }}
@@ -181,6 +183,7 @@ export const AddDataPage: React.FC = () => {
             type="number"
             label="DU value"
             placeholder={dataState.du ? undefined : 'Set a DU-value...'}
+            value={dataState.du ?? undefined}
             onValueChanged={(value) => {
               setData({ ...dataState, du: Number(value as string) })
             }}
@@ -192,6 +195,7 @@ export const AddDataPage: React.FC = () => {
             placeholder={
               dataState.populationSize ? undefined : 'Set a population size...'
             }
+            value={dataState.populationSize ?? undefined}
             onValueChanged={(value) => {
               setData({ ...dataState, populationSize: Number(value as string) })
             }}
@@ -201,6 +205,7 @@ export const AddDataPage: React.FC = () => {
             type="text"
             label="Comment"
             placeholder={dataState.comment ? undefined : 'Provide a comment...'}
+            value={dataState.comment ?? undefined}
             onValueChanged={(value) => {
               setData({ ...dataState, comment: value as string })
             }}
@@ -255,8 +260,8 @@ export const AddDataPage: React.FC = () => {
                 du: null,
                 populationSize: null,
                 company: dataState.company,
-                startDate: null,
-                endDate: null,
+                startDate: new Date(),
+                endDate: new Date(),
                 l3: [],
                 comment: null,
               })

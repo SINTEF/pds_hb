@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import styles from './InputField.module.css'
 
 export interface InputProps {
-  defaultValue?: string
   onValueChanged: (value: string | number | Date | FileList | null) => void
-  type?: 'text' | 'textarea' | 'number' | 'email' | 'password' | 'file'
+  value: string | number | Date | undefined
+  type?: 'text' | 'textarea' | 'number' | 'email' | 'password' | 'file' | 'date'
   variant?: 'primary' | 'standard'
   label: string
   icon?: string
@@ -15,14 +15,14 @@ export interface InputProps {
 export const InputField: React.FC<InputProps> = ({
   type = 'text',
   variant = 'primary',
-  defaultValue,
+  value,
   onValueChanged,
   label,
   icon,
   placeholder,
   success,
 }: InputProps) => {
-  const [hasContent, setHasContent] = useState<boolean>(!!defaultValue)
+  const [hasContent, setHasContent] = useState<boolean>(!!value)
   const handleChanged = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -63,21 +63,30 @@ export const InputField: React.FC<InputProps> = ({
         {type === 'textarea' ? (
           <textarea
             id={label}
-            defaultValue={defaultValue}
+            value={value as string | number}
             placeholder={placeholder}
             onChange={handleChanged}
             rows={10}
             cols={40}
           ></textarea>
-        ) : (
+        ) : null}
+        {type === 'file' ? (
           <input
             id={label}
             type={type}
-            defaultValue={defaultValue}
             placeholder={placeholder}
             onChange={handleChanged}
           ></input>
-        )}
+        ) : null}
+        {type !== 'textarea' && type !== 'file' ? (
+          <input
+            id={label}
+            type={type}
+            value={value as string | number}
+            placeholder={placeholder}
+            onChange={handleChanged}
+          ></input>
+        ) : null}
         {icon ? (
           <i className={'material-icons ' + styles.icon}>{icon}</i>
         ) : null}

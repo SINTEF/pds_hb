@@ -87,6 +87,7 @@ export const ManageStaffmembersPage: React.FC = () => {
             variant="standard"
             type="email"
             placeholder="ola.nordmann@gmail.com"
+            value={mailState}
             onValueChanged={(value) => setMail(value as string)}
           />
         )}

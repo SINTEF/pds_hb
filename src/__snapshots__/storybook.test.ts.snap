@@ -290,36 +290,48 @@ exports[`Storyshots Components/editable-field Editmode 1`] = `
         value="123456"
       />
     </div>
-    <div>
-      <button
-        aria-label="delete"
-        className="MuiButtonBase-root MuiIconButton-root icon MuiIconButton-sizeSmall"
-        disabled={false}
-        onBlur={[Function]}
+    <div
+      className="icon"
+    >
+      <div
+        className="react-ripples"
         onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
       >
-        <span
-          className="MuiIconButton-label"
+        <i
+          aria-label="done"
+          className="material-icons"
+          onClick={[Function]}
+          role="button"
+          style={
+            Object {
+              "cursor": "pointer",
+              "fontSize": "24px",
+            }
+          }
         >
-          <i
-            className="material-icons icon"
-          >
-            done
-          </i>
-        </span>
-      </button>
+          done
+        </i>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
     </div>
   </div>
   <div>
@@ -377,36 +389,48 @@ exports[`Storyshots Components/editable-field Viewmode 1`] = `
         123456
       </label>
     </div>
-    <div>
-      <button
-        aria-label="delete"
-        className="MuiButtonBase-root MuiIconButton-root iconbutton MuiIconButton-sizeSmall"
-        disabled={false}
-        onBlur={[Function]}
+    <div
+      className="iconbutton"
+    >
+      <div
+        className="react-ripples"
         onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
       >
-        <span
-          className="MuiIconButton-label"
+        <i
+          aria-label="edit"
+          className="material-icons"
+          onClick={[Function]}
+          role="button"
+          style={
+            Object {
+              "cursor": "pointer",
+              "fontSize": "24px",
+            }
+          }
         >
-          <i
-            className="material-icons icon"
-          >
-            edit
-          </i>
-        </span>
-      </button>
+          edit
+        </i>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
     </div>
   </div>
   <div>
@@ -641,10 +665,10 @@ exports[`Storyshots Input field Primary With Default 1`] = `
       Input Label
     </label>
     <input
-      defaultValue="Default value"
       id="Input Label"
       onChange={[Function]}
       type="text"
+      value="Default value"
     />
   </div>
 </div>
@@ -701,10 +725,10 @@ exports[`Storyshots Input field Primary With Icon 1`] = `
       Input label
     </label>
     <input
-      defaultValue="Default value"
       id="Input label"
       onChange={[Function]}
       type="text"
+      value="Default value"
     />
     <i
       className="material-icons icon"
@@ -918,6 +942,7 @@ exports[`Storyshots Pages/Login Start 1`] = `
           id="Username"
           onChange={[Function]}
           type="text"
+          value=""
         />
         <i
           className="material-icons icon"
@@ -947,6 +972,7 @@ exports[`Storyshots Pages/Login Start 1`] = `
           id="Password"
           onChange={[Function]}
           type="password"
+          value=""
         />
         <i
           className="material-icons icon"
@@ -2244,6 +2270,9 @@ exports[`Storyshots pages/ChooseComponentPagePage Standard 1`] = `
       className="line"
     />
   </div>
+  <div
+    className="components"
+  />
 </div>
 `;
 

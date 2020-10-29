@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { IconButton } from '../icon-button'
+
 import styles from './EditableField.module.css'
-import IconButton from '@material-ui/core/IconButton'
-import { useState } from 'react'
 
 export interface FieldForm {
   index: string
@@ -27,7 +27,7 @@ export interface EditableFieldProps {
 export const EditableField: React.FC<EditableFieldProps> = ({
   index = '',
   content = '',
-  mode,
+  mode = 'view',
   editIcon = 'edit',
   doneIcon = 'done',
   isAdmin,
@@ -60,18 +60,14 @@ export const EditableField: React.FC<EditableFieldProps> = ({
               onChange={onChange}
             />
           </div>
-          <div>
+          <div className={styles.icon}>
             <IconButton
-              className={styles.icon}
-              aria-label="delete"
-              size="small"
+              icon={doneIcon}
               onClick={() => {
                 setMode('view')
                 onSubmit(form)
               }}
-            >
-              <i className={'material-icons ' + styles.icon}>{doneIcon}</i>
-            </IconButton>
+            />
           </div>
         </div>
         <div>
@@ -88,15 +84,8 @@ export const EditableField: React.FC<EditableFieldProps> = ({
             <label className={styles.content}>{form.content}</label>
           </div>
           {isAdmin && (
-            <div>
-              <IconButton
-                className={styles.iconbutton}
-                aria-label="delete"
-                size="small"
-                onClick={() => setMode('edit')}
-              >
-                <i className={'material-icons ' + styles.icon}>{editIcon}</i>
-              </IconButton>
+            <div className={styles.iconbutton}>
+              <IconButton onClick={() => setMode('edit')} icon={editIcon} />
             </div>
           )}
         </div>

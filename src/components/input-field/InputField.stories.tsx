@@ -24,13 +24,13 @@ PrimaryTextArea.args = {
 export const PrimaryWithDefault = Template.bind({})
 PrimaryWithDefault.args = {
   label: 'Input Label',
-  defaultValue: 'Default value',
+  value: 'Default value',
 }
 
 export const PrimaryWithIcon = Template.bind({})
 PrimaryWithIcon.args = {
   label: 'Input label',
-  defaultValue: 'Default value',
+  value: 'Default value',
   icon: 'search',
 }
 export const PrimaryWithFile = Template.bind({})
