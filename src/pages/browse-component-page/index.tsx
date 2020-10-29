@@ -15,7 +15,6 @@ import { IUserContext } from '../../models/user'
 import { IComponent } from '../../models/component'
 import { IDataInstance } from '../../models/datainstance'
 import { APIResponse } from '../../models/api-response'
-import { stringify } from 'querystring'
 
 export const BrowseComponentPage: React.FC = () => {
   const { componentName } = useParams<{ componentName: string }>()
@@ -170,25 +169,6 @@ export const BrowseComponentPage: React.FC = () => {
         <div className={styles.content}>
           <div className={[styles.padding, styles.center].join(' ')}>
             <Title title={compState?.name.replace('-', ' ') as string} />
-          </div>
-          <div className={[styles.filters, styles.padding].join(' ')}>
-            <Filter
-              category="Component" // think i need a isChecked var to set/unset the filter
-              filters={componentNames.reduce(
-                (obj, name) => ({ ...obj, [name]: false }),
-                {}
-              )}
-              onClick={(newcomp) => {
-                setComp(getComponent(newcomp))
-                history.push(
-                  MAIN_ROUTES.BROWSE +
-                    SUB_ROUTES.VIEW.replace(
-                      ':componentName',
-                      newcomp.replace(' ', '-')
-                    )
-                )
-              }}
-            />
           </div>
           <div className={styles.description}>
             <TextBox

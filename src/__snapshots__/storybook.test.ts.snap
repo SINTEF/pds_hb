@@ -1983,51 +1983,10 @@ exports[`Storyshots pages/Browse Standard 1`] = `
     className="path"
   >
     <div
-      className="react-ripples"
+      className="back"
       onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
     >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Back to equipmentsgroup
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
+      &lt; Back
     </div>
   </div>
   <div>
@@ -2053,35 +2012,10 @@ exports[`Storyshots pages/Browse Standard 1`] = `
         </div>
       </div>
       <div
-        className="filters padding"
-      >
-        <div
-          className="open"
-        >
-          <div
-            className="container"
-          >
-            <button
-              className="button standard"
-              onClick={[Function]}
-            >
-              <div>
-                Component
-              </div>
-              <i
-                className="material-icons icon"
-              >
-                expand_more
-              </i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div
         className="description"
       >
         <div
-          className="container small"
+          className="container large"
         >
           <div
             className="titlecontainer"
@@ -2144,29 +2078,18 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           />
         </div>
       </div>
-      <div>
+      <div
+        className="DUcontainer"
+      >
         <div
-          className="container"
+          className="lambdaDU"
         >
-          <div
-            className="container"
-          >
-            <label
-              className="index"
-            >
-              Recommended values for calculation: 
-            </label>
-            <label
-              className="content"
-            >
-              
-            </label>
-          </div>
+          Lambda DU: 
         </div>
-        <div>
-          <hr
-            className="divider"
-          />
+        <div
+          className="lambdaDUnumber"
+        >
+          NaN
         </div>
       </div>
       <div
