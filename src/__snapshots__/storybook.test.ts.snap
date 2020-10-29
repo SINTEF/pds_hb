@@ -2313,16 +2313,16 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
       className="listtitles"
     >
       <div>
-        Name
+        Username
       </div>
       <div>
         Email
       </div>
       <div>
-        Joined
+        Phone
       </div>
       <div>
-              
+             
       </div>
     </div>
   </div>
@@ -2339,6 +2339,32 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
         0
       </div>
        more possible users to add.
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Email"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Email
+        </label>
+        <input
+          id="Email"
+          onChange={[Function]}
+          placeholder="ola.nordmann@gmail.com"
+          type="email"
+          value=""
+        />
+      </div>
     </div>
   </div>
   <div
