@@ -8,32 +8,55 @@ import { InputField } from '../../components/input-field'
 import { RegisteredDataField } from '../../components/registered-data-field'
 import { IUser, IUserContext } from '../../models/user'
 import { UserContext } from '../../utils/context/userContext'
-import useFetch from 'use-http'
+import useFetch, { CachePolicies } from 'use-http'
 import { APIResponse } from '../../models/api-response'
 import { ICompany } from '../../models/company'
+
+interface InewUser {
+  username: string
+  email: string
+  password: string
+  phoneNr: string
+  companyName: string
+  userGroupType: string
+}
 
 // TO FIX: Needs error and loading handling
 export const ManageStaffmembersPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
   const companyName = userContext.user?.companyName
+  const defaultUser = {
+    username: '',
+    email: '',
+    password: '',
+    phoneNr: '',
+    companyName: companyName as string,
+    userGroupType: 'operator',
+  }
   const [staffState, setStaff] = useState<IUser[]>([])
-  const [mailState, setMail] = useState<string>('')
+  const [userState, setUser] = useState<InewUser>(defaultUser)
 
   const { data: companyData } = useFetch<APIResponse<ICompany>>(
     '/company/' + companyName,
     []
   )
 
-  const { get: staffGet, del: staffDel, response: staffResponse } = useFetch<
-    APIResponse<IUser[]>
-  >('/user')
+  const {
+    get: staffGet,
+    del: staffDel,
+    response: staffResponse,
+    post: staffPost,
+  } = useFetch<APIResponse<IUser[]>>('/user', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
   useEffect(() => {
     loadStaff()
   }, [])
 
   const loadStaff = async () => {
-    const staff = await staffGet('?company=' + companyName)
+    const staff = await staffGet('?companyName=' + companyName)
     if (staffResponse.ok) setStaff(staff.data)
   }
 
@@ -45,18 +68,30 @@ export const ManageStaffmembersPage: React.FC = () => {
     }
   }
 
-  const sendMail = (email: string) => {
-    return email
+  const registerUser = async (user: InewUser) => {
+    await staffPost('/register', user)
+    if (staffResponse.ok) loadStaff()
   } //send to backend
+
+  const validUser = () => {
+    return (
+      userState?.username &&
+      (userState?.email.includes('@gmail.com') ||
+        userState?.email.includes('@hotmail.com') ||
+        userState?.email.includes('@live.com')) &&
+      userState?.password
+    )
+  }
   return (
-    <div>
+    <div className={styles.pagebottompadding}>
       <div className={styles.container}>
         <Title title="Manage staffmembers" />
         <div className={styles.listtitles}>
           <div>{'Username'}</div>
           <div>{'Email'}</div>
+          <div>{'    '}</div>
+          <div>{'    '}</div>
           <div>{'Phone'}</div>
-          <div>{'     '}</div>
         </div>
         {staffState &&
           staffState.map(
@@ -72,7 +107,7 @@ export const ManageStaffmembersPage: React.FC = () => {
                       {user.email}
                     </div>,
                     <div className={styles.padding} key={idx}>
-                      {user.phoneNr}
+                      {user.phoneNr ? user.phoneNr : 'N/A'}
                     </div>,
                     <button
                       className={styles.remove}
@@ -95,26 +130,48 @@ export const ManageStaffmembersPage: React.FC = () => {
           {' more possible users to add.'}
         </div>
         {companyData?.data.maxUsers !== staffState.length && (
-          <InputField
-            label="Email"
-            variant="standard"
-            type="email"
-            placeholder="ola.nordmann@gmail.com"
-            value={mailState}
-            onValueChanged={(value) => setMail(value as string)}
-          />
+          <>
+            <InputField
+              label="Username"
+              variant="standard"
+              type="text"
+              placeholder="OlaNordmann"
+              value={userState?.username}
+              onValueChanged={(value) =>
+                setUser({ ...userState, username: value as string })
+              }
+            />
+            <InputField
+              label="Email"
+              variant="standard"
+              type="email"
+              placeholder="ola.nordmann@gmail.com"
+              value={userState?.email}
+              onValueChanged={(value) =>
+                setUser({ ...userState, email: value as string })
+              }
+            />
+            <InputField
+              label="Password"
+              variant="standard"
+              type="text"
+              placeholder="a super safe psw"
+              value={userState?.password}
+              onValueChanged={(value) =>
+                setUser({ ...userState, password: value as string })
+              }
+            />
+          </>
         )}
       </div>
       <div className={styles.button}>
-        {mailState.includes('@gmail.com') ||
-        mailState.includes('@hotmail.com') ||
-        mailState.includes('@live.com') ? (
+        {validUser() ? (
           <div className={styles.buttonContainer}>
             <Button
-              label="Send invite"
+              label="Add company user"
               onClick={() => {
-                sendMail(mailState)
-                setMail('')
+                registerUser(userState)
+                setUser(defaultUser)
               }}
             />
           </div>
