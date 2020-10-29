@@ -11,16 +11,16 @@ const Template: Story<FilterProps> = (args) => <Filter {...args} />
 
 export const FilterComponent = Template.bind({})
 FilterComponent.args = {
-  filters: [
-    'Flame detector',
-    'Smoke detector',
-    'Other component',
-    'Some component',
-    'Component with a very long name',
-    'cake detector',
-  ],
+  filters: {
+    'Flame detector': true,
+    'Smoke detector': false,
+    'Other component': true,
+    'Some component': true,
+    'Component with a very long name': true,
+    'cake detector': false,
+  },
   category: 'Components',
-  onClick(s) {
-    alert(s)
+  onClick(s, value) {
+    alert(s + ': ' + value)
   },
 }
