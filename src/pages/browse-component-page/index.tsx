@@ -15,7 +15,7 @@ import { IUserContext } from '../../models/user'
 import { IComponent } from '../../models/component'
 import { IDataInstance } from '../../models/datainstance'
 import { APIResponse } from '../../models/api-response'
-import { Button } from '../../components/button'
+import { stringify } from 'querystring'
 
 export interface Form {
   filters: { filter: string; value: string }[]
@@ -128,42 +128,43 @@ export const BrowseComponentPage: React.FC = () => {
   //  )
   //}
 
+  const calculateAverageFailureRates = (data: Array<IDataInstance>) => {
+    const DuValues = data.map((failureData) => failureData.du) ?? [1, 2, 3]
+    const TValues = data.map((failuredata) => failuredata.T) ?? [1, 2, 3]
+    let totalDu = 0
+    DuValues.forEach((value) => (totalDu += value))
+    let totalT = 1
+    TValues.forEach((value) => (totalT += value))
+    return totalDu / (totalT - 1)
+  }
+
+  const LDU = calculateAverageFailureRates(failuredataState ?? [])
+
+  const lambdaDU = LDU.toPrecision(2).toString()
+
   return componentLoad ? (
     <p>loading...</p>
   ) : (
     <div className={styles.container}>
       <div className={styles.path}>
-        <Button
-          label={'Back to equipmentsgroup'}
+        <div
+          className={styles.back}
           onClick={() => history.push(MAIN_ROUTES.BROWSE)}
-        />
+        >
+          {'< Back'}
+        </div>
       </div>
       <div>
         <div className={styles.content}>
           <div className={[styles.padding, styles.center].join(' ')}>
             <Title title={compState?.name.replace('-', ' ') as string} />
           </div>
-          <div className={[styles.filters, styles.padding].join(' ')}>
-            <Filter
-              category="Component" // think i need a isChecked var to set/unset the filter
-              filters={componentNames as string[]}
-              onClick={(newcomp) => {
-                setComp(getComponent(newcomp))
-                history.push(
-                  MAIN_ROUTES.BROWSE +
-                    SUB_ROUTES.VIEW.replace(
-                      ':componentName',
-                      newcomp.replace(' ', '-')
-                    )
-                )
-              }}
-            />
-          </div>
+          <div className={[styles.filters, styles.padding].join(' ')}></div>
           <div className={styles.description}>
             <TextBox
               title="Description"
               content={compState?.description as string}
-              size="small"
+              size="large"
             />
           </div>
           <EditableField
@@ -180,14 +181,11 @@ export const BrowseComponentPage: React.FC = () => {
             isAdmin={userContext?.user?.userGroupType === 'admin'}
             onSubmit={handleUpdate}
           />
-          <EditableField
-            index="Recommended values for calculation"
-            content={compState?.name} //reccomended vslues not in db
-            mode="view"
-            isAdmin={userContext?.user?.userGroupType === 'admin'}
-            onSubmit={handleUpdate}
-          />
 
+          <div className={styles.DUcontainer}>
+            <div className={styles.lambdaDU}>{'Lambda DU: '}</div>
+            <div className={styles.lambdaDUnumber}>{lambdaDU}</div>
+          </div>
           {updateDataResponse.ok ? (
             <p className={styles.responseOk}>
               {updateDataResponse.data?.message}
