@@ -2,16 +2,16 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto;
-  grid-template-areas: 'title title' 'inputfields description' 'definition definition' '. buttons';
+  grid-template-areas: 'title title' 'inputfields description' 'L3 L3' 'definition definition' '. buttons';
   row-gap: 20px;
   column-gap: 10px;
   margin: 0 20vw;
-  height: 100vh;
 }
 
 .title {
-  align-self: center;
   grid-area: title;
+  display: flex;
+  justify-content: center;
 }
 
 .inputfields {
@@ -20,6 +20,10 @@
 
 .description {
   grid-area: description;
+}
+
+.L3 {
+  grid-area: L3;
 }
 
 .definition {
