@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 
 import styles from './RegisteredData.module.css'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { Filter } from '../../components/filter'
 import { RegisteredDataField } from '../../components/registered-data-field'
 import useFetch from 'use-http'
@@ -11,6 +11,7 @@ import { IDataInstance } from '../../models/datainstance'
 import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
 import MAIN_ROUTES from '../../routes/routes.constants'
+import { Title } from '../../components/title'
 
 export interface Data {
   period: string | number
@@ -25,6 +26,7 @@ export interface Form {
 }
 
 export const RegisteredData: React.FC = () => {
+  const { componentName } = useParams<{ componentName: string }>()
   const history = useHistory()
   const userContext = useContext(UserContext) as IUserContext
   const [compState, setComp] = useState<string>()
@@ -53,6 +55,8 @@ export const RegisteredData: React.FC = () => {
       }
     })
     setComponents(components)
+    setComp(componentName)
+    updateFilter(componentName)
   }
 
   const updateFilter = async (newComp: string) => {
@@ -79,7 +83,10 @@ export const RegisteredData: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
+      <div className={[styles.padding, styles.center].join(' ')}>
+        <Title title={compState?.replace('-', ' ') as string} />
+      </div>
       <div className={[styles.filters, styles.padding].join(' ')}>
         <Filter
           category="Component" // think i need a isChecked var to set/unset the filter
