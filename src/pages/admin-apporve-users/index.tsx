@@ -91,7 +91,9 @@ export const ApproveUsersPage: React.FC = () => {
               </RegisteredDataField>
             ) ?? []
         )}
-      {effect.deleted && <div>{'User deleted!'}</div>}
+      {
+        effect.deleted && <div>{'User deleted!'}</div> // deleted never changes
+      }
     </div>
   )
 }
