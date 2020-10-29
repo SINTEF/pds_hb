@@ -47,6 +47,7 @@ export const ApproveUsersPage: React.FC = () => {
     }
   }
 
+  // this also doesn't work properly
   const approveUser = async (userid: string) => {
     const updatedUser = { userGroupType: 'general_user' }
     if (usersResponse.ok) await usersPut('/update/' + userid, updatedUser)
