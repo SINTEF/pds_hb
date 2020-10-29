@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import styles from './Filter.module.css'
 import { FilterButton } from '../filter-button'
-import { MenuButton } from '../menu-button'
 
 export interface FilterProps {
   category: string
 
-  filters: Array<string>
+  filters: Record<string, boolean>
 
-  onClick: (SelectedMenuItem: string) => void
+  onClick: (SelectedMenuItem: string, newValue: boolean) => void
 }
 
 export const Filter: React.FC<FilterProps> = ({
@@ -17,29 +16,29 @@ export const Filter: React.FC<FilterProps> = ({
   onClick,
 }: FilterProps) => {
   const [isClicked, setMode] = useState<boolean>(false)
-  const [chosen, setChosen] = useState<string>(category)
 
   return (
     <div className={styles.open}>
       <FilterButton
-        label={chosen}
+        label={category}
         onClick={() => setMode(!isClicked)}
         open={isClicked}
       ></FilterButton>
 
       {isClicked && (
         <ul className={styles.list}>
-          {filters.map((filter) => {
+          {Object.entries(filters).map(([filter, value]) => {
             return (
-              <li className={styles.listItem} key={filter}>
-                <MenuButton
-                  onClick={() => {
-                    setMode(!isClicked)
-                    setChosen(filter)
-                    onClick(filter)
-                  }}
-                  label={filter}
-                ></MenuButton>
+              <li
+                className={styles.listItem}
+                key={filter}
+                onClick={() => onClick(filter, !value)}
+              >
+                <hr />
+                <div className={styles.listItemContent}>
+                  <input type="checkbox" checked={value}></input>
+                  {filter}
+                </div>
               </li>
             )
           })}
