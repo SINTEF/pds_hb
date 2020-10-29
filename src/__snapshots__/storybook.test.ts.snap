@@ -2003,6 +2003,56 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
       >
         <label
           className=""
+          htmlFor="Phone number"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Phone number
+        </label>
+        <input
+          id="Phone number"
+          onChange={[Function]}
+          placeholder="Enter a phone number for the new company..."
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Description"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Description
+        </label>
+        <input
+          id="Description"
+          onChange={[Function]}
+          placeholder="Enter a description for the new company..."
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
           htmlFor="Max users"
           style={
             Object {
@@ -2020,6 +2070,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
         />
       </div>
     </div>
+    
   </div>
 </div>
 `;

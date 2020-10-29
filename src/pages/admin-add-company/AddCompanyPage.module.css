@@ -22,3 +22,12 @@
   justify-content: space-between;
   padding-top: 100px;
 }
+
+.addCEO {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding-bottom: 40px;
+}

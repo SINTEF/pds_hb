@@ -6,55 +6,78 @@ import { InputField } from '../../components/input-field'
 import { Button } from '../../components/button'
 import { ICompany } from '../../models/company'
 import { APIResponse } from '../../models/api-response'
+import { IUser } from '../../models/user'
 
-interface companyForm {
-  name: string | null
-  organizationNr: string | null
-  // companyEmail: string | null
-  // ceoEmail: string | null //send a mail to this user making it a company user with connection to the new company
-  // the ceo adds a phonenumber, description and an array of facilities
-  email: string | null
+interface InewCompany {
+  name: string
+  organizationNr: string
+  email: string
+  phoneNr: string
+  description: string
+  facilities: Array<string>
   maxUsers: number | null
+}
+
+interface InewUser {
+  username: string
+  password: string
+  email: string
+  phoneNr: string
+  companyName: string
+  userGroupType: string
 }
 
 export const AddCompanyPage: React.FC = () => {
   const [pageState, setPage] = useState<number>(1)
-  const [companyState, setCompany] = useState<companyForm>({
-    name: null,
-    organizationNr: null,
-    //companyEmail: null,
-    //ceoEmail: null,
-    email: null,
+  const defaultCompany = {
+    name: '',
+    organizationNr: '',
+    email: '',
+    phoneNr: '',
+    description: '',
+    facilities: [],
     maxUsers: null,
-  })
+  }
+  const defaultUser = {
+    username: '',
+    password: '',
+    email: '',
+    phoneNr: '',
+    companyName: '',
+    userGroupType: 'operator',
+  }
+  const [companyState, setCompany] = useState<InewCompany>(defaultCompany)
+  const [userState, setUser] = useState<InewUser>(defaultUser)
 
   const { post: companyPost, response: companyResponse } = useFetch<
     APIResponse<ICompany>
   >('/company')
 
+  const { post: userPost, response: userResponse } = useFetch<
+    APIResponse<IUser>
+  >('/user/register')
+
   const handleNewCompany = async () => {
     await companyPost(companyState)
     if (companyResponse.ok) {
       setPage(2)
-      setCompany({
-        name: null,
-        organizationNr: null,
-        //companyEmail: null,
-        //ceoEmail: null,
-        email: null,
-        maxUsers: null,
-      })
+      setCompany(defaultCompany)
     }
     if (!companyResponse.ok) {
+      setPage(4)
+      setCompany(defaultCompany)
+    }
+  }
+
+  const handleNewCEO = async () => {
+    await userPost(userState)
+    if (userResponse.ok) {
       setPage(3)
-      setCompany({
-        name: null,
-        organizationNr: null,
-        //companyEmail: null,
-        //ceoEmail: null,
-        email: null,
-        maxUsers: null,
-      })
+      setUser(defaultUser)
+    }
+    if (!userResponse.ok) {
+      setPage(5)
+      setUser(defaultUser)
     }
   }
 
@@ -62,10 +85,19 @@ export const AddCompanyPage: React.FC = () => {
     return (
       companyState.organizationNr &&
       companyState.name &&
-      //companyState.companyEmail &&
-      //companyState.ceoEmail &&
       companyState.email &&
+      companyState.phoneNr &&
       companyState.maxUsers
+    )
+  }
+
+  const validCEO = () => {
+    return (
+      userState.username &&
+      userState.password &&
+      userState.email &&
+      userState.phoneNr &&
+      userState.companyName
     )
   }
 
@@ -93,28 +125,30 @@ export const AddCompanyPage: React.FC = () => {
               setCompany({ ...companyState, organizationNr: value as string })
             }
           />
-          {/*<InputField
-            variant="standard"
-            label="Company email"
-            placeholder="Enter an email for the new company..."
-            onValueChanged={(value) =>
-              setCompany({ ...companyState, companyEmail: value as string })
-            }
-        />*/}
-          {/*<InputField
-            variant="standard"
-            label="CEO email"
-            placeholder="Enter an email for the CEO of the new company..."
-            onValueChanged={(value) =>
-              setCompany({ ...companyState, ceoEmail: value as string })
-            }
-        />*/}
           <InputField
             variant="standard"
             label="Email"
             placeholder="Enter an email for the new company..."
             onValueChanged={(value) =>
               setCompany({ ...companyState, email: value as string })
+            }
+          />
+          <InputField
+            variant="standard"
+            type="text"
+            label="Phone number"
+            placeholder="Enter a phone number for the new company..."
+            onValueChanged={(value) =>
+              setCompany({ ...companyState, phoneNr: value as string })
+            }
+          />
+          <InputField
+            variant="standard"
+            type="text"
+            label="Description"
+            placeholder="Enter a description for the new company..."
+            onValueChanged={(value) =>
+              setCompany({ ...companyState, description: value as string })
             }
           />
           <InputField
@@ -131,6 +165,10 @@ export const AddCompanyPage: React.FC = () => {
               <Button
                 label="Add company"
                 onClick={() => {
+                  setUser({
+                    ...userState,
+                    companyName: companyState.name,
+                  })
                   handleNewCompany()
                 }}
               />
@@ -139,18 +177,74 @@ export const AddCompanyPage: React.FC = () => {
         </div>
       )}
       {pageState === 2 && (
-        <div className={[styles.container, styles.center].join(' ')}>
-          {'Company successfully added'}
-          <Button label="Add another comapny" onClick={() => setPage(1)} />
+        <div>
+          <div className={styles.addCEO}>
+            <div>{'Company successfully added!'}</div>
+            <div>{'Please assign a CEO for the new company.'}</div>
+          </div>
+          <div>
+            <InputField
+              variant="standard"
+              label="Username"
+              placeholder="Enter an username for the new CEO..."
+              onValueChanged={(value) =>
+                setUser({ ...userState, username: value as string })
+              }
+            />
+            <InputField
+              variant="standard"
+              type="email"
+              label="Email"
+              placeholder="Enter an email for the new CEO..."
+              onValueChanged={(value) =>
+                setUser({ ...userState, email: value as string })
+              }
+            />
+            <InputField
+              variant="standard"
+              label="PhoneNr"
+              placeholder="Enter a phone number for the new CEO..."
+              onValueChanged={(value) =>
+                setUser({ ...userState, phoneNr: value as string })
+              }
+            />
+            <InputField
+              variant="standard"
+              label="Password"
+              placeholder="Enter a password for the new CEO..."
+              onValueChanged={(value) =>
+                setUser({ ...userState, password: value as string })
+              }
+            />
+            {validCEO() && (
+              <div className={styles.button}>
+                <Button
+                  label="Add CEO"
+                  onClick={() => {
+                    handleNewCEO()
+                  }}
+                />
+              </div>
+            )}
+          </div>
         </div>
       )}
       {pageState === 3 && (
         <div className={[styles.container, styles.center].join(' ')}>
+          {'CEO successfully added!'}
+          <Button label="Add another company" onClick={() => setPage(1)} />
+        </div>
+      )}
+      {pageState === 4 && (
+        <div className={[styles.container, styles.center].join(' ')}>
           {'Oh no, could not add company...'}
-          <Button
-            label="Try adding another comapny"
-            onClick={() => setPage(1)}
-          />
+          <Button label="Try adding comapny again" onClick={() => setPage(1)} />
+        </div>
+      )}
+      {pageState === 5 && (
+        <div className={[styles.container, styles.center].join(' ')}>
+          {'Oh no, could not add CEO...'}
+          <Button label="Try adding CEO again" onClick={() => setPage(2)} />
         </div>
       )}
     </div>

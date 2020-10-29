@@ -95,7 +95,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({
           ></MenuButton>
           <MenuButton
             label={'Company page'}
-            onClick={() => navigateTo(MAIN_ROUTES.COMPANY)}
+            onClick={() => navigateTo(MAIN_ROUTES.ADMIN_COMPANY)}
           ></MenuButton>
           <MenuButton
             label={'Administrative'}
