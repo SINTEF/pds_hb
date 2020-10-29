@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import styles from './ManageStaffmembersPage.module.css'
 
@@ -16,25 +16,34 @@ import { ICompany } from '../../models/company'
 export const ManageStaffmembersPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
   const companyName = userContext.user?.companyName
+  const [staffState, setStaff] = useState<IUser[]>([])
+  const [mailState, setMail] = useState<string>('')
 
   const { data: companyData } = useFetch<APIResponse<ICompany>>(
     '/company/' + companyName,
     []
   )
 
-  const { get: staffGet, data: staffData } = useFetch<APIResponse<IUser[]>>(
-    '/user/users',
-    []
-  )
+  const { get: staffGet, del: staffDel, response: staffResponse } = useFetch<
+    APIResponse<IUser[]>
+  >('/user')
 
-  const { del, response: facilitiesResponse } = useFetch('/update')
+  useEffect(() => {
+    loadStaff()
+  }, [])
 
-  const removeUser = async (user: string) => {
-    await del(user)
-    if (facilitiesResponse.ok) staffGet()
+  const loadStaff = async () => {
+    const staff = await staffGet('?company=' + companyName)
+    if (staffResponse.ok) setStaff(staff.data)
   }
 
-  const [mailState, setMail] = useState<string>('')
+  // this doesn't happen immediately ???
+  const removeUser = async (userid: string) => {
+    await staffDel(userid)
+    if (staffResponse.ok) {
+      loadStaff()
+    }
+  }
 
   const sendMail = (email: string) => {
     return email
@@ -44,13 +53,13 @@ export const ManageStaffmembersPage: React.FC = () => {
       <div className={styles.container}>
         <Title title="Manage staffmembers" />
         <div className={styles.listtitles}>
-          <div>{'Name'}</div>
+          <div>{'Username'}</div>
           <div>{'Email'}</div>
-          <div>{'Joined'}</div>
-          <div>{'      '}</div>
+          <div>{'Phone'}</div>
+          <div>{'     '}</div>
         </div>
-        {staffData?.data &&
-          staffData?.data.map(
+        {staffState &&
+          staffState.map(
             (
               user,
               idx // type any?
@@ -59,8 +68,12 @@ export const ManageStaffmembersPage: React.FC = () => {
                 <RegisteredDataField key={idx}>
                   {[
                     <div key={idx}>{user.username}</div>,
-                    <div key={idx}>{user.email}</div>,
-                    <div key={idx}>{user.phoneNr}</div>,
+                    <div className={styles.position} key={idx}>
+                      {user.email}
+                    </div>,
+                    <div className={styles.padding} key={idx}>
+                      {user.phoneNr}
+                    </div>,
                     <button
                       className={styles.remove}
                       onClick={() => removeUser(user._id)}
@@ -77,11 +90,11 @@ export const ManageStaffmembersPage: React.FC = () => {
         <div className={styles.usersleft}>
           {'Your company has '}
           <div className={styles.numberusersleft}>
-            {(companyData?.data.maxUsers ?? 0) - (staffData?.data?.length ?? 0)}
+            {(companyData?.data.maxUsers ?? 0) - (staffState.length ?? 0)}
           </div>
           {' more possible users to add.'}
         </div>
-        {companyData?.data.maxUsers !== staffData?.data?.length && (
+        {companyData?.data.maxUsers !== staffState.length && (
           <InputField
             label="Email"
             variant="standard"
