@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useFetch from 'use-http'
 import { APIResponse } from '../../models/api-response'
-import { IUserContext } from '../../models/user'
-import { UserContext } from '../../utils/context/userContext'
 import { IUser } from '../../models/user'
 import styles from './MenuButton.module.css'
 
@@ -23,8 +21,6 @@ export const MenuButton: React.FC<MenuButtonProps> = ({
   label,
   onClick,
 }: MenuButtonProps) => {
-  const userContext = useContext(UserContext) as IUserContext
-  const companyName = userContext.user?.companyName
   const [usersState, setUsers] = useState<IUser[]>([])
 
   const { get: staffGet, response: staffResponse } = useFetch<
@@ -38,61 +34,34 @@ export const MenuButton: React.FC<MenuButtonProps> = ({
   // users.data is undefined
   const getUsers = async () => {
     const users = await staffGet()
-    if (staffResponse.ok) setUsers(users.data)
-  }
-
-  const getNewCompanyUsers = () => {
-    const newUsers = usersState.filter(
-      (user) =>
-        user.userGroupType === 'none' && user.companyName === companyName
-    )
-    return (newUsers?.length || []) > 0 ? newUsers?.length : null
+    if (staffResponse.ok) setUsers(users.data ?? [])
   }
 
   const getNewGeneralUsers = () => {
     const newUsers = usersState.filter(
       (user) => user.userGroupType === 'none' && user.companyName === 'none'
     )
-    return (newUsers?.length || []) > 0 ? newUsers?.length : null
+    if (newUsers?.length > 0) {
+      return newUsers?.length
+    }
+    return 0
   }
-
-  if (userContext.user?.userGroupType === 'operator')
-    return (
-      <div className={styles.container}>
-        <hr className={styles.line} />
-        <button
-          className={[
-            styles.button,
-            styles[type],
-            (getNewCompanyUsers() || []) > 0 ? styles.notify : '',
-          ].join(' ')}
-          onClick={onClick}
-        >
-          {label}
-          {getNewCompanyUsers() && (
-            <div className={styles.notifysignal}>{alert}</div>
-          )}
-        </button>
-      </div>
-    )
-  if (userContext.user?.userGroupType === 'admin')
-    return (
-      <div className={styles.container}>
-        <hr className={styles.line} />
-        <button
-          className={[
-            styles.button,
-            styles[type],
-            (getNewGeneralUsers() || []) > 0 ? styles.notify : '',
-          ].join(' ')}
-          onClick={onClick}
-        >
-          {label}
-          {getNewGeneralUsers() && (
-            <div className={styles.notifysignal}>{alert}</div>
-          )}
-        </button>
-      </div>
-    )
-  else return <div>{'undefined'}</div>
+  return (
+    <div className={styles.container}>
+      <hr className={styles.line} />
+      <button
+        className={[
+          styles.button,
+          styles[type],
+          (getNewGeneralUsers() || 0) > 0 ? styles.notify : '',
+        ].join(' ')}
+        onClick={onClick}
+      >
+        {label}
+        {getNewGeneralUsers() && (
+          <div className={styles.notifysignal}>{getNewGeneralUsers()}</div>
+        )}
+      </button>
+    </div>
+  )
 }

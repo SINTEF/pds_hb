@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './ApproveUsersPage.module.css'
 import { Title } from '../../components/title'
 import { RegisteredDataField } from '../../components/registered-data-field'
-import useFetch from 'use-http'
+import useFetch, { CachePolicies } from 'use-http'
 import { IUser } from '../../models/user'
 import { APIResponse } from '../../models/api-response'
 
@@ -19,14 +19,17 @@ export const ApproveUsersPage: React.FC = () => {
     get: usersGet,
     response: usersResponse,
     put: usersPut,
-  } = useFetch<APIResponse<IUser[]>>('/user')
+  } = useFetch<APIResponse<IUser[]>>('/user', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
   useEffect(() => {
     getUsers()
   }, [])
 
   const getUsers = async () => {
-    const users = await usersGet('/users')
+    const users = await usersGet('/users?limit=20')
     if (usersResponse.ok) {
       const notApprovedUsers = users.result.filter(
         (user: IUser) =>
@@ -39,7 +42,7 @@ export const ApproveUsersPage: React.FC = () => {
   // only update fileds when reload window???
   const discardUser = async (userid: string) => {
     await usersDel(userid)
-    await usersGet()
+    await getUsers()
     if (usersResponse.ok) {
       getUsers()
       effect.deleted = true
@@ -49,53 +52,60 @@ export const ApproveUsersPage: React.FC = () => {
   }
 
   // this also doesn't work properly
-  const approveUser = async (userid: string) => {
+  const approveUser = async (username: string) => {
     const updatedUser = { userGroupType: 'general_user' }
-    if (usersResponse.ok) await usersPut('/update/' + userid, updatedUser)
+    await usersPut('/' + username, updatedUser)
+    await getUsers()
   }
 
   return (
     <div className={styles.container}>
       <Title title="Approve new users" />
-      <div className={styles.listtitles}>
-        <div>{'Name'}</div>
-        <div>{'Email'}</div>
-        <div>{'     '}</div>
-        <div>{'     '}</div>
-        <div>{'     '}</div>
-      </div>
-      {usersState &&
-        usersState?.map(
-          (
-            user,
-            idx // type any?
-          ) =>
-            (
-              <RegisteredDataField key={idx}>
-                {[
-                  <div key={idx}>{user.username}</div>,
-                  <div key={idx}>{user.email}</div>,
-                  <button
-                    className={styles.approve}
-                    onClick={() => approveUser(user._id)}
-                    key={idx}
-                  >
-                    {'Approve'}
-                  </button>,
-                  <button
-                    className={styles.remove}
-                    onClick={() => discardUser(user._id)}
-                    key={idx}
-                  >
-                    {'Remove'}
-                  </button>,
-                ]}
-              </RegisteredDataField>
-            ) ?? []
-        )}
-      {
-        effect.deleted && <div>{'User deleted!'}</div> // deleted never changes
-      }
+      {usersState.length > 0 ? (
+        <>
+          <div className={styles.listtitles}>
+            <div>{'Name'}</div>
+            <div>{'Email'}</div>
+            <div>{'     '}</div>
+            <div>{'     '}</div>
+            <div>{'     '}</div>
+          </div>
+          {usersState &&
+            usersState?.map(
+              (
+                user,
+                idx // type any?
+              ) =>
+                (
+                  <RegisteredDataField key={idx}>
+                    {[
+                      <div key={idx}>{user.username}</div>,
+                      <div key={idx}>{user.email}</div>,
+                      <button
+                        className={styles.approve}
+                        onClick={() => approveUser(user.username)}
+                        key={idx}
+                      >
+                        {'Approve'}
+                      </button>,
+                      <button
+                        className={styles.remove}
+                        onClick={() => discardUser(user._id)}
+                        key={idx}
+                      >
+                        {'Remove'}
+                      </button>,
+                    ]}
+                  </RegisteredDataField>
+                ) ?? []
+            )}
+          {
+            effect.deleted && <div>{'User deleted!'}</div> // deleted never changes
+          }
+        </>
+      ) : (
+        <div>{'The eager PDS datahandbook readers are comming very soon!'}</div>
+      )}
     </div>
   )
 }

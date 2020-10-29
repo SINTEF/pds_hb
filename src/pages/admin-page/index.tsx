@@ -20,10 +20,6 @@ export const AdminPage: React.FC = () => {
           <SideMenu>
             <>
               <MenuButton
-                onClick={() => history.push(url + ADMIN_SUB_ROUTES.USER)}
-                label="Admin user"
-              />
-              <MenuButton
                 onClick={() =>
                   history.push(url + ADMIN_SUB_ROUTES.SEE_ALL_EDITS)
                 }
