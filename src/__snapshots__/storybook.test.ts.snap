@@ -2289,7 +2289,9 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
 `;
 
 exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
-<div>
+<div
+  className="pagebottompadding"
+>
   <div
     className="container"
   >
@@ -2319,10 +2321,13 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
         Email
       </div>
       <div>
-        Phone
+            
       </div>
       <div>
-             
+            
+      </div>
+      <div>
+        Phone
       </div>
     </div>
   </div>
@@ -2348,6 +2353,32 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
       >
         <label
           className=""
+          htmlFor="Username"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Username
+        </label>
+        <input
+          id="Username"
+          onChange={[Function]}
+          placeholder="OlaNordmann"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
           htmlFor="Email"
           style={
             Object {
@@ -2362,6 +2393,32 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
           onChange={[Function]}
           placeholder="ola.nordmann@gmail.com"
           type="email"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Password"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Password
+        </label>
+        <input
+          id="Password"
+          onChange={[Function]}
+          placeholder="a super safe psw"
+          type="text"
           value=""
         />
       </div>
