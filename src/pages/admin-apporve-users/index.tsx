@@ -29,7 +29,8 @@ export const ApproveUsersPage: React.FC = () => {
     const users = await usersGet('/users')
     if (usersResponse.ok) {
       const notApprovedUsers = users.result.filter(
-        (user: IUser) => user.userGroupType === 'none'
+        (user: IUser) =>
+          user.userGroupType === 'none' && user.companyName === 'none'
       )
       setUsers(notApprovedUsers)
     }
