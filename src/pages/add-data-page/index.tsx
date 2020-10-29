@@ -20,7 +20,7 @@ export interface Form {
   du: number | null
   populationSize: number | null
   company: string | undefined
-  l3: { filter: string; value: string }[] | null
+  l3: Record<string, string> | null
   comment: string | null
 }
 
@@ -92,26 +92,8 @@ export const AddDataPage: React.FC = () => {
 
   const updateData = async (form: Form): Promise<void> => {
     form = { ...form, company: userContext.user?.companyName }
-    //const filterReq = form.l3.
-    const postReq =
-      'facility=' +
-      form.facility +
-      '&' +
-      'component=' +
-      form.component +
-      '&' +
-      'startPeriod=' +
-      form.startDate?.toDateString +
-      '&' +
-      'endPeriod=' +
-      form.endDate?.toDateString +
-      '&' +
-      'du=' +
-      form.du?.toString +
-      '&' +
-      'populationSize=' +
-      form.populationSize?.toString
-    await post('/data-instances/?' + postReq)
+
+    await post('/data-instances/', form)
   }
 
   const getL3 = () => {
@@ -224,7 +206,10 @@ export const AddDataPage: React.FC = () => {
               onClick={(value) => {
                 setData({
                   ...dataState,
-                  l3: [{ filter: filter, value: value }],
+                  l3: {
+                    ...dataState.l3,
+                    [filter]: value,
+                  },
                 })
               }}
               key={filter}
@@ -262,7 +247,7 @@ export const AddDataPage: React.FC = () => {
                 company: dataState.company,
                 startDate: new Date(),
                 endDate: new Date(),
-                l3: [],
+                l3: null,
                 comment: null,
               })
             }}
