@@ -8,7 +8,7 @@ import { APIResponse } from '../../models/api-response'
 
 export const ApproveUsersPage: React.FC = () => {
   const effect = {
-    deleted: false,
+    show: false,
   }
   const sleep = (milliseconds: number) => {
     return new Promise((resolve) => setTimeout(resolve, milliseconds))
@@ -29,13 +29,10 @@ export const ApproveUsersPage: React.FC = () => {
   }, [])
 
   const getUsers = async () => {
-    const users = await usersGet('/users?limit=20')
+    const users = await usersGet('/?userGroupType=none')
     if (usersResponse.ok) {
-      const notApprovedUsers = users.result.filter(
-        (user: IUser) =>
-          user.userGroupType === 'none' && user.companyName === 'none'
-      )
-      setUsers(notApprovedUsers)
+      const notApprovedUsers = users.data
+      setUsers(notApprovedUsers ?? [])
     }
   }
 
@@ -43,12 +40,7 @@ export const ApproveUsersPage: React.FC = () => {
   const discardUser = async (userid: string) => {
     await usersDel(userid)
     await getUsers()
-    if (usersResponse.ok) {
-      getUsers()
-      effect.deleted = true
-      await sleep(1000)
-      effect.deleted = false
-    }
+    if (usersResponse.ok) getUsers()
   }
 
   // this also doesn't work properly
@@ -83,14 +75,24 @@ export const ApproveUsersPage: React.FC = () => {
                       <div key={idx}>{user.email}</div>,
                       <button
                         className={styles.approve}
-                        onClick={() => approveUser(user.username)}
+                        onClick={() => {
+                          approveUser(user.username)
+                          effect.show = true
+                          sleep(2000)
+                          effect.show = false
+                        }}
                         key={idx}
                       >
                         {'Approve'}
                       </button>,
                       <button
                         className={styles.remove}
-                        onClick={() => discardUser(user._id)}
+                        onClick={() => {
+                          discardUser(user._id)
+                          effect.show = true
+                          sleep(2000)
+                          effect.show = false
+                        }}
                         key={idx}
                       >
                         {'Remove'}
@@ -100,7 +102,7 @@ export const ApproveUsersPage: React.FC = () => {
                 ) ?? []
             )}
           {
-            effect.deleted && <div>{'User deleted!'}</div> // deleted never changes
+            effect.show && <div>{'Success!'}</div> // show never changes
           }
         </>
       ) : (

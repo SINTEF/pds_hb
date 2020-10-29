@@ -1,9 +1,9 @@
 .listtitles {
   display: inline-grid;
   grid-auto-flow: column;
-  width: 100%;
+  width: 105%;
   padding-bottom: 20px;
-  padding-left: 100px;
+  padding-left: 150px;
 }
 
 .remove {
@@ -12,6 +12,7 @@
   background: transparent;
   font-weight: bold;
   cursor: pointer;
+  padding-left: 50px;
 }
 
 .approve {
@@ -20,6 +21,7 @@
   background: transparent;
   font-weight: bold;
   cursor: pointer;
+  padding-left: 140px;
 }
 
 .container {
