@@ -30,8 +30,8 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
   onDelete,
   equipmentGroup,
 }: EquipmentGroupFormProps) => {
-  const [formState, setFormState] = useState(
-    equipmentGroup ?? { id: '', name: '', symbol: undefined }
+  const [formState, setFormState] = useState<IGroup>(
+    equipmentGroup ?? { name: '', symbol: undefined }
   )
   return (
     <Modal
@@ -45,7 +45,7 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
           label="Name"
           variant="standard"
           type="text"
-          defaultValue={formState.name}
+          value={formState.name}
           placeholder="Equipment group name"
           onValueChanged={(value) =>
             setFormState({ ...formState, name: value as string })
@@ -55,7 +55,7 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
           label="Symbol"
           variant="standard"
           type="file"
-          defaultValue=""
+          value={undefined}
           placeholder="Equipment group symbol"
           icon="add_photo_alternate"
           onValueChanged={(value) =>

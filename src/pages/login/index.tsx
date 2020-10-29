@@ -51,6 +51,7 @@ export const Login: React.FC = () => {
         <InputField
           label={'Username'}
           icon={'face'}
+          value={form.username}
           onValueChanged={(value) =>
             setForm({ ...form, username: value as string })
           }
@@ -61,6 +62,7 @@ export const Login: React.FC = () => {
           label={'Password'}
           type={'password'}
           icon={'lock'}
+          value={form.password}
           onValueChanged={(value) =>
             setForm({ ...form, password: value as string })
           }

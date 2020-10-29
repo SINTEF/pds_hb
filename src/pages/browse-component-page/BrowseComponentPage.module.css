@@ -45,3 +45,11 @@
 .table {
   padding-top: 160px;
 }
+
+.responseOk {
+  color: chartreuse;
+}
+
+.responseError {
+  color: red;
+}

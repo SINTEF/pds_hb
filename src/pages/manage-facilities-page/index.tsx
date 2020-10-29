@@ -36,7 +36,7 @@ export const ManageFacilitiesPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.title}>
         <Title title="Manage facilities" />
       </div>
@@ -76,6 +76,7 @@ export const ManageFacilitiesPage: React.FC = () => {
               label="New facilityname"
               variant="standard"
               placeholder="Enter name of new facility..."
+              value={facilityState}
               onValueChanged={(value) => setFacility(value as string)}
             />
           </div>

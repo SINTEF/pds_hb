@@ -35,6 +35,7 @@ Array [
             id="Username"
             onChange={[Function]}
             type="text"
+            value=""
           />
           <i
             className="material-icons icon"
@@ -64,6 +65,7 @@ Array [
             id="Password"
             onChange={[Function]}
             type="password"
+            value=""
           />
           <i
             className="material-icons icon"
