@@ -1147,12 +1147,26 @@ exports[`Storyshots Pages/Read Standard 1`] = `
 `;
 
 exports[`Storyshots RegisteredData Standard 1`] = `
-<div>
+<div
+  className="container"
+>
   <div
-    className="path"
+    className="padding center"
   >
-    /Choose equipmentgroup /
-    Fire detectors
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        />
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
   </div>
   <div
     className="filters padding"
@@ -1178,69 +1192,6 @@ exports[`Storyshots RegisteredData Standard 1`] = `
         </button>
       </div>
     </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L1
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L2
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L3
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
   </div>
   <div>
     <div
@@ -1256,19 +1207,13 @@ exports[`Storyshots RegisteredData Standard 1`] = `
                 Component
               </td>
               <td>
-                Period
-              </td>
-              <td>
                 T
               </td>
               <td>
-                Tags
+                PopulationSize
               </td>
               <td>
                 DU
-              </td>
-              <td>
-                Edited
               </td>
               <td>
                  
@@ -1277,98 +1222,6 @@ exports[`Storyshots RegisteredData Standard 1`] = `
           </tbody>
         </table>
       </div>
-      <table
-        className="container"
-      >
-        <tbody>
-          <tr>
-            <td>
-              <label>
-                Smoke detector
-              </label>
-            </td>
-            <td>
-              <label>
-                2013-2020
-              </label>
-            </td>
-            <td>
-              <label>
-                123456
-              </label>
-            </td>
-            <td>
-              <label>
-                99
-              </label>
-            </td>
-            <td>
-              <label>
-                5
-              </label>
-            </td>
-            <td>
-              <label>
-                24.12.2010
-              </label>
-            </td>
-            <td>
-              <i
-                className="material-icons icon"
-                onClick={[Function]}
-              >
-                editor
-              </i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table
-        className="container"
-      >
-        <tbody>
-          <tr>
-            <td>
-              <label>
-                Smoke detector
-              </label>
-            </td>
-            <td>
-              <label>
-                2015-2029
-              </label>
-            </td>
-            <td>
-              <label>
-                654321
-              </label>
-            </td>
-            <td>
-              <label>
-                29
-              </label>
-            </td>
-            <td>
-              <label>
-                3
-              </label>
-            </td>
-            <td>
-              <label>
-                23.11.2016
-              </label>
-            </td>
-            <td>
-              <i
-                className="material-icons icon"
-                onClick={[Function]}
-              >
-                editor
-              </i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>
