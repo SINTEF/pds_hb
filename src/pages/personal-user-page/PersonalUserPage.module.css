@@ -51,8 +51,31 @@
 
 .responseOk {
   color: chartreuse;
+  align-self: center;
 }
 
 .responseError {
   color: red;
+  align-self: center;
+}
+
+.changepsw {
+  color: #003d65;
+  font: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  position: relative;
+  left: 290px;
+  padding-top: 50px;
+}
+
+.button {
+  position: absolute;
+  right: 300px;
+  bottom: 100px;
+}
+
+.height {
+  height: 400px;
+  justify-content: space-between;
 }
