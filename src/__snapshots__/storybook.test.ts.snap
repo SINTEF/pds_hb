@@ -1968,6 +1968,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
           onChange={[Function]}
           placeholder="Enter a name for the new company..."
           type="text"
+          value=""
         />
       </div>
     </div>
@@ -1993,6 +1994,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
           onChange={[Function]}
           placeholder="Enter the orgNr for the new company..."
           type="number"
+          value=""
         />
       </div>
     </div>
@@ -2018,6 +2020,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
           onChange={[Function]}
           placeholder="Enter an email for the new company..."
           type="text"
+          value=""
         />
       </div>
     </div>
@@ -2043,6 +2046,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
           onChange={[Function]}
           placeholder="Enter a phone number for the new company..."
           type="text"
+          value=""
         />
       </div>
     </div>
@@ -2068,6 +2072,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
           onChange={[Function]}
           placeholder="Enter a description for the new company..."
           type="text"
+          value=""
         />
       </div>
     </div>
@@ -2093,6 +2098,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
           onChange={[Function]}
           placeholder="Enter a number for max users for the new company..."
           type="number"
+          value={0}
         />
       </div>
     </div>
