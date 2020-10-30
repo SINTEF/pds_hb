@@ -9,10 +9,9 @@ import { IUserContext } from '../../models/user'
 import useFetch from 'use-http'
 
 enum indexes {
-  Name = 'name',
-  Email = 'email',
-  Phone = 'phoneNr',
-  Description = 'description',
+  username = 'username',
+  email = 'email',
+  phoneNr = 'phoneNr',
 }
 
 // TO COMPLETE: Needs communication with server to save changes
@@ -31,16 +30,13 @@ export const PersonalUserPage: React.FC = () => {
 
     switch (index) {
       case 'Name':
-        data[indexes.Name] = form.content
-        break
-      case 'Description':
-        data[indexes.Description] = form.content
+        data[indexes.username] = form.content
         break
       case 'Phone':
-        data[indexes.Phone] = form.content
+        data[indexes.phoneNr] = form.content
         break
       case 'Email':
-        data[indexes.Email] = form.content
+        data[indexes.email] = form.content
         break
     }
 
@@ -113,7 +109,9 @@ export const PersonalUserPage: React.FC = () => {
           content={userContext.user?.userGroupType.replace('_', ' ')}
           mode="view"
           isAdmin={false}
-          onSubmit={handleUpdate}
+          onSubmit={() => {
+            return false
+          }}
         />
         {(userContext.user?.userGroupType === 'admin' ||
           userContext.user?.userGroupType === 'operator') && (

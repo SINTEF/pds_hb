@@ -17,17 +17,15 @@ import { IDataInstance } from '../../models/datainstance'
 import { APIResponse } from '../../models/api-response'
 import { Button } from '../../components/button'
 
-export interface Form {
-  filters: { filter: string; value: string }[]
-}
-
 export const BrowseComponentPage: React.FC = () => {
   const { componentName } = useParams<{ componentName: string }>()
 
   const [compState, setComp] = useState<IComponent>()
   const [components, setComponents] = useState<IComponent[]>([])
-  const [failuredataState, setFailuredata] = useState<IDataInstance[]>()
-  const [filterState, setFilter] = useState<Form>()
+  const [failuredataState, setFailuredata] = useState<IDataInstance[]>([])
+  const [filterState, setFilter] = useState<
+    Record<string, Record<string, boolean>>
+  >({})
   const equipmentGroup = compState?.equipmentGroup
   const componentNames = components
     .filter((component) => component.equipmentGroup === equipmentGroup)
@@ -67,33 +65,47 @@ export const BrowseComponentPage: React.FC = () => {
   } = useFetch(`/components`)
 
   useEffect(() => {
+    const loadComponents = async () => {
+      const initialComp: APIResponse<IComponent[]> = await componentGet(
+        '/?name=' + componentName
+      )
+      if (componentResponse.ok) {
+        setComp(initialComp.data[0])
+        setFilter(
+          Object.entries(initialComp.data[0].L3).reduce(
+            (object, [key, value]) => ({
+              ...object,
+              [key]: value?.reduce(
+                (object, filterValue) => ({ ...object, [filterValue]: false }),
+                {}
+              ),
+            }),
+            {}
+          )
+        )
+      }
+      const components = await componentGet()
+      if (componentResponse.ok) setComponents(components.data)
+    }
     loadComponents()
-  }, [])
+  }, [componentGet, componentName, componentResponse])
 
   useEffect(() => {
-    getFailureData()
-  }, [filterState])
-
-  const loadComponents = async () => {
-    const initialComp = await componentGet('/?name=' + componentName)
-    if (componentResponse.ok) {
-      setComp(initialComp.data[0])
-      setFilter({
-        filters: [{ filter: 'component', value: initialComp.data[0].name }],
-      })
+    const getFailureData = async () => {
+      const dataRequestArray: string[] = Object.keys(filterState).flatMap(
+        (filter) =>
+          Object.entries(filterState[filter])
+            .filter(([, value]) => value)
+            .map(([name]) => `L3.${filter}=${name}`)
+      )
+      const filters =
+        dataRequestArray.length > 0 ? '&' + dataRequestArray.join('&') : ''
+      const dataRequest = `/?component=${componentName}${filters}`
+      const failureData = await datainstanceGet(dataRequest)
+      if (datainstanceResponse.ok) setFailuredata(failureData.data)
     }
-    const components = await componentGet()
-    if (componentResponse.ok) setComponents(components.data)
-  }
-
-  const getFailureData = async () => {
-    const dataRequestArray = filterState?.filters.map(
-      (filter) => filter.filter + '=' + filter.value
-    )
-    const dataRequest = '/?' + dataRequestArray?.join('&')
-    const failureData = await datainstanceGet(dataRequest)
-    if (datainstanceResponse.ok) setFailuredata(failureData.data)
-  }
+    getFailureData()
+  }, [componentName, datainstanceGet, datainstanceResponse, filterState])
 
   const requestToData = (request: IDataInstance[]) => {
     return (request ?? []).map((data) => [
@@ -113,7 +125,7 @@ export const BrowseComponentPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
 
   const getComponent = (name: string) => {
-    return components?.filter((comp) => (comp.name = name))[0]
+    return components?.filter((comp) => comp.name === name)[0]
   }
 
   const handleUpdate = (form: FieldForm) => {
@@ -146,7 +158,10 @@ export const BrowseComponentPage: React.FC = () => {
           <div className={[styles.filters, styles.padding].join(' ')}>
             <Filter
               category="Component" // think i need a isChecked var to set/unset the filter
-              filters={componentNames as string[]}
+              filters={componentNames.reduce(
+                (obj, name) => ({ ...obj, [name]: false }),
+                {}
+              )}
               onClick={(newcomp) => {
                 setComp(getComponent(newcomp))
                 history.push(
@@ -213,34 +228,22 @@ export const BrowseComponentPage: React.FC = () => {
           ) : (
             <div>
               <div className={[styles.filters, styles.padding].join(' ')}>
-                {Object.entries(compState?.L3 ?? {})
-                  .filter(([, filters]) => filters !== undefined)
-                  .map(([filterName, filters]) => (
-                    <Filter
-                      category={filterName}
-                      filters={filters as string[]}
-                      onClick={(selected) => {
-                        if (filterState) {
-                          setFilter({
-                            filters: [
-                              ...filterState.filters,
-                              {
-                                filter: filterName,
-                                value: selected,
-                              },
-                            ],
-                          })
-                          getFailureData()
-                        } else {
-                          setFilter({
-                            filters: [{ filter: filterName, value: selected }],
-                          })
-                          getFailureData()
-                        }
-                      }}
-                      key={filterName}
-                    />
-                  ))}
+                {Object.entries(filterState).map(([filterName, filters]) => (
+                  <Filter
+                    category={filterName}
+                    filters={filters}
+                    onClick={(selected, newValue) => {
+                      setFilter({
+                        ...filterState,
+                        [filterName]: {
+                          ...filterState[filterName],
+                          [selected]: newValue,
+                        },
+                      })
+                    }}
+                    key={filterName}
+                  />
+                ))}
               </div>
               <div className={styles.table}>
                 <Table

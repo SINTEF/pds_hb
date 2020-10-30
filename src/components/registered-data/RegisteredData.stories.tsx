@@ -12,15 +12,26 @@ const Template: Story<RegisteredDataProps> = (args) => (
   <RegisteredData {...args} />
 )
 
-const values: Record<string, string[]> = {
-  L1: ['V1', 'V2', 'V3'],
-  L2: ['V2', 'V3'],
-  L3: ['V4', 'V5'],
-}
-
 const filters: Record<string, string[]> = {
   'Smoke detector': ['L1', 'L2', 'L3'],
   'Flame detector': ['L2', 'L3'],
+}
+const filterValues: Record<string, Record<string, boolean>> = {
+  L1: {
+    A1: true,
+    A2: false,
+    A3: true,
+  },
+  L2: {
+    A1: true,
+    A2: false,
+    A3: true,
+  },
+  L3: {
+    A1: true,
+    A2: false,
+    A3: true,
+  },
 }
 
 export const Standard = Template.bind({})
@@ -29,7 +40,7 @@ Standard.args = {
   equipmentgroup: 'Fire detectors',
   getComponents: () => ['Smoke detector', 'Flame detector'],
   getFilters: (component) => filters[component],
-  getValuesForFilter: (filter) => values[filter],
+  getValuesForFilter: (filter) => filterValues[filter],
   getFailureData: () => [
     {
       _id: 'object1',

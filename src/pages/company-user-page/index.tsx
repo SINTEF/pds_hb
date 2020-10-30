@@ -87,7 +87,7 @@ export const CompanyUserPage: React.FC = () => {
               index="Name"
               content={companyData?.data.name}
               mode="view"
-              isAdmin={true}
+              isAdmin={false}
               onSubmit={handleUpdate}
             />
             <EditableField

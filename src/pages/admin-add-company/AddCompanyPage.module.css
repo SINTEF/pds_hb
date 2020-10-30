@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+  padding-right: 70px;
+}
+
+.title {
+  align-self: center;
+}
+
+.button {
+  position: absolute;
+  right: 80px;
+  bottom: 40px;
+}
+
+.center {
+  align-items: center;
+  height: 200px;
+  justify-content: space-between;
+  padding-top: 100px;
+}
+
+.addCEO {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding-bottom: 40px;
+}

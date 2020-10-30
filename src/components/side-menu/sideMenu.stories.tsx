@@ -48,11 +48,7 @@ AdminSideMenu.args = {
       ].map((title) => (
         <MenuButton label={title} key={title} />
       ))}
-      <MenuButton
-        label="Approve new users"
-        alert={2}
-        key={'Approve new users'}
-      />
+      <MenuButton label="Approve new users" key={'Approve new users'} />
     </>
   ),
 }

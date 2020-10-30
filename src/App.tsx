@@ -16,6 +16,8 @@ import useLocalStorage from './utils/hooks/useLocalStorage'
 import { Browse } from './pages/browse-page'
 import { CompanyPage } from './pages/company-page'
 import { PersonalUserPage } from './pages/personal-user-page'
+import { AdminPage } from './pages/admin-page'
+import { CompanyUserPage } from './pages/company-user-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -58,6 +60,12 @@ function App(): JSX.Element {
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.ACCOUNT}>
               <PersonalUserPage />
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.ADMIN}>
+              <AdminPage />
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.ADMIN_COMPANY}>
+              <CompanyUserPage />
             </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <Frontpage />
