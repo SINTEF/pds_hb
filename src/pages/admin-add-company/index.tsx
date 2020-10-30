@@ -15,7 +15,7 @@ interface InewCompany {
   phoneNr: string
   description: string
   facilities: Array<string>
-  maxUsers: number | null
+  maxUsers: number
 }
 
 interface InewUser {
@@ -36,7 +36,7 @@ export const AddCompanyPage: React.FC = () => {
     phoneNr: '',
     description: '',
     facilities: [],
-    maxUsers: null,
+    maxUsers: 0,
   }
   const defaultUser = {
     username: '',
@@ -111,6 +111,7 @@ export const AddCompanyPage: React.FC = () => {
           <InputField
             variant="standard"
             label="Company name"
+            value={companyState.name}
             placeholder="Enter a name for the new company..."
             onValueChanged={(value) =>
               setCompany({ ...companyState, name: value as string })
@@ -120,6 +121,7 @@ export const AddCompanyPage: React.FC = () => {
             variant="standard"
             type="number"
             label="Organisation Number"
+            value={companyState.organizationNr}
             placeholder="Enter the orgNr for the new company..."
             onValueChanged={(value) =>
               setCompany({ ...companyState, organizationNr: value as string })
@@ -128,6 +130,7 @@ export const AddCompanyPage: React.FC = () => {
           <InputField
             variant="standard"
             label="Email"
+            value={companyState.email}
             placeholder="Enter an email for the new company..."
             onValueChanged={(value) =>
               setCompany({ ...companyState, email: value as string })
@@ -137,6 +140,7 @@ export const AddCompanyPage: React.FC = () => {
             variant="standard"
             type="text"
             label="Phone number"
+            value={companyState.phoneNr}
             placeholder="Enter a phone number for the new company..."
             onValueChanged={(value) =>
               setCompany({ ...companyState, phoneNr: value as string })
@@ -146,6 +150,7 @@ export const AddCompanyPage: React.FC = () => {
             variant="standard"
             type="text"
             label="Description"
+            value={companyState.description}
             placeholder="Enter a description for the new company..."
             onValueChanged={(value) =>
               setCompany({ ...companyState, description: value as string })
@@ -155,6 +160,7 @@ export const AddCompanyPage: React.FC = () => {
             variant="standard"
             type="number"
             label="Max users"
+            value={companyState.maxUsers}
             placeholder="Enter a number for max users for the new company..."
             onValueChanged={(value) =>
               setCompany({ ...companyState, maxUsers: value as number })
@@ -186,6 +192,7 @@ export const AddCompanyPage: React.FC = () => {
             <InputField
               variant="standard"
               label="Username"
+              value={userState.username}
               placeholder="Enter an username for the new CEO..."
               onValueChanged={(value) =>
                 setUser({ ...userState, username: value as string })
@@ -195,6 +202,7 @@ export const AddCompanyPage: React.FC = () => {
               variant="standard"
               type="email"
               label="Email"
+              value={userState.email}
               placeholder="Enter an email for the new CEO..."
               onValueChanged={(value) =>
                 setUser({ ...userState, email: value as string })
@@ -203,6 +211,7 @@ export const AddCompanyPage: React.FC = () => {
             <InputField
               variant="standard"
               label="PhoneNr"
+              value={userState.phoneNr}
               placeholder="Enter a phone number for the new CEO..."
               onValueChanged={(value) =>
                 setUser({ ...userState, phoneNr: value as string })
@@ -211,6 +220,7 @@ export const AddCompanyPage: React.FC = () => {
             <InputField
               variant="standard"
               label="Password"
+              value={userState.password}
               placeholder="Enter a password for the new CEO..."
               onValueChanged={(value) =>
                 setUser({ ...userState, password: value as string })
