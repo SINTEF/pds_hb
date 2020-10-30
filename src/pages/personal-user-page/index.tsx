@@ -73,7 +73,7 @@ export const PersonalUserPage: React.FC = () => {
         */}
       <div className={[styles.photocontainer, styles.center].join(' ')}>
         <div className={styles.photo}>
-          {userContext.user?.username.charAt(0)}
+          {userContext.user?.username.toUpperCase().charAt(0)}
         </div>
         <i
           className={['material-icons ', styles.editphoto].join(' ')}
