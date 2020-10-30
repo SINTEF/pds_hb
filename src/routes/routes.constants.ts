@@ -5,6 +5,7 @@ const MAIN_ROUTES = {
   BROWSE: '/browse',
   ADD: '/add',
   COMPANY: '/company',
+  ACCOUNT: '/account',
   ADMIN: '/admin',
   NOT_FOUND: '*',
   ADMIN_COMPANY: '/admin-company',
