@@ -55,7 +55,9 @@ export const PersonalUserPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Title title="Company user" />
+      <div className={styles.center}>
+        <Title title="Company user" />
+      </div>
       {/*
         <div className={styles.photocontainer}>
           <div className={styles.photo}>
@@ -73,7 +75,7 @@ export const PersonalUserPage: React.FC = () => {
           </i>
         </div>
         */}
-      <div className={styles.photocontainer}>
+      <div className={[styles.photocontainer, styles.center].join(' ')}>
         <div className={styles.photo}>
           {userContext.user?.username.charAt(0)}
         </div>
@@ -83,58 +85,58 @@ export const PersonalUserPage: React.FC = () => {
         >
           {photoIcon}
         </i>
-        <div className={styles.width}>
-          <EditableField // need a function prop to store the changed value so its possible to update db
-            index="Name"
-            content={userContext.user?.username}
-            mode="view"
-            isAdmin={true}
-            onSubmit={handleUpdate}
-          />
+      </div>
+      <div className={styles.padding}>
+        <EditableField // need a function prop to store the changed value so its possible to update db
+          index="Name"
+          content={userContext.user?.username}
+          mode="view"
+          isAdmin={true}
+          onSubmit={handleUpdate}
+        />
+        <EditableField
+          index="Email"
+          content={userContext.user?.email}
+          mode="view"
+          isAdmin={true}
+          onSubmit={handleUpdate}
+        />
+        <EditableField
+          index="Phone"
+          content={userContext.user?.phoneNr}
+          mode="view"
+          isAdmin={true}
+          onSubmit={handleUpdate}
+        />
+        <EditableField
+          index="Subscription type"
+          content={userContext.user?.userGroupType.replace('_', ' ')}
+          mode="view"
+          isAdmin={false}
+          onSubmit={handleUpdate}
+        />
+        {(userContext.user?.userGroupType === 'admin' ||
+          userContext.user?.userGroupType === 'operator') && (
           <EditableField
-            index="Email"
-            content={userContext.user?.email}
-            mode="view"
-            isAdmin={true}
-            onSubmit={handleUpdate}
-          />
-          <EditableField
-            index="Phone"
-            content={userContext.user?.phoneNr}
-            mode="view"
-            isAdmin={true}
-            onSubmit={handleUpdate}
-          />
-          <EditableField
-            index="Subscription type"
-            content={userContext.user?.userGroupType.replace('_', ' ')}
+            index="Company"
+            content={userContext.user?.companyName}
             mode="view"
             isAdmin={false}
-            onSubmit={handleUpdate}
+            onSubmit={() => {
+              return false
+            }}
           />
-          {(userContext.user?.userGroupType === 'admin' ||
-            userContext.user?.userGroupType === 'operator') && (
-            <EditableField
-              index="Company"
-              content={userContext.user?.companyName}
-              mode="view"
-              isAdmin={false}
-              onSubmit={() => {
-                return false
-              }}
-            />
-          )}
-          {updateDataResponse.ok ? (
-            <p className={styles.responseOk}>
-              {updateDataResponse.data?.message}
-            </p>
-          ) : null}
-          {updateDataError ? (
-            <p className={styles.responseError}>
-              {updateDataResponse.data?.message}
-            </p>
-          ) : null}
-        </div>
+        )}
+        {updateDataResponse.ok ? (
+          <p className={styles.responseOk}>
+            {updateDataResponse.data?.message}
+          </p>
+        ) : null}
+        {updateDataError ? (
+          <p className={styles.responseError}>
+            {updateDataResponse.data?.message}
+          </p>
+        ) : null}
       </div>
     </div>
   )
