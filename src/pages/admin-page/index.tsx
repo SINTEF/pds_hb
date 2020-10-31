@@ -5,6 +5,7 @@ import { MenuButton } from '../../components/menu-button'
 import { SideMenu } from '../../components/side-menu'
 import { ADMIN_SUB_ROUTES } from '../../routes/routes.constants'
 import { AddCompanyPage } from '../admin-add-company'
+import { AllEditsPage } from '../admin-all-edits-page'
 import { ApproveUsersPage } from '../admin-apporve-users'
 
 import styles from './AdminPage.module.css'
@@ -42,7 +43,7 @@ export const AdminPage: React.FC = () => {
       <div className={styles.content}>
         <Switch>
           <Route path={path + ADMIN_SUB_ROUTES.SEE_ALL_EDITS}>
-            {/*we dont have a page for this yet*/}
+            <AllEditsPage />
           </Route>
           <Route path={path + ADMIN_SUB_ROUTES.APPROVE_USERS}>
             <ApproveUsersPage />
