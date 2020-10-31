@@ -225,6 +225,11 @@ export const AllEditsPage: React.FC = () => {
                 <div>
                   {'There are approved updates ready for the new edition!'}
                 </div>
+                <div>
+                  {
+                    'By clicking "Publish" all approved edits will be published.'
+                  }
+                </div>
                 <Button
                   label="Publish release"
                   onClick={() => releaseNewEdition()}
