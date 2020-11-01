@@ -18,6 +18,7 @@ import { CompanyPage } from './pages/company-page'
 import { PersonalUserPage } from './pages/personal-user-page'
 import { AdminPage } from './pages/admin-page'
 import { CompanyUserPage } from './pages/company-user-page'
+import { RegisterNewUserPage } from './pages/register-new-user/idex'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -46,6 +47,9 @@ function App(): JSX.Element {
         <BrowserRouter>
           <Header />
           <Switch>
+            <Route path={MAIN_ROUTES.REGISTER}>
+              <RegisterNewUserPage />
+            </Route>
             <Route path={MAIN_ROUTES.LOGIN}>
               <Login />
             </Route>
