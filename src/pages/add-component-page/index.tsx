@@ -51,8 +51,8 @@ export const AddComponentPage: FC = () => {
     revisionDate: undefined,
     remarks: '',
     description: '',
-    module: groupModule,
-    equipmentGroup: equipmentGroup,
+    module: '',
+    equipmentGroup: '',
     definitionOfDU: '',
     L3: {
       measuringPrinciple: '',
@@ -98,7 +98,7 @@ export const AddComponentPage: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <Title title={`New ${equipmentGroup} component`} />
+        <Title title={`New ${equipmentGroup.replace('+', ' ')} component`} />
       </div>
 
       <div className={styles.description}>
@@ -213,8 +213,20 @@ export const AddComponentPage: FC = () => {
         />
       </div>
       <div className={styles.buttons}>
-        <Button type="danger" label="Cancel component creation" />
-        <Button type="primary" label="Save new component" />
+        <Button
+          type="danger"
+          label="Cancel component creation"
+          onClick={() => {
+            return
+          }}
+        />
+        <Button
+          type="primary"
+          label="Save new component"
+          onClick={() => {
+            return
+          }}
+        />
       </div>
     </div>
   )

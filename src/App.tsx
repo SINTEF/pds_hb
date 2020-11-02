@@ -18,6 +18,7 @@ import { CompanyPage } from './pages/company-page'
 import { PersonalUserPage } from './pages/personal-user-page'
 import { AdminPage } from './pages/admin-page'
 import { CompanyUserPage } from './pages/company-user-page'
+import { AddComponentPage } from './pages/add-component-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -72,6 +73,9 @@ function App(): JSX.Element {
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.ADD}>
               <AddDataPage />
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.ADD_COMPONENT}>
+              <AddComponentPage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />
