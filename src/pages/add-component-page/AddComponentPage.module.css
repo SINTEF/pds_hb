@@ -70,7 +70,30 @@
   color: red;
   font-size: 0.75em;
   margin-right: 10px;
-  width: 250px;
+  width: 150px;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.modalContent > * {
+  margin-bottom: 10px;
+}
+
+.modalContent > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.modalContent > div > * {
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 768px) {

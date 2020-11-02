@@ -2,6 +2,8 @@ import React, { FC, useMemo, useState } from 'react'
 import Loader from 'react-loader-spinner'
 import { useHistory, useParams } from 'react-router-dom'
 import useFetch from 'use-http'
+import Modal from 'react-modal'
+
 import { Button } from '../../components/button'
 import { IconButton } from '../../components/icon-button'
 import { InputField } from '../../components/input-field'
@@ -86,6 +88,8 @@ export const AddComponentPage: FC = () => {
 
   const [L3SearchFieldState, setL3SearchFieldState] = useState<string>('')
 
+  const [modalOpen, setModalOpen] = useState<boolean>(false)
+
   const { post, response, loading, error } = useFetch('/components')
 
   const createComponent = async () => {
@@ -101,6 +105,9 @@ export const AddComponentPage: FC = () => {
     createArrayFromL3Params(componentCopy.L3)
 
     await post(componentCopy)
+    if (response.ok) {
+      setModalOpen(true)
+    }
   }
 
   const removeEmpty = (obj: Record<string, string | string[]>) => {
@@ -146,8 +153,68 @@ export const AddComponentPage: FC = () => {
     })
   }
 
+  const resetForm = () => {
+    setComponentInfoForm({
+      name: '',
+      revisionDate: undefined,
+      remarks: '',
+      description: '',
+      module: '',
+      equipmentGroup: '',
+      definitionOfDU: '',
+      L3: {
+        measuringPrinciple: '',
+        designMountingPrinciple: '',
+        actuationPrinciple: '',
+        mediumProperties: '',
+        dimension: '',
+        locationEnvironment: '',
+        application: '',
+        diagnosticsConfiguration: '',
+        testMaintenanceMonitoringStrategy: '',
+      },
+      data: [],
+    })
+
+    setActiveL3Fields({
+      measuringPrinciple: false,
+      designMountingPrinciple: false,
+      actuationPrinciple: false,
+      mediumProperties: false,
+      dimension: false,
+      locationEnvironment: false,
+      application: false,
+      diagnosticsConfiguration: false,
+      testMaintenanceMonitoringStrategy: false,
+    })
+
+    setModalOpen(false)
+  }
+
   return (
     <div className={styles.container}>
+      <Modal
+        isOpen={modalOpen}
+        style={{
+          content: {
+            margin: '20vh 20vw',
+          },
+          overlay: {
+            zIndex: 100,
+          },
+        }}
+      >
+        <div className={styles.modalContent}>
+          <p>Component successfully added!</p>
+          <div>
+            <Button label="Add another component" onClick={() => resetForm()} />
+            <Button
+              label="Return to browse page"
+              onClick={() => history.push(MAIN_ROUTES.BROWSE)}
+            />
+          </div>
+        </div>
+      </Modal>
       <div className={styles.title}>
         <Title title={`New ${equipmentGroup.replace('+', ' ')} component`} />
       </div>
