@@ -26,6 +26,24 @@
   grid-area: L3;
 }
 
+.L3 > label {
+  color: #003d65;
+  font-size: 18px;
+}
+
+.L3Field {
+  display: flex;
+  align-items: center;
+}
+
+.L3Input {
+  flex-grow: 1;
+}
+
+.L3Button {
+  margin-left: 15px;
+}
+
 .definition {
   grid-area: definition;
 }

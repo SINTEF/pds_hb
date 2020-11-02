@@ -4,6 +4,8 @@ import styles from './SearchField.module.css'
 export interface SearchFieldProps {
   onValueChanged: (value: string) => void
 
+  value?: string
+
   label?: string
 
   placeholder?: string
@@ -27,6 +29,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   icon,
   allowAllInputs,
   onClick,
+  value,
   onValueChanged,
 }: SearchFieldProps) => {
   const [filtered, setFiltered] = useState<Array<string>>([])
@@ -77,7 +80,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
           onChange={handleChanged}
           onKeyDown={handleKeyPress}
           onFocus={handleChanged}
-          value={selected}
+          value={value ?? selected}
         ></input>
         {variant === 'primary' ? (
           <i className={'material-icons ' + styles.icon}>{icon}</i>
