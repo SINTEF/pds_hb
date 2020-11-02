@@ -4,7 +4,7 @@ const MAIN_ROUTES = {
   READ: '/read',
   BROWSE: '/browse',
   ADD: '/add',
-  ADD_COMPONENT: '/add-component/:module/:equipmentGroup',
+  ADD_COMPONENT: '/add-component/:groupModule/:equipmentGroup',
   COMPANY: '/company',
   ACCOUNT: '/account',
   ADMIN: '/admin',

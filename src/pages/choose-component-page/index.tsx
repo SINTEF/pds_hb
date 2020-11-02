@@ -120,7 +120,7 @@ export const ChooseComponentPage: FC = () => {
           onClick={() =>
             history.push(
               MAIN_ROUTES.ADD_COMPONENT.replace(
-                ':module',
+                ':groupModule',
                 selectedModule.replace(' ', '+')
               ).replace(
                 ':equipmentGroup',

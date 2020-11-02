@@ -1,11 +1,13 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import useFetch from 'use-http'
 import { Button } from '../../components/button'
 import { IconButton } from '../../components/icon-button'
 import { InputField } from '../../components/input-field'
 import { SearchField } from '../../components/search-field'
 import { TextBox } from '../../components/text-box'
 import { Title } from '../../components/title'
+import { IDataInstance } from '../../models/datainstance'
 import { formatCamelCase } from '../../utils/casing'
 
 import styles from './AddComponentPage.module.css'
@@ -29,14 +31,12 @@ export interface IComponentInfoForm {
   module: string
   equipmentGroup: string
   definitionOfDU: string
-  L3: {
-    [k in L3Fields]?: string
-  }
+  L3: Record<L3Fields, string>
+
+  data: IDataInstance[]
 }
 
-export type IActiveL3Form = {
-  [k in L3Fields]?: boolean
-}
+export type IActiveL3Form = Record<L3Fields, boolean>
 
 export const AddComponentPage: FC = () => {
   const { groupModule, equipmentGroup } = useParams<{
@@ -65,6 +65,7 @@ export const AddComponentPage: FC = () => {
       diagnosticsConfiguration: '',
       testMaintenanceMonitoringStrategy: '',
     },
+    data: [],
   })
 
   const [activeL3Fields, setActiveL3Fields] = useState<IActiveL3Form>({
@@ -80,6 +81,52 @@ export const AddComponentPage: FC = () => {
   })
 
   const [L3SearchFieldState, setL3SearchFieldState] = useState<string>('')
+
+  const { post, response, loading, error } = useFetch('/components')
+
+  const createComponent = async () => {
+    if (!formIsValid) {
+      return
+    }
+    const componentCopy: IComponentInfoForm = JSON.parse(
+      JSON.stringify(componentInfoForm)
+    )
+    componentCopy.module = groupModule.replace('+', ' ')
+    componentCopy.equipmentGroup = equipmentGroup.replace('+', ' ')
+    removeEmpty(componentCopy.L3)
+    createArrayFromL3Params(componentCopy.L3)
+
+    await post(componentCopy)
+  }
+
+  const removeEmpty = (obj: Record<string, string | string[]>) => {
+    Object.keys(obj).forEach((key) => obj[key] === '' && delete obj[key])
+  }
+
+  const createArrayFromL3Params = (obj: Record<string, string | string[]>) => {
+    Object.keys(obj).forEach(
+      (key) =>
+        (obj[key] = (obj[key] as string)
+          .split(',')
+          .map((element: string) => element.trim()))
+    )
+  }
+
+  const formIsValid = useMemo(() => {
+    return (
+      componentInfoForm.name &&
+      componentInfoForm.revisionDate &&
+      componentInfoForm.remarks &&
+      componentInfoForm.description &&
+      Object.entries(componentInfoForm.L3).some(([, value]) => !!value)
+    )
+  }, [
+    componentInfoForm.name,
+    componentInfoForm.revisionDate,
+    componentInfoForm.remarks,
+    componentInfoForm.description,
+    componentInfoForm.L3,
+  ])
 
   const unSetL3Field = (L3Filter: string) => {
     setActiveL3Fields({
@@ -223,9 +270,7 @@ export const AddComponentPage: FC = () => {
         <Button
           type="primary"
           label="Save new component"
-          onClick={() => {
-            return
-          }}
+          onClick={() => createComponent()}
         />
       </div>
     </div>
