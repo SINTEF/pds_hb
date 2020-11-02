@@ -18,10 +18,10 @@ export interface RegisteredDataProps {
   equipmentgroup: string // this should also come from above
   getComponents: (equipmentGroup: string) => Array<string>
   getFilters: (component: string) => Array<string>
-  getValuesForFilter: (filter: string) => Array<string>
+  getValuesForFilter: (filter: string) => Record<string, boolean>
   getFailureData: (
     component: string,
-    filters: Array<Record<string, string>>
+    filters: Record<string, Record<string, boolean>>
   ) => Array<{
     period: string | number
     t: string | number
@@ -48,9 +48,9 @@ export const RegisteredData: React.FC<RegisteredDataProps> = ({
   editData,
 }: RegisteredDataProps) => {
   const [compState, setComp] = useState<string>(component)
-  const [filterState, setFilter] = useState<Form>({
-    filters: [{ filter: 'Component', value: compState }],
-  })
+  const [filterState, setFilter] = useState<
+    Record<string, Record<string, boolean>>
+  >({})
 
   return (
     <div>
@@ -66,22 +66,26 @@ export const RegisteredData: React.FC<RegisteredDataProps> = ({
         }
         <Filter
           category="Component"
-          filters={getComponents(equipmentgroup)}
+          filters={getComponents(equipmentgroup).reduce(
+            (object, val) => ({
+              ...object,
+              [val]: false,
+            }),
+            {}
+          )}
           onClick={(newcomp) => setComp(newcomp)}
         />
         {getFilters(compState).map((filter) => (
           <Filter
             category={filter}
             filters={getValuesForFilter(filter)}
-            onClick={(selected) =>
+            onClick={(selected, newVal) =>
               setFilter({
-                filters: [
-                  ...filterState.filters,
-                  {
-                    filter: filter,
-                    value: selected,
-                  },
-                ],
+                ...filterState,
+                [filter]: {
+                  ...filterState[filter],
+                  [selected]: newVal,
+                },
               })
             }
             key={filter}
@@ -105,7 +109,7 @@ export const RegisteredData: React.FC<RegisteredDataProps> = ({
               </tbody>
             </table>
           </div>
-          {getFailureData(compState, filterState.filters).map((data, key) => (
+          {getFailureData(compState, filterState).map((data, key) => (
             <RegisteredDataField key={key}>
               <label>{component}</label>
               <label>{data.period}</label>

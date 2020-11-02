@@ -1,13 +1,17 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: center;
   width: 100%;
   padding-bottom: 100px;
 }
 
 .photocontainer {
   position: relative;
+}
+
+.center {
+  align-self: center;
 }
 
 .photo {
@@ -20,6 +24,11 @@
   color: #000000;
   background: #dadada;
   margin-bottom: 30px;
+}
+
+.padding {
+  padding-right: 300px;
+  padding-left: 300px;
 }
 
 .editphoto {
@@ -38,10 +47,6 @@
   opacity: 70%;
   font-size: 35px;
   cursor: pointer;
-}
-
-.width {
-  width: 70%;
 }
 
 .responseOk {

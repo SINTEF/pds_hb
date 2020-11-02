@@ -62,6 +62,9 @@ export const SearchField: React.FC<SearchFieldProps> = ({
       )
     } else {
       setFiltered([])
+      if (variant === 'secondary') {
+        setFiltered(suggestions)
+      }
       setChosen(0)
     }
   }

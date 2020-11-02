@@ -57,15 +57,49 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({
           {username.charAt(0).toUpperCase()}
         </div>
       </div>
-      {isClicked && (
+      {isClicked && userContext.user?.userGroupType === 'general_user' && (
         <div className={styles.dropDownMenu} ref={menuRef}>
           <MenuButton
             label={'My account'}
-            onClick={() => navigateTo(MAIN_ROUTES.COMPANY)}
+            onClick={() => navigateTo(MAIN_ROUTES.ACCOUNT)}
+          ></MenuButton>
+          <MenuButton
+            type={'logout'}
+            label={'Log out'}
+            onClick={logout}
+          ></MenuButton>
+        </div>
+      )}
+      {isClicked && userContext.user?.userGroupType === 'operator' && (
+        <div className={styles.dropDownMenu} ref={menuRef}>
+          <MenuButton
+            label={'My account'}
+            onClick={() => navigateTo(MAIN_ROUTES.ACCOUNT)}
           ></MenuButton>
           <MenuButton
             label={'Company page'}
             onClick={() => navigateTo(MAIN_ROUTES.COMPANY)}
+          ></MenuButton>
+          <MenuButton
+            type={'logout'}
+            label={'Log out'}
+            onClick={logout}
+          ></MenuButton>
+        </div>
+      )}
+      {isClicked && userContext.user?.userGroupType === 'admin' && (
+        <div className={styles.dropDownMenu} ref={menuRef}>
+          <MenuButton
+            label={'My account'}
+            onClick={() => navigateTo(MAIN_ROUTES.ACCOUNT)}
+          ></MenuButton>
+          <MenuButton
+            label={'Company page'}
+            onClick={() => navigateTo(MAIN_ROUTES.ADMIN_COMPANY)}
+          ></MenuButton>
+          <MenuButton
+            label={'Administrative'}
+            onClick={() => navigateTo(MAIN_ROUTES.ADMIN)}
           ></MenuButton>
           <MenuButton
             type={'logout'}
