@@ -6,6 +6,7 @@ import { InputField } from '../../components/input-field'
 import { SearchField } from '../../components/search-field'
 import { TextBox } from '../../components/text-box'
 import { Title } from '../../components/title'
+import { formatCamelCase } from '../../utils/casing'
 
 import styles from './AddComponentPage.module.css'
 
@@ -174,7 +175,7 @@ export const AddComponentPage: FC = () => {
               <div className={styles.L3Input}>
                 <InputField
                   variant="standard"
-                  label={L3Filter}
+                  label={formatCamelCase(L3Filter)}
                   value={componentInfoForm.L3[L3Filter as L3Fields]}
                   placeholder="Input possible values as list separated by commas"
                   onValueChanged={(value) => {

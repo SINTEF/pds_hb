@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { formatCamelCase } from '../../utils/casing'
 import styles from './SearchField.module.css'
 
 export interface SearchFieldProps {
@@ -107,7 +108,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
                 setFiltered([])
               }}
             >
-              {suggestion}
+              {formatCamelCase(suggestion)}
             </li>
           )
         })}
