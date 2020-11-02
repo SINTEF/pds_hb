@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto;
-  grid-template-areas: 'title title' 'inputfields description' 'L3 L3' 'definition definition' '. buttons';
+  grid-template-areas: 'title title' 'inputfields description' 'L3 L3' 'definition definition' 'buttons buttons';
   row-gap: 20px;
   column-gap: 10px;
   margin: 0 20vw;
@@ -50,10 +50,27 @@
 
 .buttons {
   grid-area: buttons;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .buttons > * {
   margin-bottom: 10px;
+}
+
+.feedbackGroup {
+  display: flex;
+  height: 70px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.feedbackGroup > p {
+  color: red;
+  font-size: 0.75em;
+  margin-right: 10px;
+  width: 250px;
 }
 
 @media only screen and (max-width: 768px) {

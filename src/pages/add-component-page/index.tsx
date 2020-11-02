@@ -1,4 +1,5 @@
 import React, { FC, useMemo, useState } from 'react'
+import Loader from 'react-loader-spinner'
 import { useParams } from 'react-router-dom'
 import useFetch from 'use-http'
 import { Button } from '../../components/button'
@@ -267,11 +268,20 @@ export const AddComponentPage: FC = () => {
             return
           }}
         />
-        <Button
-          type="primary"
-          label="Save new component"
-          onClick={() => createComponent()}
-        />
+        <div className={styles.feedbackGroup}>
+          <Loader height={24} type="Grid" color="grey" visible={loading} />
+          {error ? (
+            <p>
+              {response.data?.message ??
+                "Hmm. Doesn't look like we can connect to the server. Try again later."}
+            </p>
+          ) : null}
+          <Button
+            type="primary"
+            label="Save new component"
+            onClick={() => createComponent()}
+          />
+        </div>
       </div>
     </div>
   )
