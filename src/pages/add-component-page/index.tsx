@@ -1,6 +1,6 @@
 import React, { FC, useMemo, useState } from 'react'
 import Loader from 'react-loader-spinner'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import useFetch from 'use-http'
 import { Button } from '../../components/button'
 import { IconButton } from '../../components/icon-button'
@@ -9,6 +9,7 @@ import { SearchField } from '../../components/search-field'
 import { TextBox } from '../../components/text-box'
 import { Title } from '../../components/title'
 import { IDataInstance } from '../../models/datainstance'
+import MAIN_ROUTES from '../../routes/routes.constants'
 import { formatCamelCase } from '../../utils/casing'
 
 import styles from './AddComponentPage.module.css'
@@ -40,6 +41,8 @@ export interface IComponentInfoForm {
 export type IActiveL3Form = Record<L3Fields, boolean>
 
 export const AddComponentPage: FC = () => {
+  const history = useHistory()
+
   const { groupModule, equipmentGroup } = useParams<{
     groupModule: string
     equipmentGroup: string
@@ -151,7 +154,7 @@ export const AddComponentPage: FC = () => {
 
       <div className={styles.description}>
         <TextBox
-          title={'Description'}
+          title={'Description*'}
           edit={true}
           content={componentInfoForm.description}
           onValueChanged={(description) =>
@@ -162,8 +165,8 @@ export const AddComponentPage: FC = () => {
       </div>
       <div className={styles.inputfields}>
         <InputField
-          variant={'standard'}
-          label="Component name"
+          variant="standard"
+          label="Component name*"
           placeholder="Chose a component name"
           value={componentInfoForm.name}
           onValueChanged={(value) =>
@@ -174,8 +177,8 @@ export const AddComponentPage: FC = () => {
           }
         />
         <InputField
-          variant={'standard'}
-          label="Date of revision"
+          variant="standard"
+          label="Date of revision*"
           placeholder="dd.mm.yyyy"
           type="date"
           value={componentInfoForm.revisionDate}
@@ -187,8 +190,8 @@ export const AddComponentPage: FC = () => {
           }
         />
         <InputField
-          variant={'standard'}
-          label="Remarks"
+          variant="standard"
+          label="Remarks*"
           placeholder="Add a remark"
           value={componentInfoForm.remarks}
           onValueChanged={(value) =>
@@ -200,7 +203,7 @@ export const AddComponentPage: FC = () => {
         />
       </div>
       <div className={styles.L3}>
-        <label>Add L3 properties</label>
+        <label>Add L3 properties*</label>
         <SearchField
           variant="primary"
           icon="list"
@@ -248,7 +251,7 @@ export const AddComponentPage: FC = () => {
       </div>
       <div className={styles.definition}>
         <TextBox
-          title="Definition of DU"
+          title="Definition of DU*"
           edit={true}
           content={componentInfoForm.definitionOfDU}
           onValueChanged={(value) =>
@@ -264,9 +267,7 @@ export const AddComponentPage: FC = () => {
         <Button
           type="danger"
           label="Cancel component creation"
-          onClick={() => {
-            return
-          }}
+          onClick={() => history.push(MAIN_ROUTES.BROWSE)}
         />
         <div className={styles.feedbackGroup}>
           <Loader height={24} type="Grid" color="grey" visible={loading} />
