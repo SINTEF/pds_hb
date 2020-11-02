@@ -115,20 +115,22 @@ export const ChooseComponentPage: FC = () => {
             )
           })}
         </div>
-        <Button
-          label="Add new component"
-          onClick={() =>
-            history.push(
-              MAIN_ROUTES.ADD_COMPONENT.replace(
-                ':groupModule',
-                selectedModule.replace(' ', '+')
-              ).replace(
-                ':equipmentGroup',
-                selectedEquipmentGroup.replace(' ', '+')
+        <div className={styles.newComponentButton}>
+          <Button
+            label="Add new component"
+            onClick={() =>
+              history.push(
+                MAIN_ROUTES.ADD_COMPONENT.replace(
+                  ':groupModule',
+                  selectedModule.replace(' ', '+')
+                ).replace(
+                  ':equipmentGroup',
+                  selectedEquipmentGroup.replace(' ', '+')
+                )
               )
-            )
-          }
-        />
+            }
+          />
+        </div>
       </div>
     )
   } else {
