@@ -1146,51 +1146,107 @@ exports[`Storyshots RegisteredData Standard 1`] = `
   className="container"
 >
   <div
-    className="padding center"
+    className="path"
   >
     <div
-      className="container"
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
     >
-      <div
-        className="titlecontainer"
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
       >
-        <div
-          className="title notdynamic"
-        />
-      </div>
-      <hr
-        className="line"
+        Back to equipmentsgroup
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
       />
     </div>
   </div>
   <div
-    className="filters padding"
+    className="component"
   >
+    <div>
+      <div
+        className="open"
+      >
+        <div
+          className="container"
+        >
+          <button
+            className="button standard"
+            onClick={[Function]}
+          >
+            <div>
+              Component
+            </div>
+            <i
+              className="material-icons icon"
+            >
+              expand_more
+            </i>
+          </button>
+        </div>
+      </div>
+    </div>
     <div
-      className="open"
+      className="margin"
     >
       <div
         className="container"
       >
-        <button
-          className="button standard"
-          onClick={[Function]}
+        <div
+          className="titlecontainer"
         >
-          <div>
-            Component
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
+          <div
+            className="title notdynamic"
+          />
+        </div>
+        <hr
+          className="line"
+        />
       </div>
     </div>
   </div>
   <div>
     <div
-      className="content"
+      className="filters padding"
+    />
+    <div
+      className="table"
     >
       <div>
         <table
@@ -1218,6 +1274,7 @@ exports[`Storyshots RegisteredData Standard 1`] = `
         </table>
       </div>
     </div>
+    <div />
   </div>
 </div>
 `;
