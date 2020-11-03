@@ -7,6 +7,8 @@ import { IUser } from '../../models/user'
 import { APIResponse } from '../../models/api-response'
 import { IDataInstance } from '../../models/datainstance'
 import { Button } from '../../components/button'
+import MAIN_ROUTES from '../../routes/routes.constants'
+import { useHistory } from 'react-router-dom'
 
 interface IClicked {
   notReviewed: string
@@ -15,6 +17,7 @@ interface IClicked {
 }
 
 export const AllEditsPage: React.FC = () => {
+  const history = useHistory()
   const [clickState, setClick] = useState<IClicked>({
     notReviewed: 'clicked',
     approved: 'notClicked',
@@ -170,7 +173,18 @@ export const AllEditsPage: React.FC = () => {
                   (
                     <RegisteredDataField key={idx}>
                       {[
-                        <div className={styles.datainstances} key={idx}>
+                        <div
+                          onClick={() =>
+                            history.push(
+                              MAIN_ROUTES.UPDATE.replace(
+                                ':datainstanceId',
+                                edit._id
+                              )
+                            )
+                          }
+                          className={styles.datainstances}
+                          key={idx}
+                        >
                           {edit.component}
                         </div>,
                         <div className={styles.datainstances} key={idx}>
@@ -263,7 +277,18 @@ export const AllEditsPage: React.FC = () => {
                   (
                     <RegisteredDataField key={idx}>
                       {[
-                        <div className={styles.datainstances} key={idx}>
+                        <div
+                          onClick={() =>
+                            history.push(
+                              MAIN_ROUTES.UPDATE.replace(
+                                ':datainstanceId',
+                                edit._id
+                              )
+                            )
+                          }
+                          className={styles.datainstances}
+                          key={idx}
+                        >
                           {edit.component}
                         </div>,
                         <div className={styles.datainstances} key={idx}>
@@ -327,7 +352,18 @@ export const AllEditsPage: React.FC = () => {
                 (
                   <RegisteredDataField key={idx}>
                     {[
-                      <div className={styles.datainstances} key={idx}>
+                      <div
+                        onClick={() =>
+                          history.push(
+                            MAIN_ROUTES.UPDATE.replace(
+                              ':datainstanceId',
+                              edit._id
+                            )
+                          )
+                        }
+                        className={styles.datainstances}
+                        key={idx}
+                      >
                         {edit.component}
                       </div>,
                       <div className={styles.datainstances} key={idx}>

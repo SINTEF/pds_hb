@@ -10,6 +10,7 @@ const MAIN_ROUTES = {
   NOT_FOUND: '*',
   ADMIN_COMPANY: '/admin-company',
   REGISTER: '/register',
+  UPDATE: '/update/:datainstanceId',
 }
 
 export const COMPANY_SUB_ROUTES = {
