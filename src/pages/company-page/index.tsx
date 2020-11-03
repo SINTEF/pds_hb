@@ -9,6 +9,7 @@ import { ManageFacilitiesPage } from '../manage-facilities-page'
 import { ManageStaffmembersPage } from '../manage-staffmembers-page'
 import { OwnDataPage } from '../own-data'
 import { RegisteredDataPage } from '../registered-data'
+import { UpdateDataPage } from '../update-data-page'
 
 import styles from './CompanyPage.module.css'
 
@@ -48,10 +49,21 @@ export const CompanyPage: React.FC = () => {
       </div>
       <div className={styles.content}>
         <Switch>
+          <Route
+            exact
+            path={
+              path +
+              COMPANY_SUB_ROUTES.REG_DATA +
+              SUB_ROUTES.VIEW +
+              SUB_ROUTES.UPDATE
+            }
+          >
+            <UpdateDataPage />
+          </Route>
           <Route path={path + COMPANY_SUB_ROUTES.REG_DATA + SUB_ROUTES.VIEW}>
             <RegisteredDataPage />
           </Route>
-          <Route path={path + COMPANY_SUB_ROUTES.REG_DATA}>
+          <Route path={[path + COMPANY_SUB_ROUTES.REG_DATA, path]}>
             <OwnDataPage />
           </Route>
           <Route path={path + COMPANY_SUB_ROUTES.MANAGE_FAC}>
@@ -60,7 +72,7 @@ export const CompanyPage: React.FC = () => {
           <Route path={path + COMPANY_SUB_ROUTES.MANAGE_STAFF}>
             <ManageStaffmembersPage />
           </Route>
-          <Route path={[path + COMPANY_SUB_ROUTES.USER, path]}>
+          <Route path={path + COMPANY_SUB_ROUTES.USER}>
             <CompanyUserPage />
           </Route>
         </Switch>

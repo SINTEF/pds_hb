@@ -19,7 +19,6 @@ import { PersonalUserPage } from './pages/personal-user-page'
 import { AdminPage } from './pages/admin-page'
 import { CompanyUserPage } from './pages/company-user-page'
 import { RegisterNewUserPage } from './pages/register-new-user/idex'
-import { UpdateDataPage } from './pages/update-data-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -65,9 +64,6 @@ function App(): JSX.Element {
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.ACCOUNT}>
               <PersonalUserPage />
-            </AuthRoute>
-            <AuthRoute path={MAIN_ROUTES.UPDATE}>
-              <UpdateDataPage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.ADMIN}>
               <AdminPage />

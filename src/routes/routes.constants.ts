@@ -9,9 +9,7 @@ const MAIN_ROUTES = {
   ADMIN: '/admin',
   NOT_FOUND: '*',
   ADMIN_COMPANY: '/admin-company',
-  UPDATE: '/update/:objectId',
   REGISTER: '/register',
-  UPDATE: '/update/:datainstanceId',
 }
 
 export const COMPANY_SUB_ROUTES = {
@@ -23,6 +21,7 @@ export const COMPANY_SUB_ROUTES = {
 
 export const SUB_ROUTES = {
   VIEW: '/view/:componentName',
+  UPDATE: '/update/:datainstanceId',
 }
 
 export const ADMIN_SUB_ROUTES = {

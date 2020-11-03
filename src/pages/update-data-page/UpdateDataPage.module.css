@@ -3,8 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-right: 50px;
   padding-bottom: 200px;
   width: auto;
 }
@@ -13,25 +12,27 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding-top: 100px;
+  padding-top: 50px;
   width: 90%;
 }
 
-.title {
-  max-width: 80%;
-  padding-left: 30px;
-  padding-right: 30px;
-  height: 300px;
+.responseOk {
+  color: chartreuse;
   position: absolute;
+  top: 860px;
+  right: 400px;
 }
 
-.facilitycontainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 300px;
-  width: auto;
-  padding-left: 200px;
-  padding-right: 200px;
+.back {
+  cursor: pointer;
+  padding-top: 40px;
+  color: #003d65;
+  text-decoration: underline;
+}
+
+.responseError {
+  color: red;
+  position: absolute;
+  top: 860px;
+  right: 400px;
 }

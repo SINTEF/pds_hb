@@ -6,7 +6,7 @@ import { Title } from '../../components/title'
 import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
 
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams, useRouteMatch } from 'react-router-dom'
 import { EditableField, FieldForm } from '../../components/editable-field'
 import Loader from 'react-loader-spinner'
 
@@ -21,6 +21,8 @@ export interface IUpdateData {
 }
 
 export const UpdateDataPage: React.FC = () => {
+  const history = useHistory()
+  const { url } = useRouteMatch()
   const { datainstanceId } = useParams<{ datainstanceId: string }>()
   const {
     put: datainstancePut,
@@ -43,20 +45,20 @@ export const UpdateDataPage: React.FC = () => {
     const index = form.index
 
     switch (index) {
-      case 'T':
-        data[datainstance.data.T] = form.content
+      case 'Edit T':
+        data['T'] = form.content
         break
-      case 'du':
-        data[datainstance.data.du] = form.content
+      case 'Edit DU':
+        data['du'] = form.content
         break
-      case 'populationSize':
-        data[datainstance.data.populationSize] = form.content
+      case 'Edit Populationsize':
+        data['populationSize'] = form.content
         break
-      case 'comment':
-        data[datainstance.data.comment] = form.content
+      case 'Edit comment':
+        data['comment'] = form.content
         break
-      case 'sintefComment':
-        data[datainstance.data.sintefComment] = form.content
+      case 'Edit SINTEF comment':
+        data['sintefComment'] = form.content
         break
     }
 
@@ -103,12 +105,18 @@ export const UpdateDataPage: React.FC = () => {
                 />
                 {datainstance.data.sintefComment !== 'No comment' && (
                   <EditableField
-                    index="Edit comment"
-                    content={datainstance.data.comment}
+                    index="SINTEF comment"
+                    content={datainstance.data.sintefComment}
                     isAdmin={false}
                     onSubmit={() => false}
                   />
                 )}
+                <div
+                  className={styles.back}
+                  onClick={() => history.push(url.replace(datainstanceId, ''))}
+                >
+                  {'< Back'}
+                </div>
               </div>
             </div>
           )}
@@ -149,6 +157,12 @@ export const UpdateDataPage: React.FC = () => {
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />
+                <div
+                  className={styles.back}
+                  onClick={() => history.push(url.replace(datainstanceId, ''))}
+                >
+                  {'< Back'}
+                </div>
               </div>
             </div>
           )}
