@@ -31,7 +31,6 @@
 
 .description {
   position: relative;
-  margin-left: auto;
 }
 
 .center {
@@ -52,4 +51,33 @@
 
 .responseError {
   color: red;
+}
+
+.back {
+  align-self: flex-start;
+  padding-left: 10px;
+  color: #003d65;
+  cursor: pointer;
+}
+
+.DUcontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.lambdaDU {
+  font-weight: bold;
+  padding-right: 10px;
+  bottom: 0;
+}
+
+.lambdaDUnumber {
+  color: #003d65;
+  font-size: 34px;
+}
+
+.data {
 }
