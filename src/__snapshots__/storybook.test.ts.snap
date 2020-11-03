@@ -2230,6 +2230,23 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           <div />
         </div>
       </div>
+      <div
+        className="padding"
+      >
+        <div
+          className="container large"
+        >
+          <div
+            className="titlecontainer"
+          >
+            Definition of DU
+            <hr
+              className="line"
+            />
+          </div>
+          <div />
+        </div>
+      </div>
       <div>
         <div
           className="container"
@@ -2281,37 +2298,6 @@ exports[`Storyshots pages/Browse Standard 1`] = `
         </div>
       </div>
       <div
-        className="DUcontainer"
-      >
-        <div
-          className="lambdaDU"
-        >
-          Lambda DU: 
-        </div>
-        <div
-          className="lambdaDUnumber"
-        >
-          NaN
-        </div>
-      </div>
-      <div
-        className="padding"
-      >
-        <div
-          className="container large"
-        >
-          <div
-            className="titlecontainer"
-          >
-            Definition of DU
-            <hr
-              className="line"
-            />
-          </div>
-          <div />
-        </div>
-      </div>
-      <div
         className="center padding"
       >
         <div
@@ -2338,6 +2324,20 @@ exports[`Storyshots pages/Browse Standard 1`] = `
         <div
           className="table"
         >
+          <div
+            className="DUcontainer"
+          >
+            <div
+              className="lambdaDU"
+            >
+              Average failure rate: 
+            </div>
+            <div
+              className="lambdaDUnumber"
+            >
+              NaN
+            </div>
+          </div>
           <table
             className="dataTable"
           >
