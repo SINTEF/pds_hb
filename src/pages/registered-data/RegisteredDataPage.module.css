@@ -1,5 +1,6 @@
 .container {
   align-content: center;
+  padding-right: 70px;
 }
 
 .filters {
@@ -45,4 +46,10 @@ td {
 .button {
   cursor: pointer;
   color: #003d65;
+}
+.icon {
+  cursor: pointer;
+}
+.fontSize {
+  font-size: 15px;
 }

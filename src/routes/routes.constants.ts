@@ -9,6 +9,7 @@ const MAIN_ROUTES = {
   ADMIN: '/admin',
   NOT_FOUND: '*',
   ADMIN_COMPANY: '/admin-company',
+  UPDATE: '/update/:objectId',
 }
 
 export const COMPANY_SUB_ROUTES = {

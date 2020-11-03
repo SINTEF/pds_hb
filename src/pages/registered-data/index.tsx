@@ -15,6 +15,7 @@ import { IUserContext } from '../../models/user'
 import { IComponent } from '../../models/component'
 import { IDataInstance } from '../../models/datainstance'
 import { APIResponse } from '../../models/api-response'
+
 import { RegisteredDataField } from '../../components/registered-data-field'
 
 export const RegisteredDataPage: React.FC = () => {
@@ -169,13 +170,20 @@ export const RegisteredDataPage: React.FC = () => {
           <div>
             {failuredataState?.map((data, key) => (
               <RegisteredDataField key={key}>
-                <label>{data.component}</label>
-                <label>{data.T}</label>
-                <label>{data.populationSize}</label>
-                <label>{data.du}</label>
-                <label>{data.comment}</label>
+                <label className={styles.fontSize}>{data.component}</label>
+                <label className={styles.fontSize}>{data.T}</label>
+                <label className={styles.fontSize}>{data.populationSize}</label>
+                <label className={styles.fontSize}>{data.du}</label>
+                <label className={styles.fontSize}>{data.comment}</label>
                 <i
-                  onClick={() => history.push(MAIN_ROUTES.ADD)}
+                  onClick={() =>
+                    history.push(
+                      MAIN_ROUTES.UPDATE.replace(
+                        ':objectId',
+                        data._id.replace(' ', '+')
+                      )
+                    )
+                  }
                   className={'material-icons ' + styles.icon}
                 >
                   {'editor'}

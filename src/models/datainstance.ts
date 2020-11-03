@@ -1,4 +1,5 @@
 export interface IDataInstance {
+  _id: string
   company: string
   facility: string
   component: string
