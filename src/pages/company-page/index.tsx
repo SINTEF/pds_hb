@@ -60,11 +60,11 @@ export const CompanyPage: React.FC = () => {
           >
             <UpdateDataPage />
           </Route>
-          <Route path={path + COMPANY_SUB_ROUTES.REG_DATA + SUB_ROUTES.VIEW}>
+          <Route
+            exact
+            path={path + COMPANY_SUB_ROUTES.REG_DATA + SUB_ROUTES.VIEW}
+          >
             <RegisteredDataPage />
-          </Route>
-          <Route path={[path + COMPANY_SUB_ROUTES.REG_DATA, path]}>
-            <OwnDataPage />
           </Route>
           <Route path={path + COMPANY_SUB_ROUTES.MANAGE_FAC}>
             <ManageFacilitiesPage />
@@ -74,6 +74,9 @@ export const CompanyPage: React.FC = () => {
           </Route>
           <Route path={path + COMPANY_SUB_ROUTES.USER}>
             <CompanyUserPage />
+          </Route>
+          <Route path={[path + COMPANY_SUB_ROUTES.REG_DATA, path]}>
+            <OwnDataPage />
           </Route>
         </Switch>
       </div>
