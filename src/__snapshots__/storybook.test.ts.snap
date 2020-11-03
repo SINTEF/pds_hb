@@ -2257,31 +2257,6 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             <label
               className="index"
             >
-              Date of revision: 
-            </label>
-            <label
-              className="content"
-            >
-              
-            </label>
-          </div>
-        </div>
-        <div>
-          <hr
-            className="divider"
-          />
-        </div>
-      </div>
-      <div>
-        <div
-          className="container"
-        >
-          <div
-            className="container"
-          >
-            <label
-              className="index"
-            >
               Remarks: 
             </label>
             <label
@@ -2330,10 +2305,20 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             <div
               className="lambdaDU"
             >
-              Average failure rate: 
+              λDU: 
             </div>
             <div
               className="lambdaDUnumber"
+            >
+              NaN
+            </div>
+            <div
+              className="lambdaDU"
+            >
+              Average failure rate of displayed data: 
+            </div>
+            <div
+              className="failureNumber"
             >
               NaN
             </div>
