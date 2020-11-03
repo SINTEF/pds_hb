@@ -42,18 +42,14 @@ export const AdminPage: React.FC = () => {
       </div>
       <div className={styles.content}>
         <Switch>
-          <Route path={path + ADMIN_SUB_ROUTES.SEE_ALL_EDITS}>
-            <AllEditsPage />
-          </Route>
           <Route path={path + ADMIN_SUB_ROUTES.APPROVE_USERS}>
             <ApproveUsersPage />
           </Route>
           <Route path={path + ADMIN_SUB_ROUTES.ADD_COMPANY}>
             <AddCompanyPage />
           </Route>
-          <Route path={[path + ADMIN_SUB_ROUTES.USER, path]}>
-            {/*we dont have a user page yet*/}
-            {'this will be the user page'}
+          <Route path={[path + ADMIN_SUB_ROUTES.SEE_ALL_EDITS, path]}>
+            <AllEditsPage />
           </Route>
         </Switch>
       </div>
