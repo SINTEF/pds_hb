@@ -15,7 +15,6 @@ import { IUserContext } from '../../models/user'
 import { IComponent } from '../../models/component'
 import { IDataInstance } from '../../models/datainstance'
 import { APIResponse } from '../../models/api-response'
-import { Button } from '../../components/button'
 import { RegisteredDataField } from '../../components/registered-data-field'
 
 export const RegisteredDataPage: React.FC = () => {
@@ -100,44 +99,40 @@ export const RegisteredDataPage: React.FC = () => {
     <p>loading...</p>
   ) : (
     <div className={styles.container}>
-      <div className={styles.path}>
-        <Button
-          label={'Back to equipmentsgroup'}
-          onClick={() =>
-            history.push(MAIN_ROUTES.COMPANY + COMPANY_SUB_ROUTES.REG_DATA)
-          }
-        />
-      </div>
-      <div className={styles.component}>
-        <div>
-          <Filter
-            category="Component" // think i need a isChecked var to set/unset the filter
-            filters={componentNames.reduce(
-              (obj, name) => ({ ...obj, [name]: false }),
-              {}
-            )}
-            onClick={(newcomp) => {
-              setComp(getComponent(newcomp))
-              history.push(
-                MAIN_ROUTES.COMPANY +
-                  COMPANY_SUB_ROUTES.REG_DATA +
-                  SUB_ROUTES.VIEW.replace(
-                    ':componentName',
-                    newcomp.replace(' ', '-')
-                  )
-              )
-            }}
-          />
-        </div>
-        <div className={styles.margin}>
-          <Title title={compState?.name.replace('-', ' ') as string} />
-        </div>
+      <label
+        className={styles.button}
+        onClick={() =>
+          history.push(MAIN_ROUTES.COMPANY + COMPANY_SUB_ROUTES.REG_DATA)
+        }
+      >
+        {' < Back'}
+      </label>
+      <div className={styles.center}>
+        <Title title={compState?.name.replace('-', ' ') as string} />
       </div>
       {datainstanceLoad ? (
         <p>loading...</p>
       ) : (
         <div>
           <div className={[styles.filters, styles.padding].join(' ')}>
+            <Filter
+              category="Component" // think i need a isChecked var to set/unset the filter
+              filters={componentNames.reduce(
+                (obj, name) => ({ ...obj, [name]: false }),
+                {}
+              )}
+              onClick={(newcomp) => {
+                setComp(getComponent(newcomp))
+                history.push(
+                  MAIN_ROUTES.COMPANY +
+                    COMPANY_SUB_ROUTES.REG_DATA +
+                    SUB_ROUTES.VIEW.replace(
+                      ':componentName',
+                      newcomp.replace(' ', '-')
+                    )
+                )
+              }}
+            />
             {Object.entries(filterState).map(([filterName, filters]) => (
               <Filter
                 category={filterName}
@@ -164,7 +159,8 @@ export const RegisteredDataPage: React.FC = () => {
                     <td>{'T'}</td>
                     <td>{'PopulationSize'}</td>
                     <td>{'DU'}</td>
-                    <td> </td>
+                    <td> {'Comment'}</td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>
@@ -177,6 +173,7 @@ export const RegisteredDataPage: React.FC = () => {
                 <label>{data.T}</label>
                 <label>{data.populationSize}</label>
                 <label>{data.du}</label>
+                <label>{data.comment}</label>
                 <i
                   onClick={() => history.push(MAIN_ROUTES.ADD)}
                   className={'material-icons ' + styles.icon}

@@ -1,10 +1,11 @@
 .container {
+  align-content: center;
 }
 
 .filters {
   display: flex;
   position: absolute;
-  top: 400px;
+  top: 300px;
   gap: 1rem;
 }
 
@@ -20,7 +21,7 @@
 }
 
 .table {
-  margin-top: 400px;
+  margin-top: 180px;
 }
 
 .headers {
@@ -30,11 +31,18 @@
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  margin-top: 400px;
 }
 td {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
   align-content: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+.button {
+  cursor: pointer;
+  color: #003d65;
 }
