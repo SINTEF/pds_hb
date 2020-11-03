@@ -38,7 +38,8 @@
   background: transparent;
   font-weight: bold;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 23px;
+  margin-left: -50px;
 }
 
 .approve {
@@ -47,21 +48,11 @@
   background: transparent;
   font-weight: bold;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 23px;
 }
 
 .datainstances {
   font-size: 15px;
-}
-
-.comment {
-  position: relative;
-  right: 15px;
-}
-
-.failureRate {
-  position: relative;
-  left: 25px;
 }
 
 .centerInfo {
