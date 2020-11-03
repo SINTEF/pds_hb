@@ -2367,6 +2367,11 @@ exports[`Storyshots pages/Browse Standard 1`] = `
                 Comment
               </th>
             </tr>
+            <tr
+              className="noContent"
+            >
+              Nothing matched the chosen filters
+            </tr>
           </table>
         </div>
       </div>
@@ -2395,9 +2400,6 @@ exports[`Storyshots pages/ChooseComponentPagePage Standard 1`] = `
       className="line"
     />
   </div>
-  <div
-    className="components"
-  />
 </div>
 `;
 
@@ -2677,6 +2679,32 @@ exports[`Storyshots pages/Not found (404) Standard 1`] = `
     </a>
     !
   </p>
+</div>
+`;
+
+exports[`Storyshots pages/OwnDataPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose equipment group
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="components"
+  />
 </div>
 `;
 
