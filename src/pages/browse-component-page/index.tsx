@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import useFetch from 'use-http'
-import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
+import useFetch, { CachePolicies } from 'use-http'
+import MAIN_ROUTES from '../../routes/routes.constants'
 
 import styles from './BrowseComponentPage.module.css'
 
@@ -15,21 +15,16 @@ import { IUserContext } from '../../models/user'
 import { IComponent } from '../../models/component'
 import { IDataInstance } from '../../models/datainstance'
 import { APIResponse } from '../../models/api-response'
-import { Button } from '../../components/button'
 
 export const BrowseComponentPage: React.FC = () => {
   const { componentName } = useParams<{ componentName: string }>()
 
   const [compState, setComp] = useState<IComponent>()
-  const [components, setComponents] = useState<IComponent[]>([])
   const [failuredataState, setFailuredata] = useState<IDataInstance[]>([])
   const [filterState, setFilter] = useState<
     Record<string, Record<string, boolean>>
   >({})
-  const equipmentGroup = compState?.equipmentGroup
-  const componentNames = components
-    .filter((component) => component.equipmentGroup === equipmentGroup)
-    .map((component) => component.name.replace('-', ' '))
+
   const headers = [
     'Failure rates',
     'Source',
@@ -50,13 +45,19 @@ export const BrowseComponentPage: React.FC = () => {
     get: componentGet,
     response: componentResponse,
     loading: componentLoad,
-  } = useFetch<APIResponse<IComponent>>('/components')
+  } = useFetch<APIResponse<IComponent>>('/components', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
   const {
     get: datainstanceGet,
     response: datainstanceResponse,
     loading: datainstanceLoad,
-  } = useFetch<APIResponse<IDataInstance>>('/data-instances')
+  } = useFetch<APIResponse<IDataInstance>>('/data-instances', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
   const {
     put: updateData,
@@ -84,8 +85,6 @@ export const BrowseComponentPage: React.FC = () => {
           )
         )
       }
-      const components = await componentGet()
-      if (componentResponse.ok) setComponents(components.data)
     }
     loadComponents()
   }, [componentGet, componentName, componentResponse])
@@ -100,7 +99,7 @@ export const BrowseComponentPage: React.FC = () => {
       )
       const filters =
         dataRequestArray.length > 0 ? '&' + dataRequestArray.join('&') : ''
-      const dataRequest = `/?component=${componentName}${filters}`
+      const dataRequest = `/?component=${componentName}${filters}&status=published`
       const failureData = await datainstanceGet(dataRequest)
       if (datainstanceResponse.ok) setFailuredata(failureData.data)
     }
@@ -124,10 +123,6 @@ export const BrowseComponentPage: React.FC = () => {
 
   const userContext = useContext(UserContext) as IUserContext
 
-  const getComponent = (name: string) => {
-    return components?.filter((comp) => comp.name === name)[0]
-  }
-
   const handleUpdate = (form: FieldForm) => {
     const data: { [id: string]: string } = {}
     data[form.index.toLowerCase()] = form.content
@@ -140,45 +135,49 @@ export const BrowseComponentPage: React.FC = () => {
   //  )
   //}
 
+  const calculateAverageFailureRates = (data: Array<IDataInstance>) => {
+    const DuValues = data.map((failureData) => failureData.du) ?? []
+    const TValues = data.map((failuredata) => failuredata.T) ?? []
+    let totalDu = 0
+    DuValues.forEach((value) => (totalDu += value))
+    let totalT = 1
+    TValues.forEach((value) => (totalT += value))
+    return totalDu / (totalT - 1)
+  }
+
+  const LDU = calculateAverageFailureRates(failuredataState ?? [])
+
+  const lambdaDU = LDU.toPrecision(2).toString()
+
   return componentLoad ? (
     <p>loading...</p>
   ) : (
     <div className={styles.container}>
       <div className={styles.path}>
-        <Button
-          label={'Back to equipmentsgroup'}
+        <div
+          className={styles.back}
           onClick={() => history.push(MAIN_ROUTES.BROWSE)}
-        />
+        >
+          {'< Back'}
+        </div>
       </div>
       <div>
         <div className={styles.content}>
           <div className={[styles.padding, styles.center].join(' ')}>
             <Title title={compState?.name.replace('-', ' ') as string} />
           </div>
-          <div className={[styles.filters, styles.padding].join(' ')}>
-            <Filter
-              category="Component" // think i need a isChecked var to set/unset the filter
-              filters={componentNames.reduce(
-                (obj, name) => ({ ...obj, [name]: false }),
-                {}
-              )}
-              onClick={(newcomp) => {
-                setComp(getComponent(newcomp))
-                history.push(
-                  MAIN_ROUTES.BROWSE +
-                    SUB_ROUTES.VIEW.replace(
-                      ':componentName',
-                      newcomp.replace(' ', '-')
-                    )
-                )
-              }}
-            />
-          </div>
           <div className={styles.description}>
             <TextBox
               title="Description"
               content={compState?.description as string}
-              size="small"
+              size="large"
+            />
+          </div>
+          <div className={styles.padding}>
+            <TextBox
+              title="Definition of DU"
+              content={compState?.name as string} // definition of DU not in db
+              size="large"
             />
           </div>
           <EditableField
@@ -195,14 +194,6 @@ export const BrowseComponentPage: React.FC = () => {
             isAdmin={userContext?.user?.userGroupType === 'admin'}
             onSubmit={handleUpdate}
           />
-          <EditableField
-            index="Recommended values for calculation"
-            content={compState?.name} //reccomended vslues not in db
-            mode="view"
-            isAdmin={userContext?.user?.userGroupType === 'admin'}
-            onSubmit={handleUpdate}
-          />
-
           {updateDataResponse.ok ? (
             <p className={styles.responseOk}>
               {updateDataResponse.data?.message}
@@ -213,13 +204,6 @@ export const BrowseComponentPage: React.FC = () => {
               {updateDataResponse.data?.message}
             </p>
           ) : null}
-          <div className={styles.padding}>
-            <TextBox
-              title="Definition of DU"
-              content={compState?.name as string} // definition of DU not in db
-              size="large"
-            />
-          </div>
           <div className={[styles.center, styles.padding].join(' ')}>
             <Title title="Failure data" />
           </div>
@@ -246,6 +230,12 @@ export const BrowseComponentPage: React.FC = () => {
                 ))}
               </div>
               <div className={styles.table}>
+                <div className={styles.DUcontainer}>
+                  <div className={styles.lambdaDU}>
+                    {'Average failure rate: '}
+                  </div>
+                  <div className={styles.lambdaDUnumber}>{lambdaDU}</div>
+                </div>
                 <Table
                   headers={headers}
                   data={data}

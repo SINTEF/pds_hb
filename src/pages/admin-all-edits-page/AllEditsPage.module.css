@@ -1,0 +1,82 @@
+.container {
+  width: 100%;
+  padding-right: 50px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.title {
+  align-self: center;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.notClicked {
+  cursor: pointer;
+}
+
+.clicked {
+  cursor: pointer;
+  font-size: x-large;
+  font-weight: bold;
+  color: #01316a;
+}
+
+.remove {
+  color: #e00c0c;
+  border: 0px;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: -15px;
+}
+
+.approve {
+  color: #50b836;
+  border: 0px;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 40px;
+}
+
+.listtitles {
+  display: inline-grid;
+  grid-auto-flow: column;
+  width: 69%; /* lol */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+}
+
+.datainstances {
+  font-size: 15px;
+}
+
+.comment {
+  position: relative;
+  right: 15px;
+}
+
+.failureRate {
+  position: relative;
+  left: 25px;
+}
+
+.centerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 400px;
+}
