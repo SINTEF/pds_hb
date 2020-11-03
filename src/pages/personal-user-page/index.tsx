@@ -57,7 +57,7 @@ export const PersonalUserPage: React.FC = () => {
   }
 
   const updatePsw = async (password: IPassword) => {
-    await updateData({ passwordHash: password.new_password })
+    await updateData({ password: password.new_password })
   }
 
   const validPsw = () => {
