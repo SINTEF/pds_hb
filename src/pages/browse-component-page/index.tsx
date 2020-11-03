@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import useFetch, { CachePolicies } from 'use-http'
 import MAIN_ROUTES from '../../routes/routes.constants'
@@ -72,7 +72,10 @@ export const BrowseComponentPage: React.FC = () => {
         '/?name=' + componentName
       )
       if (componentResponse.ok) {
-        setComp(initialComp.data[0])
+        setComp({
+          ...initialComp.data[0],
+          revisionDate: new Date(initialComp.data[0].revisionDate as Date),
+        })
         setFilter(
           Object.entries(initialComp.data[0].L3).reduce(
             (object, [key, value]) => ({
@@ -113,18 +116,20 @@ export const BrowseComponentPage: React.FC = () => {
 
   const requestToData = (request: IDataInstance[]) => {
     return (request ?? []).map((data) => [
-      data.failureRates?.toString(10),
+      data.failureRates?.toString(),
       data.facility,
-      data.du?.toString(10),
-      data.T?.toString(10),
-      data.startDate?.toString().substring(0, 10),
-      data.endDate?.toString().substring(0, 10),
-      data.populationSize?.toString(10),
-      data.comment?.toString,
+      data.du?.toString(),
+      data.T?.toString(),
+      new Date(data.startDate as Date).toLocaleDateString(),
+      new Date(data.endDate as Date).toLocaleDateString(),
+      data.populationSize?.toString(),
+      data.comment,
     ])
   }
 
-  const data = requestToData(failuredataState as IDataInstance[])
+  const data = useMemo(() => requestToData(failuredataState), [
+    failuredataState,
+  ])
 
   const userContext = useContext(UserContext) as IUserContext
 
@@ -150,7 +155,10 @@ export const BrowseComponentPage: React.FC = () => {
     return totalDu / (totalT - 1)
   }
 
-  const LDU = calculateAverageFailureRates(failuredataState ?? [])
+  const LDU = useMemo(
+    () => calculateAverageFailureRates(failuredataState ?? []),
+    [failuredataState]
+  )
 
   const averageFailureRate = LDU.toPrecision(2).toString()
 
@@ -159,7 +167,7 @@ export const BrowseComponentPage: React.FC = () => {
     .toString()
 
   return componentLoad ? (
-    <p>loading...</p>
+    <p>Loading...</p>
   ) : (
     <div className={styles.container}>
       <div className={styles.path}>
@@ -189,6 +197,13 @@ export const BrowseComponentPage: React.FC = () => {
               size="large"
             />
           </div>
+          <EditableField
+            index="Date of revision"
+            content={compState?.revisionDate?.toLocaleDateString()}
+            mode="view"
+            isAdmin={userContext?.user?.userGroupType === 'admin'}
+            onSubmit={handleUpdate}
+          />
           <EditableField
             index="Remarks"
             content={compState?.remarks}

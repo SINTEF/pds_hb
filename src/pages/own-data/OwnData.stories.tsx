@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react'
 import { OwnDataPage } from '.'
 
 export default {
-  title: 'pages/ChooseComponentPagePage',
+  title: 'pages/OwnDataPage',
   component: OwnDataPage,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -4,7 +4,7 @@ import styles from './Table.module.css'
 export interface TableProps {
   onValueChanged: (value: string) => void
 
-  data: (string | (() => string) | undefined)[][]
+  data: (string | undefined)[][]
 
   headers: Array<string>
 }
@@ -12,20 +12,24 @@ export interface TableProps {
 export const Table: React.FC<TableProps> = ({ data, headers }: TableProps) => {
   return (
     <table className={styles.dataTable}>
-      <tr>
-        {headers.map((header, index) => {
-          return <th key={index}>{header}</th>
+      <thead>
+        <tr>
+          {headers.map((header, index) => {
+            return <th key={index}>{header}</th>
+          })}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((dataCategory, dataIndex) => {
+          return (
+            <tr key={dataIndex}>
+              {dataCategory.map((dataInstance, index) => {
+                return <td key={index}>{dataInstance}</td>
+              })}
+            </tr>
+          )
         })}
-      </tr>
-      {data.map((dataCategory, dataIndex) => {
-        return (
-          <tr key={dataIndex}>
-            {dataCategory.map((dataInstance, index) => {
-              return <td key={index}>{dataInstance}</td>
-            })}
-          </tr>
-        )
-      })}
+      </tbody>
     </table>
   )
 }
