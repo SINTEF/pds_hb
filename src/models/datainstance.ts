@@ -5,8 +5,8 @@ export interface IDataInstance {
   company: string
   facility: string
   component: string
-  startPeriod?: Date
-  endPeriod?: Date
+  startDate?: Date
+  endDate?: Date
   T: number
   du: number
   populationSize?: number
