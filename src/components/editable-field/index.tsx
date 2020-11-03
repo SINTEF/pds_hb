@@ -19,7 +19,7 @@ export interface EditableFieldProps {
 
   doneIcon?: string
 
-  isAdmin: boolean
+  isAdmin: boolean // should be canEdit
 
   onSubmit: (formState: FieldForm) => void
 }
