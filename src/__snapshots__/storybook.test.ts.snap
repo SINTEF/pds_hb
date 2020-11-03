@@ -2047,51 +2047,10 @@ exports[`Storyshots pages/Browse Standard 1`] = `
     className="path"
   >
     <div
-      className="react-ripples"
+      className="back"
       onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
     >
-      <button
-        className="button medium standard"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-        type="button"
-      >
-        Back to equipmentsgroup
-        <i
-          className="material-icons icon"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        >
-          chevron_right
-        </i>
-      </button>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
+      &lt; Back
     </div>
   </div>
   <div>
@@ -2117,40 +2076,32 @@ exports[`Storyshots pages/Browse Standard 1`] = `
         </div>
       </div>
       <div
-        className="filters padding"
-      >
-        <div
-          className="open"
-        >
-          <div
-            className="container"
-          >
-            <button
-              className="button standard"
-              onClick={[Function]}
-            >
-              <div>
-                Component
-              </div>
-              <i
-                className="material-icons icon"
-              >
-                expand_more
-              </i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div
         className="description"
       >
         <div
-          className="container small"
+          className="container large"
         >
           <div
             className="titlecontainer"
           >
             Description
+            <hr
+              className="line"
+            />
+          </div>
+          <div />
+        </div>
+      </div>
+      <div
+        className="padding"
+      >
+        <div
+          className="container large"
+        >
+          <div
+            className="titlecontainer"
+          >
+            Definition of DU
             <hr
               className="line"
             />
@@ -2208,48 +2159,6 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           />
         </div>
       </div>
-      <div>
-        <div
-          className="container"
-        >
-          <div
-            className="container"
-          >
-            <label
-              className="index"
-            >
-              Recommended values for calculation: 
-            </label>
-            <label
-              className="content"
-            >
-              
-            </label>
-          </div>
-        </div>
-        <div>
-          <hr
-            className="divider"
-          />
-        </div>
-      </div>
-      <div
-        className="padding"
-      >
-        <div
-          className="container large"
-        >
-          <div
-            className="titlecontainer"
-          >
-            Definition of DU
-            <hr
-              className="line"
-            />
-          </div>
-          <div />
-        </div>
-      </div>
       <div
         className="center padding"
       >
@@ -2277,6 +2186,20 @@ exports[`Storyshots pages/Browse Standard 1`] = `
         <div
           className="table"
         >
+          <div
+            className="DUcontainer"
+          >
+            <div
+              className="lambdaDU"
+            >
+              Average failure rate: 
+            </div>
+            <div
+              className="lambdaDUnumber"
+            >
+              NaN
+            </div>
+          </div>
           <table
             className="dataTable"
           >
@@ -2348,6 +2271,20 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
     className="title"
   >
     PDS Datahandbook
+  </div>
+  <div
+    className="footer"
+  >
+    <div
+      className="contact"
+    >
+      Contact info:
+    </div>
+    <div
+      className="contact"
+    >
+      Email: sintef@post.no
+    </div>
   </div>
 </div>
 `;

@@ -10,6 +10,7 @@ const MAIN_ROUTES = {
   NOT_FOUND: '*',
   ADMIN_COMPANY: '/admin-company',
   UPDATE: '/update/:objectId',
+  REGISTER: '/register',
 }
 
 export const COMPANY_SUB_ROUTES = {
