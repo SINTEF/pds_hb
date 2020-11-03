@@ -2491,144 +2491,172 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
 `;
 
 exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
-<div
-  className="pagebottompadding"
->
+<div>
   <div
-    className="container"
+    className="pagebottompadding"
   >
     <div
       className="container"
     >
       <div
-        className="titlecontainer"
+        className="container"
       >
         <div
-          className="title notdynamic"
+          className="titlecontainer"
         >
-          Manage staffmembers
+          <div
+            className="title notdynamic"
+          >
+            Manage staffmembers
+          </div>
+        </div>
+        <hr
+          className="line"
+        />
+      </div>
+      <div
+        className="listtitles"
+      >
+        <div>
+          Username
+        </div>
+        <div>
+          Email
+        </div>
+        <div>
+              
+        </div>
+        <div>
+              
+        </div>
+        <div>
+          Phone
         </div>
       </div>
-      <hr
-        className="line"
-      />
     </div>
     <div
-      className="listtitles"
+      className="secondcontainer"
     >
-      <div>
-        Username
+      <div
+        className="usersleft"
+      >
+        Your company has 
+        <div
+          className="numberusersleft"
+        >
+          0
+        </div>
+         more possible users to add.
       </div>
-      <div>
-        Email
+      <div
+        className="standard  "
+      >
+        <div
+          className="field"
+        >
+          <label
+            className=""
+            htmlFor="Username"
+            style={
+              Object {
+                "alignSelf": "",
+              }
+            }
+          >
+            Username
+          </label>
+          <input
+            id="Username"
+            onChange={[Function]}
+            placeholder="OlaNordmann"
+            type="text"
+            value=""
+          />
+        </div>
       </div>
-      <div>
-            
+      <div
+        className="standard  "
+      >
+        <div
+          className="field"
+        >
+          <label
+            className=""
+            htmlFor="Email"
+            style={
+              Object {
+                "alignSelf": "",
+              }
+            }
+          >
+            Email
+          </label>
+          <input
+            id="Email"
+            onChange={[Function]}
+            placeholder="ola.nordmann@gmail.com"
+            type="email"
+            value=""
+          />
+        </div>
       </div>
-      <div>
-            
+      <div
+        className="standard  "
+      >
+        <div
+          className="field"
+        >
+          <label
+            className=""
+            htmlFor="Password"
+            style={
+              Object {
+                "alignSelf": "",
+              }
+            }
+          >
+            Password
+          </label>
+          <input
+            id="Password"
+            onChange={[Function]}
+            placeholder="A super safe psw"
+            type="password"
+            value=""
+          />
+        </div>
       </div>
-      <div>
-        Phone
+      <div
+        className="standard  "
+      >
+        <div
+          className="field"
+        >
+          <label
+            className=""
+            htmlFor="Repeat password"
+            style={
+              Object {
+                "alignSelf": "",
+              }
+            }
+          >
+            Repeat password
+          </label>
+          <input
+            id="Repeat password"
+            onChange={[Function]}
+            placeholder="The same super safe psw"
+            type="password"
+            value=""
+          />
+        </div>
       </div>
     </div>
+    <div
+      className="button"
+    />
   </div>
-  <div
-    className="secondcontainer"
-  >
-    <div
-      className="usersleft"
-    >
-      Your company has 
-      <div
-        className="numberusersleft"
-      >
-        0
-      </div>
-       more possible users to add.
-    </div>
-    <div
-      className="standard  "
-    >
-      <div
-        className="field"
-      >
-        <label
-          className=""
-          htmlFor="Username"
-          style={
-            Object {
-              "alignSelf": "",
-            }
-          }
-        >
-          Username
-        </label>
-        <input
-          id="Username"
-          onChange={[Function]}
-          placeholder="OlaNordmann"
-          type="text"
-          value=""
-        />
-      </div>
-    </div>
-    <div
-      className="standard  "
-    >
-      <div
-        className="field"
-      >
-        <label
-          className=""
-          htmlFor="Email"
-          style={
-            Object {
-              "alignSelf": "",
-            }
-          }
-        >
-          Email
-        </label>
-        <input
-          id="Email"
-          onChange={[Function]}
-          placeholder="ola.nordmann@gmail.com"
-          type="email"
-          value=""
-        />
-      </div>
-    </div>
-    <div
-      className="standard  "
-    >
-      <div
-        className="field"
-      >
-        <label
-          className=""
-          htmlFor="Password"
-          style={
-            Object {
-              "alignSelf": "",
-            }
-          }
-        >
-          Password
-        </label>
-        <input
-          id="Password"
-          onChange={[Function]}
-          placeholder="a super safe psw"
-          type="text"
-          value=""
-        />
-      </div>
-    </div>
-  </div>
-  <div
-    className="button"
-  />
 </div>
 `;
 
