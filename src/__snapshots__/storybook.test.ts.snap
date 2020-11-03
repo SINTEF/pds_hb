@@ -1142,104 +1142,61 @@ exports[`Storyshots Pages/Read Standard 1`] = `
 `;
 
 exports[`Storyshots RegisteredData Standard 1`] = `
-<div>
-  <div
-    className="path"
+<div
+  className="container"
+>
+  <label
+    className="button"
+    onClick={[Function]}
   >
-    /Choose equipmentgroup /
-    Fire detectors
-  </div>
+     &lt; Back
+  </label>
   <div
-    className="filters padding"
+    className="center"
   >
     <div
-      className="open"
+      className="container"
     >
       <div
-        className="container"
+        className="titlecontainer"
       >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            Component
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
+        <div
+          className="title notdynamic"
+        />
       </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L1
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L2
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L3
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
+      <hr
+        className="line"
+      />
     </div>
   </div>
   <div>
     <div
-      className="content"
+      className="filters padding"
+    >
+      <div
+        className="open"
+      >
+        <div
+          className="container"
+        >
+          <button
+            className="button standard"
+            onClick={[Function]}
+          >
+            <div>
+              Component
+            </div>
+            <i
+              className="material-icons icon"
+            >
+              expand_more
+            </i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table"
     >
       <div>
         <table
@@ -1251,120 +1208,25 @@ exports[`Storyshots RegisteredData Standard 1`] = `
                 Component
               </td>
               <td>
-                Period
-              </td>
-              <td>
                 T
               </td>
               <td>
-                Tags
+                PopulationSize
               </td>
               <td>
                 DU
               </td>
               <td>
-                Edited
-              </td>
-              <td>
                  
+                Comment
               </td>
+              <td />
             </tr>
           </tbody>
         </table>
       </div>
-      <table
-        className="container"
-      >
-        <tbody>
-          <tr>
-            <td>
-              <label>
-                Smoke detector
-              </label>
-            </td>
-            <td>
-              <label>
-                2013-2020
-              </label>
-            </td>
-            <td>
-              <label>
-                123456
-              </label>
-            </td>
-            <td>
-              <label>
-                99
-              </label>
-            </td>
-            <td>
-              <label>
-                5
-              </label>
-            </td>
-            <td>
-              <label>
-                24.12.2010
-              </label>
-            </td>
-            <td>
-              <i
-                className="material-icons icon"
-                onClick={[Function]}
-              >
-                editor
-              </i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table
-        className="container"
-      >
-        <tbody>
-          <tr>
-            <td>
-              <label>
-                Smoke detector
-              </label>
-            </td>
-            <td>
-              <label>
-                2015-2029
-              </label>
-            </td>
-            <td>
-              <label>
-                654321
-              </label>
-            </td>
-            <td>
-              <label>
-                29
-              </label>
-            </td>
-            <td>
-              <label>
-                3
-              </label>
-            </td>
-            <td>
-              <label>
-                23.11.2016
-              </label>
-            </td>
-            <td>
-              <i
-                className="material-icons icon"
-                onClick={[Function]}
-              >
-                editor
-              </i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
+    <div />
   </div>
 </div>
 `;
