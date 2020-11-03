@@ -89,7 +89,7 @@ export const Login: React.FC = () => {
         <Button
           label={'Register new user'}
           onClick={() => {
-            return
+            history.push('/register')
           }}
         />
       </div>
