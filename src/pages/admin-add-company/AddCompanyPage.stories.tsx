@@ -1,14 +1,14 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { RegisteredData } from '.'
+import { AddCompanyPage } from '.'
 
 export default {
-  title: 'RegisteredData',
-  Component: RegisteredData,
+  title: 'pages/AddCompanyPage',
+  component: AddCompanyPage,
 } as Meta
 
-const Template: Story = (args) => <RegisteredData {...args} />
+const Template: Story = (args) => <AddCompanyPage {...args} />
 
 export const Standard = Template.bind({})
 Standard.args = {}

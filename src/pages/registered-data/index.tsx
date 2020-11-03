@@ -1,124 +1,177 @@
 import React, { useContext, useEffect, useState } from 'react'
-
-import styles from './RegisteredData.module.css'
 import { useHistory, useParams } from 'react-router-dom'
-import { Filter } from '../../components/filter'
-import { RegisteredDataField } from '../../components/registered-data-field'
 import useFetch from 'use-http'
-import { APIResponse } from '../../models/api-response'
-import { IComponent } from '../../models/component'
-import { IDataInstance } from '../../models/datainstance'
+import MAIN_ROUTES, {
+  COMPANY_SUB_ROUTES,
+  SUB_ROUTES,
+} from '../../routes/routes.constants'
+
+import styles from './RegisteredDataPage.module.css'
+
+import { Title } from '../../components/title'
+import { Filter } from '../../components/filter'
 import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
-import MAIN_ROUTES from '../../routes/routes.constants'
-import { Title } from '../../components/title'
+import { IComponent } from '../../models/component'
+import { IDataInstance } from '../../models/datainstance'
+import { APIResponse } from '../../models/api-response'
+import { Button } from '../../components/button'
+import { RegisteredDataField } from '../../components/registered-data-field'
 
-export interface Data {
-  period: string | number
-  t: string | number
-  tags: string | number
-  du: string | number
-  edited: string | number
-}
-
-export interface Form {
-  filters: { filter: string; value: string }[]
-}
-
-export const RegisteredData: React.FC = () => {
+export const RegisteredDataPage: React.FC = () => {
   const { componentName } = useParams<{ componentName: string }>()
-  const history = useHistory()
   const userContext = useContext(UserContext) as IUserContext
-  const [compState, setComp] = useState<string>()
-  const [components, setComponents] = useState<Array<string>>([])
-  const [datainstances, setDatainstances] = useState<IDataInstance[]>()
-  const [filterState, setFilter] = useState<{ [id: string]: Array<string> }>({})
-  const [L3Filters, setL3Filter] = useState<{ [id: string]: string }>()
+  const [compState, setComp] = useState<IComponent>()
+  const [components, setComponents] = useState<IComponent[]>([])
+  const [failuredataState, setFailuredata] = useState<IDataInstance[]>([])
+  const [filterState, setFilter] = useState<
+    Record<string, Record<string, boolean>>
+  >({})
+  const equipmentGroup = compState?.equipmentGroup
+  const componentNames = components
+    .filter((component) => component.equipmentGroup === equipmentGroup)
+    .map((component) => component.name.replace('-', ' '))
+  const history = useHistory()
 
-  const { get: componentGet } = useFetch<APIResponse<IComponent>>('/components')
+  // {name: string, size: string, design: string, revisionDate: string, remarks: string,
+  // description: string, updated: string, data: {}, module:  string, equipmentGroup: string,
+  // filters: {måleprinsipp: [guge, beta, alfa], medium: [fejiugo, fsf ] }}
+  // size and design is filters?
+  const {
+    get: componentGet,
+    response: componentResponse,
+    loading: componentLoad,
+  } = useFetch<APIResponse<IComponent>>('/components')
 
-  const { get: datainstanceGet, response: datainstanceResponse } = useFetch(
-    '/data-instances/?company=' + userContext.user?.companyName
-  )
+  const {
+    get: datainstanceGet,
+    response: datainstanceResponse,
+    loading: datainstanceLoad,
+  } = useFetch<APIResponse<IDataInstance>>('/data-instances')
 
   useEffect(() => {
-    loadComponents()
-  }, [])
-
-  const loadComponents = async () => {
-    const initialData = await datainstanceGet()
-    if (datainstanceResponse.ok) setDatainstances(initialData.data)
-    const components: string[] = []
-    initialData.data.forEach((element: IDataInstance) => {
-      if (!components.includes(element['component'])) {
-        components.push(element['component'])
+    const loadComponents = async () => {
+      const initialComp: APIResponse<IComponent[]> = await componentGet(
+        '/?name=' + componentName
+      )
+      if (componentResponse.ok) {
+        setComp(initialComp.data[0])
+        setFilter(
+          Object.entries(initialComp.data[0].L3).reduce(
+            (object, [key, value]) => ({
+              ...object,
+              [key]: value?.reduce(
+                (object, filterValue) => ({ ...object, [filterValue]: false }),
+                {}
+              ),
+            }),
+            {}
+          )
+        )
       }
-    })
-    setComponents(components)
-    setComp(componentName)
-    updateFilter(componentName)
-  }
-
-  const updateFilter = async (newComp: string) => {
-    setL3Filter(undefined)
-    const component = await componentGet(newComp)
-    if (datainstanceResponse.ok) {
-      setFilter(component.data.L3)
+      const components = await componentGet()
+      if (componentResponse.ok) setComponents(components.data)
     }
-    setComp(newComp)
-  }
-  const updateL3Filter = (key: string, newComp: string) => {
-    setL3Filter((L3Filters) => ({ ...L3Filters, [key]: newComp }))
-  }
-  const L3 = (data: { [id: string]: string | undefined }): boolean => {
-    if (!L3Filters) return true
-    if (!data) return false
-    let isTrue = true
-    Object.keys(L3Filters).forEach((key) => {
-      if (!(key in data && data[key] === L3Filters[key])) {
-        isTrue = false
-      }
-    })
-    return isTrue
+    loadComponents()
+  }, [componentGet, componentName, componentResponse])
+
+  useEffect(() => {
+    const getFailureData = async () => {
+      const dataRequestArray: string[] = Object.keys(filterState).flatMap(
+        (filter) =>
+          Object.entries(filterState[filter])
+            .filter(([, value]) => value)
+            .map(([name]) => `L3.${filter}=${name}`)
+      )
+      const filters =
+        dataRequestArray.length > 0 ? '&' + dataRequestArray.join('&') : ''
+      const dataRequest = `/?component=${componentName}${filters}&company=${userContext.user?.companyName}`
+      const failureData = await datainstanceGet(dataRequest)
+      if (datainstanceResponse.ok) setFailuredata(failureData.data)
+    }
+    getFailureData()
+  }, [componentName, datainstanceGet, datainstanceResponse, filterState])
+
+  const getComponent = (name: string) => {
+    return components?.filter((comp) => comp.name === name)[0]
   }
 
-  return (
+  return componentLoad ? (
+    <p>loading...</p>
+  ) : (
     <div className={styles.container}>
-      <div className={[styles.padding, styles.center].join(' ')}>
-        <Title title={compState?.replace('-', ' ') as string} />
-      </div>
-      <div className={[styles.filters, styles.padding].join(' ')}>
-        <Filter
-          category="Component" // think i need a isChecked var to set/unset the filter
-          filters={components as string[]}
-          onClick={(newcomp) => updateFilter(newcomp)}
+      <div className={styles.path}>
+        <Button
+          label={'Back to equipmentsgroup'}
+          onClick={() =>
+            history.push(MAIN_ROUTES.COMPANY + COMPANY_SUB_ROUTES.REG_DATA)
+          }
         />
-        {Object.keys(filterState).map((key, index) => (
-          <Filter
-            key={index}
-            category={key}
-            filters={filterState[key]}
-            onClick={(newcomp) => updateL3Filter(key, newcomp)}
-          />
-        ))}
       </div>
-      <div>
-        <div className={styles.content}>
-          <div>
-            <table className={styles.headers}>
-              <tbody>
-                <tr>
-                  <td>{'Component'}</td>
-                  <td>{'T'}</td>
-                  <td>{'PopulationSize'}</td>
-                  <td>{'DU'}</td>
-                  <td> </td>
-                </tr>
-              </tbody>
-            </table>
+      <div className={styles.component}>
+        <div>
+          <Filter
+            category="Component" // think i need a isChecked var to set/unset the filter
+            filters={componentNames.reduce(
+              (obj, name) => ({ ...obj, [name]: false }),
+              {}
+            )}
+            onClick={(newcomp) => {
+              setComp(getComponent(newcomp))
+              history.push(
+                MAIN_ROUTES.COMPANY +
+                  COMPANY_SUB_ROUTES.REG_DATA +
+                  SUB_ROUTES.VIEW.replace(
+                    ':componentName',
+                    newcomp.replace(' ', '-')
+                  )
+              )
+            }}
+          />
+        </div>
+        <div className={styles.margin}>
+          <Title title={compState?.name.replace('-', ' ') as string} />
+        </div>
+      </div>
+      {datainstanceLoad ? (
+        <p>loading...</p>
+      ) : (
+        <div>
+          <div className={[styles.filters, styles.padding].join(' ')}>
+            {Object.entries(filterState).map(([filterName, filters]) => (
+              <Filter
+                category={filterName}
+                filters={filters}
+                onClick={(selected, newValue) => {
+                  setFilter({
+                    ...filterState,
+                    [filterName]: {
+                      ...filterState[filterName],
+                      [selected]: newValue,
+                    },
+                  })
+                }}
+                key={filterName}
+              />
+            ))}
           </div>
-          {datainstances?.map((data, key) =>
-            (data.component === compState || !compState) && L3(data.L3) ? (
+          <div className={styles.table}>
+            <div>
+              <table className={styles.headers}>
+                <tbody>
+                  <tr>
+                    <td>{'Component'}</td>
+                    <td>{'T'}</td>
+                    <td>{'PopulationSize'}</td>
+                    <td>{'DU'}</td>
+                    <td> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            {failuredataState?.map((data, key) => (
               <RegisteredDataField key={key}>
                 <label>{data.component}</label>
                 <label>{data.T}</label>
@@ -131,10 +184,10 @@ export const RegisteredData: React.FC = () => {
                   {'editor'}
                 </i>
               </RegisteredDataField>
-            ) : null
-          )}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }

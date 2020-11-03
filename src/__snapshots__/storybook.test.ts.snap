@@ -884,14 +884,9 @@ exports[`Storyshots MenuButton Notify 1`] = `
     className="line"
   />
   <button
-    className="button standard notify"
+    className="button standard "
   >
     Approve new users
-    <div
-      className="notifysignal"
-    >
-      1
-    </div>
   </button>
 </div>
 `;
@@ -1371,14 +1366,9 @@ exports[`Storyshots SideMenu Admin Side Menu 1`] = `
       className="line"
     />
     <button
-      className="button standard notify"
+      className="button standard "
     >
       Approve new users
-      <div
-        className="notifysignal"
-      >
-        2
-      </div>
     </button>
   </div>
 </div>
@@ -1784,6 +1774,192 @@ exports[`Storyshots Title Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="title"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Add new companies
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Company name"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Company name
+        </label>
+        <input
+          id="Company name"
+          onChange={[Function]}
+          placeholder="Enter a name for the new company..."
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Organisation Number"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Organisation Number
+        </label>
+        <input
+          id="Organisation Number"
+          onChange={[Function]}
+          placeholder="Enter the orgNr for the new company..."
+          type="number"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Email"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Email
+        </label>
+        <input
+          id="Email"
+          onChange={[Function]}
+          placeholder="Enter an email for the new company..."
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Phone number"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Phone number
+        </label>
+        <input
+          id="Phone number"
+          onChange={[Function]}
+          placeholder="Enter a phone number for the new company..."
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Description"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Description
+        </label>
+        <input
+          id="Description"
+          onChange={[Function]}
+          placeholder="Enter a description for the new company..."
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Max users"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Max users
+        </label>
+        <input
+          id="Max users"
+          onChange={[Function]}
+          placeholder="Enter a number for max users for the new company..."
+          type="number"
+          value={0}
+        />
+      </div>
+    </div>
+    
+  </div>
+</div>
+`;
+
 exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
 <div
   className="facilitycontainer"
@@ -1824,6 +2000,32 @@ exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
       />
     </div>
     <ul />
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/ApproveUsersPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Approve new users
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    The eager PDS datahandbook readers are comming very soon!
   </div>
 </div>
 `;
@@ -2142,7 +2344,9 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
 `;
 
 exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
-<div>
+<div
+  className="pagebottompadding"
+>
   <div
     className="container"
   >
@@ -2166,16 +2370,19 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
       className="listtitles"
     >
       <div>
-        Name
+        Username
       </div>
       <div>
         Email
       </div>
       <div>
-        Joined
+            
       </div>
       <div>
-              
+            
+      </div>
+      <div>
+        Phone
       </div>
     </div>
   </div>
@@ -2192,6 +2399,84 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
         0
       </div>
        more possible users to add.
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Username"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Username
+        </label>
+        <input
+          id="Username"
+          onChange={[Function]}
+          placeholder="OlaNordmann"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Email"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Email
+        </label>
+        <input
+          id="Email"
+          onChange={[Function]}
+          placeholder="ola.nordmann@gmail.com"
+          type="email"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Password"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Password
+        </label>
+        <input
+          id="Password"
+          onChange={[Function]}
+          placeholder="a super safe psw"
+          type="text"
+          value=""
+        />
+      </div>
     </div>
   </div>
   <div

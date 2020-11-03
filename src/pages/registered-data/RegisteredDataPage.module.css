@@ -1,0 +1,40 @@
+.container {
+}
+
+.filters {
+  display: flex;
+  position: absolute;
+  top: 400px;
+  gap: 1rem;
+}
+
+.component {
+  margin-top: 100px;
+  display: flex;
+  position: absolute;
+  z-index: 1;
+}
+
+.flex {
+  display: flex;
+}
+
+.table {
+  margin-top: 400px;
+}
+
+.headers {
+  height: 60px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-top: 400px;
+}
+td {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  align-content: center;
+}

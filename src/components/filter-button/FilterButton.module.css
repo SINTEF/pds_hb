@@ -15,8 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  padding-bottom: 10px;
-  padding-left: 22px;
+  padding: 0 22px 10px;
   min-height: 60px;
   max-width: 237px;
   overflow: hidden;
