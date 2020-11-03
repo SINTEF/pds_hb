@@ -2487,6 +2487,20 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
   >
     PDS Datahandbook
   </div>
+  <div
+    className="footer"
+  >
+    <div
+      className="contact"
+    >
+      Contact info:
+    </div>
+    <div
+      className="contact"
+    >
+      Email: sintef@post.no
+    </div>
+  </div>
 </div>
 `;
 
