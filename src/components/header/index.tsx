@@ -13,7 +13,11 @@ export const Header: React.FC = () => {
     path: [MAIN_ROUTES.LOGIN, MAIN_ROUTES.HOME],
     exact: true,
   })
-  const showUserMenu = !useRouteMatch(MAIN_ROUTES.LOGIN)
+  const showUserMenu = !useRouteMatch({
+    path: [MAIN_ROUTES.LOGIN, MAIN_ROUTES.REGISTER],
+    exact: true,
+  })
+
   return (
     <div className={styles.container}>
       {showHomeLink ? (
