@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react'
+import React, { useState, useEffect, FC, useContext } from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import styles from './ChooseComponentPage.module.css'
 import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
@@ -12,10 +12,12 @@ import { IComponent } from '../../models/component'
 import { APIResponse } from '../../models/api-response'
 import { IModule } from '../../models/module'
 import { Button } from '../../components/button'
+import { UserContext } from '../../utils/context/userContext'
 
 export const ChooseComponentPage: FC = () => {
   const history = useHistory()
   const { url } = useRouteMatch()
+  const userContext = useContext(UserContext)
   const [pageState, setPage] = useState<number>(1)
   const [modules, setModules] = useState<IModule[]>([])
   const [selectedModule, setSelectedModule] = useState<string>('')
@@ -115,22 +117,24 @@ export const ChooseComponentPage: FC = () => {
             )
           })}
         </div>
-        <div className={styles.newComponentButton}>
-          <Button
-            label="Add new component"
-            onClick={() =>
-              history.push(
-                MAIN_ROUTES.ADD_COMPONENT.replace(
-                  ':groupModule',
-                  selectedModule.replace(' ', '+')
-                ).replace(
-                  ':equipmentGroup',
-                  selectedEquipmentGroup.replace(' ', '+')
+        {userContext?.user?.userGroupType === 'admin' ? (
+          <div className={styles.newComponentButton}>
+            <Button
+              label="Add new component"
+              onClick={() =>
+                history.push(
+                  MAIN_ROUTES.ADD_COMPONENT.replace(
+                    ':groupModule',
+                    selectedModule.replace(' ', '+')
+                  ).replace(
+                    ':equipmentGroup',
+                    selectedEquipmentGroup.replace(' ', '+')
+                  )
                 )
-              )
-            }
-          />
-        </div>
+              }
+            />
+          </div>
+        ) : null}
       </div>
     )
   } else {
