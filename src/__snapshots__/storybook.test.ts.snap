@@ -2261,6 +2261,31 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             <label
               className="index"
             >
+              Date of revision: 
+            </label>
+            <label
+              className="content"
+            >
+              
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="container"
+        >
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
               Remarks: 
             </label>
             <label
