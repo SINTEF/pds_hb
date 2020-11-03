@@ -2196,10 +2196,20 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             <div
               className="lambdaDU"
             >
-              Average failure rate: 
+              λDU: 
             </div>
             <div
               className="lambdaDUnumber"
+            >
+              NaN
+            </div>
+            <div
+              className="lambdaDU"
+            >
+              Average failure rate of displayed data: 
+            </div>
+            <div
+              className="failureNumber"
             >
               NaN
             </div>

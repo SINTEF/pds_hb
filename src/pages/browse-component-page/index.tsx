@@ -21,6 +21,7 @@ export const BrowseComponentPage: React.FC = () => {
 
   const [compState, setComp] = useState<IComponent>()
   const [failuredataState, setFailuredata] = useState<IDataInstance[]>([])
+  const [allDataInstances, setAll] = useState<IDataInstance[]>([])
   const [filterState, setFilter] = useState<
     Record<string, Record<string, boolean>>
   >({})
@@ -102,6 +103,10 @@ export const BrowseComponentPage: React.FC = () => {
       )
       const filters =
         dataRequestArray.length > 0 ? '&' + dataRequestArray.join('&') : ''
+      const dataInstances = await datainstanceGet(
+        `/?component=${componentName}&status=published`
+      )
+      setAll(dataInstances.data)
       const dataRequest = `/?component=${componentName}${filters}&status=published`
       const failureData = await datainstanceGet(dataRequest)
       if (datainstanceResponse.ok) setFailuredata(failureData.data)
@@ -155,7 +160,11 @@ export const BrowseComponentPage: React.FC = () => {
     [failuredataState]
   )
 
-  const lambdaDU = LDU.toPrecision(2).toString()
+  const averageFailureRate = LDU.toPrecision(2).toString()
+
+  const lambdaDU = calculateAverageFailureRates(allDataInstances ?? [])
+    .toPrecision(2)
+    .toString()
 
   return componentLoad ? (
     <p>Loading...</p>
@@ -239,10 +248,14 @@ export const BrowseComponentPage: React.FC = () => {
               </div>
               <div className={styles.table}>
                 <div className={styles.DUcontainer}>
-                  <div className={styles.lambdaDU}>
-                    {'Average failure rate: '}
-                  </div>
+                  <div className={styles.lambdaDU}>{'λDU: '}</div>
                   <div className={styles.lambdaDUnumber}>{lambdaDU}</div>
+                  <div className={styles.lambdaDU}>
+                    {'Average failure rate of displayed data: '}
+                  </div>
+                  <div className={styles.failureNumber}>
+                    {averageFailureRate}
+                  </div>
                 </div>
                 <Table
                   headers={headers}
