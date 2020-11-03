@@ -216,7 +216,7 @@ export const AddComponentPage: FC = () => {
         </div>
       </Modal>
       <div className={styles.title}>
-        <Title title={`New ${equipmentGroup.replace('+', ' ')} component`} />
+        <Title title={`New ${equipmentGroup?.replace('+', ' ')} component`} />
       </div>
 
       <div className={styles.description}>
