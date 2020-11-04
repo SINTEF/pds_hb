@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react'
 import { EditModule, EditModuleProps } from '.'
 
 export default {
-  title: 'Edit Equipment group',
+  title: 'Edit module',
   component: EditModule,
   argTypes: {
     backgroundColor: { control: 'color' },

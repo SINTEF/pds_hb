@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react'
 import { ModuleForm, ModuleFormProps } from '.'
 
 export default {
-  title: 'Equipment group form',
+  title: 'Module form',
   component: ModuleForm,
 } as Meta
 
