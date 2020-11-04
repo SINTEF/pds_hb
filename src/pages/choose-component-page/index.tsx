@@ -15,6 +15,7 @@ import { CreateEquipmentGroup } from '../../components/create-equipment-group'
 import { UserContext } from '../../utils/context/userContext'
 import { CreateModule } from '../../components/create-module'
 import { EditEquipmentGroup } from '../../components/edit-equipment-group'
+import { EditModule } from '../../components/edit-module'
 
 export const ChooseComponentPage: FC = () => {
   const history = useHistory()
@@ -58,7 +59,10 @@ export const ChooseComponentPage: FC = () => {
         <Title title="Choose equipment group" />
         {modules.map((module) => (
           <>
-            <span className={styles.moduletitle}>{module.name}</span>
+            <div className={styles.moduletitle}>
+              <span>{module.name}</span>
+              <EditModule equipmentModule={module} />
+            </div>
             <div className={styles.components} key={module.name}>
               {module.equipmentGroups.map((group, index) => (
                 <div key={index} className={styles.equipmentContainer}>

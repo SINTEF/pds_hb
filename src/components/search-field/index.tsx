@@ -34,7 +34,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
 }: SearchFieldProps) => {
   const [filtered, setFiltered] = useState<Array<string>>([])
   const [chosen, setChosen] = useState<number>(0)
-  const [selected, setSelected] = useState<string>('')
+  const [selected, setSelected] = useState<string>(defaultValue)
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowDown' && chosen !== filtered.length - 1) {
       setChosen(chosen + 1)

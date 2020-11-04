@@ -32,6 +32,10 @@
   padding-left: 100px;
 }
 
+.moduletitle > span {
+  margin-right: 10px;
+}
+
 .back {
   align-self: flex-start;
   padding-left: 100px;
