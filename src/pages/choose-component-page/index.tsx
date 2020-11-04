@@ -33,19 +33,17 @@ export const ChooseComponentPage: FC = () => {
   >('/modules')
 
   useEffect(() => {
+    const loadComponents = async () => {
+      const components = await componentGet()
+      if (componentResponse.ok) setAllComponents(components.data)
+    }
+    const loadModules = async () => {
+      const modules = await moduleGet()
+      if (moduleResponse.ok) setModules(modules.data)
+    }
     loadComponents()
     loadModules()
-  }, [])
-
-  const loadComponents = async () => {
-    const components = await componentGet()
-    if (componentResponse.ok) setAllComponents(components.data)
-  }
-
-  const loadModules = async () => {
-    const modules = await moduleGet()
-    if (moduleResponse.ok) setModules(modules.data)
-  }
+  }, [componentGet, moduleGet, componentResponse, moduleResponse])
 
   const getEquipmentGroup = (group: string) =>
     allComponents.filter(
@@ -55,7 +53,7 @@ export const ChooseComponentPage: FC = () => {
   if (pageState === 1) {
     return (
       <div className={styles.container}>
-        <Title title="Choose equipment group"> </Title>
+        <Title title="Choose equipment group" />
         {modules.map((module) => (
           <>
             <span className={styles.moduletitle}>{module.name}</span>
