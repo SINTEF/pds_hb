@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
-import useFetch from 'use-http'
+import { useHistory, useParams, useRouteMatch } from 'react-router-dom'
+import useFetch, { CachePolicies } from 'use-http'
 import MAIN_ROUTES, {
   COMPANY_SUB_ROUTES,
   SUB_ROUTES,
@@ -20,6 +20,7 @@ import { RegisteredDataField } from '../../components/registered-data-field'
 
 export const RegisteredDataPage: React.FC = () => {
   const { componentName } = useParams<{ componentName: string }>()
+  const { url } = useRouteMatch()
   const userContext = useContext(UserContext) as IUserContext
   const [compState, setComp] = useState<IComponent>()
   const [components, setComponents] = useState<IComponent[]>([])
@@ -41,13 +42,19 @@ export const RegisteredDataPage: React.FC = () => {
     get: componentGet,
     response: componentResponse,
     loading: componentLoad,
-  } = useFetch<APIResponse<IComponent>>('/components')
+  } = useFetch<APIResponse<IComponent>>('/components', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
   const {
     get: datainstanceGet,
     response: datainstanceResponse,
     loading: datainstanceLoad,
-  } = useFetch<APIResponse<IDataInstance>>('/data-instances')
+  } = useFetch<APIResponse<IDataInstance>>('/data-instances', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
   useEffect(() => {
     const loadComponents = async () => {
@@ -161,6 +168,7 @@ export const RegisteredDataPage: React.FC = () => {
                     <td>{'PopulationSize'}</td>
                     <td>{'DU'}</td>
                     <td> {'Comment'}</td>
+                    <td> {'SINTEF comment'}</td>
                     <td></td>
                   </tr>
                 </tbody>
@@ -175,13 +183,15 @@ export const RegisteredDataPage: React.FC = () => {
                 <label className={styles.fontSize}>{data.populationSize}</label>
                 <label className={styles.fontSize}>{data.du}</label>
                 <label className={styles.fontSize}>{data.comment}</label>
+                <label className={styles.fontSize}>{data.sintefComment}</label>
                 <i
                   onClick={() =>
                     history.push(
-                      MAIN_ROUTES.UPDATE.replace(
-                        ':objectId',
-                        data._id.replace(' ', '+')
-                      )
+                      url +
+                        SUB_ROUTES.UPDATE.replace(
+                          ':datainstanceId',
+                          data._id.replace(' ', '+')
+                        )
                     )
                   }
                   className={'material-icons ' + styles.icon}

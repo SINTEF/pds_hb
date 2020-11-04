@@ -3,10 +3,11 @@ import { Switch, Route, useRouteMatch, useHistory } from 'react-router-dom'
 import { MenuButton } from '../../components/menu-button'
 
 import { SideMenu } from '../../components/side-menu'
-import { ADMIN_SUB_ROUTES } from '../../routes/routes.constants'
+import { ADMIN_SUB_ROUTES, SUB_ROUTES } from '../../routes/routes.constants'
 import { AddCompanyPage } from '../admin-add-company'
 import { AllEditsPage } from '../admin-all-edits-page'
 import { ApproveUsersPage } from '../admin-apporve-users'
+import { UpdateDataPage } from '../update-data-page'
 
 import styles from './AdminPage.module.css'
 
@@ -42,6 +43,15 @@ export const AdminPage: React.FC = () => {
       </div>
       <div className={styles.content}>
         <Switch>
+          <Route
+            exact
+            path={[
+              path + ADMIN_SUB_ROUTES.SEE_ALL_EDITS + SUB_ROUTES.UPDATE,
+              path + SUB_ROUTES.UPDATE,
+            ]}
+          >
+            <UpdateDataPage />
+          </Route>
           <Route path={path + ADMIN_SUB_ROUTES.APPROVE_USERS}>
             <ApproveUsersPage />
           </Route>
