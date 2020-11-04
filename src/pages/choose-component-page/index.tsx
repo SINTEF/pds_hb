@@ -110,7 +110,7 @@ export const ChooseComponentPage: FC = () => {
                       url +
                         SUB_ROUTES.VIEW.replace(
                           ':componentName',
-                          component.name.replace(' ', '+')
+                          component.name.replace(' ', '-')
                         )
                     )
                   }

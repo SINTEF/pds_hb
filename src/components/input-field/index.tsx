@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import styles from './InputField.module.css'
 
 export interface InputProps {
-  value: string | number | undefined
-  onValueChanged: (value: string | number | FileList | null) => void
-  type?: 'text' | 'textarea' | 'number' | 'email' | 'password' | 'file'
+  onValueChanged: (value: string | number | Date | FileList | null) => void
+  value: string | number | Date | undefined
+  type?: 'text' | 'textarea' | 'number' | 'email' | 'password' | 'file' | 'date'
   variant?: 'primary' | 'standard'
   label: string
   icon?: string
@@ -63,7 +63,7 @@ export const InputField: React.FC<InputProps> = ({
         {type === 'textarea' ? (
           <textarea
             id={label}
-            value={value}
+            value={value as string | number}
             placeholder={placeholder}
             onChange={handleChanged}
             rows={10}
@@ -82,7 +82,7 @@ export const InputField: React.FC<InputProps> = ({
           <input
             id={label}
             type={type}
-            value={value}
+            value={value as string | number}
             placeholder={placeholder}
             onChange={handleChanged}
           ></input>
