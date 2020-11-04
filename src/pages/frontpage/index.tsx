@@ -119,6 +119,10 @@ export const Frontpage: React.FC = () => {
       ) : (
         error && 'Error!'
       )}
+      <div className={styles.footer}>
+        <div className={styles.contact}>{'Contact info:'}</div>
+        <div className={styles.contact}>{'Email: sintef@post.no'}</div>
+      </div>
     </div>
   )
 }

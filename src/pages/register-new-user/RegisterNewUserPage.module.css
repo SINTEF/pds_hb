@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+  padding-bottom: 100px;
+}
+
+.center {
+  align-self: center;
+}
+
+.padding {
+  padding-right: 300px;
+  padding-left: 300px;
+}
+
+.responseOk {
+  color: chartreuse;
+}
+
+.responseError {
+  color: red;
+}
+
+.back {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #003d65;
+}
+
+.button {
+  position: absolute;
+  right: 300px;
+  bottom: 100px;
+}

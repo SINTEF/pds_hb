@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IconButton } from '../icon-button'
 
 import styles from './EditableField.module.css'
@@ -19,7 +19,7 @@ export interface EditableFieldProps {
 
   doneIcon?: string
 
-  isAdmin: boolean
+  isAdmin: boolean // should be canEdit
 
   onSubmit: (formState: FieldForm) => void
 }
@@ -39,6 +39,10 @@ export const EditableField: React.FC<EditableFieldProps> = ({
     index: index,
     content: content,
   })
+
+  useEffect(() => {
+    setForm({ content: content, index: index })
+  }, [index, content])
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

@@ -51,6 +51,10 @@ export const ChooseComponentPage: FC = () => {
       (component) => component.equipmentGroup === group
     ) as IGroup[]
 
+  const equipmentGroups = allComponents.map(
+    (component) => component.equipmentGroup
+  )
+
   if (pageState === 1) {
     return (
       <div className={styles.container}>
@@ -60,16 +64,20 @@ export const ChooseComponentPage: FC = () => {
             <span className={styles.moduletitle}>{module.name}</span>
             <div className={styles.components} key={module.name}>
               {module.equipmentGroups.map((group, index) => (
-                <div key={index} className={styles.equipmentContainer}>
-                  <Group
-                    isAdmin={false}
-                    group={{ name: group }}
-                    onClick={() => {
-                      setEquipmentGroup(getEquipmentGroup(group))
-                      setPage(2)
-                    }}
-                  />
-                </div>
+                <>
+                  {equipmentGroups.includes(group) ? (
+                    <div key={index} className={styles.equipmentContainer}>
+                      <Group
+                        isAdmin={false}
+                        group={{ name: group }}
+                        onClick={() => {
+                          setEquipmentGroup(getEquipmentGroup(group))
+                          setPage(2)
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                </>
               ))}
             </div>
           </>
@@ -81,6 +89,9 @@ export const ChooseComponentPage: FC = () => {
     return (
       <div className={styles.container}>
         <Title title="Choose component"> </Title>
+        <div className={styles.back} onClick={() => setPage(1)}>
+          {' < Back'}
+        </div>
         <span className={styles.moduletitle}>
           {
             allComponents.find((comp) => comp.name === equipmentgroup[0].name)

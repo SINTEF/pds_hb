@@ -22,6 +22,7 @@ export interface Form {
   company: string | undefined
   l3: Record<string, string> | null
   comment: string | null
+  sintefComment: string
 }
 
 interface componentReq {
@@ -49,6 +50,7 @@ export const AddDataPage: React.FC = () => {
     company: undefined,
     l3: null,
     comment: null,
+    sintefComment: 'Not commented',
   })
 
   const valid_datainstance = () => {
@@ -240,6 +242,7 @@ export const AddDataPage: React.FC = () => {
             onClick={() => {
               setPage(2)
               setData({
+                ...dataState,
                 facility: dataState.facility,
                 component: null,
                 du: null,

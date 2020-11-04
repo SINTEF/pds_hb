@@ -1,14 +1,19 @@
+type TStatus = 'published' | 'approved' | 'not approved' | 'not reviewed'
+
 export interface IDataInstance {
+  _id: string
   company: string
   facility: string
   component: string
-  startPeriod?: Date
-  endPeriod?: Date
+  startDate?: Date
+  endDate?: Date
   T: number
   du: number
   populationSize?: number
   failureRates?: number
   comment?: string
+  sintefComment?: string
+  status?: TStatus
   L3: {
     measuringPrinciple?: string
     designMountingPrinciple?: string

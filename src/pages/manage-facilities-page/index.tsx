@@ -5,35 +5,34 @@ import { Title } from '../../components/title'
 import { SearchField } from '../../components/search-field'
 import { Button } from '../../components/button'
 import { InputField } from '../../components/input-field'
-import useFetch from 'use-http'
+import useFetch, { CachePolicies } from 'use-http'
 import { IUserContext } from '../../models/user'
 import { UserContext } from '../../utils/context/userContext'
 
 //TO FIX: Needs types for facility and communications with server
 export const ManageFacilitiesPage: React.FC = () => {
   const [facilityState, setFacility] = useState<string>('')
+  const [newFacilityState, setNewFacility] = useState<string>('')
   const [pageState, setPage] = useState<string>('')
 
   const userContext = useContext(UserContext) as IUserContext
   const companyName = userContext.user?.companyName
 
-  const { get, data: companyData = [] } = useFetch(
+  const { put, response, get, data: companyData = [] } = useFetch(
     '/company/' + companyName,
+    (options) => {
+      options.cachePolicy = CachePolicies.NO_CACHE
+      return options
+    },
     []
   )
 
-  const { put, response: facilitiesResponse } = useFetch('/update') //fix this path later
-
   const updateFacilitites = async (facilities: string[]) => {
-    await put(facilities)
-    if (facilitiesResponse.ok) get()
+    await put({ facilities: facilities })
+    if (response.ok) get()
   }
 
   const facilities = companyData.data?.facilities ?? []
-
-  const changeFacility = (facility: string) => {
-    facilities.splice(facilities.indexOf(facilityState), 1, facility)
-  }
 
   return (
     <div className={styles.container}>
@@ -53,13 +52,14 @@ export const ManageFacilitiesPage: React.FC = () => {
           onValueChanged={(value) => setFacility(value)}
           onClick={(selected) => {
             setFacility(selected)
-            facilities.indexOf(selected) > -1
-              ? setPage('Update facilityname')
-              : setPage('Create new facility')
+            {
+              facilities.indexOf(selected) > -1 &&
+                setPage('Update facilityname')
+            }
           }}
         />
       </div>
-      {pageState === 'Create new facility' && (
+      {facilities.indexOf(facilityState) < 0 && facilityState !== '' && (
         <div>
           <div className={styles.button}>
             <Button
@@ -75,24 +75,36 @@ export const ManageFacilitiesPage: React.FC = () => {
             <InputField
               label="New facilityname"
               variant="standard"
-              placeholder="Enter name of new facility..."
-              value={facilityState}
-              onValueChanged={(value) => setFacility(value as string)}
+              placeholder="Enter new name of facility..."
+              value={newFacilityState}
+              onValueChanged={(value) => setNewFacility(value as string)}
             />
           </div>
           <div className={styles.button}>
             <Button
               label="Assign new name"
               onClick={() => {
-                setFacility(' ')
-                updateFacilitites(facilities.splice())
+                updateFacilitites([
+                  ...facilities.filter(
+                    (facility: string) => facility !== facilityState
+                  ),
+                  newFacilityState,
+                ])
+                setNewFacility('')
+                setFacility('')
+                setPage('')
               }}
             />
             <Button
               label="Delete"
               onClick={() => {
-                setFacility(' ')
-                changeFacility(facilityState)
+                updateFacilitites(
+                  facilities.filter(
+                    (facility: string) => facility !== facilityState
+                  )
+                )
+                setFacility('')
+                setPage('')
               }}
             />
           </div>
