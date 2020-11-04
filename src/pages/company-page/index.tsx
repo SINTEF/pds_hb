@@ -3,11 +3,13 @@ import { Switch, Route, useRouteMatch, useHistory } from 'react-router-dom'
 import { MenuButton } from '../../components/menu-button'
 
 import { SideMenu } from '../../components/side-menu'
-import { COMPANY_SUB_ROUTES } from '../../routes/routes.constants'
+import { COMPANY_SUB_ROUTES, SUB_ROUTES } from '../../routes/routes.constants'
 import { CompanyUserPage } from '../company-user-page'
 import { ManageFacilitiesPage } from '../manage-facilities-page'
 import { ManageStaffmembersPage } from '../manage-staffmembers-page'
 import { OwnDataPage } from '../own-data'
+import { RegisteredDataPage } from '../registered-data'
+import { UpdateDataPage } from '../update-data-page'
 
 import styles from './CompanyPage.module.css'
 
@@ -47,8 +49,22 @@ export const CompanyPage: React.FC = () => {
       </div>
       <div className={styles.content}>
         <Switch>
-          <Route path={path + COMPANY_SUB_ROUTES.REG_DATA}>
-            <OwnDataPage />
+          <Route
+            exact
+            path={
+              path +
+              COMPANY_SUB_ROUTES.REG_DATA +
+              SUB_ROUTES.VIEW +
+              SUB_ROUTES.UPDATE
+            }
+          >
+            <UpdateDataPage />
+          </Route>
+          <Route
+            exact
+            path={path + COMPANY_SUB_ROUTES.REG_DATA + SUB_ROUTES.VIEW}
+          >
+            <RegisteredDataPage />
           </Route>
           <Route path={path + COMPANY_SUB_ROUTES.MANAGE_FAC}>
             <ManageFacilitiesPage />
@@ -56,8 +72,11 @@ export const CompanyPage: React.FC = () => {
           <Route path={path + COMPANY_SUB_ROUTES.MANAGE_STAFF}>
             <ManageStaffmembersPage />
           </Route>
-          <Route path={[path + COMPANY_SUB_ROUTES.USER, path]}>
+          <Route path={path + COMPANY_SUB_ROUTES.USER}>
             <CompanyUserPage />
+          </Route>
+          <Route path={[path + COMPANY_SUB_ROUTES.REG_DATA, path]}>
+            <OwnDataPage />
           </Route>
         </Switch>
       </div>

@@ -18,6 +18,7 @@ export interface Form {
   du: number | null
   populationsize: number | null
   company: string | undefined
+  sintefComment: string
 }
 
 export const AddDataPage: React.FC = () => {
@@ -36,6 +37,7 @@ export const AddDataPage: React.FC = () => {
     du: null,
     populationsize: null,
     company: undefined,
+    sintefComment: 'Not commented',
   })
 
   useEffect(() => {
@@ -166,6 +168,7 @@ export const AddDataPage: React.FC = () => {
             onClick={() => {
               setPage(2)
               setData({
+                ...dataState,
                 facility: dataState.facility,
                 component: null,
                 T: null,

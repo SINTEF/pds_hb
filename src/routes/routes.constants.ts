@@ -21,6 +21,7 @@ export const COMPANY_SUB_ROUTES = {
 
 export const SUB_ROUTES = {
   VIEW: '/view/:componentName',
+  UPDATE: '/update/:datainstanceId',
 }
 
 export const ADMIN_SUB_ROUTES = {

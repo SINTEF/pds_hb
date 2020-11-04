@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 50px;
+  padding-bottom: 200px;
+  width: auto;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-top: 50px;
+  width: 90%;
+}
+
+.responseOk {
+  color: chartreuse;
+  position: absolute;
+  top: 860px;
+  right: 400px;
+}
+
+.back {
+  cursor: pointer;
+  padding-top: 40px;
+  color: #003d65;
+  text-decoration: underline;
+}
+
+.responseError {
+  color: red;
+  position: absolute;
+  top: 860px;
+  right: 400px;
+}

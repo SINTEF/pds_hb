@@ -1142,104 +1142,61 @@ exports[`Storyshots Pages/Read Standard 1`] = `
 `;
 
 exports[`Storyshots RegisteredData Standard 1`] = `
-<div>
-  <div
-    className="path"
+<div
+  className="container"
+>
+  <label
+    className="button"
+    onClick={[Function]}
   >
-    /Choose equipmentgroup /
-    Fire detectors
-  </div>
+     &lt; Back
+  </label>
   <div
-    className="filters padding"
+    className="center"
   >
     <div
-      className="open"
+      className="container"
     >
       <div
-        className="container"
+        className="titlecontainer"
       >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            Component
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
+        <div
+          className="title notdynamic"
+        />
       </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L1
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L2
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
-    </div>
-    <div
-      className="open"
-    >
-      <div
-        className="container"
-      >
-        <button
-          className="button standard"
-          onClick={[Function]}
-        >
-          <div>
-            L3
-          </div>
-          <i
-            className="material-icons icon"
-          >
-            expand_more
-          </i>
-        </button>
-      </div>
+      <hr
+        className="line"
+      />
     </div>
   </div>
   <div>
     <div
-      className="content"
+      className="filters padding"
+    >
+      <div
+        className="open"
+      >
+        <div
+          className="container"
+        >
+          <button
+            className="button standard"
+            onClick={[Function]}
+          >
+            <div>
+              Component
+            </div>
+            <i
+              className="material-icons icon"
+            >
+              expand_more
+            </i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table"
     >
       <div>
         <table
@@ -1251,120 +1208,29 @@ exports[`Storyshots RegisteredData Standard 1`] = `
                 Component
               </td>
               <td>
-                Period
-              </td>
-              <td>
                 T
               </td>
               <td>
-                Tags
+                PopulationSize
               </td>
               <td>
                 DU
               </td>
               <td>
-                Edited
+                 
+                Comment
               </td>
               <td>
                  
+                SINTEF comment
               </td>
+              <td />
             </tr>
           </tbody>
         </table>
       </div>
-      <table
-        className="container"
-      >
-        <tbody>
-          <tr>
-            <td>
-              <label>
-                Smoke detector
-              </label>
-            </td>
-            <td>
-              <label>
-                2013-2020
-              </label>
-            </td>
-            <td>
-              <label>
-                123456
-              </label>
-            </td>
-            <td>
-              <label>
-                99
-              </label>
-            </td>
-            <td>
-              <label>
-                5
-              </label>
-            </td>
-            <td>
-              <label>
-                24.12.2010
-              </label>
-            </td>
-            <td>
-              <i
-                className="material-icons icon"
-                onClick={[Function]}
-              >
-                editor
-              </i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table
-        className="container"
-      >
-        <tbody>
-          <tr>
-            <td>
-              <label>
-                Smoke detector
-              </label>
-            </td>
-            <td>
-              <label>
-                2015-2029
-              </label>
-            </td>
-            <td>
-              <label>
-                654321
-              </label>
-            </td>
-            <td>
-              <label>
-                29
-              </label>
-            </td>
-            <td>
-              <label>
-                3
-              </label>
-            </td>
-            <td>
-              <label>
-                23.11.2016
-              </label>
-            </td>
-            <td>
-              <i
-                className="material-icons icon"
-                onClick={[Function]}
-              >
-                editor
-              </i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
+    <div />
   </div>
 </div>
 `;
@@ -1678,121 +1544,125 @@ exports[`Storyshots Table Table Component 1`] = `
 <table
   className="dataTable"
 >
-  <tr>
-    <th>
-      Failure Rates
-    </th>
-    <th>
-      Source
-    </th>
-    <th>
-      DUobs
-    </th>
-    <th>
-      T
-    </th>
-    <th>
-      Observation Period
-    </th>
-    <th>
-      Population Size
-    </th>
-    <th>
-      Comment
-    </th>
-  </tr>
-  <tr>
-    <td>
-      0,3
-    </td>
-    <td>
-      Facility A
-    </td>
-    <td>
-      10
-    </td>
-    <td>
-      2,8*10^7 h
-    </td>
-    <td>
-      2006-2018
-    </td>
-    <td>
-      659
-    </td>
-    <td>
-      Very cool data
-    </td>
-  </tr>
-  <tr>
-    <td>
-      0,5
-    </td>
-    <td>
-      Facility C
-    </td>
-    <td>
-      8
-    </td>
-    <td>
-      2,8* 10^9 h
-    </td>
-    <td>
-      1999-2020
-    </td>
-    <td>
-      666
-    </td>
-    <td>
-      This data is data
-    </td>
-  </tr>
-  <tr>
-    <td>
-      0,8
-    </td>
-    <td>
-      Facility B
-    </td>
-    <td>
-      12
-    </td>
-    <td>
-      2,7* 10^5 h
-    </td>
-    <td>
-      2019-2020
-    </td>
-    <td>
-      123
-    </td>
-    <td>
-      Another instance of data
-    </td>
-  </tr>
-  <tr>
-    <td>
-      0,8
-    </td>
-    <td>
-      Facility B
-    </td>
-    <td>
-      12
-    </td>
-    <td>
-      2,7* 10^5 h
-    </td>
-    <td>
-      2019-2020
-    </td>
-    <td>
-      123
-    </td>
-    <td>
-      Even more data
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>
+        Failure Rates
+      </th>
+      <th>
+        Source
+      </th>
+      <th>
+        DUobs
+      </th>
+      <th>
+        T
+      </th>
+      <th>
+        Observation Period
+      </th>
+      <th>
+        Population Size
+      </th>
+      <th>
+        Comment
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        0,3
+      </td>
+      <td>
+        Facility A
+      </td>
+      <td>
+        10
+      </td>
+      <td>
+        2,8*10^7 h
+      </td>
+      <td>
+        2006-2018
+      </td>
+      <td>
+        659
+      </td>
+      <td>
+        Very cool data
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0,5
+      </td>
+      <td>
+        Facility C
+      </td>
+      <td>
+        8
+      </td>
+      <td>
+        2,8* 10^9 h
+      </td>
+      <td>
+        1999-2020
+      </td>
+      <td>
+        666
+      </td>
+      <td>
+        This data is data
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0,8
+      </td>
+      <td>
+        Facility B
+      </td>
+      <td>
+        12
+      </td>
+      <td>
+        2,7* 10^5 h
+      </td>
+      <td>
+        2019-2020
+      </td>
+      <td>
+        123
+      </td>
+      <td>
+        Another instance of data
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0,8
+      </td>
+      <td>
+        Facility B
+      </td>
+      <td>
+        12
+      </td>
+      <td>
+        2,7* 10^5 h
+      </td>
+      <td>
+        2019-2020
+      </td>
+      <td>
+        123
+      </td>
+      <td>
+        Even more data
+      </td>
+    </tr>
+  </tbody>
 </table>
 `;
 
@@ -2330,10 +2200,20 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             <div
               className="lambdaDU"
             >
-              Average failure rate: 
+              λDU: 
             </div>
             <div
               className="lambdaDUnumber"
+            >
+              NaN
+            </div>
+            <div
+              className="lambdaDU"
+            >
+              Average failure rate of displayed data: 
+            </div>
+            <div
+              className="failureNumber"
             >
               NaN
             </div>
@@ -2372,6 +2252,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             >
               Nothing matched the chosen filters
             </tr>
+
           </table>
         </div>
       </div>
