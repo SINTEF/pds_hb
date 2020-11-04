@@ -10,6 +10,13 @@ export interface TableProps {
 }
 
 export const Table: React.FC<TableProps> = ({ data, headers }: TableProps) => {
+  const tableRows = data.map((dataCategory, dataIndex) => (
+    <tr key={dataIndex}>
+      {dataCategory.map((dataInstance, index) => {
+        return <td key={index}>{dataInstance}</td>
+      })}
+    </tr>
+  ))
   return (
     <table className={styles.dataTable}>
       <thead>
@@ -29,6 +36,13 @@ export const Table: React.FC<TableProps> = ({ data, headers }: TableProps) => {
             </tr>
           )
         })}
+        {tableRows.length > 0 ? (
+          tableRows
+        ) : (
+          <tr className={styles.noContent}>
+            Nothing matched the chosen filters
+          </tr>
+        )}
       </tbody>
     </table>
   )
