@@ -18,8 +18,10 @@
 .equipmentContainer {
   min-width: 10%;
   padding-bottom: 50px;
-  align-content: center;
   padding-left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .moduletitle {

@@ -74,6 +74,7 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
               onClick={(value) =>
                 setFormState({ ...formState, module: value as string })
               }
+              defaultValue={formState.module}
               onValueChanged={() => {
                 return
               }}

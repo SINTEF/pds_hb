@@ -6,6 +6,8 @@ export interface SearchFieldProps {
 
   label?: string
 
+  defaultValue?: string
+
   placeholder?: string
 
   suggestions: Array<string>
@@ -21,6 +23,7 @@ export interface SearchFieldProps {
 
 export const SearchField: React.FC<SearchFieldProps> = ({
   variant = 'primary',
+  defaultValue = '',
   label,
   placeholder,
   suggestions,
@@ -81,6 +84,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
           onKeyDown={handleKeyPress}
           onFocus={handleChanged}
           value={selected}
+          defaultValue={defaultValue}
         ></input>
         {variant === 'primary' ? (
           <i className={'material-icons ' + styles.icon}>{icon}</i>

@@ -14,6 +14,7 @@ import { IModule } from '../../models/module'
 import { CreateEquipmentGroup } from '../../components/create-equipment-group'
 import { UserContext } from '../../utils/context/userContext'
 import { CreateModule } from '../../components/create-module'
+import { EditEquipmentGroup } from '../../components/edit-equipment-group'
 
 export const ChooseComponentPage: FC = () => {
   const history = useHistory()
@@ -62,13 +63,17 @@ export const ChooseComponentPage: FC = () => {
               {module.equipmentGroups.map((group, index) => (
                 <div key={index} className={styles.equipmentContainer}>
                   <Group
-                    isAdmin={false}
                     group={{ name: group, module: module.name }}
                     onClick={() => {
                       setEquipmentGroup(getEquipmentGroup(group))
                       setPage(2)
                     }}
                   />
+                  {userContext?.user?.userGroupType === 'admin' ? (
+                    <EditEquipmentGroup
+                      equipmentGroup={{ name: group, module: module.name }}
+                    />
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -101,7 +106,6 @@ export const ChooseComponentPage: FC = () => {
             return (
               <div key={index} className={styles.equipmentContainer}>
                 <Group
-                  isAdmin={false}
                   group={component}
                   onClick={() =>
                     history.push(
