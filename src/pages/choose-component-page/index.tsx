@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react'
+import React, { useState, useEffect, FC, useContext } from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import styles from './ChooseComponentPage.module.css'
 import { SUB_ROUTES } from '../../routes/routes.constants'
@@ -11,6 +11,8 @@ import useFetch from 'use-http'
 import { IComponent } from '../../models/component'
 import { APIResponse } from '../../models/api-response'
 import { IModule } from '../../models/module'
+import { CreateEquipmentGroup } from '../../components/create-equipment-group'
+import { UserContext } from '../../utils/context/userContext'
 
 export const ChooseComponentPage: FC = () => {
   const history = useHistory()
@@ -19,6 +21,8 @@ export const ChooseComponentPage: FC = () => {
   const [modules, setModules] = useState<IModule[]>([])
   const [equipmentgroup, setEquipmentGroup] = useState<IGroup[]>([])
   const [allComponents, setAllComponents] = useState<IComponent[]>([])
+
+  const userContext = useContext(UserContext)
 
   const { get: componentGet, response: componentResponse } = useFetch<
     APIResponse<IComponent>
@@ -30,9 +34,6 @@ export const ChooseComponentPage: FC = () => {
 
   useEffect(() => {
     loadComponents()
-  }, [])
-
-  useEffect(() => {
     loadModules()
   }, [])
 
@@ -51,10 +52,6 @@ export const ChooseComponentPage: FC = () => {
       (component) => component.equipmentGroup === group
     ) as IGroup[]
 
-  const equipmentGroups = allComponents.map(
-    (component) => component.equipmentGroup
-  )
-
   if (pageState === 1) {
     return (
       <div className={styles.container}>
@@ -64,24 +61,25 @@ export const ChooseComponentPage: FC = () => {
             <span className={styles.moduletitle}>{module.name}</span>
             <div className={styles.components} key={module.name}>
               {module.equipmentGroups.map((group, index) => (
-                <>
-                  {equipmentGroups.includes(group) ? (
-                    <div key={index} className={styles.equipmentContainer}>
-                      <Group
-                        isAdmin={false}
-                        group={{ name: group }}
-                        onClick={() => {
-                          setEquipmentGroup(getEquipmentGroup(group))
-                          setPage(2)
-                        }}
-                      />
-                    </div>
-                  ) : null}
-                </>
+                <div key={index} className={styles.equipmentContainer}>
+                  <Group
+                    isAdmin={false}
+                    group={{ name: group, module: module.name }}
+                    onClick={() => {
+                      setEquipmentGroup(getEquipmentGroup(group))
+                      setPage(2)
+                    }}
+                  />
+                </div>
               ))}
             </div>
           </>
         ))}
+        {userContext?.user?.userGroupType === 'admin' ? (
+          <div className={styles.newComponentButton}>
+            <CreateEquipmentGroup />
+          </div>
+        ) : null}
       </div>
     )
   }

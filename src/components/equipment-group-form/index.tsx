@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
+import Loader from 'react-loader-spinner'
 
 import Modal from 'react-modal'
+import useFetch from 'use-http'
+import { APIResponse } from '../../models/api-response'
+import { IModule } from '../../models/module'
 
 import { Button } from '../button'
 import { InputField } from '../input-field'
+import { SearchField } from '../search-field'
 
 import styles from './EquipmentGroupForm.module.css'
 
@@ -13,6 +18,7 @@ export interface IGroup {
   name: string
   symbol?: File
   symbolUrl?: string
+  module?: string
 }
 
 export interface EquipmentGroupFormProps {
@@ -31,8 +37,13 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
   equipmentGroup,
 }: EquipmentGroupFormProps) => {
   const [formState, setFormState] = useState<IGroup>(
-    equipmentGroup ?? { name: '', symbol: undefined }
+    equipmentGroup ?? { name: '', symbol: undefined, module: '' }
   )
+
+  const { data = { success: false, data: undefined }, loading } = useFetch<
+    APIResponse<IModule[]>
+  >('/modules', [])
+
   return (
     <Modal
       isOpen={isOpen}
@@ -41,27 +52,34 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
     >
       <h2>{equipmentGroup ? 'Edit' : 'Add'} Equipment Group</h2>
       <div className={styles.form}>
-        <InputField
-          label="Name"
-          variant="standard"
-          type="text"
-          value={formState.name}
-          placeholder="Equipment group name"
-          onValueChanged={(value) =>
-            setFormState({ ...formState, name: value as string })
-          }
-        />
-        <InputField
-          label="Symbol"
-          variant="standard"
-          type="file"
-          value={undefined}
-          placeholder="Equipment group symbol"
-          icon="add_photo_alternate"
-          onValueChanged={(value) =>
-            setFormState({ ...formState, symbol: (value as FileList)[0] })
-          }
-        />
+        {loading ? (
+          <Loader height={24} type="Grid" color="grey" />
+        ) : (
+          <>
+            <InputField
+              label="Name"
+              variant="standard"
+              type="text"
+              value={formState.name}
+              placeholder="Equipment group name"
+              onValueChanged={(value) =>
+                setFormState({ ...formState, name: value as string })
+              }
+            />
+            <SearchField
+              variant="secondary"
+              suggestions={data.data?.map((module) => module.name) ?? []}
+              label="Module"
+              placeholder="Equipment Group module"
+              onClick={(value) =>
+                setFormState({ ...formState, module: value as string })
+              }
+              onValueChanged={() => {
+                return
+              }}
+            />
+          </>
+        )}
       </div>
       <Button label="Save" onClick={() => onSave(formState)} />
       <Button

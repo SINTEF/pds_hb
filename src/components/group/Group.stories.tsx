@@ -17,6 +17,7 @@ Standard.args = {
     name: 'Fire equipment',
     symbolUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png',
+    module: 'Input devices',
   },
 }
 
@@ -27,6 +28,7 @@ Editable.args = {
     name: 'Fire equipment',
     symbolUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aiga_fire_extinguisher.svg/337px-Aiga_fire_extinguisher.svg.png',
+    module: 'Input devices',
   },
 }
 
@@ -35,5 +37,6 @@ NoImg.args = {
   isAdmin: false,
   group: {
     name: 'Fire equipment',
+    module: 'Input devices',
   },
 }

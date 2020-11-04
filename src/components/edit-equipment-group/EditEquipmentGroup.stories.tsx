@@ -21,5 +21,6 @@ Standard.parameters = {
 Standard.args = {
   equipmentGroup: {
     name: 'nameNespm',
+    module: 'Input devices',
   },
 }
