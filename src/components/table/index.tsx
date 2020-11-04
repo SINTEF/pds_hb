@@ -36,12 +36,13 @@ export const Table: React.FC<TableProps> = ({ data, headers }: TableProps) => {
             </tr>
           )
         })}
-      </tr>
-      {tableRows.length > 0 ? (
-        tableRows
-      ) : (
-        <tr className={styles.noContent}>Nothing matched the chosen filters</tr>
-      )}
+        {tableRows.length > 0 ? (
+          tableRows
+        ) : (
+          <tr className={styles.noContent}>
+            Nothing matched the chosen filters
+          </tr>
+        )}
       </tbody>
     </table>
   )
