@@ -13,6 +13,7 @@ import { APIResponse } from '../../models/api-response'
 import { IModule } from '../../models/module'
 import { CreateEquipmentGroup } from '../../components/create-equipment-group'
 import { UserContext } from '../../utils/context/userContext'
+import { CreateModule } from '../../components/create-module'
 
 export const ChooseComponentPage: FC = () => {
   const history = useHistory()
@@ -76,6 +77,7 @@ export const ChooseComponentPage: FC = () => {
         {userContext?.user?.userGroupType === 'admin' ? (
           <div className={styles.newComponentButton}>
             <CreateEquipmentGroup />
+            <CreateModule />
           </div>
         ) : null}
       </div>

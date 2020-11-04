@@ -36,3 +36,14 @@
   color: #003d65;
   cursor: pointer;
 }
+
+.newComponentButton {
+  align-self: end;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.newComponentButton > * {
+  margin-bottom: 10px;
+}
