@@ -9,6 +9,7 @@ import { IUserContext } from '../../models/user'
 import { useHistory, useParams, useRouteMatch } from 'react-router-dom'
 import { EditableField, FieldForm } from '../../components/editable-field'
 import Loader from 'react-loader-spinner'
+import { Button } from '../../components/button'
 
 export interface IUpdateData {
   company: string
@@ -27,6 +28,7 @@ export const UpdateDataPage: React.FC = () => {
   const {
     put: datainstancePut,
     data: datainstance,
+    del: datainstanceDel,
     response: datainstanceResponse,
     error: datainstanceError,
     loading: datainstanceLoading,
@@ -45,13 +47,10 @@ export const UpdateDataPage: React.FC = () => {
     const index = form.index
 
     switch (index) {
-      case 'Edit T':
-        data['T'] = form.content
-        break
       case 'Edit DU':
         data['du'] = form.content
         break
-      case 'Edit Populationsize':
+      case 'Edit populationsize':
         data['populationSize'] = form.content
         break
       case 'Edit comment':
@@ -63,6 +62,10 @@ export const UpdateDataPage: React.FC = () => {
     }
 
     datainstancePut(data)
+  }
+
+  const deleteDatainstance = async () => {
+    await datainstanceDel()
   }
 
   return (
@@ -79,12 +82,6 @@ export const UpdateDataPage: React.FC = () => {
                 dynamic={datainstance.data.facility}
               />
               <div className={styles.data}>
-                <EditableField
-                  index="Edit T"
-                  content={datainstance.data.T.toString()}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
                 <EditableField
                   index="Edit DU"
                   content={datainstance.data.du.toString()}
@@ -111,11 +108,23 @@ export const UpdateDataPage: React.FC = () => {
                     onSubmit={() => false}
                   />
                 )}
-                <div
-                  className={styles.back}
-                  onClick={() => history.push(url.replace(datainstanceId, ''))}
-                >
-                  {'< Back'}
+                <div className={styles.button}>
+                  <div
+                    className={styles.back}
+                    onClick={() =>
+                      history.push(url.replace('/update/' + datainstanceId, ''))
+                    }
+                  >
+                    {'< Back'}
+                  </div>
+                  <Button
+                    type="danger"
+                    label="Delete"
+                    onClick={() => {
+                      history.push(url.replace('/update/' + datainstanceId, ''))
+                      deleteDatainstance()
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -159,7 +168,9 @@ export const UpdateDataPage: React.FC = () => {
                 />
                 <div
                   className={styles.back}
-                  onClick={() => history.push(url.replace(datainstanceId, ''))}
+                  onClick={() =>
+                    history.push(url.replace('update/' + datainstanceId, ''))
+                  }
                 >
                   {'< Back'}
                 </div>
