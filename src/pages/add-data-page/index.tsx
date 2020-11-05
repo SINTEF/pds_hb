@@ -20,7 +20,7 @@ export interface Form {
   du: number | null
   populationSize: number | null
   company: string | undefined
-  l3: Record<string, string> | null
+  L3: Record<string, string> | null
   comment: string
 }
 
@@ -47,7 +47,7 @@ export const AddDataPage: React.FC = () => {
     du: null,
     populationSize: null,
     company: undefined,
-    l3: null,
+    L3: null,
     comment: '',
   })
 
@@ -198,7 +198,7 @@ export const AddDataPage: React.FC = () => {
               label={formatCamelCase(filter)}
               suggestions={values as string[]}
               placeholder={
-                dataState.l3
+                dataState.L3
                   ? undefined
                   : 'Choose ' + filter.replace('-', ' ') + '...'
               }
@@ -206,8 +206,8 @@ export const AddDataPage: React.FC = () => {
               onClick={(value) => {
                 setData({
                   ...dataState,
-                  l3: {
-                    ...dataState.l3,
+                  L3: {
+                    ...dataState.L3,
                     [filter]: value,
                   },
                 })
@@ -247,7 +247,7 @@ export const AddDataPage: React.FC = () => {
                 company: dataState.company,
                 startDate: new Date(),
                 endDate: new Date(),
-                l3: null,
+                L3: null,
                 comment: '',
               })
               setPage(2)
