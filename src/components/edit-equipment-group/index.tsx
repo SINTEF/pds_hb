@@ -24,10 +24,6 @@ export const EditEquipmentGroup: React.FC<EditEquipmentGroupProps> = ({
     setModalOpen(false)
   }
 
-  const onDelete = () => {
-    setModalOpen(false)
-  }
-
   return (
     <>
       <Ripples>
@@ -41,7 +37,7 @@ export const EditEquipmentGroup: React.FC<EditEquipmentGroupProps> = ({
       <EquipmentGroupForm
         isOpen={modalOpen}
         equipmentGroup={equipmentGroup}
-        {...{ onSave, onCancel, onDelete }}
+        {...{ onSave, onCancel }}
       />
     </>
   )

@@ -25,7 +25,6 @@ export interface EquipmentGroupFormProps {
   isOpen: boolean
   onSave: (formValue: IGroup) => void
   onCancel: () => void
-  onDelete?: () => void
   equipmentGroup?: IGroup
 }
 
@@ -33,7 +32,6 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
   isOpen,
   onSave,
   onCancel,
-  onDelete,
   equipmentGroup,
 }: EquipmentGroupFormProps) => {
   const [formState, setFormState] = useState<IGroup>(
@@ -83,11 +81,7 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
         )}
       </div>
       <Button label="Save" onClick={() => onSave(formState)} />
-      <Button
-        label={equipmentGroup ? 'Delete group' : 'Cancel'}
-        type="danger"
-        onClick={equipmentGroup && onDelete ? onDelete : onCancel}
-      />
+      <Button label="Cancel" type="danger" onClick={() => onCancel()} />
     </Modal>
   )
 }

@@ -14,7 +14,6 @@ export interface ModuleFormProps {
   isOpen: boolean
   onSave: (formValue: IModule) => void
   onCancel: () => void
-  onDelete?: () => void
   equipmentModule?: IModule
 }
 
@@ -22,7 +21,6 @@ export const ModuleForm: React.FC<ModuleFormProps> = ({
   isOpen,
   onSave,
   onCancel,
-  onDelete,
   equipmentModule,
 }: ModuleFormProps) => {
   const [formState, setFormState] = useState<IModule>(
@@ -51,11 +49,7 @@ export const ModuleForm: React.FC<ModuleFormProps> = ({
         </>
       </div>
       <Button label="Save" onClick={() => onSave(formState)} />
-      <Button
-        label={equipmentModule ? 'Delete module' : 'Cancel'}
-        type="danger"
-        onClick={equipmentModule && onDelete ? onDelete : onCancel}
-      />
+      <Button label="Cancel" type="danger" onClick={() => onCancel()} />
     </Modal>
   )
 }

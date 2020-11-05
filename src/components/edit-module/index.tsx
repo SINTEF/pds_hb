@@ -23,10 +23,6 @@ export const EditModule: React.FC<EditModuleProps> = ({
     setModalOpen(false)
   }
 
-  const onDelete = () => {
-    setModalOpen(false)
-  }
-
   return (
     <>
       <Ripples>
@@ -40,7 +36,7 @@ export const EditModule: React.FC<EditModuleProps> = ({
       <ModuleForm
         isOpen={modalOpen}
         equipmentModule={equipmentModule}
-        {...{ onSave, onCancel, onDelete }}
+        {...{ onSave, onCancel }}
       />
     </>
   )
