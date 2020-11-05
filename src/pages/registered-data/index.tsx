@@ -167,6 +167,7 @@ export const RegisteredDataPage: React.FC = () => {
                     <td>{'T'}</td>
                     <td>{'PopulationSize'}</td>
                     <td>{'DU'}</td>
+                    <td>{'Status'}</td>
                     <td> {'Comment'}</td>
                     <td> {'SINTEF comment'}</td>
                     <td></td>
@@ -182,6 +183,7 @@ export const RegisteredDataPage: React.FC = () => {
                 <label className={styles.fontSize}>{data.T}</label>
                 <label className={styles.fontSize}>{data.populationSize}</label>
                 <label className={styles.fontSize}>{data.du}</label>
+                <label className={styles.fontSize}>{data.status}</label>
                 <label className={styles.fontSize}>{data.comment}</label>
                 <label className={styles.fontSize}>{data.sintefComment}</label>
                 <i
