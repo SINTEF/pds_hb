@@ -37,6 +37,7 @@ export const Table: React.FC<TableProps> = ({ data, headers }: TableProps) => {
               </tr>
             )
           })}
+          {tableRows}
         </tbody>
       </table>
       {tableRows.length === 0 && (

@@ -20,7 +20,7 @@ export interface Form {
   du: number | null
   populationSize: number | null
   company: string | undefined
-  l3: Record<string, string> | []
+  l3: Record<string, string> | null
   comment: string
 }
 
@@ -47,7 +47,7 @@ export const AddDataPage: React.FC = () => {
     du: null,
     populationSize: null,
     company: undefined,
-    l3: [],
+    l3: null,
     comment: '',
   })
 
@@ -247,7 +247,7 @@ export const AddDataPage: React.FC = () => {
                 company: dataState.company,
                 startDate: new Date(),
                 endDate: new Date(),
-                l3: [],
+                l3: null,
                 comment: '',
               })
               setPage(2)
