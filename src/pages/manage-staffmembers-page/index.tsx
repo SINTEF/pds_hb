@@ -148,7 +148,7 @@ export const ManageStaffmembersPage: React.FC = () => {
               </div>
               {' more possible users to add.'}
             </div>
-            {(companyData?.data.maxUsers ?? 0) - (staffState.length ?? 0) >=
+            {(companyData?.data.maxUsers ?? 0) - (staffState.length ?? 0) >
               0 && (
               <>
                 <InputField

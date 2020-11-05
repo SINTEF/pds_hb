@@ -19,13 +19,12 @@
 .responseOk {
   color: chartreuse;
   position: absolute;
-  top: 860px;
+  top: 200px;
   right: 400px;
 }
 
 .back {
   cursor: pointer;
-  padding-top: 40px;
   color: #003d65;
   text-decoration: underline;
 }
@@ -33,6 +32,14 @@
 .responseError {
   color: red;
   position: absolute;
-  top: 860px;
+  top: 200px;
   right: 400px;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
 }
