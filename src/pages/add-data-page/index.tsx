@@ -21,8 +21,7 @@ export interface Form {
   populationSize: number | null
   company: string | undefined
   l3: Record<string, string> | null
-  comment: string | null
-  sintefComment: string
+  comment: string
 }
 
 interface componentReq {
@@ -49,8 +48,7 @@ export const AddDataPage: React.FC = () => {
     populationSize: null,
     company: undefined,
     l3: null,
-    comment: null,
-    sintefComment: 'Not commented',
+    comment: '',
   })
 
   const valid_datainstance = () => {
@@ -146,7 +144,7 @@ export const AddDataPage: React.FC = () => {
             variant="standard"
             type="date"
             label="Start period"
-            placeholder={dataState.startDate ? undefined : 'yyyy-mm-dd...'}
+            placeholder={dataState.startDate ? undefined : 'dd-mm-yyyy...'}
             value={dataState.startDate}
             onValueChanged={(value) => {
               setData({ ...dataState, startDate: value as Date })
@@ -156,7 +154,7 @@ export const AddDataPage: React.FC = () => {
             variant="standard"
             type="date"
             label="End period"
-            placeholder={dataState.endDate ? undefined : 'yyyy-mm-dd...'}
+            placeholder={dataState.endDate ? undefined : 'dd-mm-yyyy...'}
             value={dataState.endDate}
             onValueChanged={(value) => {
               setData({ ...dataState, endDate: value as Date })
@@ -218,7 +216,7 @@ export const AddDataPage: React.FC = () => {
             />
           ))}
         </div>
-        {valid_datainstance && (
+        {valid_datainstance() && (
           <div className={styles.button}>
             <Button
               onClick={() => {
@@ -240,7 +238,6 @@ export const AddDataPage: React.FC = () => {
           <Button
             label={'Add more data'}
             onClick={() => {
-              setPage(2)
               setData({
                 ...dataState,
                 facility: dataState.facility,
@@ -251,8 +248,9 @@ export const AddDataPage: React.FC = () => {
                 startDate: new Date(),
                 endDate: new Date(),
                 l3: null,
-                comment: null,
+                comment: '',
               })
+              setPage(2)
             }}
           />
         </div>

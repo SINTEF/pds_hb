@@ -28,6 +28,7 @@ export const BrowseComponentPage: React.FC = () => {
 
   const headers = [
     'Failure rates',
+    'Company',
     'Source',
     'DU',
     'T',
@@ -117,6 +118,7 @@ export const BrowseComponentPage: React.FC = () => {
   const requestToData = (request: IDataInstance[]) => {
     return (request ?? []).map((data) => [
       data.failureRates?.toString(),
+      data.company,
       data.facility,
       data.du?.toString(),
       data.T?.toString(),

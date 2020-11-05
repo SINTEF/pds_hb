@@ -2319,6 +2319,9 @@ exports[`Storyshots pages/Browse Standard 1`] = `
                   Failure rates
                 </th>
                 <th>
+                  Company
+                </th>
+                <th>
                   Source
                 </th>
                 <th>
@@ -2341,14 +2344,11 @@ exports[`Storyshots pages/Browse Standard 1`] = `
                 </th>
               </tr>
             </thead>
-            <tbody>
-              <tr
-                className="noContent"
-              >
-                Nothing matched the chosen filters
-              </tr>
-            </tbody>
+            <tbody />
           </table>
+          <div>
+            Nothing matched the chosen filters
+          </div>
         </div>
       </div>
     </div>
