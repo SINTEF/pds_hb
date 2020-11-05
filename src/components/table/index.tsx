@@ -18,32 +18,30 @@ export const Table: React.FC<TableProps> = ({ data, headers }: TableProps) => {
     </tr>
   ))
   return (
-    <table className={styles.dataTable}>
-      <thead>
-        <tr>
-          {headers.map((header, index) => {
-            return <th key={index}>{header}</th>
-          })}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((dataCategory, dataIndex) => {
-          return (
-            <tr key={dataIndex}>
-              {dataCategory.map((dataInstance, index) => {
-                return <td key={index}>{dataInstance}</td>
-              })}
-            </tr>
-          )
-        })}
-        {tableRows.length > 0 ? (
-          tableRows
-        ) : (
-          <tr className={styles.noContent}>
-            Nothing matched the chosen filters
+    <>
+      <table className={styles.dataTable}>
+        <thead>
+          <tr>
+            {headers.map((header, index) => {
+              return <th key={index}>{header}</th>
+            })}
           </tr>
-        )}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((dataCategory, dataIndex) => {
+            return (
+              <tr key={dataIndex}>
+                {dataCategory.map((dataInstance, index) => {
+                  return <td key={index}>{dataInstance}</td>
+                })}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+      {tableRows.length === 0 && (
+        <div>{'Nothing matched the chosen filters'}</div>
+      )}
+    </>
   )
 }
