@@ -62,7 +62,10 @@ export const CompanyPage: React.FC = () => {
           </Route>
           <Route
             exact
-            path={path + COMPANY_SUB_ROUTES.REG_DATA + SUB_ROUTES.VIEW}
+            path={[
+              path + COMPANY_SUB_ROUTES.REG_DATA + SUB_ROUTES.VIEW,
+              path + SUB_ROUTES.VIEW,
+            ]}
           >
             <RegisteredDataPage />
           </Route>
