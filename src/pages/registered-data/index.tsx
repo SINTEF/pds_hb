@@ -163,7 +163,7 @@ export const RegisteredDataPage: React.FC = () => {
               <table className={styles.headers}>
                 <tbody>
                   <tr>
-                    <td>{'Component'}</td>
+                    <td>{'Creation date'}</td>
                     <td>{'T'}</td>
                     <td>{'PopulationSize'}</td>
                     <td>{'DU'}</td>
@@ -178,7 +178,9 @@ export const RegisteredDataPage: React.FC = () => {
           <div>
             {failuredataState?.map((data, key) => (
               <RegisteredDataField key={key}>
-                <label className={styles.fontSize}>{data.component}</label>
+                <label className={styles.fontSize}>
+                  {new Date(data.created as Date).toLocaleDateString()}
+                </label>
                 <label className={styles.fontSize}>{data.T}</label>
                 <label className={styles.fontSize}>{data.populationSize}</label>
                 <label className={styles.fontSize}>{data.du}</label>
