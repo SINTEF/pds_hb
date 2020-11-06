@@ -30,7 +30,11 @@ export const RegisteredDataPage: React.FC = () => {
   >({})
   const equipmentGroup = compState?.equipmentGroup
   const componentNames = components
-    .filter((component) => component.equipmentGroup === equipmentGroup)
+    .filter(
+      (component) =>
+        component.equipmentGroup === equipmentGroup &&
+        component.name !== componentName
+    )
     .map((component) => component.name.replace('-', ' '))
   const history = useHistory()
 
@@ -132,12 +136,7 @@ export const RegisteredDataPage: React.FC = () => {
               onClick={(newcomp) => {
                 setComp(getComponent(newcomp))
                 history.push(
-                  MAIN_ROUTES.COMPANY +
-                    COMPANY_SUB_ROUTES.REG_DATA +
-                    SUB_ROUTES.VIEW.replace(
-                      ':componentName',
-                      newcomp.replace(' ', '-')
-                    )
+                  url.replace(componentName, newcomp.replace(' ', '-'))
                 )
               }}
             />
