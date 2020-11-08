@@ -7,6 +7,8 @@ import { IUser } from '../../models/user'
 import { APIResponse } from '../../models/api-response'
 import { IDataInstance } from '../../models/datainstance'
 import { Button } from '../../components/button'
+import { SUB_ROUTES } from '../../routes/routes.constants'
+import { useHistory, useRouteMatch } from 'react-router-dom'
 
 interface IClicked {
   notReviewed: string
@@ -15,6 +17,8 @@ interface IClicked {
 }
 
 export const AllEditsPage: React.FC = () => {
+  const history = useHistory()
+  const { url } = useRouteMatch()
   const [clickState, setClick] = useState<IClicked>({
     notReviewed: 'clicked',
     approved: 'notClicked',
@@ -153,12 +157,22 @@ export const AllEditsPage: React.FC = () => {
         (possibleRelease() ? (
           <>
             {notReviewedState.length > 0 && (
-              <div className={styles.listtitles}>
-                <div>{'Component'}</div>
-                <div>{'Company'}</div>
-                <div>{'Comment'}</div>
-                <div>{'       '}</div>
-                <div>{'Failure Rate'}</div>
+              <div className={styles.table}>
+                <div>
+                  <table className={styles.headers}>
+                    <tbody>
+                      <tr>
+                        <td>{'Component'}</td>
+                        <td>{'Company'}</td>
+                        <td>{'Comment'}</td>
+                        <td>{'Failure Rate'}</td>
+                        <td>{'SINTEF comment'}</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
             {notReviewedState &&
@@ -176,23 +190,28 @@ export const AllEditsPage: React.FC = () => {
                         <div className={styles.datainstances} key={idx}>
                           {edit.company}
                         </div>,
-                        <div
-                          className={[
-                            styles.datainstances,
-                            styles.comment,
-                          ].join(' ')}
-                          key={idx}
-                        >
+                        <div className={styles.datainstances} key={idx}>
                           {edit.comment}
                         </div>,
+                        <div className={styles.datainstances} key={idx}>
+                          {edit.failureRates}
+                        </div>,
                         <div
-                          className={[
-                            styles.datainstances,
-                            styles.failureRate,
-                          ].join(' ')}
+                          onClick={() =>
+                            history.push(
+                              url +
+                                SUB_ROUTES.UPDATE.replace(
+                                  ':datainstanceId',
+                                  edit._id
+                                )
+                            )
+                          }
+                          className={[styles.datainstances, styles.edit].join(
+                            ' '
+                          )}
                           key={idx}
                         >
-                          {edit.failureRates}
+                          {edit.sintefComment}
                         </div>,
                         <div
                           className={styles.approve}
@@ -247,12 +266,22 @@ export const AllEditsPage: React.FC = () => {
       {pageState === 'Approved' &&
         (possibleRelease() ? (
           <>
-            <div className={styles.listtitles}>
-              <div>{'Component'}</div>
-              <div>{'Company'}</div>
-              <div>{'Comment'}</div>
-              <div>{'       '}</div>
-              <div>{'Failure Rate'}</div>
+            <div className={styles.table}>
+              <div>
+                <table className={styles.headers}>
+                  <tbody>
+                    <tr>
+                      <td>{'Component'}</td>
+                      <td>{'Company'}</td>
+                      <td>{'Comment'}</td>
+                      <td>{'Failure Rate'}</td>
+                      <td>{'SINTEF comment'}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
             {approvedState &&
               approvedState?.map(
@@ -269,23 +298,28 @@ export const AllEditsPage: React.FC = () => {
                         <div className={styles.datainstances} key={idx}>
                           {edit.company}
                         </div>,
-                        <div
-                          className={[
-                            styles.datainstances,
-                            styles.comment,
-                          ].join(' ')}
-                          key={idx}
-                        >
+                        <div className={styles.datainstances} key={idx}>
                           {edit.comment}
                         </div>,
+                        <div className={styles.datainstances} key={idx}>
+                          {edit.failureRates}
+                        </div>,
                         <div
-                          className={[
-                            styles.datainstances,
-                            styles.failureRate,
-                          ].join(' ')}
+                          onClick={() =>
+                            history.push(
+                              url +
+                                SUB_ROUTES.UPDATE.replace(
+                                  ':datainstanceId',
+                                  edit._id
+                                )
+                            )
+                          }
+                          className={[styles.datainstances, styles.edit].join(
+                            ' '
+                          )}
                           key={idx}
                         >
-                          {edit.failureRates}
+                          {edit.sintefComment}
                         </div>,
                         <div key={idx}>{}</div>,
                         <div
@@ -311,12 +345,22 @@ export const AllEditsPage: React.FC = () => {
         ))}
       {pageState === 'Not Approved' && (
         <>
-          <div className={styles.listtitles}>
-            <div>{'Component'}</div>
-            <div>{'Company'}</div>
-            <div>{'Comment'}</div>
-            <div>{'       '}</div>
-            <div>{'Failure Rate'}</div>
+          <div className={styles.table}>
+            <div>
+              <table className={styles.headers}>
+                <tbody>
+                  <tr>
+                    <td>{'Component'}</td>
+                    <td>{'Company'}</td>
+                    <td>{'Comment'}</td>
+                    <td>{'Failure Rate'}</td>
+                    <td>{'SINTEF comment'}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           {notApprovedState &&
             notApprovedState?.map(
@@ -333,22 +377,28 @@ export const AllEditsPage: React.FC = () => {
                       <div className={styles.datainstances} key={idx}>
                         {edit.company}
                       </div>,
+                      <div className={styles.datainstances} key={idx}>
+                        {edit.comment}
+                      </div>,
+                      <div className={styles.datainstances} key={idx}>
+                        {edit.failureRates}
+                      </div>,
                       <div
-                        className={[styles.datainstances, styles.comment].join(
+                        onClick={() =>
+                          history.push(
+                            url +
+                              SUB_ROUTES.UPDATE.replace(
+                                ':datainstanceId',
+                                edit._id
+                              )
+                          )
+                        }
+                        className={[styles.datainstances, styles.edit].join(
                           ' '
                         )}
                         key={idx}
                       >
-                        {edit.comment}
-                      </div>,
-                      <div
-                        className={[
-                          styles.datainstances,
-                          styles.failureRate,
-                        ].join(' ')}
-                        key={idx}
-                      >
-                        {edit.failureRates}
+                        {edit.sintefComment}
                       </div>,
                       <div
                         className={styles.approve}

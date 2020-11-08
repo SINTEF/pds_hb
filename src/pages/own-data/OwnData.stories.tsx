@@ -6,9 +6,6 @@ import { OwnDataPage } from '.'
 export default {
   title: 'pages/OwnDataPage',
   component: OwnDataPage,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as Meta
 
 const Template: Story = (args) => <OwnDataPage {...args} />
