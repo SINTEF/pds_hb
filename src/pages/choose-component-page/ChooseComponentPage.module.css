@@ -6,6 +6,11 @@
   width: 100%;
 }
 
+.newComponentButton {
+  align-self: end;
+  margin: 20px;
+}
+
 .components {
   display: flex;
   align-items: flex-start;

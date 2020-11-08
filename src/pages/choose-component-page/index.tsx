@@ -1,7 +1,7 @@
-import React, { useState, useEffect, FC } from 'react'
+import React, { useState, useEffect, FC, useContext } from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import styles from './ChooseComponentPage.module.css'
-import { SUB_ROUTES } from '../../routes/routes.constants'
+import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
 
 import { Title } from '../../components/title'
 
@@ -11,12 +11,19 @@ import useFetch from 'use-http'
 import { IComponent } from '../../models/component'
 import { APIResponse } from '../../models/api-response'
 import { IModule } from '../../models/module'
+import { Button } from '../../components/button'
+import { UserContext } from '../../utils/context/userContext'
 
 export const ChooseComponentPage: FC = () => {
   const history = useHistory()
   const { url } = useRouteMatch()
+  const userContext = useContext(UserContext)
   const [pageState, setPage] = useState<number>(1)
   const [modules, setModules] = useState<IModule[]>([])
+  const [selectedModule, setSelectedModule] = useState<string>('')
+  const [selectedEquipmentGroup, setSelectedEquipmentGroup] = useState<string>(
+    ''
+  )
   const [equipmentgroup, setEquipmentGroup] = useState<IGroup[]>([])
   const [allComponents, setAllComponents] = useState<IComponent[]>([])
 
@@ -46,7 +53,7 @@ export const ChooseComponentPage: FC = () => {
     if (moduleResponse.ok) setModules(modules.data)
   }
 
-  const getEquipmentGroup = (group: string) =>
+  const getEquipmentGroupComponents = (group: string) =>
     allComponents.filter(
       (component) => component.equipmentGroup === group
     ) as IGroup[]
@@ -71,7 +78,9 @@ export const ChooseComponentPage: FC = () => {
                         isAdmin={false}
                         group={{ name: group }}
                         onClick={() => {
-                          setEquipmentGroup(getEquipmentGroup(group))
+                          setEquipmentGroup(getEquipmentGroupComponents(group))
+                          setSelectedModule(module.name)
+                          setSelectedEquipmentGroup(group)
                           setPage(2)
                         }}
                       />
@@ -119,6 +128,24 @@ export const ChooseComponentPage: FC = () => {
             )
           })}
         </div>
+        {userContext?.user?.userGroupType === 'admin' ? (
+          <div className={styles.newComponentButton}>
+            <Button
+              label="Add new component"
+              onClick={() =>
+                history.push(
+                  MAIN_ROUTES.ADD_COMPONENT.replace(
+                    ':groupModule',
+                    selectedModule.replace(' ', '+')
+                  ).replace(
+                    ':equipmentGroup',
+                    selectedEquipmentGroup.replace(' ', '+')
+                  )
+                )
+              }
+            />
+          </div>
+        ) : null}
       </div>
     )
   } else {

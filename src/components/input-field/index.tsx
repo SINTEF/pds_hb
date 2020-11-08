@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import styles from './InputField.module.css'
 
 export interface InputProps {
-  onValueChanged: (value: string | number | Date | FileList | null) => void
   value: string | number | Date | undefined
+  onValueChanged: (value: string | number | FileList | Date | null) => void
   type?: 'text' | 'textarea' | 'number' | 'email' | 'password' | 'file' | 'date'
   variant?: 'primary' | 'standard'
   label: string
