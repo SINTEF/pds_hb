@@ -2684,7 +2684,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             <div
               className="lambdaDU"
             >
-              λDU: 
+              λDU (Per 10^6 hours): 
             </div>
             <div
               className="lambdaDUnumber"
@@ -2694,7 +2694,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             <div
               className="lambdaDU"
             >
-              Average failure rate of displayed data: 
+              Average failure rate of displayed data (Per 10^6 hours): 
             </div>
             <div
               className="failureNumber"
