@@ -280,7 +280,7 @@ export const AddDataPage: React.FC = () => {
                 company: dataState.company,
                 startDate: new Date(),
                 endDate: new Date(),
-                l3: null,
+                L3: null,
                 comment: '',
               })
             }}
