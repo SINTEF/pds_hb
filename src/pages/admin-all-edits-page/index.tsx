@@ -104,7 +104,7 @@ export const AllEditsPage: React.FC = () => {
     return notReviewedState.length > 0 || approvedState.length > 0
   }
 
-  const existsApproved = () => {
+  const approvedEditsExists = () => {
     return approvedState.length > 0
   }
 
@@ -263,13 +263,13 @@ export const AllEditsPage: React.FC = () => {
         ) : (
           <div className={styles.centerInfo}>
             {
-              "Seems like the PDS users doesn't experience any failures these days!"
+              "Seems like the PDS users don't experience any failures these days!"
             }
           </div>
         ))}
       {pageState === 'Approved' &&
         (possibleRelease() ? (
-          existsApproved() ? (
+          approvedEditsExists() ? (
             <>
               <div className={styles.table}>
                 <div>
@@ -343,13 +343,13 @@ export const AllEditsPage: React.FC = () => {
             </>
           ) : (
             <div className={styles.centerInfo}>
-              {'There are no approved edits for the moment...'}
+              {'There are no approved edits at the moment...'}
             </div>
           )
         ) : (
           <div className={styles.centerInfo}>
             {
-              "Seems like the PDS users doesn't experience any failures these days!"
+              "Seems like the PDS users don't experience any failures these days!"
             }
           </div>
         ))}
