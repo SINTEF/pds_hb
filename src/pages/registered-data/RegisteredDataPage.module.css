@@ -7,8 +7,9 @@
 .filters {
   display: flex;
   position: absolute;
-  top: 220px;
+  top: 200px;
   gap: 1rem;
+  padding-left: 4px;
 }
 
 .component {
@@ -23,7 +24,7 @@
 }
 
 .table {
-  margin-top: 150px;
+  margin-top: 70px;
 }
 
 .headers {

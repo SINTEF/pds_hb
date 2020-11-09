@@ -11,6 +11,11 @@ import { IUserContext } from '../../models/user'
 
 import { IComponent } from '../../models/component'
 import { formatCamelCase } from '../../utils/casing'
+import { useHistory } from 'react-router-dom'
+import MAIN_ROUTES, {
+  COMPANY_SUB_ROUTES,
+  SUB_ROUTES,
+} from '../../routes/routes.constants'
 
 export interface Form {
   facility: string | null
@@ -30,6 +35,7 @@ interface componentReq {
 }
 
 export const AddDataPage: React.FC = () => {
+  const history = useHistory()
   const { post, get } = useFetch()
 
   const userContext = useContext(UserContext) as IUserContext
@@ -53,6 +59,7 @@ export const AddDataPage: React.FC = () => {
 
   const valid_datainstance = () => {
     return (
+      dataState.component &&
       dataState.startDate &&
       dataState.endDate &&
       dataState.du &&
@@ -251,6 +258,31 @@ export const AddDataPage: React.FC = () => {
                 comment: '',
               })
               setPage(2)
+            }}
+          />
+          <Button
+            label={'See all registered data'}
+            onClick={() => {
+              history.push(
+                MAIN_ROUTES.COMPANY +
+                  COMPANY_SUB_ROUTES.REG_DATA +
+                  SUB_ROUTES.VIEW.replace(
+                    ':componentName',
+                    dataState.component as string
+                  )
+              )
+              setData({
+                ...dataState,
+                facility: dataState.facility,
+                component: null,
+                du: null,
+                populationSize: null,
+                company: dataState.company,
+                startDate: new Date(),
+                endDate: new Date(),
+                l3: null,
+                comment: '',
+              })
             }}
           />
         </div>

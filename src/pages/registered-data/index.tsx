@@ -30,7 +30,11 @@ export const RegisteredDataPage: React.FC = () => {
   >({})
   const equipmentGroup = compState?.equipmentGroup
   const componentNames = components
-    .filter((component) => component.equipmentGroup === equipmentGroup)
+    .filter(
+      (component) =>
+        component.equipmentGroup === equipmentGroup &&
+        component.name !== componentName
+    )
     .map((component) => component.name.replace('-', ' '))
   const history = useHistory()
 
@@ -132,12 +136,7 @@ export const RegisteredDataPage: React.FC = () => {
               onClick={(newcomp) => {
                 setComp(getComponent(newcomp))
                 history.push(
-                  MAIN_ROUTES.COMPANY +
-                    COMPANY_SUB_ROUTES.REG_DATA +
-                    SUB_ROUTES.VIEW.replace(
-                      ':componentName',
-                      newcomp.replace(' ', '-')
-                    )
+                  url.replace(componentName, newcomp.replace(' ', '-'))
                 )
               }}
             />
@@ -163,7 +162,7 @@ export const RegisteredDataPage: React.FC = () => {
               <table className={styles.headers}>
                 <tbody>
                   <tr>
-                    <td>{'Component'}</td>
+                    <td>{'Creation date'}</td>
                     <td>{'T'}</td>
                     <td>{'PopulationSize'}</td>
                     <td>{'DU'}</td>
@@ -179,7 +178,9 @@ export const RegisteredDataPage: React.FC = () => {
           <div>
             {failuredataState?.map((data, key) => (
               <RegisteredDataField key={key}>
-                <label className={styles.fontSize}>{data.component}</label>
+                <label className={styles.fontSize}>
+                  {new Date(data.created as Date).toLocaleDateString()}
+                </label>
                 <label className={styles.fontSize}>{data.T}</label>
                 <label className={styles.fontSize}>{data.populationSize}</label>
                 <label className={styles.fontSize}>{data.du}</label>
