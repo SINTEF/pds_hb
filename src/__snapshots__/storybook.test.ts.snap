@@ -1665,98 +1665,6 @@ exports[`Storyshots Table Table Component 1`] = `
         Even more data
       </td>
     </tr>
-    <tr>
-      <td>
-        0,3
-      </td>
-      <td>
-        Facility A
-      </td>
-      <td>
-        10
-      </td>
-      <td>
-        2,8*10^7 h
-      </td>
-      <td>
-        2006-2018
-      </td>
-      <td>
-        659
-      </td>
-      <td>
-        Very cool data
-      </td>
-    </tr>
-    <tr>
-      <td>
-        0,5
-      </td>
-      <td>
-        Facility C
-      </td>
-      <td>
-        8
-      </td>
-      <td>
-        2,8* 10^9 h
-      </td>
-      <td>
-        1999-2020
-      </td>
-      <td>
-        666
-      </td>
-      <td>
-        This data is data
-      </td>
-    </tr>
-    <tr>
-      <td>
-        0,8
-      </td>
-      <td>
-        Facility B
-      </td>
-      <td>
-        12
-      </td>
-      <td>
-        2,7* 10^5 h
-      </td>
-      <td>
-        2019-2020
-      </td>
-      <td>
-        123
-      </td>
-      <td>
-        Another instance of data
-      </td>
-    </tr>
-    <tr>
-      <td>
-        0,8
-      </td>
-      <td>
-        Facility B
-      </td>
-      <td>
-        12
-      </td>
-      <td>
-        2,7* 10^5 h
-      </td>
-      <td>
-        2019-2020
-      </td>
-      <td>
-        123
-      </td>
-      <td>
-        Even more data
-      </td>
-    </tr>
   </tbody>
 </table>
 `;
@@ -2829,9 +2737,6 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
         </div>
         <div>
           Email
-        </div>
-        <div>
-              
         </div>
         <div>
               

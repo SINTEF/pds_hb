@@ -55,16 +55,16 @@
   grid-auto-flow: column;
   width: 80%;
   padding-bottom: 20px;
-  padding-right: 90px;
+  padding-right: 5px;
 }
 
 .padding {
-  padding-left: 120px;
+  padding-left: 140px;
 }
 
 .position {
   position: relative;
-  right: 33px;
+  right: 26px;
 }
 
 .errorpage {

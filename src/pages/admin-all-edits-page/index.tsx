@@ -104,6 +104,10 @@ export const AllEditsPage: React.FC = () => {
     return notReviewedState.length > 0 || approvedState.length > 0
   }
 
+  const approvedEditsExists = () => {
+    return approvedState.length > 0
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -236,7 +240,7 @@ export const AllEditsPage: React.FC = () => {
                   ) ?? []
               )}
             {notReviewedState.length > 0 ? (
-              <div>
+              <div className={styles.centerInfo}>
                 {'Please complete the review before publishing a new edition.'}
               </div>
             ) : (
@@ -259,87 +263,93 @@ export const AllEditsPage: React.FC = () => {
         ) : (
           <div className={styles.centerInfo}>
             {
-              "Seems like the PDS users does'nt experience any failures these days!"
+              "Seems like the PDS users don't experience any failures these days!"
             }
           </div>
         ))}
       {pageState === 'Approved' &&
         (possibleRelease() ? (
-          <>
-            <div className={styles.table}>
-              <div>
-                <table className={styles.headers}>
-                  <tbody>
-                    <tr>
-                      <td>{'Component'}</td>
-                      <td>{'Company'}</td>
-                      <td>{'Comment'}</td>
-                      <td>{'Failure Rate'}</td>
-                      <td>{'SINTEF comment'}</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
+          approvedEditsExists() ? (
+            <>
+              <div className={styles.table}>
+                <div>
+                  <table className={styles.headers}>
+                    <tbody>
+                      <tr>
+                        <td>{'Component'}</td>
+                        <td>{'Company'}</td>
+                        <td>{'Comment'}</td>
+                        <td>{'Failure Rate'}</td>
+                        <td>{'SINTEF comment'}</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
-            {approvedState &&
-              approvedState?.map(
-                (
-                  edit,
-                  idx // type any?
-                ) =>
+              {approvedState &&
+                approvedState?.map(
                   (
-                    <RegisteredDataField key={idx}>
-                      {[
-                        <div className={styles.datainstances} key={idx}>
-                          {edit.component}
-                        </div>,
-                        <div className={styles.datainstances} key={idx}>
-                          {edit.company}
-                        </div>,
-                        <div className={styles.datainstances} key={idx}>
-                          {edit.comment}
-                        </div>,
-                        <div className={styles.datainstances} key={idx}>
-                          {edit.failureRates}
-                        </div>,
-                        <div
-                          onClick={() =>
-                            history.push(
-                              url +
-                                SUB_ROUTES.UPDATE.replace(
-                                  ':datainstanceId',
-                                  edit._id
-                                )
-                            )
-                          }
-                          className={[styles.datainstances, styles.edit].join(
-                            ' '
-                          )}
-                          key={idx}
-                        >
-                          {edit.sintefComment}
-                        </div>,
-                        <div key={idx}>{}</div>,
-                        <div
-                          className={styles.remove}
-                          onClick={() => {
-                            disApproveEdit(edit._id)
-                          }}
-                          key={idx}
-                        >
-                          {'Disapprove'}
-                        </div>,
-                      ]}
-                    </RegisteredDataField>
-                  ) ?? []
-              )}
-          </>
+                    edit,
+                    idx // type any?
+                  ) =>
+                    (
+                      <RegisteredDataField key={idx}>
+                        {[
+                          <div className={styles.datainstances} key={idx}>
+                            {edit.component}
+                          </div>,
+                          <div className={styles.datainstances} key={idx}>
+                            {edit.company}
+                          </div>,
+                          <div className={styles.datainstances} key={idx}>
+                            {edit.comment}
+                          </div>,
+                          <div className={styles.datainstances} key={idx}>
+                            {edit.failureRates}
+                          </div>,
+                          <div
+                            onClick={() =>
+                              history.push(
+                                url +
+                                  SUB_ROUTES.UPDATE.replace(
+                                    ':datainstanceId',
+                                    edit._id
+                                  )
+                              )
+                            }
+                            className={[styles.datainstances, styles.edit].join(
+                              ' '
+                            )}
+                            key={idx}
+                          >
+                            {edit.sintefComment}
+                          </div>,
+                          <div key={idx}>{}</div>,
+                          <div
+                            className={styles.remove}
+                            onClick={() => {
+                              disApproveEdit(edit._id)
+                            }}
+                            key={idx}
+                          >
+                            {'Disapprove'}
+                          </div>,
+                        ]}
+                      </RegisteredDataField>
+                    ) ?? []
+                )}
+            </>
+          ) : (
+            <div className={styles.centerInfo}>
+              {'There are no approved edits at the moment...'}
+            </div>
+          )
         ) : (
           <div className={styles.centerInfo}>
             {
-              "Seems like the PDS users does'nt experience any failures these days!"
+              "Seems like the PDS users don't experience any failures these days!"
             }
           </div>
         ))}

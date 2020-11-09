@@ -109,7 +109,6 @@ export const ManageStaffmembersPage: React.FC = () => {
               <div>{'Username'}</div>
               <div>{'Email'}</div>
               <div>{'    '}</div>
-              <div>{'    '}</div>
               <div>{'Phone'}</div>
             </div>
             {staffState &&
