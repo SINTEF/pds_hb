@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Loader from 'react-loader-spinner'
 
 import Modal from 'react-modal'
-import useFetch from 'use-http'
+import useFetch, { CachePolicies } from 'use-http'
 import { APIResponse } from '../../models/api-response'
 import { IModule } from '../../models/module'
 
@@ -38,9 +38,22 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
     equipmentGroup ?? { name: '', symbol: undefined, module: '' }
   )
 
-  const { data = { success: false, data: undefined }, loading } = useFetch<
+  const { data = { success: false, data: undefined }, loading, get } = useFetch<
     APIResponse<IModule[]>
-  >('/modules', [])
+  >(
+    '/modules',
+    (options) => {
+      options.cachePolicy = CachePolicies.NO_CACHE
+      return options
+    },
+    []
+  )
+
+  useEffect(() => {
+    if (isOpen) {
+      get()
+    }
+  }, [isOpen])
 
   return (
     <Modal
