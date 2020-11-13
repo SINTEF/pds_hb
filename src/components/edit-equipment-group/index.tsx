@@ -17,7 +17,12 @@ export const EditEquipmentGroup: React.FC<EditEquipmentGroupProps> = ({
   const { put } = useFetch('modules/equipmentGroup')
 
   const onSave = (formValue: IGroup) => {
-    put({ newName: formValue.name, oldName: equipmentGroup.name })
+    put({
+      newName: formValue.name,
+      oldName: equipmentGroup.name,
+      newModule: formValue.module,
+      oldModule: equipmentGroup.module,
+    })
     setModalOpen(false)
   }
   const onCancel = () => {

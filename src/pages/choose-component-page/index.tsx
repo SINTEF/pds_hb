@@ -86,7 +86,6 @@ export const ChooseComponentPage: FC = () => {
                         equipmentGroup={{ name: group, module: module.name }}
                       />
                     ) : null}
-                    )
                   </div>
                 </>
               ))}
@@ -109,31 +108,36 @@ export const ChooseComponentPage: FC = () => {
         <div className={styles.back} onClick={() => setPage(1)}>
           {' < Back'}
         </div>
-        <span className={styles.moduletitle}>
-          {
-            allComponents.find((comp) => comp.name === equipmentGroup[0].name)
-              ?.equipmentGroup
-          }
-        </span>
+        <span className={styles.moduletitle}>{selectedEquipmentGroup}</span>
         <div className={styles.components}>
-          {equipmentGroup.map((component, index) => {
-            return (
-              <div key={index} className={styles.equipmentContainer}>
-                <Group
-                  group={component}
-                  onClick={() =>
-                    history.push(
-                      url +
-                        SUB_ROUTES.VIEW.replace(
-                          ':componentName',
-                          component.name.replace(' ', '-')
-                        )
-                    )
-                  }
-                ></Group>
-              </div>
-            )
-          })}
+          {equipmentGroup.length > 0 ? (
+            equipmentGroup.map((component, index) => {
+              return (
+                <div key={index} className={styles.equipmentContainer}>
+                  <Group
+                    group={component}
+                    onClick={() =>
+                      history.push(
+                        url +
+                          SUB_ROUTES.VIEW.replace(
+                            ':componentName',
+                            component.name.replace(' ', '-')
+                          )
+                      )
+                    }
+                  ></Group>
+                </div>
+              )
+            })
+          ) : (
+            <div className={styles.equipmentContainer}>
+              <p>
+                Looks like this equipment group doesn&apos;t have any components
+                in it yet.
+              </p>
+              <p>You can add one using the button below</p>
+            </div>
+          )}
         </div>
         {userContext?.user?.userGroupType === 'admin' ? (
           <div className={styles.newComponentButton}>

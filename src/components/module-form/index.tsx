@@ -33,7 +33,7 @@ export const ModuleForm: React.FC<ModuleFormProps> = ({
       onRequestClose={() => onCancel()}
       className={styles.content}
     >
-      <h2>{equipmentModule ? 'Edit' : 'Add'} Equipment Group</h2>
+      <h2>{equipmentModule ? 'Edit' : 'Add'} Module</h2>
       <div className={styles.form}>
         <>
           <InputField
