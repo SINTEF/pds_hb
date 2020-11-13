@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC, useContext } from 'react'
+import React, { useState, useEffect, FC, useContext, useCallback } from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import styles from './ChooseComponentPage.module.css'
 import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
@@ -7,7 +7,7 @@ import { Title } from '../../components/title'
 
 import { Group } from '../../components/group'
 import { IGroup } from '../../components/equipment-group-form'
-import useFetch from 'use-http'
+import useFetch, { CachePolicies } from 'use-http'
 import { IComponent } from '../../models/component'
 import { APIResponse } from '../../models/api-response'
 import { IModule } from '../../models/module'
@@ -34,24 +34,36 @@ export const ChooseComponentPage: FC = () => {
 
   const { get: componentGet, response: componentResponse } = useFetch<
     APIResponse<IComponent>
-  >('/components')
+  >('/components', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
   const { get: moduleGet, response: moduleResponse } = useFetch<
     APIResponse<IModule>
-  >('/modules')
+  >('/modules', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
-  useEffect(() => {
-    const loadComponents = async () => {
-      const components = await componentGet()
-      if (componentResponse.ok) setAllComponents(components.data)
-    }
-    const loadModules = async () => {
-      const modules = await moduleGet()
-      if (moduleResponse.ok) setModules(modules.data)
-    }
+  const loadComponents = useCallback(async () => {
+    const components = await componentGet()
+    if (componentResponse.ok) setAllComponents(components.data)
+  }, [componentGet, componentResponse])
+
+  const loadModules = useCallback(async () => {
+    const modules = await moduleGet()
+    if (moduleResponse.ok) setModules(modules.data)
+  }, [moduleGet, moduleResponse])
+
+  const refreshData = useCallback(() => {
     loadComponents()
     loadModules()
-  }, [componentGet, moduleGet, componentResponse, moduleResponse])
+  }, [loadComponents, loadModules])
+
+  useEffect(() => {
+    refreshData()
+  }, [loadComponents, loadModules])
 
   const getEquipmentGroupComponents = (group: string) =>
     allComponents.filter(
@@ -66,7 +78,10 @@ export const ChooseComponentPage: FC = () => {
           <>
             <div className={styles.moduletitle}>
               <span>{module.name}</span>
-              <EditModule equipmentModule={module} />
+              <EditModule
+                equipmentModule={module}
+                afterSave={() => refreshData()}
+              />
             </div>
             <div className={styles.components} key={module.name}>
               {module.equipmentGroups.map((group, index) => (
@@ -84,6 +99,7 @@ export const ChooseComponentPage: FC = () => {
                     {userContext?.user?.userGroupType === 'admin' ? (
                       <EditEquipmentGroup
                         equipmentGroup={{ name: group, module: module.name }}
+                        afterSave={() => refreshData()}
                       />
                     ) : null}
                   </div>
@@ -94,8 +110,8 @@ export const ChooseComponentPage: FC = () => {
         ))}
         {userContext?.user?.userGroupType === 'admin' ? (
           <div className={styles.newComponentButton}>
-            <CreateEquipmentGroup />
-            <CreateModule />
+            <CreateEquipmentGroup afterSave={() => refreshData()} />
+            <CreateModule afterSave={() => refreshData()} />
           </div>
         ) : null}
       </div>

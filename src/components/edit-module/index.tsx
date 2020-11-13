@@ -8,10 +8,12 @@ import styles from './EditModule.module.css'
 
 export type EditModuleProps = {
   equipmentModule: IModule
+  afterSave?: () => void
 }
 
 export const EditModule: React.FC<EditModuleProps> = ({
   equipmentModule,
+  afterSave,
 }: EditModuleProps) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
@@ -21,6 +23,8 @@ export const EditModule: React.FC<EditModuleProps> = ({
     put({
       oldName: equipmentModule.name,
       newName: formValue.name,
+    }).then(() => {
+      if (afterSave) afterSave()
     })
     setModalOpen(false)
   }

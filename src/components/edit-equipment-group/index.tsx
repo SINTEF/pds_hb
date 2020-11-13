@@ -7,10 +7,12 @@ import styles from './EditEquipmentGroup.module.css'
 
 export type EditEquipmentGroupProps = {
   equipmentGroup: IGroup
+  afterSave?: () => void
 }
 
 export const EditEquipmentGroup: React.FC<EditEquipmentGroupProps> = ({
   equipmentGroup,
+  afterSave,
 }: EditEquipmentGroupProps) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
@@ -22,7 +24,10 @@ export const EditEquipmentGroup: React.FC<EditEquipmentGroupProps> = ({
       oldName: equipmentGroup.name,
       newModule: formValue.module,
       oldModule: equipmentGroup.module,
+    }).then(() => {
+      if (afterSave) afterSave()
     })
+
     setModalOpen(false)
   }
   const onCancel = () => {

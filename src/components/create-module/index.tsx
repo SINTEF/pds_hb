@@ -4,13 +4,20 @@ import { IModule } from '../../models/module'
 import { Button } from '../button'
 import { ModuleForm } from '../module-form'
 
-export const CreateModule: React.FC = () => {
+export type CreateModuleProps = {
+  afterSave?: () => void
+}
+
+export const CreateModule: React.FC<CreateModuleProps> = ({
+  afterSave,
+}: CreateModuleProps) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const { post } = useFetch('/modules')
-  // TODO: Send data to server for creation
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const onSave = (formValue: IModule) => {
-    post({ name: formValue.name, equipmentGroups: [] })
+    post({ name: formValue.name, equipmentGroups: [] }).then(() => {
+      if (afterSave) afterSave()
+    })
     setModalOpen(false)
   }
   const onCancel = () => {

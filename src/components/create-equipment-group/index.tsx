@@ -3,13 +3,19 @@ import useFetch from 'use-http'
 import { Button } from '../button'
 import { IGroup, EquipmentGroupForm } from '../equipment-group-form'
 
-export const CreateEquipmentGroup: React.FC = () => {
+export type CreateEquipmentGroupProps = {
+  afterSave?: () => void
+}
+
+export const CreateEquipmentGroup: React.FC<CreateEquipmentGroupProps> = ({
+  afterSave,
+}: CreateEquipmentGroupProps) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const { put } = useFetch('/modules')
-  // TODO: Send data to server for creation
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSave = (formValue: IGroup) => {
-    put({ name: formValue.module, equipmentGroup: formValue.name })
+    put({ name: formValue.module, equipmentGroup: formValue.name }).then(() => {
+      if (afterSave) afterSave()
+    })
     setModalOpen(false)
   }
   const onCancel = () => {
