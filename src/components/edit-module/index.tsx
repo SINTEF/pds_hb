@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Ripples from 'react-ripples'
+import useFetch from 'use-http'
 import { IModule } from '../../models/module'
 import { ModuleForm } from '../module-form'
 
@@ -14,9 +15,13 @@ export const EditModule: React.FC<EditModuleProps> = ({
 }: EditModuleProps) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
-  // TODO: Send data to server for creation
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { put } = useFetch('modules/rename')
+
   const onSave = (formValue: IModule) => {
+    put({
+      oldName: equipmentModule.name,
+      newName: formValue.name,
+    })
     setModalOpen(false)
   }
   const onCancel = () => {
