@@ -2160,6 +2160,7 @@ exports[`Storyshots pages/AddComponentPage Standard 1`] = `
         className="field"
       >
         <input
+          defaultValue=""
           onChange={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
