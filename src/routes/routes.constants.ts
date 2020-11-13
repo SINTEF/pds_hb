@@ -4,12 +4,12 @@ const MAIN_ROUTES = {
   READ: '/read',
   BROWSE: '/browse',
   ADD: '/add',
+  ADD_COMPONENT: '/add-component/:groupModule/:equipmentGroup',
   COMPANY: '/company',
   ACCOUNT: '/account',
   ADMIN: '/admin',
   NOT_FOUND: '*',
   ADMIN_COMPANY: '/admin-company',
-  UPDATE: '/update/:objectId',
   REGISTER: '/register',
 }
 
@@ -22,6 +22,7 @@ export const COMPANY_SUB_ROUTES = {
 
 export const SUB_ROUTES = {
   VIEW: '/view/:componentName',
+  UPDATE: '/update/:datainstanceId',
 }
 
 export const ADMIN_SUB_ROUTES = {

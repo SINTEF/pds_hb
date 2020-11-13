@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
-import useFetch from 'use-http'
+import { useHistory, useParams, useRouteMatch } from 'react-router-dom'
+import useFetch, { CachePolicies } from 'use-http'
 import MAIN_ROUTES, {
   COMPANY_SUB_ROUTES,
   SUB_ROUTES,
@@ -20,6 +20,7 @@ import { RegisteredDataField } from '../../components/registered-data-field'
 
 export const RegisteredDataPage: React.FC = () => {
   const { componentName } = useParams<{ componentName: string }>()
+  const { url } = useRouteMatch()
   const userContext = useContext(UserContext) as IUserContext
   const [compState, setComp] = useState<IComponent>()
   const [components, setComponents] = useState<IComponent[]>([])
@@ -29,7 +30,11 @@ export const RegisteredDataPage: React.FC = () => {
   >({})
   const equipmentGroup = compState?.equipmentGroup
   const componentNames = components
-    .filter((component) => component.equipmentGroup === equipmentGroup)
+    .filter(
+      (component) =>
+        component.equipmentGroup === equipmentGroup &&
+        component.name !== componentName
+    )
     .map((component) => component.name.replace('-', ' '))
   const history = useHistory()
 
@@ -41,13 +46,19 @@ export const RegisteredDataPage: React.FC = () => {
     get: componentGet,
     response: componentResponse,
     loading: componentLoad,
-  } = useFetch<APIResponse<IComponent>>('/components')
+  } = useFetch<APIResponse<IComponent>>('/components', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
   const {
     get: datainstanceGet,
     response: datainstanceResponse,
     loading: datainstanceLoad,
-  } = useFetch<APIResponse<IDataInstance>>('/data-instances')
+  } = useFetch<APIResponse<IDataInstance>>('/data-instances', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
 
   useEffect(() => {
     const loadComponents = async () => {
@@ -125,12 +136,7 @@ export const RegisteredDataPage: React.FC = () => {
               onClick={(newcomp) => {
                 setComp(getComponent(newcomp))
                 history.push(
-                  MAIN_ROUTES.COMPANY +
-                    COMPANY_SUB_ROUTES.REG_DATA +
-                    SUB_ROUTES.VIEW.replace(
-                      ':componentName',
-                      newcomp.replace(' ', '-')
-                    )
+                  url.replace(componentName, newcomp.replace(' ', '-'))
                 )
               }}
             />
@@ -156,11 +162,13 @@ export const RegisteredDataPage: React.FC = () => {
               <table className={styles.headers}>
                 <tbody>
                   <tr>
-                    <td>{'Component'}</td>
+                    <td>{'Creation date'}</td>
                     <td>{'T'}</td>
                     <td>{'PopulationSize'}</td>
                     <td>{'DU'}</td>
+                    <td>{'Status'}</td>
                     <td> {'Comment'}</td>
+                    <td> {'SINTEF comment'}</td>
                     <td></td>
                   </tr>
                 </tbody>
@@ -170,18 +178,23 @@ export const RegisteredDataPage: React.FC = () => {
           <div>
             {failuredataState?.map((data, key) => (
               <RegisteredDataField key={key}>
-                <label className={styles.fontSize}>{data.component}</label>
+                <label className={styles.fontSize}>
+                  {new Date(data.created as Date).toLocaleDateString()}
+                </label>
                 <label className={styles.fontSize}>{data.T}</label>
                 <label className={styles.fontSize}>{data.populationSize}</label>
                 <label className={styles.fontSize}>{data.du}</label>
+                <label className={styles.fontSize}>{data.status}</label>
                 <label className={styles.fontSize}>{data.comment}</label>
+                <label className={styles.fontSize}>{data.sintefComment}</label>
                 <i
                   onClick={() =>
                     history.push(
-                      MAIN_ROUTES.UPDATE.replace(
-                        ':objectId',
-                        data._id.replace(' ', '+')
-                      )
+                      url +
+                        SUB_ROUTES.UPDATE.replace(
+                          ':datainstanceId',
+                          data._id.replace(' ', '+')
+                        )
                     )
                   }
                   className={'material-icons ' + styles.icon}

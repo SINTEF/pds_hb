@@ -1,13 +1,15 @@
 .container {
   align-content: center;
   padding-right: 70px;
+  padding-bottom: 100px;
 }
 
 .filters {
   display: flex;
   position: absolute;
-  top: 300px;
+  top: 200px;
   gap: 1rem;
+  padding-left: 4px;
 }
 
 .component {
@@ -22,7 +24,7 @@
 }
 
 .table {
-  margin-top: 180px;
+  margin-top: 70px;
 }
 
 .headers {

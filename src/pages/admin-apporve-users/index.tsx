@@ -58,9 +58,6 @@ export const ApproveUsersPage: React.FC = () => {
           <div className={styles.listtitles}>
             <div>{'Name'}</div>
             <div>{'Email'}</div>
-            <div>{'     '}</div>
-            <div>{'     '}</div>
-            <div>{'     '}</div>
           </div>
           {usersState &&
             usersState?.map(

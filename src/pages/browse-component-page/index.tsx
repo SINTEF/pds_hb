@@ -28,6 +28,7 @@ export const BrowseComponentPage: React.FC = () => {
 
   const headers = [
     'Failure rates',
+    'Company',
     'Source',
     'DU',
     'T',
@@ -117,6 +118,7 @@ export const BrowseComponentPage: React.FC = () => {
   const requestToData = (request: IDataInstance[]) => {
     return (request ?? []).map((data) => [
       data.failureRates?.toString(),
+      data.company,
       data.facility,
       data.du?.toString(),
       data.T?.toString(),
@@ -152,7 +154,7 @@ export const BrowseComponentPage: React.FC = () => {
     DuValues.forEach((value) => (totalDu += value))
     let totalT = 1
     TValues.forEach((value) => (totalT += value))
-    return totalDu / (totalT - 1)
+    return (10 ** 6 * totalDu) / (totalT - 1)
   }
 
   const LDU = useMemo(
@@ -248,10 +250,14 @@ export const BrowseComponentPage: React.FC = () => {
               </div>
               <div className={styles.table}>
                 <div className={styles.DUcontainer}>
-                  <div className={styles.lambdaDU}>{'λDU: '}</div>
+                  <div className={styles.lambdaDU}>
+                    {'λDU (Per 10^6 hours): '}
+                  </div>
                   <div className={styles.lambdaDUnumber}>{lambdaDU}</div>
                   <div className={styles.lambdaDU}>
-                    {'Average failure rate of displayed data: '}
+                    {
+                      'Average failure rate of displayed data (Per 10^6 hours): '
+                    }
                   </div>
                   <div className={styles.failureNumber}>
                     {averageFailureRate}

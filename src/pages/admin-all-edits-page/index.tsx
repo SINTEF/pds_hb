@@ -7,6 +7,8 @@ import { IUser } from '../../models/user'
 import { APIResponse } from '../../models/api-response'
 import { IDataInstance } from '../../models/datainstance'
 import { Button } from '../../components/button'
+import { SUB_ROUTES } from '../../routes/routes.constants'
+import { useHistory, useRouteMatch } from 'react-router-dom'
 
 interface IClicked {
   notReviewed: string
@@ -15,6 +17,8 @@ interface IClicked {
 }
 
 export const AllEditsPage: React.FC = () => {
+  const history = useHistory()
+  const { url } = useRouteMatch()
   const [clickState, setClick] = useState<IClicked>({
     notReviewed: 'clicked',
     approved: 'notClicked',
@@ -100,6 +104,10 @@ export const AllEditsPage: React.FC = () => {
     return notReviewedState.length > 0 || approvedState.length > 0
   }
 
+  const approvedEditsExists = () => {
+    return approvedState.length > 0
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -153,12 +161,22 @@ export const AllEditsPage: React.FC = () => {
         (possibleRelease() ? (
           <>
             {notReviewedState.length > 0 && (
-              <div className={styles.listtitles}>
-                <div>{'Component'}</div>
-                <div>{'Company'}</div>
-                <div>{'Comment'}</div>
-                <div>{'       '}</div>
-                <div>{'Failure Rate'}</div>
+              <div className={styles.table}>
+                <div>
+                  <table className={styles.headers}>
+                    <tbody>
+                      <tr>
+                        <td>{'Component'}</td>
+                        <td>{'Company'}</td>
+                        <td>{'Comment'}</td>
+                        <td>{'Failure Rate'}</td>
+                        <td>{'SINTEF comment'}</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
             {notReviewedState &&
@@ -176,23 +194,28 @@ export const AllEditsPage: React.FC = () => {
                         <div className={styles.datainstances} key={idx}>
                           {edit.company}
                         </div>,
-                        <div
-                          className={[
-                            styles.datainstances,
-                            styles.comment,
-                          ].join(' ')}
-                          key={idx}
-                        >
+                        <div className={styles.datainstances} key={idx}>
                           {edit.comment}
                         </div>,
+                        <div className={styles.datainstances} key={idx}>
+                          {edit.failureRates}
+                        </div>,
                         <div
-                          className={[
-                            styles.datainstances,
-                            styles.failureRate,
-                          ].join(' ')}
+                          onClick={() =>
+                            history.push(
+                              url +
+                                SUB_ROUTES.UPDATE.replace(
+                                  ':datainstanceId',
+                                  edit._id
+                                )
+                            )
+                          }
+                          className={[styles.datainstances, styles.edit].join(
+                            ' '
+                          )}
                           key={idx}
                         >
-                          {edit.failureRates}
+                          {edit.sintefComment}
                         </div>,
                         <div
                           className={styles.approve}
@@ -217,7 +240,7 @@ export const AllEditsPage: React.FC = () => {
                   ) ?? []
               )}
             {notReviewedState.length > 0 ? (
-              <div>
+              <div className={styles.centerInfo}>
                 {'Please complete the review before publishing a new edition.'}
               </div>
             ) : (
@@ -240,83 +263,114 @@ export const AllEditsPage: React.FC = () => {
         ) : (
           <div className={styles.centerInfo}>
             {
-              "Seems like the PDS users does'nt experience any failures these days!"
+              "Seems like the PDS users don't experience any failures these days!"
             }
           </div>
         ))}
       {pageState === 'Approved' &&
         (possibleRelease() ? (
-          <>
-            <div className={styles.listtitles}>
-              <div>{'Component'}</div>
-              <div>{'Company'}</div>
-              <div>{'Comment'}</div>
-              <div>{'       '}</div>
-              <div>{'Failure Rate'}</div>
-            </div>
-            {approvedState &&
-              approvedState?.map(
-                (
-                  edit,
-                  idx // type any?
-                ) =>
+          approvedEditsExists() ? (
+            <>
+              <div className={styles.table}>
+                <div>
+                  <table className={styles.headers}>
+                    <tbody>
+                      <tr>
+                        <td>{'Component'}</td>
+                        <td>{'Company'}</td>
+                        <td>{'Comment'}</td>
+                        <td>{'Failure Rate'}</td>
+                        <td>{'SINTEF comment'}</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              {approvedState &&
+                approvedState?.map(
                   (
-                    <RegisteredDataField key={idx}>
-                      {[
-                        <div className={styles.datainstances} key={idx}>
-                          {edit.component}
-                        </div>,
-                        <div className={styles.datainstances} key={idx}>
-                          {edit.company}
-                        </div>,
-                        <div
-                          className={[
-                            styles.datainstances,
-                            styles.comment,
-                          ].join(' ')}
-                          key={idx}
-                        >
-                          {edit.comment}
-                        </div>,
-                        <div
-                          className={[
-                            styles.datainstances,
-                            styles.failureRate,
-                          ].join(' ')}
-                          key={idx}
-                        >
-                          {edit.failureRates}
-                        </div>,
-                        <div key={idx}>{}</div>,
-                        <div
-                          className={styles.remove}
-                          onClick={() => {
-                            disApproveEdit(edit._id)
-                          }}
-                          key={idx}
-                        >
-                          {'Disapprove'}
-                        </div>,
-                      ]}
-                    </RegisteredDataField>
-                  ) ?? []
-              )}
-          </>
+                    edit,
+                    idx // type any?
+                  ) =>
+                    (
+                      <RegisteredDataField key={idx}>
+                        {[
+                          <div className={styles.datainstances} key={idx}>
+                            {edit.component}
+                          </div>,
+                          <div className={styles.datainstances} key={idx}>
+                            {edit.company}
+                          </div>,
+                          <div className={styles.datainstances} key={idx}>
+                            {edit.comment}
+                          </div>,
+                          <div className={styles.datainstances} key={idx}>
+                            {edit.failureRates}
+                          </div>,
+                          <div
+                            onClick={() =>
+                              history.push(
+                                url +
+                                  SUB_ROUTES.UPDATE.replace(
+                                    ':datainstanceId',
+                                    edit._id
+                                  )
+                              )
+                            }
+                            className={[styles.datainstances, styles.edit].join(
+                              ' '
+                            )}
+                            key={idx}
+                          >
+                            {edit.sintefComment}
+                          </div>,
+                          <div key={idx}>{}</div>,
+                          <div
+                            className={styles.remove}
+                            onClick={() => {
+                              disApproveEdit(edit._id)
+                            }}
+                            key={idx}
+                          >
+                            {'Disapprove'}
+                          </div>,
+                        ]}
+                      </RegisteredDataField>
+                    ) ?? []
+                )}
+            </>
+          ) : (
+            <div className={styles.centerInfo}>
+              {'There are no approved edits at the moment...'}
+            </div>
+          )
         ) : (
           <div className={styles.centerInfo}>
             {
-              "Seems like the PDS users does'nt experience any failures these days!"
+              "Seems like the PDS users don't experience any failures these days!"
             }
           </div>
         ))}
       {pageState === 'Not Approved' && (
         <>
-          <div className={styles.listtitles}>
-            <div>{'Component'}</div>
-            <div>{'Company'}</div>
-            <div>{'Comment'}</div>
-            <div>{'       '}</div>
-            <div>{'Failure Rate'}</div>
+          <div className={styles.table}>
+            <div>
+              <table className={styles.headers}>
+                <tbody>
+                  <tr>
+                    <td>{'Component'}</td>
+                    <td>{'Company'}</td>
+                    <td>{'Comment'}</td>
+                    <td>{'Failure Rate'}</td>
+                    <td>{'SINTEF comment'}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           {notApprovedState &&
             notApprovedState?.map(
@@ -333,22 +387,28 @@ export const AllEditsPage: React.FC = () => {
                       <div className={styles.datainstances} key={idx}>
                         {edit.company}
                       </div>,
+                      <div className={styles.datainstances} key={idx}>
+                        {edit.comment}
+                      </div>,
+                      <div className={styles.datainstances} key={idx}>
+                        {edit.failureRates}
+                      </div>,
                       <div
-                        className={[styles.datainstances, styles.comment].join(
+                        onClick={() =>
+                          history.push(
+                            url +
+                              SUB_ROUTES.UPDATE.replace(
+                                ':datainstanceId',
+                                edit._id
+                              )
+                          )
+                        }
+                        className={[styles.datainstances, styles.edit].join(
                           ' '
                         )}
                         key={idx}
                       >
-                        {edit.comment}
-                      </div>,
-                      <div
-                        className={[
-                          styles.datainstances,
-                          styles.failureRate,
-                        ].join(' ')}
-                        key={idx}
-                      >
-                        {edit.failureRates}
+                        {edit.sintefComment}
                       </div>,
                       <div
                         className={styles.approve}

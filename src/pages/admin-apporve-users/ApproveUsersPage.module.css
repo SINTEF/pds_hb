@@ -1,9 +1,9 @@
 .listtitles {
   display: inline-grid;
   grid-auto-flow: column;
-  width: 105%;
+  width: 57%;
   padding-bottom: 20px;
-  padding-left: 150px;
+  padding-right: 180px;
 }
 
 .remove {

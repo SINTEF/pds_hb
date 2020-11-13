@@ -1147,7 +1147,7 @@ exports[`Storyshots RegisteredData Standard 1`] = `
           <tbody>
             <tr>
               <td>
-                Component
+                Creation date
               </td>
               <td>
                 T
@@ -1159,8 +1159,15 @@ exports[`Storyshots RegisteredData Standard 1`] = `
                 DU
               </td>
               <td>
+                Status
+              </td>
+              <td>
                  
                 Comment
+              </td>
+              <td>
+                 
+                SINTEF comment
               </td>
               <td />
             </tr>
@@ -1611,16 +1618,20 @@ exports[`Storyshots TextBox Large 1`] = `
   className="container large"
 >
   <div
-    className="titlecontainer"
+    className="head"
   >
-    Description
-    <hr
-      className="line"
-    />
+    <div
+      className="titlecontainer"
+    >
+      Description
+      <hr
+        className="line"
+      />
+    </div>
   </div>
-  <div>
+  <p>
     The detector includes the sensor and local electronics such as the address-/ interface unit.
-  </div>
+  </p>
 </div>
 `;
 
@@ -1629,21 +1640,63 @@ exports[`Storyshots TextBox Large Admin Text Box 1`] = `
   className="container large"
 >
   <div
-    className="material-icons icon"
+    className="head"
   >
-    editor
+    <div
+      className="titlecontainer"
+    >
+      Description
+      <hr
+        className="line"
+      />
+    </div>
+    <div
+      className="icon"
+    >
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <i
+          aria-label="create"
+          className="material-icons"
+          onClick={[Function]}
+          role="button"
+          style={
+            Object {
+              "cursor": "pointer",
+              "fontSize": "24px",
+            }
+          }
+        >
+          create
+        </i>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
   </div>
-  <div
-    className="titlecontainer"
-  >
-    Description
-    <hr
-      className="line"
-    />
-  </div>
-  <div>
+  <p>
     test
-  </div>
+  </p>
 </div>
 `;
 
@@ -1652,16 +1705,20 @@ exports[`Storyshots TextBox Small 1`] = `
   className="container small"
 >
   <div
-    className="titlecontainer"
+    className="head"
   >
-    Description
-    <hr
-      className="line"
-    />
+    <div
+      className="titlecontainer"
+    >
+      Description
+      <hr
+        className="line"
+      />
+    </div>
   </div>
-  <div>
+  <p>
     The detector includes the sensor and local electronics such as the address-/ interface unit.
-  </div>
+  </p>
 </div>
 `;
 
@@ -1670,21 +1727,63 @@ exports[`Storyshots TextBox Small Admin Text Box 1`] = `
   className="container small"
 >
   <div
-    className="material-icons icon"
+    className="head"
   >
-    editor
+    <div
+      className="titlecontainer"
+    >
+      Description
+      <hr
+        className="line"
+      />
+    </div>
+    <div
+      className="icon"
+    >
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <i
+          aria-label="create"
+          className="material-icons"
+          onClick={[Function]}
+          role="button"
+          style={
+            Object {
+              "cursor": "pointer",
+              "fontSize": "24px",
+            }
+          }
+        >
+          create
+        </i>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
   </div>
-  <div
-    className="titlecontainer"
-  >
-    Description
-    <hr
-      className="line"
-    />
-  </div>
-  <div>
+  <p>
     test
-  </div>
+  </p>
 </div>
 `;
 
@@ -1917,6 +2016,295 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots pages/AddComponentPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="title"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          New undefined component
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div
+    className="description"
+  >
+    <div
+      className="container large"
+    >
+      <div
+        className="head"
+      >
+        <div
+          className="titlecontainer"
+        >
+          Description*
+          <hr
+            className="line"
+          />
+        </div>
+      </div>
+      <textarea
+        onChange={[Function]}
+        placeholder="Write something here..."
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="inputfields"
+  >
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Component name*"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Component name*
+        </label>
+        <input
+          id="Component name*"
+          onChange={[Function]}
+          placeholder="Chose a component name"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Date of revision*"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Date of revision*
+        </label>
+        <input
+          id="Date of revision*"
+          onChange={[Function]}
+          placeholder="dd.mm.yyyy"
+          type="date"
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Remarks*"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Remarks*
+        </label>
+        <input
+          id="Remarks*"
+          onChange={[Function]}
+          placeholder="Add a remark"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="L3"
+  >
+    <label>
+      Add L3 properties*
+    </label>
+    <div
+      className="primary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <input
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Search..."
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        >
+          list
+        </i>
+      </div>
+      <ul />
+    </div>
+  </div>
+  <div
+    className="definition"
+  >
+    <div
+      className="container large"
+    >
+      <div
+        className="head"
+      >
+        <div
+          className="titlecontainer"
+        >
+          Definition of DU*
+          <hr
+            className="line"
+          />
+        </div>
+      </div>
+      <textarea
+        onChange={[Function]}
+        placeholder="Write something here..."
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="buttons"
+  >
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium danger"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Cancel component creation
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="feedbackGroup"
+    >
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <button
+          className="button medium primary"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": undefined,
+            }
+          }
+          type="button"
+        >
+          Save new component
+          <i
+            className="material-icons icon"
+            style={
+              Object {
+                "fontSize": "",
+              }
+            }
+          >
+            chevron_right
+          </i>
+        </button>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
 <div
   className="facilitycontainer"
@@ -2031,14 +2419,18 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           className="container large"
         >
           <div
-            className="titlecontainer"
+            className="head"
           >
-            Description
-            <hr
-              className="line"
-            />
+            <div
+              className="titlecontainer"
+            >
+              Description
+              <hr
+                className="line"
+              />
+            </div>
           </div>
-          <div />
+          <p />
         </div>
       </div>
       <div
@@ -2048,14 +2440,18 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           className="container large"
         >
           <div
-            className="titlecontainer"
+            className="head"
           >
-            Definition of DU
-            <hr
-              className="line"
-            />
+            <div
+              className="titlecontainer"
+            >
+              Definition of DU
+              <hr
+                className="line"
+              />
+            </div>
           </div>
-          <div />
+          <p />
         </div>
       </div>
       <div>
@@ -2141,7 +2537,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             <div
               className="lambdaDU"
             >
-              λDU: 
+              λDU (Per 10^6 hours): 
             </div>
             <div
               className="lambdaDUnumber"
@@ -2151,7 +2547,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             <div
               className="lambdaDU"
             >
-              Average failure rate of displayed data: 
+              Average failure rate of displayed data (Per 10^6 hours): 
             </div>
             <div
               className="failureNumber"
@@ -2166,6 +2562,9 @@ exports[`Storyshots pages/Browse Standard 1`] = `
               <tr>
                 <th>
                   Failure rates
+                </th>
+                <th>
+                  Company
                 </th>
                 <th>
                   Source
@@ -2192,6 +2591,9 @@ exports[`Storyshots pages/Browse Standard 1`] = `
             </thead>
             <tbody />
           </table>
+          <div>
+            Nothing matched the chosen filters
+          </div>
         </div>
       </div>
     </div>
@@ -2285,9 +2687,6 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
               
         </div>
         <div>
-              
-        </div>
-        <div>
           Phone
         </div>
       </div>
@@ -2305,110 +2704,6 @@ exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
           0
         </div>
          more possible users to add.
-      </div>
-      <div
-        className="standard  "
-      >
-        <div
-          className="field"
-        >
-          <label
-            className=""
-            htmlFor="Username"
-            style={
-              Object {
-                "alignSelf": "",
-              }
-            }
-          >
-            Username
-          </label>
-          <input
-            id="Username"
-            onChange={[Function]}
-            placeholder="OlaNordmann"
-            type="text"
-            value=""
-          />
-        </div>
-      </div>
-      <div
-        className="standard  "
-      >
-        <div
-          className="field"
-        >
-          <label
-            className=""
-            htmlFor="Email"
-            style={
-              Object {
-                "alignSelf": "",
-              }
-            }
-          >
-            Email
-          </label>
-          <input
-            id="Email"
-            onChange={[Function]}
-            placeholder="ola.nordmann@gmail.com"
-            type="email"
-            value=""
-          />
-        </div>
-      </div>
-      <div
-        className="standard  "
-      >
-        <div
-          className="field"
-        >
-          <label
-            className=""
-            htmlFor="Password"
-            style={
-              Object {
-                "alignSelf": "",
-              }
-            }
-          >
-            Password
-          </label>
-          <input
-            id="Password"
-            onChange={[Function]}
-            placeholder="A super safe psw"
-            type="password"
-            value=""
-          />
-        </div>
-      </div>
-      <div
-        className="standard  "
-      >
-        <div
-          className="field"
-        >
-          <label
-            className=""
-            htmlFor="Repeat password"
-            style={
-              Object {
-                "alignSelf": "",
-              }
-            }
-          >
-            Repeat password
-          </label>
-          <input
-            id="Repeat password"
-            onChange={[Function]}
-            placeholder="The same super safe psw"
-            type="password"
-            value=""
-          />
-        </div>
       </div>
     </div>
     <div

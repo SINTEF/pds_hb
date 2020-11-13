@@ -6,13 +6,17 @@
   width: 100%;
 }
 
+.newComponentButton {
+  align-self: end;
+  margin: 20px;
+}
+
 .components {
   display: flex;
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
   width: inherit;
-  height: 110%;
 }
 
 .equipmentContainer {

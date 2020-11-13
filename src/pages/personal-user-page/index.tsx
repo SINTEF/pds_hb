@@ -121,7 +121,7 @@ export const PersonalUserPage: React.FC = () => {
           ) : null}
           <div className={styles.padding}>
             <EditableField // need a function prop to store the changed value so its possible to update db
-              index="Name"
+              index="Username"
               content={userContext.user?.username}
               mode="view"
               isAdmin={true}
