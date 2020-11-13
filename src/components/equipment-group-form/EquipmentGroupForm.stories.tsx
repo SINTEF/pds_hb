@@ -5,9 +5,6 @@ import { EquipmentGroupForm, EquipmentGroupFormProps } from '.'
 export default {
   title: 'Equipment group form',
   component: EquipmentGroupForm,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as Meta
 
 const Template: Story<EquipmentGroupFormProps> = (args) => (
@@ -31,5 +28,6 @@ WithGroup.args = {
   ...Standard.args,
   equipmentGroup: {
     name: 'Fire detectors',
+    module: 'Input devices',
   },
 }

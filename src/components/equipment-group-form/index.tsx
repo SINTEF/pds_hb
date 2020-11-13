@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import Loader from 'react-loader-spinner'
 
 import Modal from 'react-modal'
+import useFetch, { CachePolicies } from 'use-http'
+import { APIResponse } from '../../models/api-response'
+import { IModule } from '../../models/module'
 
 import { Button } from '../button'
 import { InputField } from '../input-field'
+import { SearchField } from '../search-field'
 
 import styles from './EquipmentGroupForm.module.css'
 
@@ -13,13 +18,13 @@ export interface IGroup {
   name: string
   symbol?: File
   symbolUrl?: string
+  module?: string
 }
 
 export interface EquipmentGroupFormProps {
   isOpen: boolean
   onSave: (formValue: IGroup) => void
   onCancel: () => void
-  onDelete?: () => void
   equipmentGroup?: IGroup
 }
 
@@ -27,12 +32,29 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
   isOpen,
   onSave,
   onCancel,
-  onDelete,
   equipmentGroup,
 }: EquipmentGroupFormProps) => {
   const [formState, setFormState] = useState<IGroup>(
-    equipmentGroup ?? { name: '', symbol: undefined }
+    equipmentGroup ?? { name: '', symbol: undefined, module: '' }
   )
+
+  const { data = { success: false, data: undefined }, loading, get } = useFetch<
+    APIResponse<IModule[]>
+  >(
+    '/modules',
+    (options) => {
+      options.cachePolicy = CachePolicies.NO_CACHE
+      return options
+    },
+    []
+  )
+
+  useEffect(() => {
+    if (isOpen) {
+      get()
+    }
+  }, [isOpen])
+
   return (
     <Modal
       isOpen={isOpen}
@@ -41,34 +63,38 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
     >
       <h2>{equipmentGroup ? 'Edit' : 'Add'} Equipment Group</h2>
       <div className={styles.form}>
-        <InputField
-          label="Name"
-          variant="standard"
-          type="text"
-          value={formState.name}
-          placeholder="Equipment group name"
-          onValueChanged={(value) =>
-            setFormState({ ...formState, name: value as string })
-          }
-        />
-        <InputField
-          label="Symbol"
-          variant="standard"
-          type="file"
-          value={undefined}
-          placeholder="Equipment group symbol"
-          icon="add_photo_alternate"
-          onValueChanged={(value) =>
-            setFormState({ ...formState, symbol: (value as FileList)[0] })
-          }
-        />
+        {loading ? (
+          <Loader height={24} type="Grid" color="grey" />
+        ) : (
+          <>
+            <InputField
+              label="Name"
+              variant="standard"
+              type="text"
+              value={formState.name}
+              placeholder="Equipment group name"
+              onValueChanged={(value) =>
+                setFormState({ ...formState, name: value as string })
+              }
+            />
+            <SearchField
+              variant="secondary"
+              suggestions={data.data?.map((module) => module.name) ?? []}
+              label="Module"
+              placeholder="Equipment Group module"
+              onClick={(value) =>
+                setFormState({ ...formState, module: value as string })
+              }
+              defaultValue={formState.module}
+              onValueChanged={() => {
+                return
+              }}
+            />
+          </>
+        )}
       </div>
       <Button label="Save" onClick={() => onSave(formState)} />
-      <Button
-        label={equipmentGroup ? 'Delete group' : 'Cancel'}
-        type="danger"
-        onClick={equipmentGroup && onDelete ? onDelete : onCancel}
-      />
+      <Button label="Cancel" type="danger" onClick={() => onCancel()} />
     </Modal>
   )
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 
 import styles from './Group.module.css'
-import { EditEquipmentGroup } from '../edit-equipment-group'
 import { IGroup } from '../equipment-group-form'
 
 export interface GroupProps {
@@ -10,15 +9,9 @@ export interface GroupProps {
   icon?: string
 
   onClick: () => void
-
-  isAdmin?: boolean
 }
 
-export const Group: React.FC<GroupProps> = ({
-  group,
-  onClick,
-  isAdmin,
-}: GroupProps) => {
+export const Group: React.FC<GroupProps> = ({ group, onClick }: GroupProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container} onClick={onClick}>
@@ -28,9 +21,6 @@ export const Group: React.FC<GroupProps> = ({
           alt={`Icon for group ${group.name}`}
         />
         {group.name.replace('-', ' ')}
-      </div>
-      <div className={styles.icon}>
-        {isAdmin && <EditEquipmentGroup equipmentGroup={group} />}
       </div>
     </div>
   )

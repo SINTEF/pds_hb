@@ -499,58 +499,6 @@ exports[`Storyshots FilterButton Standard Filter Button 1`] = `
 </div>
 `;
 
-exports[`Storyshots Group Editable 1`] = `
-<div
-  className="wrapper"
->
-  <div
-    className="container"
-  >
-    <img
-      alt="Icon for group Fire equipment"
-      className="image"
-      src="https://www.svgrepo.com/show/131030/question-mark.svg"
-    />
-    Fire equipment
-  </div>
-  <div
-    className="icon"
-  >
-    <div
-      className="react-ripples"
-      onClick={[Function]}
-      style={
-        Object {
-          "display": "inline-flex",
-          "overflow": "hidden",
-          "position": "relative",
-        }
-      }
-    >
-      <i
-        className="material-icons icon"
-        onClick={[Function]}
-      >
-        create
-      </i>
-      <s
-        style={
-          Object {
-            "borderRadius": "50%",
-            "height": 35,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "transform": "translate(-50%, -50%)",
-            "width": 35,
-          }
-        }
-      />
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Storyshots Group No Img 1`] = `
 <div
   className="wrapper"
@@ -565,9 +513,6 @@ exports[`Storyshots Group No Img 1`] = `
     />
     Fire equipment
   </div>
-  <div
-    className="icon"
-  />
 </div>
 `;
 
@@ -585,9 +530,6 @@ exports[`Storyshots Group Standard 1`] = `
     />
     Fire equipment
   </div>
-  <div
-    className="icon"
-  />
 </div>
 `;
 
@@ -1280,6 +1222,7 @@ exports[`Storyshots Search field Primary Search Field 1`] = `
     className="field"
   >
     <input
+      defaultValue=""
       onChange={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -1309,6 +1252,7 @@ exports[`Storyshots Search field Secondary Search Field 1`] = `
       :
     </label>
     <input
+      defaultValue=""
       onChange={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -2216,6 +2160,7 @@ exports[`Storyshots pages/AddComponentPage Standard 1`] = `
         className="field"
       >
         <input
+          defaultValue=""
           onChange={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -2393,6 +2338,7 @@ exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
         :
       </label>
       <input
+        defaultValue=""
         onChange={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2812,6 +2758,7 @@ exports[`Storyshots pages/Mange facilities Standard 1`] = `
           :
         </label>
         <input
+          defaultValue=""
           onChange={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}

@@ -1,33 +1,31 @@
 import React, { useState } from 'react'
 import Ripples from 'react-ripples'
 import useFetch from 'use-http'
-import { IGroup, EquipmentGroupForm } from '../equipment-group-form'
+import { IModule } from '../../models/module'
+import { ModuleForm } from '../module-form'
 
-import styles from './EditEquipmentGroup.module.css'
+import styles from './EditModule.module.css'
 
-export type EditEquipmentGroupProps = {
-  equipmentGroup: IGroup
+export type EditModuleProps = {
+  equipmentModule: IModule
   afterSave?: () => void
 }
 
-export const EditEquipmentGroup: React.FC<EditEquipmentGroupProps> = ({
-  equipmentGroup,
+export const EditModule: React.FC<EditModuleProps> = ({
+  equipmentModule,
   afterSave,
-}: EditEquipmentGroupProps) => {
+}: EditModuleProps) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
-  const { put } = useFetch('modules/equipmentGroup')
+  const { put } = useFetch('modules/rename')
 
-  const onSave = (formValue: IGroup) => {
+  const onSave = (formValue: IModule) => {
     put({
+      oldName: equipmentModule.name,
       newName: formValue.name,
-      oldName: equipmentGroup.name,
-      newModule: formValue.module,
-      oldModule: equipmentGroup.module,
     }).then(() => {
       if (afterSave) afterSave()
     })
-
     setModalOpen(false)
   }
   const onCancel = () => {
@@ -44,9 +42,9 @@ export const EditEquipmentGroup: React.FC<EditEquipmentGroupProps> = ({
           create
         </i>
       </Ripples>
-      <EquipmentGroupForm
+      <ModuleForm
         isOpen={modalOpen}
-        equipmentGroup={equipmentGroup}
+        equipmentModule={equipmentModule}
         {...{ onSave, onCancel }}
       />
     </>

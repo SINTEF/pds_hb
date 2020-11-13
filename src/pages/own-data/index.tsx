@@ -75,7 +75,6 @@ export const OwnDataPage: FC = () => {
             {relevantEquipmentGroups.map((group, index) => (
               <div key={index} className={styles.equipmentContainer}>
                 <Group
-                  isAdmin={false}
                   group={{ name: group }}
                   onClick={() => {
                     setEquipmentGroup(getEquipmentGroup(group))
@@ -101,7 +100,6 @@ export const OwnDataPage: FC = () => {
             return (
               <div key={index} className={styles.equipmentContainer}>
                 <Group
-                  isAdmin={false}
                   group={component}
                   onClick={() =>
                     history.push(

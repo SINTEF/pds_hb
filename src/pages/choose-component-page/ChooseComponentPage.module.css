@@ -22,8 +22,10 @@
 .equipmentContainer {
   min-width: 10%;
   padding-bottom: 50px;
-  align-content: center;
   padding-left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .moduletitle {
@@ -34,9 +36,24 @@
   padding-left: 100px;
 }
 
+.moduletitle > span {
+  margin-right: 10px;
+}
+
 .back {
   align-self: flex-start;
   padding-left: 100px;
   color: #003d65;
   cursor: pointer;
+}
+
+.newComponentButton {
+  align-self: end;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.newComponentButton > * {
+  margin-bottom: 10px;
 }
