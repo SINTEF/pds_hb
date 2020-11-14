@@ -9,7 +9,7 @@ Make sure to have [node](https://nodejs.org/en/download/) and [git](https://git-
 ### Clone repository
 
 - Open your terminal and type cd followed by the source folder. 
-- When inside correct folder type git clone <<repository>>
+- When inside correct folder type git clone <_repository url_>
 
 
 ### Install dependencies
