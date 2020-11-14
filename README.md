@@ -1,6 +1,6 @@
 # Front-end for PDS data handbook
 
-This repository includes the complete front-end for the PDS data handbook application. It includes all components and pages 
+This repository includes the complete front-end for the PDS data handbook application. It includes all components and pages used in the application, in addition to the app.tsx file which combines the pages with routing. This README will act as a guide for how to install the front-end and how to run both the application and the tests.
 
 ## Installation
 
