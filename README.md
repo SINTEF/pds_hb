@@ -1,6 +1,6 @@
 # Front-end for PDS data handbook
 
-This repository includes the complete front-end for the PDS data handbook application. It includes...
+This repository includes the complete front-end for the PDS data handbook application. It includes all components and pages 
 
 ## Installation
 
@@ -9,7 +9,7 @@ Make sure to have [node](https://nodejs.org/en/download/) and [git](https://git-
 ### Clone repository
 
 - Open your terminal and type cd followed by the source folder. 
-- When inside correct folder type git clone <_repository url_>
+- When inside correct folder type git clone <[_repository url_](https://github.com/SINTEF/pds_hb.git)>
 
 
 ### Install dependencies
@@ -23,11 +23,9 @@ Make sure to have [node](https://nodejs.org/en/download/) and [git](https://git-
 
 Before running the appliaction, remember to have the [back-end](https://github.com/SINTEF/pds_hb_be/edit/dev/README.md) running locally on the same device. 
 
-```yarn start
-```
+- Type ```yarn start``` in your terminal and enjoy the PDS data handbook.
 
 ### Run tests
 
-```yarn test
-```
+- Type ```yarn test``` in your terminal and follow the instructions.
 
