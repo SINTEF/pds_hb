@@ -6,7 +6,7 @@ This repository includes the complete front-end for the PDS data handbook applic
 
 ### Clone repository
 
-Note: Make sure to have [git](https://git-scm.com/). This can be verified by typing ```git --version``` in your terminal.
+Note: Make sure to have [git](https://git-scm.com/) installed. This can be verified by typing ```git --version``` in your terminal.
 
 Clone the repository by your method of choice. To clone with HTTPS, open your terminal and navigate to the directory in which you want to clone the project. Type:
 ```
