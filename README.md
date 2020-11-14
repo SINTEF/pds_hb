@@ -10,7 +10,7 @@ Note: Make sure to have [git](https://git-scm.com/). This can be verified by typ
 
 Clone the repository by your method of choice. To clone with HTTPS, open your terminal and navigate to the directory in which you want to clone the project. Type:
 ```
-git clone https://github.com/SINTEF/pds_hb_be.git
+git clone https://github.com/SINTEF/pds_hb.git
 ```
 
 ### Install dependencies
