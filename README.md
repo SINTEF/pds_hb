@@ -8,8 +8,8 @@ Make sure to have [node](https://nodejs.org/en/download/) and [git](https://git-
 
 ### Clone repository
 
-- Open your terminal and type cd followed by the source folder. 
-- When inside correct folder type git clone <[_repository url_](https://github.com/SINTEF/pds_hb.git)>
+- Open your terminal and type ```cd``` followed by the source folder. 
+- When inside correct folder type ```git clone``` <[_repository url_](https://github.com/SINTEF/pds_hb.git)>
 
 
 ### Install dependencies
