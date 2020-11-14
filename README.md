@@ -4,28 +4,38 @@ This repository includes the complete front-end for the PDS data handbook applic
 
 ## Installation
 
-Make sure to have [node](https://nodejs.org/en/download/) and [git](https://git-scm.com/downloads) downloaded before continuing. 
-
 ### Clone repository
 
-- Open your terminal and type ```cd``` followed by the source folder. 
-- When inside correct folder type ```git clone``` <[_repository url_](https://github.com/SINTEF/pds_hb.git)>
+Note: Make sure to have [git](https://git-scm.com/). This can be verified by typing ```git --version``` in your terminal.
 
+Clone the repository by your method of choice. To clone with HTTPS, open your terminal and navigate to the directory in which you want to clone the project. Type:
+```
+git clone https://github.com/SINTEF/pds_hb_be.git
+```
 
 ### Install dependencies
 
-- Type  ```bash yarn install``` in your terminal.
+Note: Make sure to have [node](https://nodejs.org/en/download/). This can be verified by typing ```npm --version```in your terminal.
 
+In your terminal, navigate to the root directory of the repository you just cloned and type:
+```
+yarn install
+```
 
 ## Usage
 
-### Run application
+Note: Before running the appliaction, remember to have the [back-end](https://github.com/SINTEF/pds_hb_be/edit/dev/README.md) running locally on the same device. 
 
-Before running the appliaction, remember to have the [back-end](https://github.com/SINTEF/pds_hb_be/edit/dev/README.md) running locally on the same device. 
+### Running the server
 
-- Type ```yarn start``` in your terminal and enjoy the PDS data handbook.
+To run the back-end of the PDS data handbook, navigate to the root folder and type:
+```
+yarn start
+```
 
-### Run tests
+### Running the tests
 
-- Type ```yarn test``` in your terminal and follow the instructions.
-
+To run the test of the back-end, navigate to the root folder and type:
+```
+yarn test
+```
