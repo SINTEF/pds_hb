@@ -22,6 +22,10 @@
   margin-top: -20px;
 }
 
+.adminMenu {
+  height: 340px;
+}
+
 .title {
   font-size: 96px;
   color: #003d65;
