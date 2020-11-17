@@ -98,10 +98,6 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({
             onClick={() => navigateTo(MAIN_ROUTES.ADMIN_COMPANY)}
           ></MenuButton>
           <MenuButton
-            label={'Administrative'}
-            onClick={() => navigateTo(MAIN_ROUTES.ADMIN)}
-          ></MenuButton>
-          <MenuButton
             type={'logout'}
             label={'Log out'}
             onClick={logout}

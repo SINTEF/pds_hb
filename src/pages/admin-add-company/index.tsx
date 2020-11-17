@@ -119,7 +119,7 @@ export const AddCompanyPage: React.FC = () => {
           />
           <InputField
             variant="standard"
-            type="number"
+            type="text"
             label="Organisation Number"
             value={companyState.organizationNr}
             placeholder="Enter the orgNr for the new company..."
@@ -186,14 +186,14 @@ export const AddCompanyPage: React.FC = () => {
         <div>
           <div className={styles.addCEO}>
             <div>{'Company successfully added!'}</div>
-            <div>{'Please assign a CEO for the new company.'}</div>
+            <div>{'Please assign a contact person for the new company.'}</div>
           </div>
           <div>
             <InputField
               variant="standard"
               label="Username"
               value={userState.username}
-              placeholder="Enter an username for the new CEO..."
+              placeholder="Enter an username..."
               onValueChanged={(value) =>
                 setUser({ ...userState, username: value as string })
               }
@@ -203,7 +203,7 @@ export const AddCompanyPage: React.FC = () => {
               type="email"
               label="Email"
               value={userState.email}
-              placeholder="Enter an email for the new CEO..."
+              placeholder="Enter an email..."
               onValueChanged={(value) =>
                 setUser({ ...userState, email: value as string })
               }
@@ -212,16 +212,17 @@ export const AddCompanyPage: React.FC = () => {
               variant="standard"
               label="PhoneNr"
               value={userState.phoneNr}
-              placeholder="Enter a phone number for the new CEO..."
+              placeholder="Enter a phone number..."
               onValueChanged={(value) =>
                 setUser({ ...userState, phoneNr: value as string })
               }
             />
             <InputField
               variant="standard"
+              type="password"
               label="Password"
               value={userState.password}
-              placeholder="Enter a password for the new CEO..."
+              placeholder="Enter a password..."
               onValueChanged={(value) =>
                 setUser({ ...userState, password: value as string })
               }
@@ -229,7 +230,7 @@ export const AddCompanyPage: React.FC = () => {
             {validCEO() && (
               <div className={styles.button}>
                 <Button
-                  label="Add CEO"
+                  label="Add contact person"
                   onClick={() => {
                     handleNewCEO()
                   }}
@@ -241,7 +242,7 @@ export const AddCompanyPage: React.FC = () => {
       )}
       {pageState === 3 && (
         <div className={[styles.container, styles.center].join(' ')}>
-          {'CEO successfully added!'}
+          {'Contact person successfully added!'}
           <Button label="Add another company" onClick={() => setPage(1)} />
         </div>
       )}
@@ -253,8 +254,11 @@ export const AddCompanyPage: React.FC = () => {
       )}
       {pageState === 5 && (
         <div className={[styles.container, styles.center].join(' ')}>
-          {'Oh no, could not add CEO...'}
-          <Button label="Try adding CEO again" onClick={() => setPage(2)} />
+          {'Oh no, could not add the contact person...'}
+          <Button
+            label="Try adding the contact person again"
+            onClick={() => setPage(2)}
+          />
         </div>
       )}
     </div>

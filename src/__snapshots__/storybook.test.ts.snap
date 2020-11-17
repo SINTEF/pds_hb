@@ -1902,7 +1902,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
           id="Organisation Number"
           onChange={[Function]}
           placeholder="Enter the orgNr for the new company..."
-          type="number"
+          type="text"
           value=""
         />
       </div>
