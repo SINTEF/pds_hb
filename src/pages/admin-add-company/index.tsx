@@ -8,7 +8,7 @@ import { ICompany } from '../../models/company'
 import { APIResponse } from '../../models/api-response'
 import { IUser } from '../../models/user'
 
-interface InewCompany {
+interface INewCompany {
   name: string
   organizationNr: string
   email: string
@@ -18,7 +18,7 @@ interface InewCompany {
   maxUsers: number
 }
 
-interface InewUser {
+interface INewUser {
   username: string
   password: string
   email: string
@@ -46,8 +46,8 @@ export const AddCompanyPage: React.FC = () => {
     companyName: '',
     userGroupType: 'operator',
   }
-  const [companyState, setCompany] = useState<InewCompany>(defaultCompany)
-  const [userState, setUser] = useState<InewUser>(defaultUser)
+  const [companyState, setCompany] = useState<INewCompany>(defaultCompany)
+  const [userState, setUser] = useState<INewUser>(defaultUser)
 
   const { post: companyPost, response: companyResponse } = useFetch<
     APIResponse<ICompany>
@@ -104,7 +104,7 @@ export const AddCompanyPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <Title title="Add new companies" />
+        <Title title="Add new company" />
       </div>
       {pageState === 1 && (
         <div>
@@ -130,6 +130,7 @@ export const AddCompanyPage: React.FC = () => {
           <InputField
             variant="standard"
             label="Email"
+            type="email"
             value={companyState.email}
             placeholder="Enter an email for the new company..."
             onValueChanged={(value) =>
