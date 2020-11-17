@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding-bottom: 200px;
+  width: auto;
+}
+
+.buttoncontainer {
+  height: 220px;
+  padding-top: 200px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-top: 100px;
+  width: 90%;
+}
+
+.button {
+  display: flex;
+  width: 90%;
+  padding-top: 60px;
+  justify-content: flex-end;
+}
+
+.facilitycontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 300px;
+  width: auto;
+  padding-left: 200px;
+  padding-right: 200px;
+}

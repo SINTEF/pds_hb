@@ -1,0 +1,57 @@
+.button {
+  cursor: pointer;
+  border: 0;
+  text-align: left;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #ffffff;
+  margin-top: 15px;
+  object-fit: fill;
+}
+
+.container {
+  min-height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #ffffff;
+}
+
+.line {
+  margin-bottom: 2px;
+  border: none;
+  background-color: #dadada;
+  height: 1px;
+}
+
+.notify {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/*
+Elipse Notification Signal
+*/
+.notifysignal {
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 30px;
+  color: #ffffff;
+  background-color: #e00c0c;
+}
+
+.standard {
+  color: #000000;
+}
+
+.logout {
+  color: #e00c0c;
+}
+
+.clicked {
+  color: #003d65;
+}

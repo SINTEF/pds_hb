@@ -6,22 +6,31 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.0",
+    "@types/react-loader-spinner": "^3.1.1",
+    "html-react-parser": "^0.14.0",
+    "istanbul-lib-coverage": "^3.0.0",
+    "jodit-react": "^1.0.65",
+    "jwt-decode": "^3.0.0",
+    "nyc": "^15.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-loader-spinner": "^3.1.14",
+    "react-modal": "^3.11.2",
+    "react-ripples": "^2.2.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "typescript": "~3.7.2"
+    "typescript": "3.8",
+    "use-http": "^1.0.15"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "format": "prettier --write **/*.{js,jsx,ts,tsx,md,html,css}",
-    "lint": "eslint './**/*.{ts,tsx}'",
-    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
+    "format:check": "prettier --check **/*.{js,jsx,ts,tsx,md,html,css}",
+    "lint": "eslint './**/*.{ts,tsx,test.tsx}'",
+    "lint:ci": "eslint './**/*.{ts,tsx,test.tsx}' --max-warnings=0",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx,test.tsx}'",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -43,23 +52,37 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@cypress/code-coverage": "^3.8.3",
+    "@cypress/instrument-cra": "^1.4.0",
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-essentials": "^6.0.21",
     "@storybook/addon-links": "^6.0.21",
+    "@storybook/addon-storyshots": "^6.0.21",
     "@storybook/node-logger": "^6.0.21",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.21",
+    "@types/jest": "^24.0.0",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-modal": "^3.10.6",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/react-test-renderer": "^16.9.3",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "babel-loader": "^8.1.0",
+    "cypress": "^5.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react": "^1.1.7",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "husky": ">=4",
     "lint-staged": ">=10",
     "prettier": "^2.1.1",
-    "react-is": "^16.13.1"
+    "react-is": "^16.13.1",
+    "react-test-renderer": "^16.13.1"
   },
   "husky": {
     "hooks": {
@@ -67,7 +90,7 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,md,html,css}": "prettier --write",
-    "**/*.{ts,tsx}": "eslint --cache --fix"
+    "**/*.{js,jsx,ts,tsx,test.tsx,md,html,css}": "prettier --write",
+    "**/*.{ts,tsx,test.tsx}": "eslint --cache --fix --max-warnings=0"
   }
 }

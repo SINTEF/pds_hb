@@ -1,0 +1,33 @@
+.listtitles {
+  display: inline-grid;
+  grid-auto-flow: column;
+  width: 57%;
+  padding-bottom: 20px;
+  padding-right: 180px;
+}
+
+.remove {
+  color: #e00c0c;
+  border: 0px;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  padding-left: 50px;
+}
+
+.approve {
+  color: #50b836;
+  border: 0px;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  padding-left: 140px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-right: 70px;
+}

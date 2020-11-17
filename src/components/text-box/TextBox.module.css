@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 1px;
+  border-color: #000000;
+  border-style: groove;
+  padding: 20px 20px 20px 20px;
+  border-radius: 5px;
+  background-color: white;
+  line-height: 0px;
+  position: relative;
+  min-height: 100px;
+  margin-bottom: 25px;
+}
+
+.container > textarea {
+  border: none;
+  width: 100%;
+  height: 100%;
+  resize: vertical;
+}
+
+.titlecontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.line {
+  border: none;
+  background-color: #000000;
+  height: 1px;
+  margin-bottom: 20px;
+  width: 60%;
+}
+
+.head {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 30px;
+  margin-left: auto;
+}
+
+.large {
+  max-width: 100%;
+}
+
+.small {
+  max-width: 400px;
+}

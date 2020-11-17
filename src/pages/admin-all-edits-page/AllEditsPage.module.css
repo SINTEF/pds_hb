@@ -1,0 +1,87 @@
+.container {
+  width: 100%;
+  padding-right: 50px;
+  padding-bottom: 100px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.title {
+  align-self: center;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.notClicked {
+  cursor: pointer;
+}
+
+.clicked {
+  cursor: pointer;
+  font-size: x-large;
+  font-weight: bold;
+  color: #01316a;
+}
+
+.remove {
+  color: #e00c0c;
+  border: 0px;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 23px;
+  margin-left: -50px;
+}
+
+.approve {
+  color: #50b836;
+  border: 0px;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 23px;
+}
+
+.datainstances {
+  font-size: 15px;
+}
+
+.centerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 400px;
+}
+
+.headers {
+  height: 60px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  align-content: center;
+  font-size: 15px;
+}
+
+.edit {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #01316a;
+}

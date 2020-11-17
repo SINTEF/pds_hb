@@ -1,0 +1,17 @@
+.container {
+  background-color: white;
+  border: 4px solid #000000;
+  height: 60px;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 30px;
+}
+td {
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+  align-content: center;
+  padding-left: 50px;
+}

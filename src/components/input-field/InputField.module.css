@@ -1,0 +1,123 @@
+.primary {
+  position: relative;
+  width: 386px;
+  height: 60px;
+}
+
+.primary label {
+  color: #003d65;
+  font-size: 24px;
+  position: absolute;
+  transform-origin: top left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.primary input {
+  border: none;
+  font-size: 24px;
+  background-color: transparent;
+  outline: 0;
+}
+
+.primary:focus-within label {
+  transform: translate(0, -12px) scale(0.5);
+}
+
+.labelTuck {
+  transform: translate(0, -12px) scale(0.5);
+}
+
+.primary textarea {
+  border: unset;
+  border-radius: 2px;
+  background-color: transparent;
+  max-width: 378px;
+}
+
+.standard {
+  padding-bottom: 25px;
+  border-bottom: 1px solid black;
+}
+
+.standard input {
+  border: none;
+  background-color: transparent;
+  outline: 0;
+}
+
+.standard input::placeholder {
+  color: #dadada;
+}
+
+.standard textarea {
+  border: 2px solid black;
+  border-radius: 2px;
+  background-color: transparent;
+  width: 100%;
+}
+
+.standard textarea::placeholder {
+  color: #dadada;
+}
+
+.standard label {
+  font-size: 18px;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.standard label::after {
+  content: ':';
+}
+
+.success * {
+  border-color: #50b836 !important;
+  color: #50b836 !important;
+  transition: color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.success > input {
+  color: #50b836;
+  transition: color 0.3s ease-in-out;
+}
+
+.success > label {
+  color: #50b836;
+  transition: color 0.3s ease-in-out;
+}
+
+.primaryContent {
+  height: 52px;
+  border: 4px solid #003d65;
+  background-color: #ffffff;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  padding-top: 25px;
+}
+
+.fieldPadding {
+  padding: 14px 0;
+}
+
+.field > input {
+  flex-grow: 1;
+}
+
+.primaryContent > input {
+  flex-grow: 1;
+}
+
+.icon {
+  font-size: 34px;
+  cursor: default;
+}

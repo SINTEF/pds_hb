@@ -1,44 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Front-end for PDS data handbook
 
-## Available Scripts
+This repository includes the complete front-end for the PDS data handbook application. It includes all components and pages used in the application, in addition to the app.tsx file which combines the pages with routing. This README will act as a guide for how to install the front-end and how to run both the application and the tests.
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+### Clone repository
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Note: Make sure to have [git](https://git-scm.com/) installed. This can be verified by typing ```git --version``` in your terminal.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Clone the repository by your method of choice. To clone with HTTPS, open your terminal and navigate to the directory in which you want to clone the project. Type:
+```
+git clone https://github.com/SINTEF/pds_hb.git
+```
 
-### `yarn test`
+### Install dependencies
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Note: Make sure to have [node](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/) installed. This can be verified by typing ```npm --version``` or ```yarn -v ```in your terminal.
 
-### `yarn build`
+In your terminal, navigate to the root directory of the repository you just cloned and run:
+```
+yarn
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Note: Before running the application, remember to have the [back-end](https://github.com/SINTEF/pds_hb_be/edit/dev/README.md) running locally on the same device. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Running the server
 
-### `yarn eject`
+To run the front-end of the PDS data handbook, navigate to the root folder and run:
+```
+yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Running the tests
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To run the tests for the front-end, navigate to the root folder and run:
+```
+yarn test
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Running the Cypress E2E-tests
+To run the Cypress tests, please ensure that both the front-end and back-end is running in their own terminals. Then, in a fresh terminal, in the root foler, run:
+```
+yarn run cypress open
+```

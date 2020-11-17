@@ -1,0 +1,14 @@
+.home {
+  height: 76px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 347px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}

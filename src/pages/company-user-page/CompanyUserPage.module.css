@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 100px;
+}
+
+.photocontainer {
+  position: relative;
+}
+
+.photo {
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  line-height: 170px;
+  font-size: 94px;
+  color: #000000;
+  background: #dadada;
+  margin-bottom: 30px;
+}
+
+.editphoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  background-color: #e5e5e5;
+  color: #dadada;
+  border-bottom-left-radius: 110px;
+  border-bottom-right-radius: 110px;
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  opacity: 70%;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.width {
+  width: 70%;
+}
+
+.responseOk {
+  color: chartreuse;
+}
+
+.responseError {
+  color: red;
+}

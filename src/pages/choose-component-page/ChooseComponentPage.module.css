@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.newComponentButton {
+  align-self: end;
+  margin: 20px;
+}
+
+.components {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: inherit;
+}
+
+.equipmentContainer {
+  min-width: 10%;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.moduletitle {
+  align-self: flex-start;
+  font-size: 40px;
+  padding-bottom: 40px;
+  padding-top: 50px;
+  padding-left: 100px;
+}
+
+.moduletitle > span {
+  margin-right: 10px;
+}
+
+.back {
+  align-self: flex-start;
+  padding-left: 100px;
+  color: #003d65;
+  cursor: pointer;
+}
+
+.newComponentButton {
+  align-self: end;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.newComponentButton > * {
+  margin-bottom: 10px;
+}

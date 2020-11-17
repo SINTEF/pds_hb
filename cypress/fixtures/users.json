@@ -1,0 +1,14 @@
+{
+  "admin": {
+    "username": "martin2",
+    "password": "hello"
+  },
+  "operator": {
+    "username": "operatoruser",
+    "password": "hello"
+  },
+  "general_user": {
+    "username": "andrea",
+    "password": "hello"
+  }
+}

@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 140px;
+}
+
+.padding {
+  padding-bottom: 30px;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  justify-content: space-between;
+  position: relative;
+  float: right;
+  padding-top: 60px;
+  bottom: 50px;
+}

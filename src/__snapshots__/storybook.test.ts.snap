@@ -1,0 +1,2972 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Button Danger 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button medium danger"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Click me!
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      delete
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Button Large 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button large standard"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Button
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      chevron_right
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Button Primary 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button medium primary"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Click me!
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      chevron_right
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Button Small 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button small standard"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Button
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      chevron_right
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Button Standard 1`] = `
+<div
+  className="react-ripples"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "inline-flex",
+      "overflow": "hidden",
+      "position": "relative",
+    }
+  }
+>
+  <button
+    className="button medium standard"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+    type="button"
+  >
+    Click me!
+    <i
+      className="material-icons icon"
+      style={
+        Object {
+          "fontSize": "",
+        }
+      }
+    >
+      chevron_right
+    </i>
+  </button>
+  <s
+    style={
+      Object {
+        "borderRadius": "50%",
+        "height": 35,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "transform": "translate(-50%, -50%)",
+        "width": 35,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Components/display-field Standard 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <label
+      className="index"
+    >
+      Index: 
+    </label>
+    <label
+      className="content"
+    >
+      123456
+    </label>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/editable-field Editmode 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <input
+        className="content input"
+        id="content"
+        onChange={[Function]}
+        type="text"
+        value="123456"
+      />
+    </div>
+    <div
+      className="icon"
+    >
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <i
+          aria-label="done"
+          className="material-icons"
+          onClick={[Function]}
+          role="button"
+          style={
+            Object {
+              "cursor": "pointer",
+              "fontSize": "24px",
+            }
+          }
+        >
+          done
+        </i>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/editable-field Not Admin 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <label
+        className="content"
+      >
+        123456
+      </label>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/editable-field Viewmode 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <label
+        className="index"
+      >
+        Index: 
+      </label>
+      <label
+        className="content"
+      >
+        123456
+      </label>
+    </div>
+    <div
+      className="iconbutton"
+    >
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <i
+          aria-label="edit"
+          className="material-icons"
+          onClick={[Function]}
+          role="button"
+          style={
+            Object {
+              "cursor": "pointer",
+              "fontSize": "24px",
+            }
+          }
+        >
+          edit
+        </i>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div>
+    <hr
+      className="divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots DropDownMenu Company User 1`] = `
+<div>
+  <div
+    className="title notClicked"
+  >
+    <div
+      className="usersymbol"
+      onClick={[Function]}
+    >
+      S
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Filter Filter Component 1`] = `
+<div
+  className="open"
+>
+  <div
+    className="container"
+  >
+    <button
+      className="button standard"
+      onClick={[Function]}
+    >
+      <div>
+        Components
+      </div>
+      <i
+        className="material-icons icon"
+      >
+        expand_more
+      </i>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots FilterButton Standard Filter Button 1`] = `
+<div
+  className="container"
+>
+  <button
+    className="button standard"
+  >
+    <div>
+      Flame detector
+    </div>
+    <i
+      className="material-icons icon"
+    >
+      expand_more
+    </i>
+  </button>
+</div>
+`;
+
+exports[`Storyshots Group No Img 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="container"
+  >
+    <img
+      alt="Icon for group Fire equipment"
+      className="image"
+      src="https://www.svgrepo.com/show/131030/question-mark.svg"
+    />
+    Fire equipment
+  </div>
+</div>
+`;
+
+exports[`Storyshots Group Standard 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="container"
+  >
+    <img
+      alt="Icon for group Fire equipment"
+      className="image"
+      src="https://www.svgrepo.com/show/131030/question-mark.svg"
+    />
+    Fire equipment
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Primary Input 1`] = `
+<div
+  className="primary  "
+>
+  <div
+    className="primaryContent"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      id="Input Label"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Primary Text Area 1`] = `
+<div
+  className="primary  fieldPadding"
+>
+  <div
+    className="primaryContent"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "flex-start",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <textarea
+      cols={40}
+      id="Input Label"
+      onChange={[Function]}
+      rows={10}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Primary With Default 1`] = `
+<div
+  className="primary  "
+>
+  <div
+    className="primaryContent"
+  >
+    <label
+      className="labelTuck"
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      id="Input Label"
+      onChange={[Function]}
+      type="text"
+      value="Default value"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Primary With File 1`] = `
+<div
+  className="primary  "
+>
+  <div
+    className="primaryContent"
+  >
+    <label
+      className="labelTuck"
+      htmlFor="Input label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input label
+    </label>
+    <input
+      id="Input label"
+      onChange={[Function]}
+      type="file"
+    />
+    <i
+      className="material-icons icon"
+    >
+      add_photo_alternate
+    </i>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Primary With Icon 1`] = `
+<div
+  className="primary  "
+>
+  <div
+    className="primaryContent"
+  >
+    <label
+      className="labelTuck"
+      htmlFor="Input label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input label
+    </label>
+    <input
+      id="Input label"
+      onChange={[Function]}
+      type="text"
+      value="Default value"
+    />
+    <i
+      className="material-icons icon"
+    >
+      search
+    </i>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Standard Input 1`] = `
+<div
+  className="standard  "
+>
+  <div
+    className="field"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      id="Input Label"
+      onChange={[Function]}
+      placeholder="Input placeholder"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Standard Input With Icon 1`] = `
+<div
+  className="standard  "
+>
+  <div
+    className="field"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <input
+      id="Input Label"
+      onChange={[Function]}
+      placeholder="Input placeholder"
+      type="text"
+    />
+    <i
+      className="material-icons icon"
+    >
+      add_photo_alternate
+    </i>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Standard Text Area 1`] = `
+<div
+  className="standard  fieldPadding"
+>
+  <div
+    className="field"
+  >
+    <label
+      className=""
+      htmlFor="Input Label"
+      style={
+        Object {
+          "alignSelf": "flex-start",
+        }
+      }
+    >
+      Input Label
+    </label>
+    <textarea
+      cols={40}
+      id="Input Label"
+      onChange={[Function]}
+      placeholder="Input placeholder"
+      rows={10}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Input field Standard With File 1`] = `
+<div
+  className="standard  "
+>
+  <div
+    className="field"
+  >
+    <label
+      className=""
+      htmlFor="Input label"
+      style={
+        Object {
+          "alignSelf": "",
+        }
+      }
+    >
+      Input label
+    </label>
+    <input
+      id="Input label"
+      onChange={[Function]}
+      type="file"
+    />
+    <i
+      className="material-icons icon"
+    >
+      add_photo_alternate
+    </i>
+  </div>
+</div>
+`;
+
+exports[`Storyshots MenuButton Log Out 1`] = `
+<div
+  className="container"
+>
+  <hr
+    className="line"
+  />
+  <button
+    className="button logout "
+  >
+    Log out
+  </button>
+</div>
+`;
+
+exports[`Storyshots MenuButton Notify 1`] = `
+<div
+  className="container"
+>
+  <hr
+    className="line"
+  />
+  <button
+    className="button standard "
+  >
+    Approve new users
+  </button>
+</div>
+`;
+
+exports[`Storyshots MenuButton Standard 1`] = `
+<div
+  className="container"
+>
+  <hr
+    className="line"
+  />
+  <button
+    className="button standard "
+  >
+    Adapt premissions for user groups
+  </button>
+</div>
+`;
+
+exports[`Storyshots Pages/Login Start 1`] = `
+<div
+  className="main"
+>
+  <h1>
+    PDS Data Handbook
+  </h1>
+  <div
+    className="inputGroup"
+  >
+    <div
+      className="primary  "
+    >
+      <div
+        className="primaryContent"
+      >
+        <label
+          className=""
+          htmlFor="Username"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Username
+        </label>
+        <input
+          id="Username"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        >
+          face
+        </i>
+      </div>
+    </div>
+    <div
+      className="primary  "
+    >
+      <div
+        className="primaryContent"
+      >
+        <label
+          className=""
+          htmlFor="Password"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Password
+        </label>
+        <input
+          id="Password"
+          onChange={[Function]}
+          type="password"
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        >
+          lock
+        </i>
+      </div>
+    </div>
+  </div>
+  <div
+    className="feedbackGroup"
+  />
+  <div
+    className="buttonGroup"
+  >
+    <div>
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <button
+          className="button medium primary"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": undefined,
+            }
+          }
+          type="button"
+        >
+          Log in
+          <i
+            className="material-icons icon"
+            style={
+              Object {
+                "fontSize": "",
+              }
+            }
+          >
+            chevron_right
+          </i>
+        </button>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Register new user
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Read Standard 1`] = `
+<div>
+  <div
+    className="controls"
+  >
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <i
+        aria-label="menu"
+        className="material-icons"
+        onClick={[Function]}
+        role="button"
+        style={
+          Object {
+            "cursor": "pointer",
+            "fontSize": "24px",
+          }
+        }
+      >
+        menu
+      </i>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div>
+      <span
+        className="error"
+      >
+        
+      </span>
+    </div>
+  </div>
+  <div
+    className="content"
+  />
+</div>
+`;
+
+exports[`Storyshots RegisteredData Standard 1`] = `
+<div
+  className="container"
+>
+  <label
+    className="button"
+    onClick={[Function]}
+  >
+     &lt; Back
+  </label>
+  <div
+    className="center"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        />
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      className="filters padding"
+    >
+      <div
+        className="open"
+      >
+        <div
+          className="container"
+        >
+          <button
+            className="button standard"
+            onClick={[Function]}
+          >
+            <div>
+              Component
+            </div>
+            <i
+              className="material-icons icon"
+            >
+              expand_more
+            </i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table"
+    >
+      <div>
+        <table
+          className="headers"
+        >
+          <tbody>
+            <tr>
+              <td>
+                Creation date
+              </td>
+              <td>
+                T
+              </td>
+              <td>
+                PopulationSize
+              </td>
+              <td>
+                DU
+              </td>
+              <td>
+                Status
+              </td>
+              <td>
+                 
+                Comment
+              </td>
+              <td>
+                 
+                SINTEF comment
+              </td>
+              <td />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots RegisteredDataField Standard 1`] = `
+<table
+  className="container"
+>
+  <tbody>
+    <tr>
+      <td>
+        <label>
+           test1 
+        </label>
+      </td>
+      <td>
+        <label>
+          test2
+        </label>
+      </td>
+      <td>
+        <label>
+           test2 
+        </label>
+      </td>
+      <td>
+        <i
+          className="material-icons"
+        >
+          editor
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Storyshots Search field Primary Search Field 1`] = `
+<div
+  className="primary SearchField"
+  onBlur={[Function]}
+>
+  <div
+    className="field"
+  >
+    <input
+      defaultValue=""
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      placeholder="Search for component..."
+      value=""
+    />
+    <i
+      className="material-icons icon"
+    >
+      search
+    </i>
+  </div>
+  <ul />
+</div>
+`;
+
+exports[`Storyshots Search field Secondary Search Field 1`] = `
+<div
+  className="secondary SearchField"
+  onBlur={[Function]}
+>
+  <div
+    className="field"
+  >
+    <label>
+      Component
+      :
+    </label>
+    <input
+      defaultValue=""
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      placeholder="Set a component..."
+      value=""
+    />
+  </div>
+  <ul />
+</div>
+`;
+
+exports[`Storyshots SideMenu Admin Side Menu 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+  />
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      My account
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Review next release
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Adapt premissions for user groups
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Add new companies
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Approve new users
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SideMenu General Side Menu 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+  />
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      My account
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SideMenu Operator Side Menu 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="home"
+  />
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      My account
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Browse own equipment data
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Company account
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Manage staffmember
+    </button>
+  </div>
+  <div
+    className="container"
+  >
+    <hr
+      className="line"
+    />
+    <button
+      className="button standard "
+    >
+      Manage facilities
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Switch Checked 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    checked={true}
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Large 1`] = `
+<label
+  className="switch large"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Small 1`] = `
+<label
+  className="switch small"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Switch Standard 1`] = `
+<label
+  className="switch medium"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    className="slider round"
+  >
+     
+  </span>
+</label>
+`;
+
+exports[`Storyshots Table Table Component 1`] = `
+<table
+  className="dataTable"
+>
+  <thead>
+    <tr>
+      <th>
+        Failure Rates
+      </th>
+      <th>
+        Source
+      </th>
+      <th>
+        DUobs
+      </th>
+      <th>
+        T
+      </th>
+      <th>
+        Observation Period
+      </th>
+      <th>
+        Population Size
+      </th>
+      <th>
+        Comment
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        0,3
+      </td>
+      <td>
+        Facility A
+      </td>
+      <td>
+        10
+      </td>
+      <td>
+        2,8*10^7 h
+      </td>
+      <td>
+        2006-2018
+      </td>
+      <td>
+        659
+      </td>
+      <td>
+        Very cool data
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0,5
+      </td>
+      <td>
+        Facility C
+      </td>
+      <td>
+        8
+      </td>
+      <td>
+        2,8* 10^9 h
+      </td>
+      <td>
+        1999-2020
+      </td>
+      <td>
+        666
+      </td>
+      <td>
+        This data is data
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0,8
+      </td>
+      <td>
+        Facility B
+      </td>
+      <td>
+        12
+      </td>
+      <td>
+        2,7* 10^5 h
+      </td>
+      <td>
+        2019-2020
+      </td>
+      <td>
+        123
+      </td>
+      <td>
+        Another instance of data
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0,8
+      </td>
+      <td>
+        Facility B
+      </td>
+      <td>
+        12
+      </td>
+      <td>
+        2,7* 10^5 h
+      </td>
+      <td>
+        2019-2020
+      </td>
+      <td>
+        123
+      </td>
+      <td>
+        Even more data
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Storyshots TextBox Large 1`] = `
+<div
+  className="container large"
+>
+  <div
+    className="head"
+  >
+    <div
+      className="titlecontainer"
+    >
+      Description
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <p>
+    The detector includes the sensor and local electronics such as the address-/ interface unit.
+  </p>
+</div>
+`;
+
+exports[`Storyshots TextBox Large Admin Text Box 1`] = `
+<div
+  className="container large"
+>
+  <div
+    className="head"
+  >
+    <div
+      className="titlecontainer"
+    >
+      Description
+      <hr
+        className="line"
+      />
+    </div>
+    <div
+      className="icon"
+    >
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <i
+          aria-label="create"
+          className="material-icons"
+          onClick={[Function]}
+          role="button"
+          style={
+            Object {
+              "cursor": "pointer",
+              "fontSize": "24px",
+            }
+          }
+        >
+          create
+        </i>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <p>
+    test
+  </p>
+</div>
+`;
+
+exports[`Storyshots TextBox Small 1`] = `
+<div
+  className="container small"
+>
+  <div
+    className="head"
+  >
+    <div
+      className="titlecontainer"
+    >
+      Description
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <p>
+    The detector includes the sensor and local electronics such as the address-/ interface unit.
+  </p>
+</div>
+`;
+
+exports[`Storyshots TextBox Small Admin Text Box 1`] = `
+<div
+  className="container small"
+>
+  <div
+    className="head"
+  >
+    <div
+      className="titlecontainer"
+    >
+      Description
+      <hr
+        className="line"
+      />
+    </div>
+    <div
+      className="icon"
+    >
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <i
+          aria-label="create"
+          className="material-icons"
+          onClick={[Function]}
+          role="button"
+          style={
+            Object {
+              "cursor": "pointer",
+              "fontSize": "24px",
+            }
+          }
+        >
+          create
+        </i>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <p>
+    test
+  </p>
+</div>
+`;
+
+exports[`Storyshots Title Dynamic 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title "
+    >
+      Failure data at
+    </div>
+    <div
+      className="dynamic"
+    >
+      Askeladden
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
+</div>
+`;
+
+exports[`Storyshots Title Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="titlecontainer"
+  >
+    <div
+      className="title notdynamic"
+    >
+      Choose Facility
+    </div>
+  </div>
+  <hr
+    className="line"
+  />
+</div>
+`;
+
+exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="title"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Add new companies
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Company name"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Company name
+        </label>
+        <input
+          id="Company name"
+          onChange={[Function]}
+          placeholder="Enter a name for the new company..."
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Organisation Number"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Organisation Number
+        </label>
+        <input
+          id="Organisation Number"
+          onChange={[Function]}
+          placeholder="Enter the orgNr for the new company..."
+          type="number"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Email"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Email
+        </label>
+        <input
+          id="Email"
+          onChange={[Function]}
+          placeholder="Enter an email for the new company..."
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Phone number"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Phone number
+        </label>
+        <input
+          id="Phone number"
+          onChange={[Function]}
+          placeholder="Enter a phone number for the new company..."
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Description"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Description
+        </label>
+        <input
+          id="Description"
+          onChange={[Function]}
+          placeholder="Enter a description for the new company..."
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Max users"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Max users
+        </label>
+        <input
+          id="Max users"
+          onChange={[Function]}
+          placeholder="Enter a number for max users for the new company..."
+          type="number"
+          value={0}
+        />
+      </div>
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/AddComponentPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="title"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          New undefined component
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div
+    className="description"
+  >
+    <div
+      className="container large"
+    >
+      <div
+        className="head"
+      >
+        <div
+          className="titlecontainer"
+        >
+          Description*
+          <hr
+            className="line"
+          />
+        </div>
+      </div>
+      <textarea
+        onChange={[Function]}
+        placeholder="Write something here..."
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="inputfields"
+  >
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Component name*"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Component name*
+        </label>
+        <input
+          id="Component name*"
+          onChange={[Function]}
+          placeholder="Chose a component name"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Date of revision*"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Date of revision*
+        </label>
+        <input
+          id="Date of revision*"
+          onChange={[Function]}
+          placeholder="dd.mm.yyyy"
+          type="date"
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Remarks*"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Remarks*
+        </label>
+        <input
+          id="Remarks*"
+          onChange={[Function]}
+          placeholder="Add a remark"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="L3"
+  >
+    <label>
+      Add L3 properties*
+    </label>
+    <div
+      className="primary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <input
+          defaultValue=""
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Search..."
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        >
+          list
+        </i>
+      </div>
+      <ul />
+    </div>
+  </div>
+  <div
+    className="definition"
+  >
+    <div
+      className="container large"
+    >
+      <div
+        className="head"
+      >
+        <div
+          className="titlecontainer"
+        >
+          Definition of DU*
+          <hr
+            className="line"
+          />
+        </div>
+      </div>
+      <textarea
+        onChange={[Function]}
+        placeholder="Write something here..."
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="buttons"
+  >
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium danger"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Cancel component creation
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+    <div
+      className="feedbackGroup"
+    >
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <button
+          className="button medium primary"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": undefined,
+            }
+          }
+          type="button"
+        >
+          Save new component
+          <i
+            className="material-icons icon"
+            style={
+              Object {
+                "fontSize": "",
+              }
+            }
+          >
+            chevron_right
+          </i>
+        </button>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
+<div
+  className="facilitycontainer"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose Facility
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="secondary SearchField"
+    onBlur={[Function]}
+  >
+    <div
+      className="field"
+    >
+      <label>
+        Facility
+        :
+      </label>
+      <input
+        defaultValue=""
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Choose facility to register data to..."
+        value=""
+      />
+    </div>
+    <ul />
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/ApproveUsersPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Approve new users
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div>
+    The eager PDS datahandbook readers are comming very soon!
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/Browse Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="path"
+  >
+    <div
+      className="back"
+      onClick={[Function]}
+    >
+      &lt; Back
+    </div>
+  </div>
+  <div>
+    <div
+      className="content"
+    >
+      <div
+        className="padding center"
+      >
+        <div
+          className="container"
+        >
+          <div
+            className="titlecontainer"
+          >
+            <div
+              className="title notdynamic"
+            />
+          </div>
+          <hr
+            className="line"
+          />
+        </div>
+      </div>
+      <div
+        className="description"
+      >
+        <div
+          className="container large"
+        >
+          <div
+            className="head"
+          >
+            <div
+              className="titlecontainer"
+            >
+              Description
+              <hr
+                className="line"
+              />
+            </div>
+          </div>
+          <p />
+        </div>
+      </div>
+      <div
+        className="padding"
+      >
+        <div
+          className="container large"
+        >
+          <div
+            className="head"
+          >
+            <div
+              className="titlecontainer"
+            >
+              Definition of DU
+              <hr
+                className="line"
+              />
+            </div>
+          </div>
+          <p />
+        </div>
+      </div>
+      <div>
+        <div
+          className="container"
+        >
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Date of revision: 
+            </label>
+            <label
+              className="content"
+            >
+              
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="container"
+        >
+          <div
+            className="container"
+          >
+            <label
+              className="index"
+            >
+              Remarks: 
+            </label>
+            <label
+              className="content"
+            >
+              
+            </label>
+          </div>
+        </div>
+        <div>
+          <hr
+            className="divider"
+          />
+        </div>
+      </div>
+      <div
+        className="center padding"
+      >
+        <div
+          className="container"
+        >
+          <div
+            className="titlecontainer"
+          >
+            <div
+              className="title notdynamic"
+            >
+              Failure data
+            </div>
+          </div>
+          <hr
+            className="line"
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="filters padding"
+        />
+        <div
+          className="table"
+        >
+          <div
+            className="DUcontainer"
+          >
+            <div
+              className="lambdaDU"
+            >
+              λDU (Per 10^6 hours): 
+            </div>
+            <div
+              className="lambdaDUnumber"
+            >
+              NaN
+            </div>
+            <div
+              className="lambdaDU"
+            >
+              Average failure rate of displayed data (Per 10^6 hours): 
+            </div>
+            <div
+              className="failureNumber"
+            >
+              NaN
+            </div>
+          </div>
+          <table
+            className="dataTable"
+          >
+            <thead>
+              <tr>
+                <th>
+                  Failure rates
+                </th>
+                <th>
+                  Company
+                </th>
+                <th>
+                  Source
+                </th>
+                <th>
+                  DU
+                </th>
+                <th>
+                  T
+                </th>
+                <th>
+                  Observation start
+                </th>
+                <th>
+                  Observation end
+                </th>
+                <th>
+                  Population size
+                </th>
+                <th>
+                  Comment
+                </th>
+              </tr>
+            </thead>
+            <tbody />
+          </table>
+          <div>
+            Nothing matched the chosen filters
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/ChooseComponentPagePage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose equipment group
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
+<div
+  className="frontpage"
+>
+  <div
+    className="title"
+  >
+    PDS Datahandbook
+  </div>
+  <div
+    className="footer"
+  >
+    <div
+      className="contact"
+    >
+      Contact info:
+    </div>
+    <div
+      className="contact"
+    >
+      Email: sintef@post.no
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/Manage staffmembers Standard 1`] = `
+<div>
+  <div
+    className="pagebottompadding"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="container"
+      >
+        <div
+          className="titlecontainer"
+        >
+          <div
+            className="title notdynamic"
+          >
+            Manage staffmembers
+          </div>
+        </div>
+        <hr
+          className="line"
+        />
+      </div>
+      <div
+        className="listtitles"
+      >
+        <div>
+          Username
+        </div>
+        <div>
+          Email
+        </div>
+        <div>
+              
+        </div>
+        <div>
+          Phone
+        </div>
+      </div>
+    </div>
+    <div
+      className="secondcontainer"
+    >
+      <div
+        className="usersleft"
+      >
+        Your company has 
+        <div
+          className="numberusersleft"
+        >
+          0
+        </div>
+         more possible users to add.
+      </div>
+    </div>
+    <div
+      className="button"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/Mange facilities Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="title"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Manage facilities
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div
+    className="padding"
+  >
+    Enter an existing facilty to edit or enter a new one
+  </div>
+  <div
+    className="padding"
+  >
+    <div
+      className="secondary SearchField"
+      onBlur={[Function]}
+    >
+      <div
+        className="field"
+      >
+        <label>
+          Facilityname
+          :
+        </label>
+        <input
+          defaultValue=""
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Enter name of facility..."
+          value=""
+        />
+      </div>
+      <ul />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/Not found (404) Standard 1`] = `
+<div
+  className="pageContainer"
+>
+  <h1>
+    404
+  </h1>
+  <h2>
+    Oups!
+  </h2>
+  <p>
+    Looks like we couldn't find the page you were looking for.
+  </p>
+  <p>
+    Let's go back to 
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      the front page
+    </a>
+    !
+  </p>
+</div>
+`;
+
+exports[`Storyshots pages/OwnDataPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="titlecontainer"
+    >
+      <div
+        className="title notdynamic"
+      >
+        Choose equipment group
+      </div>
+    </div>
+    <hr
+      className="line"
+    />
+  </div>
+  <div
+    className="components"
+  />
+</div>
+`;
+
+exports[`Storyshots pages/companyuser Start 1`] = `
+<div
+  className="container"
+>
+  <div
+    aria-busy="true"
+    className=""
+    style={Object {}}
+  >
+    <svg
+      aria-label="audio-loading"
+      fill="grey"
+      height={80}
+      viewBox="0 0 105 105"
+      width={80}
+    >
+      <circle
+        cx="12.5"
+        cy="12.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="0s"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="12.5"
+        cy="52.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="100ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="52.5"
+        cy="12.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="300ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="52.5"
+        cy="52.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="600ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="92.5"
+        cy="12.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="800ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="92.5"
+        cy="52.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="400ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="12.5"
+        cy="92.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="700ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="52.5"
+        cy="92.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="500ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+      <circle
+        cx="92.5"
+        cy="92.5"
+        r={12.5}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="200ms"
+          calcMode="linear"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1;.2;1"
+        />
+      </circle>
+    </svg>
+  </div>
+</div>
+`;

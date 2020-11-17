@@ -1,0 +1,121 @@
+.primary > div {
+  border: 4px solid #003d65;
+  padding: 0 8px;
+  width: 364px;
+  height: 60px;
+  background-color: #ffffff;
+  border-bottom: 0px;
+}
+
+.primary input {
+  border: none;
+  font-size: 24px;
+  background-color: transparent;
+  outline: 0;
+  color: #003d65;
+}
+
+.primary ul {
+  list-style: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  overflow-y: visible;
+  padding-left: 0;
+  width: 380px;
+  position: absolute;
+  z-index: 1;
+  border: solid 4px #003d65;
+  border-top: 0px;
+  background-color: #ffffff;
+}
+
+.secondary {
+  width: 100%;
+  padding-top: 25px;
+}
+
+.secondary > div {
+  outline: none;
+  position: relative;
+  padding-bottom: 25px;
+  border-bottom: 1px solid black;
+}
+
+.secondary input {
+  border: none;
+  background-color: transparent;
+  outline: 0px;
+}
+
+.secondary input::placeholder {
+  color: #dadada;
+}
+
+.secondary label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.secondary ul {
+  list-style: none;
+  margin-bottom: 0px;
+  overflow-y: visible;
+  padding-left: 0px;
+  position: absolute;
+  padding-bottom: 5px;
+  z-index: 1;
+  margin-top: -1px;
+  background-color: #eeeeee;
+  border-bottom: 2px solid black;
+}
+
+.secondary ul li {
+  padding-left: 0;
+  padding-right: 50px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+}
+
+.field input {
+  flex-grow: 1;
+}
+
+.icon {
+  font-size: 34px;
+  cursor: default;
+  color: #003d65;
+  width: 34px;
+}
+
+.current {
+  font-size: 24px;
+  color: #003d65;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #eeeeee;
+  padding-left: 10px;
+  height: 30px;
+}
+
+.notCurrent {
+  font-size: 24px;
+  color: gray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  height: 30px;
+}
+
+.searchField {
+  display: flex;
+  flex-direction: column;
+  width: 376px;
+}
+
+.primary ul > li:nth-of-type(1n + 6) {
+  display: none;
+}

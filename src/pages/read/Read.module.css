@@ -1,0 +1,54 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 0;
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  width: 70vw;
+  margin: 10px 20px;
+}
+
+.controls > div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.controls > div > * {
+  margin-left: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 0.75em;
+}
+
+.sideMenu {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 10;
+}
+
+.content {
+  width: 60vw;
+  margin: auto;
+}
+.content > table {
+  border-collapse: collapse;
+}
+
+.content > table {
+  border: 1px solid black;
+}
+
+.content th {
+  border: 1px solid black;
+}
+
+.content td {
+  border: 1px solid black;
+}

@@ -1,0 +1,29 @@
+.dataTable {
+  width: 100%;
+  border: solid black 1px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.dataTable tr th {
+  border-right: solid black 1px;
+  border: solid black 1px;
+  border-collapse: collapse;
+  font-size: 22px;
+  font-weight: normal;
+  padding: 15px;
+}
+
+.dataTable tr td {
+  border-right: solid black 1px;
+  font-size: 17px;
+  padding: 15px;
+}
+
+.dataTable tr:nth-child(even) {
+  background-color: #eeeeee;
+}
+
+.dataTable tr:nth-child(odd) {
+  background-color: white;
+}
