@@ -63,7 +63,7 @@ export const ChooseComponentPage: FC = () => {
 
   useEffect(() => {
     refreshData()
-  }, [loadComponents, loadModules])
+  }, [refreshData])
 
   const getEquipmentGroupComponents = (group: string) =>
     allComponents.filter(

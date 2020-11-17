@@ -101,14 +101,20 @@ export const RegisteredDataPage: React.FC = () => {
       if (datainstanceResponse.ok) setFailuredata(failureData.data)
     }
     getFailureData()
-  }, [componentName, datainstanceGet, datainstanceResponse, filterState])
+  }, [
+    componentName,
+    datainstanceGet,
+    datainstanceResponse,
+    filterState,
+    userContext.user,
+  ])
 
   const getComponent = (name: string) => {
     return components?.filter((comp) => comp.name === name)[0]
   }
 
   return componentLoad ? (
-    <p>loading...</p>
+    <p>Loading...</p>
   ) : (
     <div className={styles.container}>
       <label

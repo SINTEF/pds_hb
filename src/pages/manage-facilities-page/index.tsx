@@ -52,10 +52,7 @@ export const ManageFacilitiesPage: React.FC = () => {
           onValueChanged={(value) => setFacility(value)}
           onClick={(selected) => {
             setFacility(selected)
-            {
-              facilities.indexOf(selected) > -1 &&
-                setPage('Update facilityname')
-            }
+            facilities.indexOf(selected) > -1 && setPage('Update facilityname')
           }}
         />
       </div>

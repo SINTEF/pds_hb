@@ -53,7 +53,7 @@ export const EquipmentGroupForm: React.FC<EquipmentGroupFormProps> = ({
     if (isOpen) {
       get()
     }
-  }, [isOpen])
+  }, [isOpen, get])
 
   return (
     <Modal
