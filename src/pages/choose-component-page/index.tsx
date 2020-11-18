@@ -78,10 +78,12 @@ export const ChooseComponentPage: FC = () => {
           <>
             <div className={styles.moduletitle}>
               <span>{module.name}</span>
-              <EditModule
-                equipmentModule={module}
-                afterSave={() => refreshData()}
-              />
+              {userContext?.user?.userGroupType === 'admin' ? (
+                <EditModule
+                  equipmentModule={module}
+                  afterSave={() => refreshData()}
+                />
+              ) : null}
             </div>
             <div className={styles.components} key={module.name}>
               {module.equipmentGroups.map((group, index) => (
