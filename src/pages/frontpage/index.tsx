@@ -52,7 +52,7 @@ export const Frontpage: React.FC = () => {
         </div>
       ) : null}
       {userContext.user?.userGroupType === 'admin' ? (
-        <div className={[styles.generalMenu, styles.menu].join(' ')}>
+        <div className={[styles.adminMenu, styles.menu].join(' ')}>
           {loading && 'Loading...'}
           <SearchField
             variant="primary"
@@ -76,6 +76,10 @@ export const Frontpage: React.FC = () => {
           <Button
             label={'Browse and edit equipment data'}
             onClick={() => history.push(MAIN_ROUTES.BROWSE)}
+          />
+          <Button
+            label={'Administrate'}
+            onClick={() => history.push(MAIN_ROUTES.ADMIN)}
           />
         </div>
       ) : null}

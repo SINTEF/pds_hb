@@ -1846,7 +1846,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
         <div
           className="title notdynamic"
         >
-          Add new companies
+          Add new company
         </div>
       </div>
       <hr
@@ -1902,7 +1902,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
           id="Organisation Number"
           onChange={[Function]}
           placeholder="Enter the orgNr for the new company..."
-          type="number"
+          type="text"
           value=""
         />
       </div>
@@ -1928,7 +1928,7 @@ exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
           id="Email"
           onChange={[Function]}
           placeholder="Enter an email for the new company..."
-          type="text"
+          type="email"
           value=""
         />
       </div>

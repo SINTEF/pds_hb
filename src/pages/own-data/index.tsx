@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC, useContext } from 'react'
+import React, { useState, useEffect, FC, useContext, useCallback } from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import styles from './OwnData.module.css'
 import { SUB_ROUTES } from '../../routes/routes.constants'
@@ -31,23 +31,20 @@ export const OwnDataPage: FC = () => {
     APIResponse<IDataInstance>
   >('/data-instances/?company=' + userContext.user?.companyName)
 
-  useEffect(() => {
-    loadComponents()
-  }, [])
-
-  useEffect(() => {
-    loadDataInstances()
-  }, [])
-
-  const loadDataInstances = async () => {
+  const loadDataInstances = useCallback(async () => {
     const dataInstances = await datainstanceGet()
     if (datainstanceResponse.ok) setDatainstances(dataInstances.data)
-  }
+  }, [datainstanceGet, datainstanceResponse.ok, setDatainstances])
 
-  const loadComponents = async () => {
+  const loadComponents = useCallback(async () => {
     const components = await componentGet()
     if (componentResponse.ok) setAllComponents(components.data)
-  }
+  }, [componentGet, componentResponse.ok, setAllComponents])
+
+  useEffect(() => {
+    loadComponents()
+    loadDataInstances()
+  }, [loadComponents, loadDataInstances])
 
   const componentNames = dataInstances.map((instance) => instance.component)
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styles from './AllEditsPage.module.css'
 import { Title } from '../../components/title'
 import { RegisteredDataField } from '../../components/registered-data-field'
@@ -38,35 +38,35 @@ export const AllEditsPage: React.FC = () => {
     return options
   })
 
-  useEffect(() => {
-    getNotReviewed()
-    getApproved()
-    getNotApproved()
-  }, [])
-
-  const getNotReviewed = async () => {
+  const getNotReviewed = useCallback(async () => {
     const edits = await editsGet('/?status=not+reviewed')
     if (editsResponse.ok) {
       const notReviewed = edits.data
       setNotReviewed(notReviewed ?? [])
     }
-  }
+  }, [editsGet, editsResponse.ok, setNotReviewed])
 
-  const getApproved = async () => {
+  const getApproved = useCallback(async () => {
     const edits = await editsGet('/?status=approved')
     if (editsResponse.ok) {
       const approved = edits.data
       setApproved(approved ?? [])
     }
-  }
+  }, [editsGet, editsResponse.ok, setApproved])
 
-  const getNotApproved = async () => {
+  const getNotApproved = useCallback(async () => {
     const edits = await editsGet('/?status=not+approved')
     if (editsResponse.ok) {
       const notApproved = edits.data
       setNotApproved(notApproved ?? [])
     }
-  }
+  }, [editsGet, editsResponse, setNotApproved])
+
+  useEffect(() => {
+    getNotReviewed()
+    getApproved()
+    getNotApproved()
+  }, [getNotReviewed, getApproved, getNotApproved])
 
   const approveEdit = async (datainstanceid: string) => {
     const approved = { status: 'approved' }

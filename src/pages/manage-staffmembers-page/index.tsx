@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 
 import styles from './ManageStaffmembersPage.module.css'
 
@@ -12,7 +12,7 @@ import useFetch, { CachePolicies } from 'use-http'
 import { APIResponse } from '../../models/api-response'
 import { ICompany } from '../../models/company'
 
-interface InewUser {
+interface INewUser {
   username: string
   email: string
   password: string
@@ -43,7 +43,7 @@ export const ManageStaffmembersPage: React.FC = () => {
     same_password: '',
   }
   const [staffState, setStaff] = useState<IUser[]>([])
-  const [userState, setUser] = useState<InewUser>(defaultUser)
+  const [userState, setUser] = useState<INewUser>(defaultUser)
   const [pswState, setPsw] = useState<IPassword>(defaultPassword)
   const [pageState, setPage] = useState<number>(1)
 
@@ -62,14 +62,14 @@ export const ManageStaffmembersPage: React.FC = () => {
     return options
   })
 
-  useEffect(() => {
-    loadStaff()
-  }, [])
-
-  const loadStaff = async () => {
+  const loadStaff = useCallback(async () => {
     const staff = await staffGet('?companyName=' + companyName)
     if (staffResponse.ok) setStaff(staff.data)
-  }
+  }, [staffGet, staffResponse.ok, companyName])
+
+  useEffect(() => {
+    loadStaff()
+  }, [loadStaff])
 
   // this doesn't happen immediately ???
   const removeUser = async (userid: string) => {
@@ -77,7 +77,7 @@ export const ManageStaffmembersPage: React.FC = () => {
     if (staffResponse.ok) loadStaff()
   }
 
-  const registerUser = async (user: InewUser) => {
+  const registerUser = async (user: INewUser) => {
     await staffPost('/register', user)
     if (staffResponse.ok) loadStaff()
     if (!staffResponse.ok) {

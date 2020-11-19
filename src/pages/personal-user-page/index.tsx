@@ -63,8 +63,8 @@ export const PersonalUserPage: React.FC = () => {
   const validPsw = () => {
     return (
       pswState.new_password === pswState.same_password &&
-      pswState.new_password != '' &&
-      pswState.same_password != ''
+      pswState.new_password !== '' &&
+      pswState.same_password !== ''
     )
   }
 

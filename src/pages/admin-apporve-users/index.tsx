@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styles from './ApproveUsersPage.module.css'
 import { Title } from '../../components/title'
 import { RegisteredDataField } from '../../components/registered-data-field'
@@ -24,17 +24,17 @@ export const ApproveUsersPage: React.FC = () => {
     return options
   })
 
-  useEffect(() => {
-    getUsers()
-  }, [])
-
-  const getUsers = async () => {
+  const getUsers = useCallback(async () => {
     const users = await usersGet('/?userGroupType=none')
     if (usersResponse.ok) {
       const notApprovedUsers = users.data
       setUsers(notApprovedUsers ?? [])
     }
-  }
+  }, [usersGet, usersResponse.ok, setUsers])
+
+  useEffect(() => {
+    getUsers()
+  }, [getUsers])
 
   // only update fileds when reload window???
   const discardUser = async (userid: string) => {
