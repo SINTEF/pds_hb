@@ -18,6 +18,7 @@ import { APIResponse } from '../../models/api-response'
 
 export const BrowseComponentPage: React.FC = () => {
   const { componentName } = useParams<{ componentName: string }>()
+  const userContext = useContext(UserContext) as IUserContext
 
   const [compState, setComp] = useState<IComponent>()
   const [failuredataState, setFailuredata] = useState<IDataInstance[]>([])
@@ -56,16 +57,21 @@ export const BrowseComponentPage: React.FC = () => {
     get: datainstanceGet,
     response: datainstanceResponse,
     loading: datainstanceLoad,
-  } = useFetch<APIResponse<IDataInstance>>('/data-instances', (options) => {
-    options.cachePolicy = CachePolicies.NO_CACHE
-    return options
-  })
+  } = useFetch<APIResponse<IDataInstance>>(
+    `/data-instances${
+      userContext.user?.userGroupType === 'admin' ? '' : '/anonymized'
+    }`,
+    (options) => {
+      options.cachePolicy = CachePolicies.NO_CACHE
+      return options
+    }
+  )
 
   const {
     put: updateData,
     response: updateDataResponse,
     error: updateDataError,
-  } = useFetch(`/components`)
+  } = useFetch('/components')
 
   useEffect(() => {
     const loadComponents = async () => {
@@ -132,8 +138,6 @@ export const BrowseComponentPage: React.FC = () => {
   const data = useMemo(() => requestToData(failuredataState), [
     failuredataState,
   ])
-
-  const userContext = useContext(UserContext) as IUserContext
 
   const handleUpdate = (form: FieldForm) => {
     const data: { [id: string]: string } = {}
