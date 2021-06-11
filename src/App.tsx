@@ -20,6 +20,8 @@ import { AdminPage } from './pages/admin-page'
 import { CompanyUserPage } from './pages/company-user-page'
 import { AddComponentPage } from './pages/add-component-page'
 import { RegisterNewUserPage } from './pages/register-new-user/idex'
+import { NotificationPage } from './pages/notification-page'
+import { AddNotificationsPage } from './pages/add-notifications-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -74,6 +76,12 @@ function App(): JSX.Element {
             </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <Frontpage />
+            </AuthRoute>
+            <AuthRoute exact path={MAIN_ROUTES.NOTIFICATIONS}>
+              <NotificationPage />
+            </AuthRoute>
+            <AuthRoute exact path={MAIN_ROUTES.ADD_NOTIFICATIONS}>
+              <AddNotificationsPage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.ADD}>
               <AddDataPage />

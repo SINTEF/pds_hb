@@ -1,0 +1,30 @@
+.container {
+  align-content: center;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-bottom: 100px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.headers {
+  height: 60px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.fontSize {
+  font-size: medium;
+}
+
+.clickable {
+  font-size: medium;
+  text-decoration: underline;
+  color: #003d65;
+}

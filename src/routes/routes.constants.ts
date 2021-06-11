@@ -11,6 +11,8 @@ const MAIN_ROUTES = {
   NOT_FOUND: '*',
   ADMIN_COMPANY: '/admin-company',
   REGISTER: '/register',
+  NOTIFICATIONS: '/notifications',
+  ADD_NOTIFICATIONS: '/add-notifications',
 }
 
 export const COMPANY_SUB_ROUTES = {

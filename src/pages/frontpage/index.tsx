@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './Frontpage.module.css'
 import { SearchField } from '../../components/search-field'
 import { Button } from '../../components/button'
@@ -7,7 +7,7 @@ import MAIN_ROUTES, {
   COMPANY_SUB_ROUTES,
   SUB_ROUTES,
 } from '../../routes/routes.constants'
-import useFetch from 'use-http'
+import useFetch, { CachePolicies } from 'use-http'
 import { IComponent } from '../../models/component'
 import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
@@ -15,13 +15,37 @@ import { APIResponse } from '../../models/api-response'
 
 export const Frontpage: React.FC = () => {
   const history = useHistory()
-  const { loading, error, data } = useFetch<APIResponse<IComponent[]>>(
+  const { loading, error } = useFetch<APIResponse<IComponent[]>>(
     '/components',
     []
   )
+
   const userContext = useContext(UserContext) as IUserContext
-  const suggestions = data?.data.map((component) => component.name) ?? []
-  return (
+
+  const [components, setComponents] = useState<IComponent[]>([])
+
+  const {
+    get: componentGet,
+    response: componentResponse,
+    loading: componentLoad,
+  } = useFetch<APIResponse<IComponent>>('/components', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
+
+  useEffect(() => {
+    const loadComponents = async () => {
+      const components = await componentGet()
+      if (componentResponse.ok) setComponents(components.data)
+    }
+    loadComponents()
+  }, [componentGet, componentResponse])
+
+  const suggestions = components.map((component) => component.name) ?? []
+
+  return componentLoad || !userContext ? (
+    <div>Loading</div>
+  ) : (
     <div className={styles.frontpage}>
       <div className={styles.title}>{'PDS Datahandbook'}</div>
       {userContext.user?.userGroupType === 'general_user' ? (
