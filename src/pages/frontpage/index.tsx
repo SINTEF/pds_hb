@@ -15,10 +15,7 @@ import { APIResponse } from '../../models/api-response'
 
 export const Frontpage: React.FC = () => {
   const history = useHistory()
-  const { loading, error } = useFetch<APIResponse<IComponent[]>>(
-    '/components',
-    []
-  )
+  const { error } = useFetch<APIResponse<IComponent[]>>('/components', [])
 
   const userContext = useContext(UserContext) as IUserContext
 
@@ -77,7 +74,7 @@ export const Frontpage: React.FC = () => {
       ) : null}
       {userContext.user?.userGroupType === 'admin' ? (
         <div className={[styles.adminMenu, styles.menu].join(' ')}>
-          {loading && 'Loading...'}
+          {componentLoad && 'Loading...'}
           <SearchField
             variant="primary"
             icon={'search'}
@@ -109,7 +106,7 @@ export const Frontpage: React.FC = () => {
       ) : null}
       {userContext.user?.userGroupType === 'operator' ? (
         <div className={[styles.operatorMenu, styles.menu].join(' ')}>
-          {loading && 'Loading...'}
+          {componentLoad && 'Loading...'}
           <SearchField
             variant="primary"
             icon={'search'}
@@ -140,8 +137,8 @@ export const Frontpage: React.FC = () => {
             }
           />
           <Button
-            label={'Add data'}
-            onClick={() => history.push(MAIN_ROUTES.ADD)}
+            label={'Notifications'}
+            onClick={() => history.push(MAIN_ROUTES.NOTIFICATIONS)}
           />
         </div>
       ) : (

@@ -2,7 +2,7 @@ import styles from './NotificationPage.module.css'
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import useFetch, { CachePolicies } from 'use-http'
-import { SUB_ROUTES } from '../../routes/routes.constants'
+import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
 
 import { Title } from '../../components/title'
 import { APIResponse } from '../../models/api-response'
@@ -11,6 +11,7 @@ import { IUserContext } from '../../models/user'
 import { UserContext } from '../../utils/context/userContext'
 import { INotification } from '../../models/notification'
 import { ViewLongText } from '../../components/view-long-text'
+import { Button } from '../../components/button'
 
 export const NotificationPage: React.FC = () => {
   const [notifications, setNotifications] = useState<INotification[]>([])
@@ -18,6 +19,7 @@ export const NotificationPage: React.FC = () => {
   const history = useHistory()
   const { url } = useRouteMatch()
   const [open, setOpen] = useState<boolean>(false)
+  const [longText, setLongText] = useState<string>('')
 
   const {
     get: notificationGet,
@@ -43,6 +45,13 @@ export const NotificationPage: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.center}>
         <Title title="Notifications" />
+      </div>
+      <div className={styles.filtercontainer}>
+        <Button
+          label={'Add notifications'}
+          size="small"
+          onClick={() => history.push(MAIN_ROUTES.ADD_NOTIFICATIONS)}
+        />
       </div>
       <div className={styles.table}>
         <div>
@@ -75,13 +84,15 @@ export const NotificationPage: React.FC = () => {
             </label>
             <label className={styles.fontSize}>{data.equipmentGroupL2}</label>
             <label className={styles.fontSize}>{data.tag}</label>
-            <label onClick={() => setOpen(!open)} className={styles.clickable}>
-              {data.shortText}{' '}
-              <ViewLongText
-                title="Long text"
-                text={data.longText ?? ''}
-                isOpen={open}
-              />
+            <label
+              onClick={() => {
+                setOpen(!open)
+                setLongText(data.longText ?? '')
+              }}
+              className={styles.clickable}
+            >
+              {data.shortText}
+              <ViewLongText title="Long text" text={longText} isOpen={open} />
             </label>
             <label className={styles.fontSize}>{data.detectionMethod}</label>
             <label className={styles.fontSize}>{data.F1}</label>

@@ -27,4 +27,12 @@
   font-size: medium;
   text-decoration: underline;
   color: #003d65;
+  cursor: pointer;
+}
+
+.filtercontainer {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 40px;
+  padding-top: 10px;
 }
