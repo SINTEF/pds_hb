@@ -13,6 +13,8 @@ const MAIN_ROUTES = {
   REGISTER: '/register',
   NOTIFICATIONS: '/notifications',
   ADD_NOTIFICATIONS: '/add-notifications',
+  INVENTORY: '/inventory',
+  ADD_INVENTORY: '/add-inventory',
 }
 
 export const COMPANY_SUB_ROUTES = {
