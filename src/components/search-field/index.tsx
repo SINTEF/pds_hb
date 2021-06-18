@@ -9,7 +9,7 @@ export interface SearchFieldProps {
 
   label?: string
 
-  defaultValue?: string
+  //defaultValue?: string
 
   placeholder?: string
 
@@ -26,7 +26,7 @@ export interface SearchFieldProps {
 
 export const SearchField: React.FC<SearchFieldProps> = ({
   variant = 'primary',
-  defaultValue = '',
+  //defaultVlue,
   label,
   placeholder,
   suggestions,
@@ -38,7 +38,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
 }: SearchFieldProps) => {
   const [filtered, setFiltered] = useState<Array<string>>([])
   const [chosen, setChosen] = useState<number>(0)
-  const [selected, setSelected] = useState<string>(defaultValue)
+  const [selected, setSelected] = useState<string>('') //DefaultValue
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowDown' && chosen !== filtered.length - 1) {
       setChosen(chosen + 1)
@@ -87,8 +87,9 @@ export const SearchField: React.FC<SearchFieldProps> = ({
           onChange={handleChanged}
           onKeyDown={handleKeyPress}
           onFocus={handleChanged}
-          defaultValue={defaultValue}
+          //defaultValue={defaultValue}
           value={value ?? selected}
+          type="text"
         ></input>
         {variant === 'primary' ? (
           <i className={'material-icons ' + styles.icon}>{icon}</i>

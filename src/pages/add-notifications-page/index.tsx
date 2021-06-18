@@ -27,7 +27,6 @@ export interface Form {
   F1: string | null
   F2: string | null
   failureType: string | null
-  testInterval: number | null
   numberOfTests: number | null
 }
 
@@ -39,7 +38,7 @@ export const AddNotificationsPage: React.FC = () => {
 
   const userContext = useContext(UserContext) as IUserContext
 
-  const [pageState, setPage] = useState<number>(3)
+  const [pageState, setPage] = useState<number>(1)
 
   const [dataState, setData] = useState<Form>({
     company: undefined,
@@ -53,7 +52,6 @@ export const AddNotificationsPage: React.FC = () => {
     F1: null,
     F2: null,
     failureType: null,
-    testInterval: null,
     numberOfTests: null,
   })
 
@@ -83,7 +81,7 @@ export const AddNotificationsPage: React.FC = () => {
                 company: undefined,
                 notificationNumber: (d['Notification no.'] ?? '') as string,
                 detectionDate:
-                  new Date(Date.UTC(0, 0, d['Date'], -25)) ?? new Date(), //must be changed if hours is important
+                  new Date(Date.UTC(0, 0, d['Date'], -25)) ?? new Date(), //must be changed if hours is important as it does not concider summer time
                 equipmentGroupL2: (d['Eq. Group L2'] ?? '') as string,
                 tag: (d['Tag no./FL'] ?? '') as string,
                 shortText: (d['Short text'] ?? '') as string,
@@ -92,7 +90,6 @@ export const AddNotificationsPage: React.FC = () => {
                 F1: (d['Failure mode (F1)'] ?? '') as string,
                 F2: (d['Failure mode (F2)'] ?? '') as string,
                 failureType: (d['Failure type'] ?? '') as string,
-                testInterval: (d['Test interval'] ?? NaN) as number,
                 numberOfTests: (d['No. Of tests (in period)'] ?? NaN) as number,
               } as Form
               setNotifications((notifications) => [...notifications, d])
@@ -116,7 +113,10 @@ export const AddNotificationsPage: React.FC = () => {
 
   const valid_notification = () => {
     return (
-      dataState.notificationNumber && dataState.detectionDate && dataState.tag
+      dataState.notificationNumber &&
+      dataState.detectionDate &&
+      dataState.tag &&
+      dataState.equipmentGroupL2
     )
   }
 
@@ -125,8 +125,27 @@ export const AddNotificationsPage: React.FC = () => {
       (notification) =>
         notification.notificationNumber &&
         notification.detectionDate &&
-        notification.tag
+        notification.tag &&
+        notification.equipmentGroupL2
     )
+  }
+
+  const hasNotificationNumber = () => {
+    return notifications.every(
+      (notification) => notification.notificationNumber
+    )
+  }
+
+  const hasDate = () => {
+    return notifications.every((notification) => notification.detectionDate)
+  }
+
+  const hasEqGroup = () => {
+    return notifications.every((notification) => notification.equipmentGroupL2)
+  }
+
+  const hasTag = () => {
+    return notifications.every((notification) => notification.tag)
   }
 
   const updateData = async (form: Form): Promise<void> => {
@@ -139,7 +158,7 @@ export const AddNotificationsPage: React.FC = () => {
     notifications.map((notification) => updateData(notification))
   }
 
-  if (pageState === 3) {
+  if (pageState === 1) {
     return (
       <div className={styles.container}>
         <div className={styles.title}>
@@ -160,7 +179,7 @@ export const AddNotificationsPage: React.FC = () => {
             onValueChanged={(e) => {
               const file = (e as FileList)[0]
               readExcel(file)
-              setPage(4)
+              setPage(2)
             }}
           />
 
@@ -180,21 +199,23 @@ export const AddNotificationsPage: React.FC = () => {
                 F1: null,
                 F2: null,
                 failureType: null,
-                testInterval: null,
                 numberOfTests: null,
               })
-              setPage(1)
+              setPage(3)
             }}
           />
         </div>
       </div>
     )
-  } else if (pageState === 4) {
+  } else if (pageState === 2) {
     return (
       <div className={styles.notificationcontainer}>
         <div
           className={styles.back}
-          onClick={() => (setPage(3), setNotifications([]))}
+          onClick={() => {
+            setPage(1)
+            setNotifications([])
+          }}
         >
           {'< Back'}
         </div>
@@ -206,8 +227,16 @@ export const AddNotificationsPage: React.FC = () => {
             <Button
               label="Save"
               size="small"
-              onClick={() => (updateMultipleNotifications(), setPage(2))}
+              onClick={() => {
+                updateMultipleNotifications()
+                setPage(4)
+              }}
             />
+          )}
+          {!valid_notifications() && (
+            <div className={styles.infotext}>
+              Some of your notifications are missing required data!
+            </div>
           )}
         </div>
         <div className={styles.table}>
@@ -215,16 +244,27 @@ export const AddNotificationsPage: React.FC = () => {
             <table className={styles.headers}>
               <tbody>
                 <tr>
-                  <td>{'Notification number'}</td>
-                  <td>{'Date'}</td>
-                  <td>{'Equipment group L2'}</td>
-                  <td>{'Tag'}</td>
-                  <td>{'Short text (click for longer text)'}</td>
+                  <td
+                    className={
+                      hasNotificationNumber() ? undefined : styles.required
+                    }
+                  >
+                    {'Notification number'}
+                  </td>
+                  <td className={hasDate() ? undefined : styles.required}>
+                    {'Date'}
+                  </td>
+                  <td className={hasEqGroup() ? undefined : styles.required}>
+                    {'Equipment group L2'}
+                  </td>
+                  <td className={hasTag() ? undefined : styles.required}>
+                    {'Tag'}
+                  </td>
+                  <td>{'Short text (click for long text)'}</td>
                   <td> {'Detection method'}</td>
                   <td> {'F1'}</td>
                   <td> {'F2'}</td>
                   <td> {'Failure type'}</td>
-                  <td> {'Test interval'}</td>
                   <td> {'Number of tests'}</td>
                   <td></td>
                 </tr>
@@ -265,9 +305,6 @@ export const AddNotificationsPage: React.FC = () => {
               {notification.failureType}
             </label>
             <label className={styles.fontSize}>
-              {notification.testInterval}
-            </label>
-            <label className={styles.fontSize}>
               {notification.numberOfTests}
             </label>
             <i
@@ -280,12 +317,15 @@ export const AddNotificationsPage: React.FC = () => {
         ))}
       </div>
     )
-  } else if (pageState === 1) {
+  } else if (pageState === 3) {
     return (
       <div className={styles.container}>
         <div
           className={styles.back}
-          onClick={() => (setPage(3), setNotifications([]))}
+          onClick={() => {
+            setPage(1)
+            setNotifications([])
+          }}
         >
           {'< Back'}
         </div>
@@ -294,7 +334,7 @@ export const AddNotificationsPage: React.FC = () => {
           <InputField
             variant="standard"
             type="text"
-            label="notification number"
+            label="notification number*"
             placeholder={
               dataState.notificationNumber
                 ? undefined
@@ -308,7 +348,7 @@ export const AddNotificationsPage: React.FC = () => {
           <InputField
             variant="standard"
             type="date"
-            label="date"
+            label="date*"
             placeholder={dataState.detectionDate ? undefined : 'dd-mm-yyyy...'}
             value={dataState.detectionDate}
             onValueChanged={(value) => {
@@ -318,7 +358,7 @@ export const AddNotificationsPage: React.FC = () => {
           <InputField
             variant="standard"
             type="text"
-            label="equipment group L2"
+            label="equipment group L2*"
             placeholder={
               dataState.equipmentGroupL2
                 ? undefined
@@ -332,7 +372,7 @@ export const AddNotificationsPage: React.FC = () => {
           <InputField
             variant="standard"
             type="text"
-            label="tag"
+            label="tag*"
             placeholder={dataState.tag ? undefined : 'Type in tag...'}
             value={dataState.tag ?? undefined}
             onValueChanged={(value) => {
@@ -412,18 +452,6 @@ export const AddNotificationsPage: React.FC = () => {
           <InputField
             variant="standard"
             type="number"
-            label="test interval"
-            placeholder={
-              dataState.testInterval ? undefined : 'Set test interval...'
-            }
-            value={dataState.testInterval ?? undefined}
-            onValueChanged={(value) => {
-              setData({ ...dataState, testInterval: Number(value as string) })
-            }}
-          />
-          <InputField
-            variant="standard"
-            type="number"
             label="number of tests"
             placeholder={
               dataState.numberOfTests ? undefined : 'Set a number of tests...'
@@ -434,11 +462,14 @@ export const AddNotificationsPage: React.FC = () => {
             }}
           />
         </div>
+        {!valid_notification() && (
+          <div className={styles.infotext}>Missing required fields *</div>
+        )}
         {valid_notification() && (
           <div className={styles.button}>
             <Button
               onClick={() => {
-                setPage(2)
+                setPage(4)
                 updateData(dataState)
               }}
               label="Add data"
@@ -447,7 +478,7 @@ export const AddNotificationsPage: React.FC = () => {
         )}
       </div>
     )
-  } else if (pageState === 2) {
+  } else if (pageState === 4) {
     return (
       <div className={styles.container}>
         <Title title={'Add notification'} />
@@ -469,10 +500,9 @@ export const AddNotificationsPage: React.FC = () => {
                 F1: null,
                 F2: null,
                 failureType: null,
-                testInterval: null,
                 numberOfTests: null,
               })
-              setPage(3)
+              setPage(1)
             }}
           />
           <Button
@@ -492,7 +522,6 @@ export const AddNotificationsPage: React.FC = () => {
                 F1: null,
                 F2: null,
                 failureType: null,
-                testInterval: null,
                 numberOfTests: null,
               })
             }}

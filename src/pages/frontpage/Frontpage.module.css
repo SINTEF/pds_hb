@@ -50,3 +50,9 @@
 .contact {
   font-size: 17px;
 }
+
+.loading {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

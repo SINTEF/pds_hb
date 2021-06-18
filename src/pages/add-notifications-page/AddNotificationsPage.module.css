@@ -33,17 +33,6 @@
   justify-content: flex-end;
 }
 
-.facilitycontainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 300px;
-  width: auto;
-  padding-left: 200px;
-  padding-right: 200px;
-}
-
 .notificationcontainer {
   align-content: center;
   padding-right: 70px;
@@ -98,4 +87,18 @@
   display: flex;
   justify-content: flex-end;
   padding-bottom: 40px;
+}
+
+.infotext {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 30px;
+  color: red;
+  font-size: 20px;
+}
+
+.required {
+  font-weight: bold;
+  color: red;
 }

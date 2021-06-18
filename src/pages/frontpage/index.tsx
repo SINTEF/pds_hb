@@ -3,10 +3,7 @@ import styles from './Frontpage.module.css'
 import { SearchField } from '../../components/search-field'
 import { Button } from '../../components/button'
 import { useHistory } from 'react-router-dom'
-import MAIN_ROUTES, {
-  COMPANY_SUB_ROUTES,
-  SUB_ROUTES,
-} from '../../routes/routes.constants'
+import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
 import useFetch, { CachePolicies } from 'use-http'
 import { IComponent } from '../../models/component'
 import { UserContext } from '../../utils/context/userContext'
@@ -41,7 +38,7 @@ export const Frontpage: React.FC = () => {
   const suggestions = components.map((component) => component.name) ?? []
 
   return componentLoad || !userContext ? (
-    <div>Loading</div>
+    <div className={styles.loading}>Loading</div>
   ) : (
     <div className={styles.frontpage}>
       <div className={styles.title}>{'PDS Datahandbook'}</div>
@@ -131,10 +128,8 @@ export const Frontpage: React.FC = () => {
             onClick={() => history.push(MAIN_ROUTES.BROWSE)}
           />
           <Button
-            label={'Browse own equipment data'}
-            onClick={() =>
-              history.push(MAIN_ROUTES.COMPANY + COMPANY_SUB_ROUTES.REG_DATA)
-            }
+            label={'Inventory'}
+            onClick={() => history.push(MAIN_ROUTES.INVENTORY)}
           />
           <Button
             label={'Notifications'}
