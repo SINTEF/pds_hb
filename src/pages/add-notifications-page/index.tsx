@@ -89,7 +89,7 @@ export const AddNotificationsPage: React.FC = () => {
                 detectionMethod: (d['Detection method (D2)'] ?? '') as string,
                 F1: (d['Failure mode (F1)'] ?? '') as string,
                 F2: (d['Failure mode (F2)'] ?? '') as string,
-                failureType: (d['Failure type'] ?? '') as string,
+                failureType: (d['Failure type'] ?? '').toUpperCase() as string,
                 numberOfTests: (d['No. Of tests (in period)'] ?? NaN) as number,
               } as Form
               setNotifications((notifications) => [...notifications, d])
@@ -307,12 +307,6 @@ export const AddNotificationsPage: React.FC = () => {
             <label className={styles.fontSize}>
               {notification.numberOfTests}
             </label>
-            <i
-              onClick={() => false}
-              className={'material-icons ' + styles.icon}
-            >
-              {'editor'}
-            </i>
           </RegisteredDataField>
         ))}
       </div>
@@ -446,7 +440,10 @@ export const AddNotificationsPage: React.FC = () => {
             }
             value={dataState.failureType ?? undefined}
             onValueChanged={(value) => {
-              setData({ ...dataState, failureType: value as string })
+              setData({
+                ...dataState,
+                failureType: (value as string).toUpperCase(),
+              })
             }}
           />
           <InputField

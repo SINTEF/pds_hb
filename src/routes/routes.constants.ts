@@ -12,9 +12,12 @@ const MAIN_ROUTES = {
   ADMIN_COMPANY: '/admin-company',
   REGISTER: '/register',
   NOTIFICATIONS: '/notifications',
-  ADD_NOTIFICATIONS: '/add-notifications',
+  ADD_NOTIFICATIONS: '/notifications/add-notifications',
+  EDIT_NOTIFICATION: '/notifications/:notificationId',
   INVENTORY: '/inventory',
-  ADD_INVENTORY: '/add-inventory',
+  ADD_INVENTORY: '/inventory/add-inventory',
+  EDIT_INVENTORY: '/inventory/:inventoryInstanceId',
+  ANALYSIS: '/analysis',
 }
 
 export const COMPANY_SUB_ROUTES = {

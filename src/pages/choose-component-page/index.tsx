@@ -73,11 +73,13 @@ export const ChooseComponentPage: FC = () => {
   if (pageState === 1) {
     return (
       <div className={styles.container}>
-        <Title title="Choose equipment group" />
+        <div className={styles.title}>
+          <Title title="Choose equipment group" />
+        </div>
         {modules.map((module) => (
           <>
             <div className={styles.moduletitle}>
-              <span>{module.name}</span>
+              <span className={styles.moduletitle}>{module.name}</span>
               {userContext?.user?.userGroupType === 'admin' ? (
                 <EditModule
                   equipmentModule={module}
@@ -122,11 +124,15 @@ export const ChooseComponentPage: FC = () => {
   if (pageState === 2) {
     return (
       <div className={styles.container}>
-        <Title title="Choose component"> </Title>
         <div className={styles.back} onClick={() => setPage(1)}>
           {' < Back'}
         </div>
-        <span className={styles.moduletitle}>{selectedEquipmentGroup}</span>
+        <div className={styles.title}>
+          <Title title="Choose equipment group" />
+        </div>
+        <span className={styles.equipmentgrouptitle}>
+          {selectedEquipmentGroup}
+        </span>
         <div className={styles.components}>
           {equipmentGroup.length > 0 ? (
             equipmentGroup.map((component, index) => {

@@ -1,8 +1,8 @@
 import styles from './NotificationPage.module.css'
 import React, { useContext, useEffect, useState } from 'react'
-import { useHistory, useRouteMatch } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import useFetch, { CachePolicies } from 'use-http'
-import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
+import MAIN_ROUTES from '../../routes/routes.constants'
 
 import { Title } from '../../components/title'
 import { APIResponse } from '../../models/api-response'
@@ -13,13 +13,13 @@ import { INotification } from '../../models/notification'
 import { ViewLongText } from '../../components/view-long-text'
 import { Button } from '../../components/button'
 import { Filter } from '../../components/filter'
+import Loader from 'react-loader-spinner'
 
 export const NotificationPage: React.FC = () => {
   const [notifications, setNotifications] = useState<INotification[]>([])
   const [viewedNotifications, setView] = useState<INotification[]>([])
   const userContext = useContext(UserContext) as IUserContext
   const history = useHistory()
-  const { url } = useRouteMatch()
   const [open, setOpen] = useState<boolean>(false)
   const [longText, setLongText] = useState<string>('')
   const [equipmentGroups, setEquipmentGroups] = useState<
@@ -101,14 +101,13 @@ export const NotificationPage: React.FC = () => {
 
   return notificationLoad ? (
     <div className={styles.loading}>
-      <p>Loading...</p>
+      <Loader type="Grid" color="grey" />
     </div>
   ) : (
     <div className={styles.container}>
       <div className={styles.center}>
         <Title title="Notifications" />
       </div>
-
       <div className={styles.menucontainer}>
         <div className={styles.filtercontainer}>
           <Filter
@@ -204,11 +203,10 @@ export const NotificationPage: React.FC = () => {
               <i
                 onClick={() =>
                   history.push(
-                    url +
-                      SUB_ROUTES.UPDATE.replace(
-                        ':datainstanceId',
-                        data._id.replace(' ', '+')
-                      )
+                    MAIN_ROUTES.EDIT_NOTIFICATION.replace(
+                      ':notificationId',
+                      data._id.replace(' ', '+')
+                    )
                   )
                 }
                 className={'material-icons ' + styles.icon}

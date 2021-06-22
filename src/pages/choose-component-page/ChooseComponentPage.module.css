@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 95%;
+  padding-top: 50px;
 }
 
 .newComponentButton {
@@ -32,6 +33,14 @@
   align-self: flex-start;
   font-size: 40px;
   padding-bottom: 40px;
+  padding-top: 30px;
+  padding-left: 50px;
+}
+
+.equipmentgrouptitle {
+  align-self: flex-start;
+  font-size: 40px;
+  padding-bottom: 60px;
   padding-top: 50px;
   padding-left: 100px;
 }
@@ -56,4 +65,8 @@
 
 .newComponentButton > * {
   margin-bottom: 10px;
+}
+
+.title {
+  margin-bottom: -20px;
 }

@@ -1,8 +1,8 @@
 import styles from './InventoryPage.module.css'
 import React, { useContext, useEffect, useState } from 'react'
-import { useHistory, useRouteMatch } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import useFetch, { CachePolicies } from 'use-http'
-import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
+import MAIN_ROUTES from '../../routes/routes.constants'
 
 import { Title } from '../../components/title'
 import { APIResponse } from '../../models/api-response'
@@ -12,13 +12,13 @@ import { UserContext } from '../../utils/context/userContext'
 import { Button } from '../../components/button'
 import { IInventoryInstance } from '../../models/inventoryinstance'
 import { Filter } from '../../components/filter'
+import Loader from 'react-loader-spinner'
 
 export const InventoryPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
   const [inventory, setInventory] = useState<IInventoryInstance[]>([])
   const [viewedInventory, setView] = useState<IInventoryInstance[]>([])
   const history = useHistory()
-  const { url } = useRouteMatch()
   const [equipmentGroups, setEquipmentGroups] = useState<
     Record<string, boolean>
   >({})
@@ -73,7 +73,9 @@ export const InventoryPage: React.FC = () => {
   }, [equipmentGroups])
 
   return inventoryInstanceLoad ? (
-    <p>Loading...</p>
+    <div className={styles.loading}>
+      <Loader type="Grid" color="grey" />
+    </div>
   ) : (
     <div className={styles.container}>
       <div className={styles.center}>
@@ -133,11 +135,10 @@ export const InventoryPage: React.FC = () => {
               <i
                 onClick={() =>
                   history.push(
-                    url +
-                      SUB_ROUTES.UPDATE.replace(
-                        ':datainstanceId',
-                        data._id.replace(' ', '+')
-                      )
+                    MAIN_ROUTES.EDIT_INVENTORY.replace(
+                      ':inventoryInstanceId',
+                      data._id.replace(' ', '+')
+                    )
                   )
                 }
                 className={'material-icons ' + styles.icon}
