@@ -27,6 +27,7 @@ export const NotificationPage: React.FC = () => {
   >({})
   const [tags, setTags] = useState<Record<string, boolean>>({})
   const [failureTypes, setFailureTypes] = useState<Record<string, boolean>>({})
+  const [years, setYears] = useState<Record<string, boolean>>({})
 
   const {
     get: notificationGet,
@@ -65,6 +66,17 @@ export const NotificationPage: React.FC = () => {
             )
             .reduce((obj, name) => ({ ...obj, [name]: false }), {})
         )
+        setYears(
+          Object.entries(notificationData.data)
+            .map((notification) =>
+              notification[1].detectionDate
+                ? new Date(notification[1].detectionDate)
+                    .getFullYear()
+                    .toString()
+                : 'undefined'
+            )
+            .reduce((obj, name) => ({ ...obj, [name]: false }), {})
+        )
       }
     }
     getNotifications()
@@ -80,6 +92,9 @@ export const NotificationPage: React.FC = () => {
     const failureTypeFilters = Object.entries(failureTypes)
       .filter((group) => group[1])
       .flatMap(([key]) => key)
+    const yearFilters = Object.entries(years)
+      .filter((group) => group[1])
+      .flatMap(([key]) => key)
 
     setView(
       notifications.filter(
@@ -90,14 +105,28 @@ export const NotificationPage: React.FC = () => {
           (failureTypeFilters.length < 1 ||
             (notification.failureType
               ? failureTypeFilters.includes(notification.failureType)
-              : failureTypeFilters.includes('undefined')))
+              : failureTypeFilters.includes('undefined'))) &&
+          (yearFilters.length < 1 ||
+            yearFilters.includes(
+              new Date(notification.detectionDate).getFullYear().toString()
+            ))
       )
     )
 
-    if (eqFilters.length + tagFilters.length + failureTypeFilters.length < 1) {
+    if (
+      eqFilters.length +
+        tagFilters.length +
+        failureTypeFilters.length +
+        yearFilters.length <
+      1
+    ) {
       setView(notifications)
     }
-  }, [equipmentGroups, tags, failureTypes])
+  }, [equipmentGroups, tags, failureTypes, years])
+
+  const calculateTotalDu = () => {
+    return viewedNotifications.length
+  }
 
   return notificationLoad ? (
     <div className={styles.loading}>
@@ -107,6 +136,12 @@ export const NotificationPage: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.center}>
         <Title title="Notifications" />
+      </div>
+      <div className={styles.statisticsContainer}>
+        <div className={styles.statisticsText}>
+          {'Total  number of notifications:'}
+        </div>
+        <div className={styles.statisticsNumber}>{calculateTotalDu()}</div>
       </div>
       <div className={styles.menucontainer}>
         <div className={styles.filtercontainer}>
@@ -143,6 +178,17 @@ export const NotificationPage: React.FC = () => {
             }}
             key={'failureType'}
           />
+          <Filter
+            category="Year"
+            filters={years}
+            onClick={(selected, newValue) => {
+              setYears({
+                ...years,
+                [selected]: newValue,
+              })
+            }}
+            key={'year'}
+          />
         </div>
         <div className={styles.buttoncontainer}>
           <Button
@@ -153,68 +199,78 @@ export const NotificationPage: React.FC = () => {
         </div>
       </div>
       <div className={styles.notificationscontainer}>
-        <div className={styles.table}>
-          <div>
-            <table className={styles.headers}>
-              <tbody>
-                <tr>
-                  <td>{'Notification number'}</td>
-                  <td>{'Date'}</td>
-                  <td>{'Equipment group L2'}</td>
-                  <td>{'Tag'}</td>
-                  <td>{'Short text (click for longer text)'}</td>
-                  <td> {'Detection method'}</td>
-                  <td> {'F1'}</td>
-                  <td> {'F2'}</td>
-                  <td> {'Failure type'}</td>
-                  <td> {'Number of tests'}</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
         <div>
-          {viewedNotifications?.map((data, key) => (
-            <RegisteredDataField key={key}>
-              <label className={styles.fontSize}>
-                {data.notificationNumber}
-              </label>
-              <label className={styles.fontSize}>
-                {new Date(data.detectionDate as Date).toLocaleDateString()}
-              </label>
-              <label className={styles.fontSize}>{data.equipmentGroupL2}</label>
-              <label className={styles.fontSize}>{data.tag}</label>
-              <label
-                onClick={() => {
-                  setOpen(!open)
-                  setLongText(data.longText ?? '')
-                }}
-                className={styles.clickable}
-              >
-                {data.shortText}
-                <ViewLongText title="Long text" text={longText} isOpen={open} />
-              </label>
-              <label className={styles.fontSize}>{data.detectionMethod}</label>
-              <label className={styles.fontSize}>{data.F1}</label>
-              <label className={styles.fontSize}>{data.F2}</label>
-              <label className={styles.fontSize}>{data.failureType}</label>
-              <label className={styles.fontSize}>{data.numberOfTests}</label>
-              <i
-                onClick={() =>
-                  history.push(
-                    MAIN_ROUTES.EDIT_NOTIFICATION.replace(
-                      ':notificationId',
-                      data._id.replace(' ', '+')
+          <div>
+            <div className={styles.table}>
+              <div>
+                <table className={styles.headers}>
+                  <tbody>
+                    <tr>
+                      <td>{'Notification number'}</td>
+                      <td>{'Date'}</td>
+                      <td>{'Equipment group L2'}</td>
+                      <td>{'Tag'}</td>
+                      <td>{'Short text (click for longer text)'}</td>
+                      <td> {'Detection method'}</td>
+                      <td> {'F1'}</td>
+                      <td> {'F2'}</td>
+                      <td> {'Failure type'}</td>
+                      <td> {'Number of tests'}</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            {viewedNotifications?.map((data, key) => (
+              <RegisteredDataField key={key}>
+                <label className={styles.fontSize}>
+                  {data.notificationNumber}
+                </label>
+                <label className={styles.fontSize}>
+                  {new Date(data.detectionDate as Date).toLocaleDateString()}
+                </label>
+                <label className={styles.fontSize}>
+                  {data.equipmentGroupL2}
+                </label>
+                <label className={styles.fontSize}>{data.tag}</label>
+                <label
+                  onClick={() => {
+                    setOpen(!open)
+                    setLongText(data.longText ?? '')
+                  }}
+                  className={styles.clickable}
+                >
+                  {data.shortText}
+                  <ViewLongText
+                    title="Long text"
+                    text={longText}
+                    isOpen={open}
+                  />
+                </label>
+                <label className={styles.fontSize}>
+                  {data.detectionMethod}
+                </label>
+                <label className={styles.fontSize}>{data.F1}</label>
+                <label className={styles.fontSize}>{data.F2}</label>
+                <label className={styles.fontSize}>{data.failureType}</label>
+                <label className={styles.fontSize}>{data.numberOfTests}</label>
+                <i
+                  onClick={() =>
+                    history.push(
+                      MAIN_ROUTES.EDIT_NOTIFICATION.replace(
+                        ':notificationId',
+                        data._id.replace(' ', '+')
+                      )
                     )
-                  )
-                }
-                className={'material-icons ' + styles.icon}
-              >
-                {'editor'}
-              </i>
-            </RegisteredDataField>
-          ))}
+                  }
+                  className={'material-icons ' + styles.icon}
+                >
+                  {'editor'}
+                </i>
+              </RegisteredDataField>
+            ))}
+          </div>
         </div>
       </div>
     </div>

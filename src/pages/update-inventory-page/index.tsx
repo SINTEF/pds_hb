@@ -106,33 +106,33 @@ export const UpdateInventoryPage: React.FC = () => {
               <div className={styles.data}>
                 <EditableField
                   index="Edit facility"
-                  content={inventoryInstance.data.facility}
+                  content={inventoryInstance.data?.facility}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />
                 <EditableField
                   index="Edit equipment group/L2"
-                  content={inventoryInstance.data.equipmentGroupL2}
+                  content={inventoryInstance.data?.equipmentGroupL2}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />
                 <EditableField
                   index="Edit tag"
-                  content={inventoryInstance.data.tag}
+                  content={inventoryInstance.data?.tag}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />
 
                 <EditableField
                   index="Edit vendor"
-                  content={inventoryInstance.data.vendor}
+                  content={inventoryInstance.data?.vendor}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />
 
                 <EditableField
                   index="Edit equipment model"
-                  content={inventoryInstance.data.equipmentModel}
+                  content={inventoryInstance.data?.equipmentModel}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />

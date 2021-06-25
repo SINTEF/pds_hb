@@ -15,4 +15,5 @@ export interface INotification {
   failureType?: string
   numberOfTests?: number
   created?: Date
+  commonError?: string
 }

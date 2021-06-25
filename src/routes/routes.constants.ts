@@ -16,7 +16,7 @@ const MAIN_ROUTES = {
   EDIT_NOTIFICATION: '/notifications/:notificationId',
   INVENTORY: '/inventory',
   ADD_INVENTORY: '/inventory/add-inventory',
-  EDIT_INVENTORY: '/inventory/:inventoryInstanceId',
+  EDIT_INVENTORY: '/inventory/edit-inventory/:inventoryInstanceId',
   ANALYSIS: '/analysis',
 }
 

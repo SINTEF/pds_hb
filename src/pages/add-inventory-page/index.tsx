@@ -48,40 +48,27 @@ export const AddInventoryPage: React.FC = () => {
 
   const readExcel = (file: File) => {
     const promise = new Promise(
-      (resolve: (value: Array<Form>) => void, reject) => {
+      (resolve: (value: Array<unknown>) => void, reject) => {
         const fileReader = new FileReader()
+        const fileType = 'xlsx'
         fileReader.readAsArrayBuffer(file)
+        if (file.name.split('.').pop()?.toLowerCase() === fileType) {
+          fileReader.onload = (e) => {
+            if (e.target !== null) {
+              const bufferArray = e.target.result
 
-        fileReader.onload = (e) => {
-          if (e.target !== null) {
-            const bufferArray = e.target.result
+              const workBook = XLSX.read(bufferArray, { type: 'buffer' })
 
-            const workBook = XLSX.read(bufferArray, { type: 'buffer' })
+              const workSheetname = workBook.SheetNames[0]
 
-            const workSheetname = workBook.SheetNames[0]
+              const workSheet = workBook.Sheets[workSheetname]
 
-            const workSheet = workBook.Sheets[workSheetname]
+              const data = XLSX.utils.sheet_to_json(workSheet)
 
-            const data = XLSX.utils.sheet_to_json(workSheet)
+              //eslint-disable-next-line
 
-            //eslint-disable-next-line
-            data.forEach((d: any) => {
-              d = {
-                company: undefined,
-                facility: (d['Facility'] ?? '') as string,
-                startDate:
-                  new Date(Date.UTC(0, 0, d['Date put into service'], -25)) ??
-                  new Date(), //must be changed if hours is important as it does not concider summer time
-                equipmentGroupL2: (d['Eq. Group L2'] ?? '') as string,
-                tag: (d['Tag no./FL'] ?? '') as string,
-                vendor: (d['Vendor'] ?? '') as string,
-                equipmentModel: (d['Eq. Model'] ?? '') as string,
-                L3: null,
-              } as Form
-              setInventory((inventoryInstance) => [...inventoryInstance, d])
-            })
-
-            resolve(inventory)
+              resolve(data)
+            }
           }
         }
 
@@ -92,8 +79,23 @@ export const AddInventoryPage: React.FC = () => {
       }
     )
 
-    promise.then(() => {
-      //setInventory(d)
+    promise.then((data) => {
+      //eslint-disable-next-line
+      data.forEach((d: any) => {
+        d = {
+          company: undefined,
+          facility: (d['Facility'] ?? '') as string,
+          startDate:
+            new Date(Date.UTC(0, 0, d['Date put into service'], -25)) ??
+            new Date(), //must be changed if hours is important as it does not concider summer time
+          equipmentGroupL2: (d['Eq. Group L2'] ?? '') as string,
+          tag: (d['Tag no./FL'] ?? '') as string,
+          vendor: (d['Vendor'] ?? '') as string,
+          equipmentModel: (d['Eq. Model'] ?? '') as string,
+          L3: null,
+        } as Form
+        setInventory((inventoryInstance) => [...inventoryInstance, d])
+      })
     })
   }
 
@@ -240,7 +242,6 @@ export const AddInventoryPage: React.FC = () => {
                   </td>
                   <td>{'Vendor'}</td>
                   <td>{'Eq. Model'}</td>
-                  <td></td>
                 </tr>
               </tbody>
             </table>
@@ -266,12 +267,6 @@ export const AddInventoryPage: React.FC = () => {
             <label className={styles.fontSize}>
               {inventoryInstance.equipmentModel}
             </label>
-            <i
-              onClick={() => false}
-              className={'material-icons ' + styles.icon}
-            >
-              {'editor'}
-            </i>
           </RegisteredDataField>
         ))}
       </div>

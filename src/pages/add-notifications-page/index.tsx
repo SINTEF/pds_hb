@@ -28,11 +28,18 @@ export interface Form {
   F2: string | null
   failureType: string | null
   numberOfTests: number | null
+  commonError: string | null
+}
+
+export interface PeriodForm {
+  company: string | undefined
+  tag: string | null
+  startDate: Date
+  endDate: Date
 }
 
 export const AddNotificationsPage: React.FC = () => {
   const history = useHistory()
-  const { post } = useFetch()
   const [open, setOpen] = useState<boolean>(false)
   const [longText, setLongText] = useState<string>('')
 
@@ -53,61 +60,95 @@ export const AddNotificationsPage: React.FC = () => {
     F2: null,
     failureType: null,
     numberOfTests: null,
+    commonError: null,
   })
 
+  /*const [periodDataState] = useState<PeriodForm>({
+    company: undefined,
+    tag: null,
+    startDate: new Date(),
+    endDate: new Date(),
+  })*/
+
   const [notifications, setNotifications] = useState<Array<Form>>([])
+  const [periods, setPeriods] = useState<Array<PeriodForm>>([])
+  const [SuccessNumber, setSuccessNumber] = useState<number>(0)
 
-  const readExcel = (file: File) => {
+  //eslint-disable-next-line
+  const notificationsFromExcel = (data: any) => {
+    //eslint-disable-next-line
+    data.forEach((d: any) => {
+      d = {
+        company: undefined,
+        notificationNumber: (d['Notification no.'] ?? '') as string,
+        detectionDate: new Date(Date.UTC(0, 0, d['Date'], -25)) ?? new Date(), //must be changed if hours is important as it does not concider summer time
+        equipmentGroupL2: (d['Eq. Group L2'] ?? '') as string,
+        tag: (d['Tag no./FL'] ?? '') as string,
+        shortText: (d['Short text'] ?? '') as string,
+        longText: (d['Long text'] ?? '') as string,
+        detectionMethod: (d['Detection method (D2)'] ?? '') as string,
+        F1: (d['Failure mode (F1)'] ?? '') as string,
+        F2: (d['Failure mode (F2)'] ?? '') as string,
+        failureType: (d['Failure type'] ?? '').toUpperCase() as string,
+        numberOfTests: (d['No. Of tests (in period)'] ?? NaN) as number,
+        commonError: d['Common error'] ?? undefined,
+      } as Form
+      setNotifications((notifications) => [...notifications, d])
+    })
+  }
+
+  //eslint-disable-next-line
+  const periodFromExcel = (data: any) => {
+    //eslint-disable-next-line
+    data.forEach((d: any) => {
+      d = {
+        company: undefined,
+        tag: (d['Tag no./FL'] ?? '') as string,
+        startDate: new Date(Date.UTC(0, 0, d['Start date'], -25)) ?? new Date(), //must be changed if hours is important as it does not concider summer time
+        endDate: new Date(Date.UTC(0, 0, d['End date'], -25)) ?? new Date(),
+      } as PeriodForm
+      setPeriods((periods) => [...periods, d])
+    })
+  }
+
+  const readExcel = (file: File, type: string) => {
     const promise = new Promise(
-      (resolve: (value: Array<Form>) => void, reject) => {
+      (resolve: (value: Array<unknown>) => void, reject) => {
         const fileReader = new FileReader()
+        const fileType = 'xlsx'
         fileReader.readAsArrayBuffer(file)
+        if (file.name.split('.').pop()?.toLowerCase() === fileType) {
+          fileReader.onload = (e) => {
+            if (e.target !== null) {
+              const bufferArray = e.target.result
 
-        fileReader.onload = (e) => {
-          if (e.target !== null) {
-            const bufferArray = e.target.result
+              const workBook = XLSX.read(bufferArray, { type: 'buffer' })
 
-            const workBook = XLSX.read(bufferArray, { type: 'buffer' })
+              const workSheetname = workBook.SheetNames[0]
 
-            const workSheetname = workBook.SheetNames[0]
+              const workSheet = workBook.Sheets[workSheetname]
 
-            const workSheet = workBook.Sheets[workSheetname]
+              const data = XLSX.utils.sheet_to_json(workSheet)
 
-            const data = XLSX.utils.sheet_to_json(workSheet)
-
-            //eslint-disable-next-line
-            data.forEach((d: any) => {
-              d = {
-                company: undefined,
-                notificationNumber: (d['Notification no.'] ?? '') as string,
-                detectionDate:
-                  new Date(Date.UTC(0, 0, d['Date'], -25)) ?? new Date(), //must be changed if hours is important as it does not concider summer time
-                equipmentGroupL2: (d['Eq. Group L2'] ?? '') as string,
-                tag: (d['Tag no./FL'] ?? '') as string,
-                shortText: (d['Short text'] ?? '') as string,
-                longText: (d['Long text'] ?? '') as string,
-                detectionMethod: (d['Detection method (D2)'] ?? '') as string,
-                F1: (d['Failure mode (F1)'] ?? '') as string,
-                F2: (d['Failure mode (F2)'] ?? '') as string,
-                failureType: (d['Failure type'] ?? '').toUpperCase() as string,
-                numberOfTests: (d['No. Of tests (in period)'] ?? NaN) as number,
-              } as Form
-              setNotifications((notifications) => [...notifications, d])
-            })
-
-            resolve(notifications)
+              resolve(data)
+            }
           }
-        }
 
-        fileReader.onerror = (error) => {
-          setNotifications([])
-          reject(error)
+          fileReader.onerror = (error) => {
+            setNotifications([])
+            reject(error)
+          }
         }
       }
     )
 
-    promise.then(() => {
-      //setNotifications(d)
+    promise.then((data) => {
+      if (type === 'notification') {
+        notificationsFromExcel(data)
+      }
+      if (type === 'period') {
+        periodFromExcel(data)
+      }
     })
   }
 
@@ -130,6 +171,20 @@ export const AddNotificationsPage: React.FC = () => {
     )
   }
 
+  /*const valid_period = () => {
+    return (
+      periodDataState.tag &&
+      periodDataState.startDate &&
+      periodDataState.endDate
+    )
+  }*/
+
+  const valid_periods = () => {
+    return periods.every(
+      (period) => period.tag && period.startDate && period.endDate
+    )
+  }
+
   const hasNotificationNumber = () => {
     return notifications.every(
       (notification) => notification.notificationNumber
@@ -148,14 +203,27 @@ export const AddNotificationsPage: React.FC = () => {
     return notifications.every((notification) => notification.tag)
   }
 
+  const { response, post } = useFetch()
+
   const updateData = async (form: Form): Promise<void> => {
     form = { ...form, company: userContext.user?.companyName }
-
     await post('/notifications/', form)
+    if (response.ok) {
+      setSuccessNumber(SuccessNumber + 1)
+    }
   }
 
   const updateMultipleNotifications = () => {
     notifications.map((notification) => updateData(notification))
+  }
+
+  const updatePeriodData = async (form: PeriodForm): Promise<void> => {
+    form = { ...form, company: userContext.user?.companyName }
+    await post('/periods/', form)
+  }
+
+  const updateMultiplePeriods = () => {
+    periods.map((period) => updatePeriodData(period))
   }
 
   if (pageState === 1) {
@@ -178,7 +246,7 @@ export const AddNotificationsPage: React.FC = () => {
             //data-max-size="2048"
             onValueChanged={(e) => {
               const file = (e as FileList)[0]
-              readExcel(file)
+              readExcel(file, 'notification')
               setPage(2)
             }}
           />
@@ -200,6 +268,7 @@ export const AddNotificationsPage: React.FC = () => {
                 F2: null,
                 failureType: null,
                 numberOfTests: null,
+                commonError: null,
               })
               setPage(3)
             }}
@@ -220,15 +289,14 @@ export const AddNotificationsPage: React.FC = () => {
           {'< Back'}
         </div>
         <div className={styles.center}>
-          <Title title={'Preview'} />
+          <Title title={'Does this look right?'} />
         </div>
         <div className={styles.previewpagebuttoncontainer}>
           {valid_notifications() && (
             <Button
-              label="Save"
+              label="Continue"
               size="small"
               onClick={() => {
-                updateMultipleNotifications()
                 setPage(4)
               }}
             />
@@ -266,7 +334,7 @@ export const AddNotificationsPage: React.FC = () => {
                   <td> {'F2'}</td>
                   <td> {'Failure type'}</td>
                   <td> {'Number of tests'}</td>
-                  <td></td>
+                  <td>{'Common error'}</td>
                 </tr>
               </tbody>
             </table>
@@ -306,6 +374,9 @@ export const AddNotificationsPage: React.FC = () => {
             </label>
             <label className={styles.fontSize}>
               {notification.numberOfTests}
+            </label>
+            <label className={styles.fontSize}>
+              {notification.commonError}
             </label>
           </RegisteredDataField>
         ))}
@@ -466,8 +537,8 @@ export const AddNotificationsPage: React.FC = () => {
           <div className={styles.button}>
             <Button
               onClick={() => {
-                setPage(4)
                 updateData(dataState)
+                history.push(MAIN_ROUTES.NOTIFICATIONS)
               }}
               label="Add data"
             />
@@ -475,12 +546,101 @@ export const AddNotificationsPage: React.FC = () => {
         )}
       </div>
     )
-  } else if (pageState === 4) {
+  }
+  if (pageState === 4) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.title}>
+          <Title title={'Add observation periods'} />
+        </div>
+        <div
+          className={[styles.container, styles.firstpagebuttoncontainer].join(
+            ' '
+          )}
+        >
+          <InputField
+            variant="primary"
+            type="file"
+            label="Upload file"
+            value=" "
+            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            //data-max-size="2048"
+            onValueChanged={(e) => {
+              const file = (e as FileList)[0]
+              readExcel(file, 'period')
+              setPage(5)
+            }}
+          />
+        </div>
+      </div>
+    )
+  } else if (pageState === 5) {
+    return (
+      <div className={styles.notificationcontainer}>
+        <div
+          className={styles.back}
+          onClick={() => {
+            setPage(1)
+            setPeriods([])
+          }}
+        >
+          {'< Back'}
+        </div>
+        <div className={styles.center}>
+          <Title title={'Does this look right?'} />
+        </div>
+        <div className={styles.previewpagebuttoncontainer}>
+          {valid_periods() && (
+            <Button
+              label="Save"
+              size="small"
+              onClick={() => {
+                updateMultipleNotifications()
+                updateMultiplePeriods()
+                setPage(6)
+              }}
+            />
+          )}
+          {!valid_periods() && (
+            <div className={styles.infotext}>
+              Some of your notifications are missing required data!
+            </div>
+          )}
+        </div>
+        <div className={styles.periodcontainer}>
+          <div className={styles.table}>
+            <div>
+              <table className={styles.headers}>
+                <tbody>
+                  <tr>
+                    <td> {'Tag'}</td>
+                    <td> {'Period Start'}</td>
+                    <td>{'Period end'}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          {periods?.map((period, key) => (
+            <RegisteredDataField key={key}>
+              <label className={styles.fontSize}>{period.tag}</label>
+              <label className={styles.fontSize}>
+                {new Date(period.startDate as Date).toLocaleDateString()}
+              </label>
+              <label className={styles.fontSize}>
+                {new Date(period.endDate as Date).toLocaleDateString()}
+              </label>
+            </RegisteredDataField>
+          ))}
+        </div>
+      </div>
+    )
+  } else if (pageState === 6) {
     return (
       <div className={styles.container}>
         <Title title={'Add notification'} />
         <div className={[styles.container, styles.buttoncontainer].join(' ')}>
-          {'Notification successfully added!'}
+          {`${SuccessNumber} of ${notifications.length} notifications successfully added!`}
           <Button
             label={'Add more notifications'}
             onClick={() => {
@@ -498,7 +658,9 @@ export const AddNotificationsPage: React.FC = () => {
                 F2: null,
                 failureType: null,
                 numberOfTests: null,
+                commonError: null,
               })
+              setNotifications([])
               setPage(1)
             }}
           />
@@ -520,6 +682,7 @@ export const AddNotificationsPage: React.FC = () => {
                 F2: null,
                 failureType: null,
                 numberOfTests: null,
+                commonError: null,
               })
             }}
           />

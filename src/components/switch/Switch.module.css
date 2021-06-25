@@ -26,7 +26,6 @@
   bottom: 0;
   background: black;
   transition: 0.3s;
-  boxshadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .slider:before {
@@ -36,7 +35,7 @@
 }
 
 input:checked + .slider {
-  background-color: #50b836;
+  background-color: #003d65;
 }
 input:checked + .slider:before {
   transform: translateX(130%);

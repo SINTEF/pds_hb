@@ -20,7 +20,12 @@ export const ViewLongText: React.FC<ViewLongTextProps> = ({
   title,
 }: ViewLongTextProps) => {
   return (
-    <Modal isOpen={isOpen} className={styles.content}>
+    <Modal
+      isOpen={isOpen}
+      className={styles.content}
+      shouldCloseOnOverlayClick={true}
+      overlayClassName={styles.overlay}
+    >
       <Title title={title} />
       <div className={styles.text}>{text}</div>
       <div className={styles.description}>Click anywhere to close</div>
