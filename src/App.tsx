@@ -27,6 +27,7 @@ import { AddInventoryPage } from './pages/add-inventory-page'
 import { UpdateNotificationPage } from './pages/update-notification-page'
 import { UpdateInventoryPage } from './pages/update-inventory-page'
 import { AnalysisPage } from './pages/analysis-page'
+import { AddNotificationGroupPage } from './pages/add-notificationGroup-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -87,6 +88,9 @@ function App(): JSX.Element {
             </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.ADD_NOTIFICATIONS}>
               <AddNotificationsPage />
+            </AuthRoute>
+            <AuthRoute exact path={MAIN_ROUTES.ADD_NOTIFICATION_GROUP}>
+              <AddNotificationGroupPage />
             </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.EDIT_NOTIFICATION}>
               <UpdateNotificationPage />

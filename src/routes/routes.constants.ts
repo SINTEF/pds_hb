@@ -18,6 +18,7 @@ const MAIN_ROUTES = {
   ADD_INVENTORY: '/inventory/add-inventory',
   EDIT_INVENTORY: '/inventory/edit-inventory/:inventoryInstanceId',
   ANALYSIS: '/analysis',
+  ADD_NOTIFICATION_GROUP: '/notifications/add-notification-group',
 }
 
 export const COMPANY_SUB_ROUTES = {

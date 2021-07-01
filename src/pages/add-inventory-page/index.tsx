@@ -22,7 +22,7 @@ export interface Form {
   vendor: string | null
   equipmentModel: string | null
   startDate: Date
-  L3: Record<string, string> | null
+  L3: Record<string, string | number> | null
 }
 
 export const AddInventoryPage: React.FC = () => {
@@ -30,6 +30,8 @@ export const AddInventoryPage: React.FC = () => {
   const { post } = useFetch()
 
   const userContext = useContext(UserContext) as IUserContext
+
+  const [L3 /*, setL3*/] = useState<string[]>(['type', 'medium', 'size'])
 
   const [pageState, setPage] = useState<number>(1)
 
@@ -84,15 +86,17 @@ export const AddInventoryPage: React.FC = () => {
       data.forEach((d: any) => {
         d = {
           company: undefined,
-          facility: (d['Facility'] ?? '') as string,
-          startDate:
-            new Date(Date.UTC(0, 0, d['Date put into service'], -25)) ??
-            new Date(), //must be changed if hours is important as it does not concider summer time
+          facility: (d['Facility (Navn)'] ?? d['Facility'] ?? '') as string,
+          startDate: new Date(Date.UTC(0, 0, d['Date put into service'], -24)), //must be changed if hours is important as it does not concider summer time
           equipmentGroupL2: (d['Eq. Group L2'] ?? '') as string,
           tag: (d['Tag no./FL'] ?? '') as string,
           vendor: (d['Vendor'] ?? '') as string,
           equipmentModel: (d['Eq. Model'] ?? '') as string,
-          L3: null,
+          L3: {
+            ['type']: d['Type'],
+            ['medium']: d['Medium'],
+            ['size']: d['Size'] as number,
+          } as Record<string, string | number>,
         } as Form
         setInventory((inventoryInstance) => [...inventoryInstance, d])
       })
@@ -100,19 +104,13 @@ export const AddInventoryPage: React.FC = () => {
   }
 
   const valid_inventoryInstance = () => {
-    return (
-      dataState.facility &&
-      dataState.startDate &&
-      dataState.tag &&
-      dataState.equipmentGroupL2
-    )
+    return dataState.facility && dataState.tag && dataState.equipmentGroupL2
   }
 
   const valid_inventoryInstances = () => {
     return inventory.every(
       (inventoryInstance) =>
         inventoryInstance.facility &&
-        inventoryInstance.startDate &&
         inventoryInstance.tag &&
         inventoryInstance.equipmentGroupL2
     )
@@ -242,6 +240,9 @@ export const AddInventoryPage: React.FC = () => {
                   </td>
                   <td>{'Vendor'}</td>
                   <td>{'Eq. Model'}</td>
+                  {L3.map((value, key) => (
+                    <td key={key}>{value}</td>
+                  ))}
                 </tr>
               </tbody>
             </table>
@@ -266,6 +267,15 @@ export const AddInventoryPage: React.FC = () => {
             </label>
             <label className={styles.fontSize}>
               {inventoryInstance.equipmentModel}
+            </label>
+            <label className={styles.fontSize}>
+              {inventoryInstance.L3 ? inventoryInstance.L3['type'] : null}
+            </label>
+            <label className={styles.fontSize}>
+              {inventoryInstance.L3 ? inventoryInstance.L3['medium'] : null}
+            </label>
+            <label className={styles.fontSize}>
+              {inventoryInstance.L3 ? inventoryInstance.L3['size'] : null}
             </label>
           </RegisteredDataField>
         ))}

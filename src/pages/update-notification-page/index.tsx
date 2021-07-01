@@ -24,7 +24,6 @@ export interface IUpdateNotification {
   F1: string
   F2: string
   failureType: string
-  numberOfTests: number
 }
 
 export const UpdateNotificationPage: React.FC = () => {
@@ -79,9 +78,6 @@ export const UpdateNotificationPage: React.FC = () => {
         break
       case 'Edit failure Type':
         notificationData['failureType'] = form.content
-        break
-      case 'Edit number of tests':
-        notificationData['numberOfTests'] = form.content
         break
     }
     notificationPut(notificationData)
@@ -171,13 +167,6 @@ export const UpdateNotificationPage: React.FC = () => {
                 <EditableField
                   index="Edit failure type"
                   content={notification.data.failureType}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
-
-                <EditableField
-                  index="Edit number of tests"
-                  content={notification.data.numberOfTests}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />
@@ -278,12 +267,6 @@ export const UpdateNotificationPage: React.FC = () => {
                   onSubmit={handleUpdate}
                 />
 
-                <EditableField
-                  index="Edit number of tests"
-                  content={notification.data.numberOfTests}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
                 <div
                   className={styles.back}
                   onClick={() => history.push(MAIN_ROUTES.NOTIFICATIONS)}

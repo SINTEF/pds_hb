@@ -48,7 +48,7 @@
   justify-content: center;
   margin-top: 100px;
   padding-bottom: 40px;
-  padding-top: 10px;
+  padding-top: 50px;
   width: 90%;
   position: center;
   z-index: -1;
@@ -63,13 +63,14 @@
   position: absolute;
   position: left;
   gap: 20px;
-  padding-bottom: 100px;
   width: 90%;
 }
 
 .buttoncontainer {
   display: flex;
+  flex-direction: column;
   justify-content: right;
+  gap: 10px;
 }
 
 .filtercontainer {

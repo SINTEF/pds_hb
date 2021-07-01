@@ -10,15 +10,9 @@ export interface IInventoryInstance {
   equipmentModel?: string
   startDate: Date
   L3: {
-    measuringPrinciple?: string
-    designMountingPrinciple?: string
-    actuationPrinciple?: string
-    mediumProperties?: string
-    dimension?: string
-    locationEnvironment?: string
-    application?: string
-    diagnosticsConfiguration?: string
-    testMaintenanceMonitoringStrategy?: string
+    type?: string
+    medium?: string
+    size?: number
   }
   created?: Date
 }

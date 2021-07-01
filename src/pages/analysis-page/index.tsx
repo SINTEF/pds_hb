@@ -14,12 +14,17 @@ import { SearchField } from '../../components/search-field'
 import { InputField } from '../../components/input-field'
 import { Switch } from '../../components/switch'
 import { IInventoryInstance } from '../../models/inventoryinstance'
+import { IPeriod } from '../../models/period'
+import { INotificationGroup } from '../../models/notificationGroup'
+import { Button } from '../../components/button'
+import MAIN_ROUTES from '../../routes/routes.constants'
+import { useHistory } from 'react-router-dom'
 
 export const AnalysisPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
   const [open, setOpen] = useState<boolean>(false)
   const [longText, setLongText] = useState<string>('')
-
+  const history = useHistory()
   const [notifications, setNotifications] = useState<INotification[]>([])
   const [viewedNotifications, setView] = useState<INotification[]>([])
   const [equipmentGroup, setEquipmentGroup] = useState<string>()
@@ -29,6 +34,34 @@ export const AnalysisPage: React.FC = () => {
   const [inventory, setInventory] = useState<IInventoryInstance[]>([])
   const [viewCommon, setViewCommon] = useState<boolean>(false)
   const [commonErrors, setCommonErrors] = useState<string[]>([])
+  const [periods, setPeriods] = useState<IPeriod[]>([])
+  const [notificationGroups, setNotificationGroups] = useState<
+    INotificationGroup[]
+  >([])
+
+  const {
+    get: notificationGroupsGet,
+    response: notificationGroupsResponse,
+  } = useFetch<APIResponse<INotificationGroup>>(
+    '/notificationGroups',
+    (options) => {
+      options.cachePolicy = CachePolicies.NO_CACHE
+      return options
+    }
+  )
+
+  useEffect(() => {
+    const getNotificationGroups = async () => {
+      const dataRequest = `?company=${userContext.user?.companyName}`
+      const notificationGroupData: APIResponse<
+        INotificationGroup[]
+      > = await notificationGroupsGet(dataRequest)
+      if (notificationGroupsResponse.ok) {
+        setNotificationGroups(notificationGroupData.data)
+      }
+    }
+    getNotificationGroups()
+  }, [notificationGroupsGet, notificationGroupsResponse, userContext.user])
 
   const {
     get: inventoryInstanceGet,
@@ -53,6 +86,24 @@ export const AnalysisPage: React.FC = () => {
     }
     getInventory()
   }, [inventoryInstanceGet, inventoryInstanceResponse, userContext.user])
+
+  const { get: periodGet, response: periodResponse } = useFetch<
+    APIResponse<IPeriod>
+  >('/periods', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
+
+  useEffect(() => {
+    const getPeriod = async () => {
+      const dataRequest = `?company=${userContext.user?.companyName}`
+      const periodData: APIResponse<IPeriod[]> = await periodGet(dataRequest)
+      if (periodResponse.ok) {
+        setPeriods(periodData.data)
+      }
+    }
+    getPeriod()
+  }, [periodGet, periodResponse, userContext.user])
 
   const {
     get: notificationGet,
@@ -147,23 +198,60 @@ export const AnalysisPage: React.FC = () => {
     }
   }
 
-  const unique = () => {
+  const totalEquipments = () => {
     const relevantInventory = inventory.filter(
       (inventoryInstance) =>
         (inventoryInstance.equipmentGroupL2 as string).toLowerCase() ===
         equipmentGroup?.toLowerCase()
     )
 
-    return relevantInventory
-      .map((item) => item.tag)
-      .filter((value, index, self) => self.indexOf(value) === index).length
+    const relevantPeriods = periods.filter((period) =>
+      relevantInventory
+        .map((inventoryInstance) => inventoryInstance.tag)
+        .includes(period.tag)
+    )
+
+    return relevantPeriods.length
+  }
+
+  const calculateAggregatedOperationTime = () => {
+    const relevantInventory = inventory.filter(
+      (inventoryInstance) =>
+        (inventoryInstance.equipmentGroupL2 as string).toLowerCase() ===
+        equipmentGroup?.toLowerCase()
+    )
+
+    const relevantPeriods = periods.filter((period) =>
+      relevantInventory
+        .map((inventoryInstance) => inventoryInstance.tag)
+        .includes(period.tag)
+    )
+    const time = 36e5 * 10e6
+    const startDates = relevantPeriods
+      .map((period) =>
+        Math.max(
+          new Date(periodStart).getTime(),
+          new Date(period.startDate).getTime()
+        )
+      )
+      .reduce((a, b) => a + b, 0)
+    const endDates = relevantPeriods
+      .map((period) =>
+        Math.min(
+          new Date(periodEnd).getTime(),
+          new Date(period.endDate).getTime()
+        )
+      )
+      .reduce((a, b) => a + b, 0)
+    //const time2 = 36e5 * 24 * 365 * relevantPeriods.length
+    //console.log((endDates - startDates) / time2)
+    return (endDates - startDates) / time
   }
 
   const calculateFailureRate = () => {
-    const time =
-      (new Date(periodEnd).getTime() - new Date(periodStart).getTime()) /
-      (36e5 * 24 * 365)
-    return (viewedNotifications.length / (time * unique())).toPrecision(5)
+    return (
+      calculateTotalDu() / calculateAggregatedOperationTime()
+    ).toPrecision(4)
   }
 
   return notificationLoad ? (
@@ -183,26 +271,33 @@ export const AnalysisPage: React.FC = () => {
               <div className={styles.statisticsNumber}>
                 {calculateTotalDu()}
               </div>
-              {unique() > 0 ? (
-                <div className={styles.statisticsText}>
-                  {'Failure rate in selected period: '}
+              <div className={styles.statisticsText}>
+                {'Observation periods:'}
+              </div>
+              <div className={styles.statisticsNumber}>{totalEquipments()}</div>
+            </div>
+            <div className={styles.statisticsContainer}>
+              {viewCommon ? (
+                <div className={styles.statisticsText}>{'β-value:'}</div>
+              ) : null}
+              {viewCommon ? (
+                <div className={styles.statisticsNumber}>
+                  {(
+                    (viewedNotifications.length - getNotInCommon().length) /
+                    viewedNotifications.length
+                  ).toPrecision(2)}
                 </div>
               ) : null}
-              {unique() > 0 ? (
+              {calculateAggregatedOperationTime() > 0 ? (
+                <div className={styles.statisticsText}>
+                  {'Failure rate in selected period (per 10^6 hours): '}
+                </div>
+              ) : null}
+              {calculateAggregatedOperationTime() > 0 ? (
                 <div className={styles.statisticsNumber}>
                   {calculateFailureRate()}
                 </div>
               ) : null}
-            </div>
-            <div className={styles.infoContainer}>
-              <Switch
-                checked={viewCommon}
-                disabled={false}
-                handleChange={() => setViewCommon(!viewCommon)}
-              />
-              <div className={styles.description}>
-                Group common cause notifications
-              </div>
             </div>
           </div>
         ) : (
@@ -241,6 +336,16 @@ export const AnalysisPage: React.FC = () => {
                 setEnd(value as Date)
               }}
             />
+            <div className={styles.infoContainer}>
+              <Switch
+                checked={viewCommon}
+                disabled={false}
+                handleChange={() => setViewCommon(!viewCommon)}
+              />
+              <div className={styles.description}>
+                Group common cause notifications
+              </div>
+            </div>
           </div>
           <div className={styles.notificationscontainer}>
             <div>
@@ -260,7 +365,6 @@ export const AnalysisPage: React.FC = () => {
                             <td> {'F1'}</td>
                             <td> {'F2'}</td>
                             <td> {'Failure type'}</td>
-                            <td> {'Number of tests'}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -302,14 +406,16 @@ export const AnalysisPage: React.FC = () => {
                       <label className={styles.fontSize}>
                         {data.failureType}
                       </label>
-                      <label className={styles.fontSize}>
-                        {data.numberOfTests}
-                      </label>
                     </RegisteredDataField>
                   ))}
                   {commonErrors?.map((data, key) => (
                     <div className={styles.common} key={key}>
                       <div className={styles.commonErrorName}>{data}</div>
+                      <div className={styles.commondescription}>
+                        {notificationGroups
+                          .filter((group) => group.name == data)
+                          .map((group) => group.description)}
+                      </div>
                       {getCommon()
                         .filter(
                           (notification) => notification.commonError === data
@@ -352,13 +458,19 @@ export const AnalysisPage: React.FC = () => {
                             <label className={styles.fontSize}>
                               {data.failureType}
                             </label>
-                            <label className={styles.fontSize}>
-                              {data.numberOfTests}
-                            </label>
                           </RegisteredDataField>
                         ))}
                     </div>
                   ))}
+                  <div className={styles.commonbutton}>
+                    <Button
+                      label={'Add or edit common cause group'}
+                      size="small"
+                      onClick={() =>
+                        history.push(MAIN_ROUTES.ADD_NOTIFICATION_GROUP)
+                      }
+                    />
+                  </div>
                 </div>
               ) : (
                 <div>
@@ -376,7 +488,6 @@ export const AnalysisPage: React.FC = () => {
                             <td> {'F1'}</td>
                             <td> {'F2'}</td>
                             <td> {'Failure type'}</td>
-                            <td> {'Number of tests'}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -417,9 +528,6 @@ export const AnalysisPage: React.FC = () => {
                       <label className={styles.fontSize}>{data.F2}</label>
                       <label className={styles.fontSize}>
                         {data.failureType}
-                      </label>
-                      <label className={styles.fontSize}>
-                        {data.numberOfTests}
                       </label>
                     </RegisteredDataField>
                   ))}

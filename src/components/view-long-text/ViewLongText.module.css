@@ -12,9 +12,7 @@
   outline: none;
   padding: 20px;
   margin: auto auto;
-  width: 60vw;
-  min-width: 200px;
-  max-width: 600px;
+  max-width: 60%;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -30,6 +28,10 @@
   font-size: 24px;
   padding-left: 20px;
   padding-right: 20px;
+  height: 400px;
+  max-height: 300px;
+  height: fit-content;
+  overflow: auto;
 }
 
 .description {

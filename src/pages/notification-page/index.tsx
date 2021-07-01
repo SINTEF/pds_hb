@@ -14,6 +14,7 @@ import { ViewLongText } from '../../components/view-long-text'
 import { Button } from '../../components/button'
 import { Filter } from '../../components/filter'
 import Loader from 'react-loader-spinner'
+import { SearchField } from '../../components/search-field'
 
 export const NotificationPage: React.FC = () => {
   const [notifications, setNotifications] = useState<INotification[]>([])
@@ -25,7 +26,7 @@ export const NotificationPage: React.FC = () => {
   const [equipmentGroups, setEquipmentGroups] = useState<
     Record<string, boolean>
   >({})
-  const [tags, setTags] = useState<Record<string, boolean>>({})
+  const [tags, setTags] = useState<INotification[]>([])
   const [failureTypes, setFailureTypes] = useState<Record<string, boolean>>({})
   const [years, setYears] = useState<Record<string, boolean>>({})
 
@@ -50,11 +51,6 @@ export const NotificationPage: React.FC = () => {
         setEquipmentGroups(
           Object.entries(notificationData.data)
             .map((notification) => notification[1].equipmentGroupL2)
-            .reduce((obj, name) => ({ ...obj, [name]: false }), {})
-        )
-        setTags(
-          Object.entries(notificationData.data)
-            .map((notification) => notification[1].tag)
             .reduce((obj, name) => ({ ...obj, [name]: false }), {})
         )
         setFailureTypes(
@@ -83,10 +79,11 @@ export const NotificationPage: React.FC = () => {
   }, [notificationGet, notificationResponse, userContext.user])
 
   useEffect(() => {
+    setTags(notifications)
+  }, [notifications])
+
+  useEffect(() => {
     const eqFilters = Object.entries(equipmentGroups)
-      .filter((group) => group[1])
-      .flatMap(([key]) => key)
-    const tagFilters = Object.entries(tags)
       .filter((group) => group[1])
       .flatMap(([key]) => key)
     const failureTypeFilters = Object.entries(failureTypes)
@@ -97,11 +94,10 @@ export const NotificationPage: React.FC = () => {
       .flatMap(([key]) => key)
 
     setView(
-      notifications.filter(
+      tags.filter(
         (notification) =>
           (eqFilters.length < 1 ||
             eqFilters.includes(notification.equipmentGroupL2)) &&
-          (tagFilters.length < 1 || tagFilters.includes(notification.tag)) &&
           (failureTypeFilters.length < 1 ||
             (notification.failureType
               ? failureTypeFilters.includes(notification.failureType)
@@ -113,14 +109,8 @@ export const NotificationPage: React.FC = () => {
       )
     )
 
-    if (
-      eqFilters.length +
-        tagFilters.length +
-        failureTypeFilters.length +
-        yearFilters.length <
-      1
-    ) {
-      setView(notifications)
+    if (eqFilters.length + failureTypeFilters.length + yearFilters.length < 1) {
+      setView(tags)
     }
   }, [equipmentGroups, tags, failureTypes, years])
 
@@ -157,17 +147,6 @@ export const NotificationPage: React.FC = () => {
             key={'equipmentGroupL2'}
           />
           <Filter
-            category="Tag"
-            filters={tags}
-            onClick={(selected, newValue) => {
-              setTags({
-                ...tags,
-                [selected]: newValue,
-              })
-            }}
-            key={'tag'}
-          />
-          <Filter
             category="Failure Type"
             filters={failureTypes}
             onClick={(selected, newValue) => {
@@ -177,6 +156,21 @@ export const NotificationPage: React.FC = () => {
               })
             }}
             key={'failureType'}
+          />
+          <SearchField
+            variant="small"
+            label={'Tag'}
+            icon={'search'}
+            placeholder="Search for tags..."
+            suggestions={[]}
+            onValueChanged={(value) =>
+              setTags(
+                notifications.filter((notification) =>
+                  notification.tag.toLowerCase().includes(value.toLowerCase())
+                )
+              )
+            }
+            onClick={() => false}
           />
           <Filter
             category="Year"
@@ -215,7 +209,6 @@ export const NotificationPage: React.FC = () => {
                       <td> {'F1'}</td>
                       <td> {'F2'}</td>
                       <td> {'Failure type'}</td>
-                      <td> {'Number of tests'}</td>
                       <td></td>
                     </tr>
                   </tbody>
@@ -254,7 +247,6 @@ export const NotificationPage: React.FC = () => {
                 <label className={styles.fontSize}>{data.F1}</label>
                 <label className={styles.fontSize}>{data.F2}</label>
                 <label className={styles.fontSize}>{data.failureType}</label>
-                <label className={styles.fontSize}>{data.numberOfTests}</label>
                 <i
                   onClick={() =>
                     history.push(

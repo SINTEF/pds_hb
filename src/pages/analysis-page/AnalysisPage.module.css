@@ -157,3 +157,20 @@
   padding-bottom: 15px;
   padding-left: 10px;
 }
+
+.commonbutton {
+  display: flex;
+  padding-top: 20px;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.commondescription {
+  display: flex;
+  font-size: 15px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  width: fit-content;
+  color: white;
+}

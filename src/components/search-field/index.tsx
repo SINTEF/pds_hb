@@ -17,7 +17,7 @@ export interface SearchFieldProps {
 
   icon?: string
 
-  variant: 'primary' | 'secondary'
+  variant: 'primary' | 'secondary' | 'small'
 
   onClick: (selectedComponent: string) => void
 
