@@ -14,16 +14,18 @@ import MAIN_ROUTES from '../../routes/routes.constants'
 
 export interface IUpdateNotification {
   company: string
-  notificationNumber: string
   detectionDate: Date
   equipmentGroupL2: string
   tag: string
   shortText: string
   longText: string
+  workOrder: string
+  activityText: string
   detectionMethod: string
   F1: string
   F2: string
   failureType: string
+  qualityStatus: boolean
 }
 
 export const UpdateNotificationPage: React.FC = () => {
@@ -48,13 +50,10 @@ export const UpdateNotificationPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
 
   const handleUpdate = (form: FieldForm) => {
-    const notificationData: { [id: string]: string } = {}
+    const notificationData: { [id: string]: string | boolean } = {}
     const index = form.index
 
     switch (index) {
-      case 'Edit notification number':
-        notificationData['notificationNumber'] = form.content
-        break
       case 'Edit equipment group/L2':
         notificationData['equipmentGroupL2'] = form.content
         break
@@ -66,6 +65,12 @@ export const UpdateNotificationPage: React.FC = () => {
         break
       case 'Edit long text':
         notificationData['longText'] = form.content
+        break
+      case 'Edit work order':
+        notificationData['workOrder'] = form.content
+        break
+      case 'Edit activity text':
+        notificationData['activityText'] = form.content
         break
       case 'Edit detection method':
         notificationData['detectionMethod'] = form.content
@@ -111,12 +116,6 @@ export const UpdateNotificationPage: React.FC = () => {
               />
               <div className={styles.data}>
                 <EditableField
-                  index="Edit notification number"
-                  content={notification.data.notificationNumber}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
-                <EditableField
                   index="Edit equipment group/L2"
                   content={notification.data.equipmentGroupL2}
                   isAdmin={true}
@@ -139,6 +138,20 @@ export const UpdateNotificationPage: React.FC = () => {
                 <EditableField
                   index="Edit long text"
                   content={notification.data.longText}
+                  isAdmin={true}
+                  onSubmit={handleUpdate}
+                />
+
+                <EditableField
+                  index="Edit work order"
+                  content={notification.data.workOrder}
+                  isAdmin={true}
+                  onSubmit={handleUpdate}
+                />
+
+                <EditableField
+                  index="Edit activity text"
+                  content={notification.data.activityText}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />
@@ -205,6 +218,7 @@ export const UpdateNotificationPage: React.FC = () => {
                 title={'Edit notification no:'}
                 dynamic={notification.data.notificationNumber}
               />
+
               <div className={styles.data}>
                 <EditableField
                   index="Edit Notification number"
@@ -235,6 +249,20 @@ export const UpdateNotificationPage: React.FC = () => {
                 <EditableField
                   index="Edit long text"
                   content={notification.data.longText}
+                  isAdmin={true}
+                  onSubmit={handleUpdate}
+                />
+
+                <EditableField
+                  index="Edit work order"
+                  content={notification.data.workOrder}
+                  isAdmin={true}
+                  onSubmit={handleUpdate}
+                />
+
+                <EditableField
+                  index="Edit activity text"
+                  content={notification.data.activityText}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />

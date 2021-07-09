@@ -15,6 +15,17 @@ import { Button } from '../../components/button'
 import { Filter } from '../../components/filter'
 import Loader from 'react-loader-spinner'
 import { SearchField } from '../../components/search-field'
+import { IComment } from '../../models/comment'
+import { CommentSection } from '../../components/comment-section'
+import { InputField } from '../../components/input-field'
+import { EditableField } from '../../components/editable-field'
+
+export interface Form {
+  content: string | null
+  author: string | undefined
+  notificationNumber: string | undefined
+  company: string | undefined
+}
 
 export const NotificationPage: React.FC = () => {
   const [notifications, setNotifications] = useState<INotification[]>([])
@@ -22,16 +33,23 @@ export const NotificationPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
   const history = useHistory()
   const [open, setOpen] = useState<boolean>(false)
-  const [longText, setLongText] = useState<string>('')
+  const [viewComment, setViewComment] = useState<boolean>(false)
+  const [comments, setComments] = useState<IComment[]>([])
+  const [newComment, setNewComment] = useState<string>('')
   const [equipmentGroups, setEquipmentGroups] = useState<
     Record<string, boolean>
   >({})
   const [tags, setTags] = useState<INotification[]>([])
   const [failureTypes, setFailureTypes] = useState<Record<string, boolean>>({})
   const [years, setYears] = useState<Record<string, boolean>>({})
+  const [selectedNotificationNumber, setSelectedNotificationNumber] = useState<
+    string
+  >()
+  const [close, setClose] = useState<boolean>()
 
   const {
     get: notificationGet,
+    put: notificationPut,
     response: notificationResponse,
     loading: notificationLoad,
   } = useFetch<APIResponse<INotification>>('/notifications', (options) => {
@@ -76,7 +94,7 @@ export const NotificationPage: React.FC = () => {
       }
     }
     getNotifications()
-  }, [notificationGet, notificationResponse, userContext.user])
+  }, [notificationGet, notificationPut, notificationResponse, userContext.user])
 
   useEffect(() => {
     setTags(notifications)
@@ -117,6 +135,54 @@ export const NotificationPage: React.FC = () => {
   const calculateTotalDu = () => {
     return viewedNotifications.length
   }
+
+  const {
+    get: commentGet,
+    post: commentPost,
+    put: commentPut,
+    del: commentDel,
+    response: commentResponse,
+    //loading: commentLoad,
+  } = useFetch<APIResponse<INotification>>('/comments', (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
+
+  const getComments = async () => {
+    const dataRequest = `/?company=${userContext.user?.companyName}`
+    const commentData: APIResponse<IComment[]> = await commentGet(dataRequest)
+    if (commentResponse.ok) {
+      setComments(commentData.data)
+    }
+  }
+
+  const postComment = async (content: string): Promise<void> => {
+    const form = {
+      company: userContext.user?.companyName,
+      author: userContext.user?.username,
+      content: content,
+      notificationNumber: selectedNotificationNumber,
+    }
+    await commentPost(form)
+    if (commentResponse.ok) {
+      getComments()
+    }
+  }
+
+  useEffect(() => {
+    getComments()
+  }, [commentGet, commentResponse, userContext.user])
+
+  const deleteComment = async (comment: string) => {
+    await commentDel(comment)
+    if (commentResponse.ok) {
+      getComments()
+    }
+  }
+
+  useEffect(() => {
+    setViewComment(false)
+  }, [close])
 
   return notificationLoad ? (
     <div className={styles.loading}>
@@ -205,10 +271,14 @@ export const NotificationPage: React.FC = () => {
                       <td>{'Equipment group L2'}</td>
                       <td>{'Tag'}</td>
                       <td>{'Short text (click for longer text)'}</td>
+                      <td>{'Work order'}</td>
+                      <td>{'Activity text'}</td>
                       <td> {'Detection method'}</td>
                       <td> {'F1'}</td>
                       <td> {'F2'}</td>
                       <td> {'Failure type'}</td>
+                      <td>{'QA?'}</td>
+                      <td></td>
                       <td></td>
                     </tr>
                   </tbody>
@@ -230,23 +300,148 @@ export const NotificationPage: React.FC = () => {
                 <label
                   onClick={() => {
                     setOpen(!open)
-                    setLongText(data.longText ?? '')
+                    setSelectedNotificationNumber(data.notificationNumber)
                   }}
                   className={styles.clickable}
                 >
                   {data.shortText}
-                  <ViewLongText
-                    title="Long text"
-                    text={longText}
-                    isOpen={open}
-                  />
+                  {data.notificationNumber === selectedNotificationNumber ? (
+                    <ViewLongText
+                      title="Long text"
+                      text={
+                        viewedNotifications.filter(
+                          (notification) =>
+                            notification.notificationNumber ===
+                            selectedNotificationNumber
+                        )[0].longText ?? ''
+                      }
+                      isOpen={open}
+                    />
+                  ) : null}
                 </label>
+                <label className={styles.fontSize}>{data.workOrder}</label>
+                <label className={styles.fontSize}>{data.activityText}</label>
                 <label className={styles.fontSize}>
                   {data.detectionMethod}
                 </label>
                 <label className={styles.fontSize}>{data.F1}</label>
                 <label className={styles.fontSize}>{data.F2}</label>
                 <label className={styles.fontSize}>{data.failureType}</label>
+                {data.qualityStatus ? (
+                  <i
+                    className={'material-icons ' + styles.checkedicon}
+                    onClick={() => {
+                      notificationPut(data._id, { qualityStatus: false })
+                      window.location.reload()
+                    }}
+                  >
+                    {'check'}
+                  </i>
+                ) : (
+                  <i
+                    className={'material-icons ' + styles.notcheckedicon}
+                    onClick={() => {
+                      notificationPut(data._id, { qualityStatus: true })
+                      window.location.reload()
+                    }}
+                  >
+                    {'clear'}
+                  </i>
+                )}
+                <i
+                  className={'material-icons ' + styles.icon}
+                  onClick={() => {
+                    setSelectedNotificationNumber(data.notificationNumber)
+                    setViewComment(true)
+                  }}
+                >
+                  {'comment'}
+                  {data.notificationNumber === selectedNotificationNumber ? (
+                    <CommentSection isOpen={viewComment}>
+                      <i
+                        className={'material-icons ' + styles.close}
+                        onClick={() => setClose(!close)}
+                      >
+                        {'clear'}
+                      </i>
+                      <Title
+                        title={'comments on: '}
+                        dynamic={selectedNotificationNumber}
+                      />
+                      <div className={styles.commentsContainer}>
+                        {comments
+                          .filter(
+                            (comment) =>
+                              comment.notificationNumber ===
+                              selectedNotificationNumber
+                          )
+                          .map((content, key) => (
+                            <div key={key} className={styles.commentContent}>
+                              {content.created ? (
+                                <div className={styles.date}>
+                                  {content.author +
+                                    ': ' +
+                                    new Date(content.created).toDateString()}
+                                  <div
+                                    className={
+                                      'material-icons ' + styles.smallIcon
+                                    }
+                                    onClick={() => deleteComment(content._id)}
+                                  >
+                                    {'delete'}
+                                  </div>
+                                </div>
+                              ) : null}
+                              <div className={styles.comment} key={key}>
+                                <EditableField
+                                  type={'comment'}
+                                  content={content.content}
+                                  isAdmin={true}
+                                  onSubmit={(value) => {
+                                    commentPut(content._id, {
+                                      content: value.content,
+                                    })
+                                    setComments(
+                                      comments.filter((comment) =>
+                                        comment._id === content._id
+                                          ? {
+                                              ...comment,
+                                              content: value.content,
+                                            }
+                                          : comment
+                                      )
+                                    )
+                                  }}
+                                ></EditableField>
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+                      <div className={styles.writeComment}>
+                        <InputField
+                          variant="standard"
+                          label="New"
+                          type="text"
+                          value={newComment ?? ''}
+                          onValueChanged={(value) =>
+                            setNewComment(value as string)
+                          }
+                        />
+                        <i
+                          className={'material-icons ' + styles.icon}
+                          onClick={() => {
+                            if (newComment !== '') {
+                              postComment(newComment)
+                            }
+                            setNewComment('')
+                          }}
+                        >
+                          {'send'}
+                        </i>
+                      </div>
+                    </CommentSection>
+                  ) : null}
+                </i>
                 <i
                   onClick={() =>
                     history.push(

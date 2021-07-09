@@ -19,6 +19,8 @@ const MAIN_ROUTES = {
   EDIT_INVENTORY: '/inventory/edit-inventory/:inventoryInstanceId',
   ANALYSIS: '/analysis',
   ADD_NOTIFICATION_GROUP: '/notifications/add-notification-group',
+  ADD_COMMON_CAUSE_FAILURE: '/notifications/add-common-cause-failure',
+  ADD_REPEATING_FAILURE: '/notifications/add-repeating-failure',
 }
 
 export const COMPANY_SUB_ROUTES = {

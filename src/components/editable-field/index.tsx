@@ -9,6 +9,8 @@ export interface FieldForm {
 }
 
 export interface EditableFieldProps {
+  type?: 'standard' | 'comment'
+
   index?: string
 
   content?: string
@@ -30,6 +32,7 @@ export const EditableField: React.FC<EditableFieldProps> = ({
   mode = 'view',
   editIcon = 'edit',
   doneIcon = 'done',
+  type = 'standard',
   isAdmin,
   onSubmit,
 }: EditableFieldProps) => {
@@ -54,16 +57,27 @@ export const EditableField: React.FC<EditableFieldProps> = ({
     return (
       <div>
         <div className={styles.container}>
-          <div className={styles.container}>
-            <label className={styles.index}>{form.index + ': '}</label>
-            <input
-              className={[styles.content, styles.input].join(' ')}
-              type="text"
-              id="content"
-              value={form.content}
-              onChange={onChange}
-            />
-          </div>
+          {type === 'standard' ? (
+            <div className={styles.container}>
+              <label className={styles.index}>{form.index + ': '}</label>
+              <input
+                className={[styles.content, styles.input].join(' ')}
+                type="text"
+                id="content"
+                value={form.content}
+                onChange={onChange}
+              />
+            </div>
+          ) : (
+            <div className={styles.container}>
+              <textarea
+                className={[styles.content, styles.textarea].join(' ')}
+                id="content"
+                value={form.content}
+                onChange={onChange}
+              ></textarea>
+            </div>
+          )}
           <div className={styles.icon}>
             <IconButton
               icon={doneIcon}
@@ -74,28 +88,45 @@ export const EditableField: React.FC<EditableFieldProps> = ({
             />
           </div>
         </div>
-        <div>
-          <hr className={styles.divider} />
-        </div>
+        {type === 'standard' ? (
+          <div>
+            <hr className={styles.divider} />
+          </div>
+        ) : null}
       </div>
     )
   } else {
     return (
       <div>
-        <div className={styles.container}>
-          <div className={styles.container}>
-            <label className={styles.index}>{form.index + ': '}</label>
-            <label className={styles.content}>{form.content}</label>
+        {isAdmin && type === 'comment' && (
+          <div className={[styles.iconbutton, styles.commentIcon].join(' ')}>
+            <IconButton
+              onClick={() => setMode('edit')}
+              icon={editIcon}
+              fontSize="smaller"
+            />
           </div>
-          {isAdmin && (
+        )}
+        <div className={[styles.container, styles[type]].join(' ')}>
+          <div className={styles.container}>
+            {type === 'standard' ? (
+              <label className={styles.index}>{form.index + ': '}</label>
+            ) : null}
+            <label className={[styles.content, styles[type]].join(' ')}>
+              {form.content}
+            </label>
+          </div>
+          {isAdmin && type === 'standard' && (
             <div className={styles.iconbutton}>
               <IconButton onClick={() => setMode('edit')} icon={editIcon} />
             </div>
           )}
         </div>
-        <div>
-          <hr className={styles.divider} />
-        </div>
+        {type === 'standard' ? (
+          <div>
+            <hr className={styles.divider} />
+          </div>
+        ) : null}
       </div>
     )
   }

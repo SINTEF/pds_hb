@@ -56,3 +56,18 @@
   text-align: center;
   min-height: 100vh;
 }
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  gap: 10px;
+}
+
+.description {
+  display: flex;
+  font-size: 15px;
+  width: fit-content;
+}

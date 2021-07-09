@@ -26,11 +26,12 @@ export interface Form {
   tag: string | null
   shortText: string | null
   longText: string | null
+  workOrder: string | null
+  activityText: string | null
   detectionMethod: string | null
   F1: string | null
   F2: string | null
   failureType: string | null
-  commonError: string | null
 }
 
 export interface PeriodForm {
@@ -61,11 +62,12 @@ export const AddNotificationsPage: React.FC = () => {
     tag: null,
     shortText: '',
     longText: '',
+    workOrder: null,
+    activityText: '',
     detectionMethod: null,
     F1: null,
     F2: null,
     failureType: null,
-    commonError: null,
   })
 
   const [notifications, setNotifications] = useState<Array<Form>>([])
@@ -84,6 +86,8 @@ export const AddNotificationsPage: React.FC = () => {
         tag: (d['Tag no./FL'] ?? '') as string,
         shortText: (d['Short text'] ?? '') as string,
         longText: (d['Long text'] ?? '') as string,
+        workOrder: (d['Work order'] ?? '') as string,
+        activityText: (d['Activity text'] ?? '') as string,
         detectionMethod: (d['Detection method (D2)'] ?? '') as string,
         F1: (d['Failure mode (F1)'] ?? '') as string,
         F2: (d['Failure mode (F2)'] ?? '') as string,
@@ -300,6 +304,14 @@ export const AddNotificationsPage: React.FC = () => {
       </div>
     ) : (
       <div className={styles.container}>
+        <div
+          className={styles.back}
+          onClick={() => {
+            history.push(MAIN_ROUTES.NOTIFICATIONS)
+          }}
+        >
+          {'< Back'}
+        </div>
         <div className={styles.title}>
           <Title title={'Add notification'} />
         </div>
@@ -335,11 +347,12 @@ export const AddNotificationsPage: React.FC = () => {
                 tag: null,
                 shortText: '',
                 longText: '',
+                workOrder: null,
+                activityText: '',
                 detectionMethod: null,
                 F1: null,
                 F2: null,
                 failureType: null,
-                commonError: null,
               })
               setPage(3)
             }}
@@ -359,6 +372,7 @@ export const AddNotificationsPage: React.FC = () => {
           onClick={() => {
             setPage(1)
             setNotifications([])
+            setUploadOk(false)
           }}
         >
           {'< Back'}
@@ -404,6 +418,8 @@ export const AddNotificationsPage: React.FC = () => {
                     {'Tag'}
                   </td>
                   <td>{'Short text (click for long text)'}</td>
+                  <td>{'Work order'}</td>
+                  <td>{'Activity text'}</td>
                   <td> {'Detection method'}</td>
                   <td> {'F1'}</td>
                   <td> {'F2'}</td>
@@ -436,6 +452,10 @@ export const AddNotificationsPage: React.FC = () => {
             >
               {notification.shortText}
               <ViewLongText title="Long text" text={longText} isOpen={open} />
+            </label>
+            <label className={styles.fontSize}>{notification.workOrder}</label>
+            <label className={styles.fontSize}>
+              {notification.activityText}
             </label>
             <label className={styles.fontSize}>
               {notification.detectionMethod}
@@ -476,6 +496,10 @@ export const AddNotificationsPage: React.FC = () => {
             >
               {notification.shortText}
               <ViewLongText title="Long text" text={longText} isOpen={open} />
+            </label>
+            <label className={styles.fontSize}>{notification.workOrder}</label>
+            <label className={styles.fontSize}>
+              {notification.activityText}
             </label>
             <label className={styles.fontSize}>
               {notification.detectionMethod}
@@ -578,6 +602,30 @@ export const AddNotificationsPage: React.FC = () => {
           <InputField
             variant="standard"
             type="text"
+            label="work order"
+            placeholder={
+              dataState.longText ? undefined : 'Type in work order...'
+            }
+            value={dataState.workOrder ?? undefined}
+            onValueChanged={(value) => {
+              setData({ ...dataState, workOrder: value as string })
+            }}
+          />
+          <InputField
+            variant="standard"
+            type="text"
+            label="activity text"
+            placeholder={
+              dataState.longText ? undefined : 'Provide an activity text...'
+            }
+            value={dataState.activityText ?? undefined}
+            onValueChanged={(value) => {
+              setData({ ...dataState, activityText: value as string })
+            }}
+          />
+          <InputField
+            variant="standard"
+            type="text"
             label="detection method"
             placeholder={
               dataState.detectionMethod
@@ -645,6 +693,16 @@ export const AddNotificationsPage: React.FC = () => {
   if (pageState === 4) {
     return (
       <div className={styles.container}>
+        <div
+          className={styles.back}
+          onClick={() => {
+            setPage(1)
+            setNotifications([])
+            setUploadOk(false)
+          }}
+        >
+          {'< Back'}
+        </div>
         <div className={styles.title}>
           <Title title={'Add observation periods'} />
         </div>
@@ -662,6 +720,7 @@ export const AddNotificationsPage: React.FC = () => {
             //data-max-size="2048"
             onValueChanged={(e) => {
               const file = (e as FileList)[0]
+              setUploadOk(false)
               readExcel(file, 'period')
               setPage(5)
             }}
@@ -670,7 +729,11 @@ export const AddNotificationsPage: React.FC = () => {
       </div>
     )
   } else if (pageState === 5) {
-    return (
+    return !uploadOk || !userContext ? (
+      <div className={styles.loading}>
+        <Loader type="Grid" color="grey" />
+      </div>
+    ) : (
       <div>
         <div className={styles.notificationcontainer}>
           <div
@@ -678,6 +741,7 @@ export const AddNotificationsPage: React.FC = () => {
             onClick={() => {
               setPage(1)
               setPeriods([])
+              setUploadOk(false)
             }}
           >
             {'< Back'}
@@ -761,6 +825,8 @@ export const AddNotificationsPage: React.FC = () => {
                           {'Tag'}
                         </td>
                         <td>{'Short text (click for long text)'}</td>
+                        <td>{'Work order'}</td>
+                        <td>{'Activity text'}</td>
                         <td> {'Detection method'}</td>
                         <td> {'F1'}</td>
                         <td> {'F2'}</td>
@@ -799,6 +865,12 @@ export const AddNotificationsPage: React.FC = () => {
                     />
                   </label>
                   <label className={styles.fontSize}>
+                    {notification.workOrder}
+                  </label>
+                  <label className={styles.fontSize}>
+                    {notification.activityText}
+                  </label>
+                  <label className={styles.fontSize}>
                     {notification.detectionMethod}
                   </label>
                   <label className={styles.fontSize}>{notification.F1}</label>
@@ -835,11 +907,12 @@ export const AddNotificationsPage: React.FC = () => {
                 tag: null,
                 shortText: '',
                 longText: '',
+                workOrder: null,
+                activityText: '',
                 detectionMethod: null,
                 F1: null,
                 F2: null,
                 failureType: null,
-                commonError: null,
               })
               setNotifications([])
               setPage(1)
@@ -858,11 +931,12 @@ export const AddNotificationsPage: React.FC = () => {
                 tag: null,
                 shortText: '',
                 longText: '',
+                workOrder: null,
+                activityText: '',
                 detectionMethod: null,
                 F1: null,
                 F2: null,
                 failureType: null,
-                commonError: null,
               })
             }}
           />

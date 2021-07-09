@@ -5,6 +5,7 @@ export interface IInventoryInstance {
   company: string
   facility: string
   tag: string
+  tagDescription?: string
   equipmentGroupL2: string
   vendor?: string
   equipmentModel?: string

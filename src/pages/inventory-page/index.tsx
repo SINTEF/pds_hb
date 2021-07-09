@@ -136,6 +136,7 @@ export const InventoryPage: React.FC = () => {
                   <td>{'Date'}</td>
                   <td>{'Equipment group L2'}</td>
                   <td>{'Tag'}</td>
+                  <td>{'Tag description'}</td>
                   <td>{'Vendor'}</td>
                   <td>{'Equipment model'}</td>
                   <td></td>
@@ -153,6 +154,7 @@ export const InventoryPage: React.FC = () => {
               </label>
               <label className={styles.fontSize}>{data.equipmentGroupL2}</label>
               <label className={styles.fontSize}>{data.tag}</label>
+              <label className={styles.fontSize}>{data.tagDescription}</label>
               <label className={styles.fontSize}>{data.vendor}</label>
               <label className={styles.fontSize}>{data.equipmentModel}</label>
               <i

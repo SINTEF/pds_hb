@@ -27,7 +27,8 @@ import { AddInventoryPage } from './pages/add-inventory-page'
 import { UpdateNotificationPage } from './pages/update-notification-page'
 import { UpdateInventoryPage } from './pages/update-inventory-page'
 import { AnalysisPage } from './pages/analysis-page'
-import { AddNotificationGroupPage } from './pages/add-notificationGroup-page'
+import { AddCommonFailurePage } from './pages/add-commonFailure-page'
+import { AddRepeatingFailurePage } from './pages/add-repeatingFailure-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -89,8 +90,11 @@ function App(): JSX.Element {
             <AuthRoute exact path={MAIN_ROUTES.ADD_NOTIFICATIONS}>
               <AddNotificationsPage />
             </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.ADD_NOTIFICATION_GROUP}>
-              <AddNotificationGroupPage />
+            <AuthRoute exact path={MAIN_ROUTES.ADD_COMMON_CAUSE_FAILURE}>
+              <AddCommonFailurePage />
+            </AuthRoute>
+            <AuthRoute exact path={MAIN_ROUTES.ADD_REPEATING_FAILURE}>
+              <AddRepeatingFailurePage />
             </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.EDIT_NOTIFICATION}>
               <UpdateNotificationPage />

@@ -13,11 +13,13 @@ import MAIN_ROUTES from '../../routes/routes.constants'
 
 import * as XLSX from 'xlsx'
 import { RegisteredDataField } from '../../components/registered-data-field'
+import Loader from 'react-loader-spinner'
 
 export interface Form {
   company: string | undefined
   facility: string | null
   tag: string | null
+  tagDescription: string | null
   equipmentGroupL2: string | null
   vendor: string | null
   equipmentModel: string | null
@@ -31,9 +33,10 @@ export const AddInventoryPage: React.FC = () => {
 
   const userContext = useContext(UserContext) as IUserContext
 
-  const [L3 /*, setL3*/] = useState<string[]>(['type', 'medium', 'size'])
+  //const [L3 /*, setL3*/] = useState<string[]>(['type', 'medium', 'size'])
 
   const [pageState, setPage] = useState<number>(1)
+  const [uploadOk, setUploadOk] = useState<boolean>(false)
 
   const [dataState, setData] = useState<Form>({
     company: undefined,
@@ -41,6 +44,7 @@ export const AddInventoryPage: React.FC = () => {
     startDate: new Date(),
     equipmentGroupL2: null,
     tag: null,
+    tagDescription: null,
     vendor: null,
     equipmentModel: null,
     L3: {},
@@ -90,16 +94,18 @@ export const AddInventoryPage: React.FC = () => {
           startDate: new Date(Date.UTC(0, 0, d['Date put into service'], -24)), //must be changed if hours is important as it does not concider summer time
           equipmentGroupL2: (d['Eq. Group L2'] ?? '') as string,
           tag: (d['Tag no./FL'] ?? '') as string,
+          tagDescription: (d['Tag description'] ?? '') as string,
           vendor: (d['Vendor'] ?? '') as string,
           equipmentModel: (d['Eq. Model'] ?? '') as string,
-          L3: {
+          /*L3: {
             ['type']: d['Type'],
             ['medium']: d['Medium'],
             ['size']: d['Size'] as number,
-          } as Record<string, string | number>,
+          } as Record<string, string | number>,*/
         } as Form
         setInventory((inventoryInstance) => [...inventoryInstance, d])
       })
+      setUploadOk(true)
     })
   }
 
@@ -145,7 +151,11 @@ export const AddInventoryPage: React.FC = () => {
   }
 
   if (pageState === 1) {
-    return (
+    return !userContext ? (
+      <div className={styles.loading}>
+        <Loader type="Grid" color="grey" />
+      </div>
+    ) : (
       <div className={styles.container}>
         <div className={styles.title}>
           <Title title={'Add inventory data'} />
@@ -179,6 +189,7 @@ export const AddInventoryPage: React.FC = () => {
                 startDate: new Date(),
                 equipmentGroupL2: null,
                 tag: null,
+                tagDescription: null,
                 vendor: null,
                 equipmentModel: null,
                 L3: null,
@@ -190,7 +201,11 @@ export const AddInventoryPage: React.FC = () => {
       </div>
     )
   } else if (pageState === 2) {
-    return (
+    return !uploadOk || !userContext ? (
+      <div className={styles.loading}>
+        <Loader type="Grid" color="grey" />
+      </div>
+    ) : (
       <div className={styles.inventorycontainer}>
         <div
           className={styles.back}
@@ -240,9 +255,9 @@ export const AddInventoryPage: React.FC = () => {
                   </td>
                   <td>{'Vendor'}</td>
                   <td>{'Eq. Model'}</td>
-                  {L3.map((value, key) => (
+                  {/*L3.map((value, key) => (
                     <td key={key}>{value}</td>
-                  ))}
+                  ))*/}
                 </tr>
               </tbody>
             </table>
@@ -263,11 +278,15 @@ export const AddInventoryPage: React.FC = () => {
             </label>
             <label className={styles.fontSize}>{inventoryInstance.tag}</label>
             <label className={styles.fontSize}>
+              {inventoryInstance.tagDescription}
+            </label>
+            <label className={styles.fontSize}>
               {inventoryInstance.vendor}
             </label>
             <label className={styles.fontSize}>
               {inventoryInstance.equipmentModel}
             </label>
+            {/*
             <label className={styles.fontSize}>
               {inventoryInstance.L3 ? inventoryInstance.L3['type'] : null}
             </label>
@@ -277,6 +296,7 @@ export const AddInventoryPage: React.FC = () => {
             <label className={styles.fontSize}>
               {inventoryInstance.L3 ? inventoryInstance.L3['size'] : null}
             </label>
+            */}
           </RegisteredDataField>
         ))}
       </div>
@@ -344,6 +364,20 @@ export const AddInventoryPage: React.FC = () => {
           <InputField
             variant="standard"
             type="text"
+            label="tag description*"
+            placeholder={
+              dataState.tagDescription
+                ? undefined
+                : 'Type in tag description...'
+            }
+            value={dataState.tagDescription ?? undefined}
+            onValueChanged={(value) => {
+              setData({ ...dataState, tagDescription: value as string })
+            }}
+          />
+          <InputField
+            variant="standard"
+            type="text"
             label="vendor"
             placeholder={
               dataState.vendor ? undefined : 'Provide vendor name...'
@@ -400,6 +434,7 @@ export const AddInventoryPage: React.FC = () => {
                 startDate: new Date(),
                 equipmentGroupL2: null,
                 tag: null,
+                tagDescription: null,
                 vendor: null,
                 equipmentModel: null,
                 L3: {},
@@ -418,6 +453,7 @@ export const AddInventoryPage: React.FC = () => {
                 startDate: new Date(),
                 equipmentGroupL2: null,
                 tag: null,
+                tagDescription: null,
                 vendor: null,
                 equipmentModel: null,
                 L3: {},

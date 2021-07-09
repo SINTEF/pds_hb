@@ -16,6 +16,7 @@ export interface IUpdateInventoryInstance {
   company: string
   facility: string
   tag: string
+  tagDescription?: string
   equipmentGroupL2: string
   vendor?: string
   equipmentModel?: string
@@ -69,6 +70,9 @@ export const UpdateInventoryPage: React.FC = () => {
       case 'Edit tag':
         inventoryInstanceData['tag'] = form.content
         break
+      case 'Edit tag description':
+        inventoryInstanceData['tagDescription'] = form.content
+        break
       case 'Edit vendor':
         inventoryInstanceData['vendor'] = form.content
         break
@@ -119,6 +123,13 @@ export const UpdateInventoryPage: React.FC = () => {
                 <EditableField
                   index="Edit tag"
                   content={inventoryInstance.data?.tag}
+                  isAdmin={true}
+                  onSubmit={handleUpdate}
+                />
+
+                <EditableField
+                  index="Edit tag description"
+                  content={inventoryInstance.data?.tagDescription}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />
@@ -184,6 +195,13 @@ export const UpdateInventoryPage: React.FC = () => {
                 <EditableField
                   index="Edit tag"
                   content={inventoryInstance.data.tag}
+                  isAdmin={true}
+                  onSubmit={handleUpdate}
+                />
+
+                <EditableField
+                  index="Edit tag description"
+                  content={inventoryInstance.data.tagDescription}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />

@@ -33,11 +33,15 @@ export const AnalysisPage: React.FC = () => {
   const [periodEnd, setEnd] = useState<Date>(new Date())
   const [inventory, setInventory] = useState<IInventoryInstance[]>([])
   const [viewCommon, setViewCommon] = useState<boolean>(false)
-  const [commonErrors, setCommonErrors] = useState<string[]>([])
+  const [viewRepeating, setViewRepeating] = useState<boolean>(false)
+  const [commonFailures, setcommonFailures] = useState<string[]>([])
+  const [repeatingFailures, setRepeatingFailures] = useState<string[]>([])
   const [periods, setPeriods] = useState<IPeriod[]>([])
   const [notificationGroups, setNotificationGroups] = useState<
     INotificationGroup[]
   >([])
+  const [failureModes, setFailureModes] = useState<string[]>([])
+  const [onlyQa, setOnlyQa] = useState<boolean>(false)
 
   const {
     get: notificationGroupsGet,
@@ -157,11 +161,34 @@ export const AnalysisPage: React.FC = () => {
         )
       )
     )
-    setCommonErrors(
+    setcommonFailures(
       Object.entries(relevantNotifications)
-        .filter((notification) => notification[1].commonError !== undefined)
-        .map((not) => not[1].commonError)
+        .filter(
+          (notification) =>
+            notification[1].commonFailure !== undefined &&
+            notification[1].commonFailure !== null
+        )
+        .map((notification) => notification[1].commonFailure)
         .filter((v, i, a) => a.indexOf(v) === i) as string[]
+    )
+
+    setRepeatingFailures(
+      Object.entries(relevantNotifications)
+        .filter(
+          (notification) =>
+            notification[1].repeatingFailure !== undefined &&
+            notification[1].repeatingFailure !== null
+        )
+        .map((notification) => notification[1].repeatingFailure)
+        .filter((v, i, a) => a.indexOf(v) === i) as string[]
+    )
+
+    setFailureModes(
+      Object.entries(relevantNotifications)
+        .map((notification) =>
+          notification[1].F2 ? notification[1].F2 : 'undefined'
+        )
+        .filter((v, i, a) => a.indexOf(v) === i)
     )
   }, [equipmentGroup])
 
@@ -170,32 +197,106 @@ export const AnalysisPage: React.FC = () => {
       notifications.filter(
         (notification) =>
           (notification.equipmentGroupL2 as string) === equipmentGroup &&
+          (!onlyQa || notification.qualityStatus === true) &&
           new Date(notification.detectionDate).getTime() <=
             new Date(periodEnd).getTime() &&
           new Date(notification.detectionDate).getTime() >=
             new Date(periodStart).getTime()
       )
     )
-  }, [equipmentGroup, periodStart, periodEnd])
+  }, [equipmentGroup, periodStart, periodEnd, onlyQa])
 
   const getCommon = () => {
     return viewedNotifications.filter(
-      (notification) => notification.commonError !== undefined
+      (notification) =>
+        notification.commonFailure !== undefined &&
+        notification.commonFailure !== null
+    )
+  }
+
+  const getRepeating = () => {
+    return viewedNotifications.filter(
+      (notification) =>
+        notification.repeatingFailure !== undefined &&
+        notification.repeatingFailure !== null
     )
   }
 
   const getNotInCommon = () => {
     return viewedNotifications.filter(
-      (notification) => notification.commonError == undefined
+      (notification) =>
+        notification.commonFailure === undefined ||
+        notification.commonFailure === null
     )
   }
 
+  const getNotInGroup = () => {
+    if (viewRepeating && viewCommon) {
+      return viewedNotifications.filter(
+        (notification) =>
+          (notification.commonFailure === undefined ||
+            notification.commonFailure === null) &&
+          (notification.repeatingFailure === undefined ||
+            notification.repeatingFailure === null)
+      )
+    } else if (viewCommon) {
+      return viewedNotifications.filter(
+        (notification) =>
+          notification.commonFailure === undefined ||
+          notification.commonFailure === null
+      )
+    } else if (viewRepeating) {
+      return viewedNotifications.filter(
+        (notification) =>
+          notification.repeatingFailure === undefined ||
+          notification.repeatingFailure === null
+      )
+    } else {
+      return []
+    }
+  }
+
   const calculateTotalDu = () => {
-    if (viewCommon) {
-      return commonErrors.length + getNotInCommon().length
+    if (viewRepeating && viewCommon) {
+      return (
+        repeatingFailures.length +
+        commonFailures.length +
+        getNotInGroup().length
+      )
+    } else if (viewCommon) {
+      return commonFailures.length + getNotInGroup().length
+    } else if (viewRepeating) {
+      return repeatingFailures.length + getNotInGroup().length
+    } else if (viewRepeating && viewCommon) {
+      return (
+        repeatingFailures.length +
+        commonFailures.length +
+        getNotInGroup().length
+      )
     } else {
       return viewedNotifications.length
     }
+  }
+
+  const calculateBeta3 = () => {
+    const failureNumbers = commonFailures.map(
+      (error) =>
+        viewedNotifications.filter(
+          (notification) => notification.commonFailure === error
+        ).length as number
+    )
+    const top = failureNumbers
+      .map((number) => (number - 1) * number)
+      .reduce((a, b) => a + b, 0)
+    const bottom =
+      (Math.max(...failureNumbers) - 1) * viewedNotifications.length
+    return (top / bottom).toPrecision(2)
+  }
+
+  const calculateBeta2 = () => {
+    const top = commonFailures.length * 2
+    const bottom = getNotInCommon().length + top
+    return (top / bottom).toPrecision(2)
   }
 
   const totalEquipments = () => {
@@ -254,6 +355,42 @@ export const AnalysisPage: React.FC = () => {
     ).toPrecision(4)
   }
 
+  const failurePercentage = (failureMode: string) => {
+    const notInGroupLength = getNotInGroup().filter(
+      (notification) => notification.F2 === failureMode
+    ).length
+    const relevantGroups = notificationGroups.filter(
+      (notificationGroup) => notificationGroup.failureMode === failureMode
+    )
+
+    if (viewCommon && viewRepeating) {
+      const total =
+        relevantGroups.filter((group) => commonFailures.includes(group.name))
+          .length +
+        relevantGroups.filter((group) => repeatingFailures.includes(group.name))
+          .length +
+        notInGroupLength
+      return ((100 * total) / calculateTotalDu()).toFixed(1)
+    } else if (viewCommon) {
+      const total =
+        relevantGroups.filter((group) => commonFailures.includes(group.name))
+          .length + notInGroupLength
+      return ((100 * total) / calculateTotalDu()).toFixed(1)
+    } else if (viewRepeating) {
+      const total =
+        relevantGroups.filter((group) => repeatingFailures.includes(group.name))
+          .length + notInGroupLength
+      return ((100 * total) / calculateTotalDu()).toFixed(1)
+    } else {
+      const total = viewedNotifications.filter(
+        (notification) => notification.F2 === failureMode
+      ).length
+      return ((100 * total) / calculateTotalDu()).toFixed(1)
+    }
+
+    //return (100*viewedNotifications.filter((notification)=> notification.F2 === failureMode).length/calculateTotalDu()).toFixed(1)
+  }
+
   return notificationLoad ? (
     <div className={styles.loading}>
       <Loader type="Grid" color="grey" />
@@ -271,14 +408,40 @@ export const AnalysisPage: React.FC = () => {
               <div className={styles.statisticsNumber}>
                 {calculateTotalDu()}
               </div>
-              <div className={styles.statisticsText}>
-                {'Observation periods:'}
-              </div>
+              <div className={styles.statisticsText}>{'Number of units:'}</div>
               <div className={styles.statisticsNumber}>{totalEquipments()}</div>
+              <div className={styles.statisticsText}>
+                {'Aggregated operation time in 10^6 hours:'}
+              </div>
+              <div className={styles.statisticsNumber}>
+                {calculateAggregatedOperationTime().toPrecision(4)}
+              </div>
+            </div>
+            <div className={styles.statisticsContainer}>
+              {calculateAggregatedOperationTime() > 0 ? (
+                <div className={styles.statisticsText}>
+                  {'Failure rate (per 10^6 hours): '}
+                </div>
+              ) : null}
+              {calculateAggregatedOperationTime() > 0 ? (
+                <div className={styles.statisticsNumber}>
+                  {calculateFailureRate()}
+                </div>
+              ) : null}
+              {failureModes.map((failureMode, key) => (
+                <div key={key} className={styles.statisticsContainer}>
+                  <div className={styles.statisticsText}>
+                    {failureMode + ':'}
+                  </div>
+                  <div className={styles.statisticsNumber}>
+                    {failurePercentage(failureMode) + '%'}
+                  </div>
+                </div>
+              ))}
             </div>
             <div className={styles.statisticsContainer}>
               {viewCommon ? (
-                <div className={styles.statisticsText}>{'β-value:'}</div>
+                <div className={styles.statisticsText}>{'β1-value:'}</div>
               ) : null}
               {viewCommon ? (
                 <div className={styles.statisticsNumber}>
@@ -288,14 +451,20 @@ export const AnalysisPage: React.FC = () => {
                   ).toPrecision(2)}
                 </div>
               ) : null}
-              {calculateAggregatedOperationTime() > 0 ? (
-                <div className={styles.statisticsText}>
-                  {'Failure rate in selected period (per 10^6 hours): '}
+              {viewCommon ? (
+                <div className={styles.statisticsText}>{'β2-value:'}</div>
+              ) : null}
+              {viewCommon ? (
+                <div className={styles.statisticsNumber}>
+                  {calculateBeta2()}
                 </div>
               ) : null}
-              {calculateAggregatedOperationTime() > 0 ? (
+              {viewCommon ? (
+                <div className={styles.statisticsText}>{'β3-value:'}</div>
+              ) : null}
+              {viewCommon ? (
                 <div className={styles.statisticsNumber}>
-                  {calculateFailureRate()}
+                  {calculateBeta3()}
                 </div>
               ) : null}
             </div>
@@ -338,18 +507,36 @@ export const AnalysisPage: React.FC = () => {
             />
             <div className={styles.infoContainer}>
               <Switch
+                checked={onlyQa}
+                disabled={false}
+                handleChange={() => setOnlyQa(!onlyQa)}
+                color="green"
+              />
+              <div className={styles.description}>Only quality assured</div>
+            </div>
+            <div className={styles.infoContainer}>
+              <Switch
                 checked={viewCommon}
                 disabled={false}
                 handleChange={() => setViewCommon(!viewCommon)}
               />
               <div className={styles.description}>
-                Group common cause notifications
+                Group common cause failures
               </div>
+            </div>
+            <div className={styles.infoContainer}>
+              <Switch
+                checked={viewRepeating}
+                disabled={false}
+                handleChange={() => setViewRepeating(!viewRepeating)}
+                color="red"
+              />
+              <div className={styles.description}>Group repeating failures</div>
             </div>
           </div>
           <div className={styles.notificationscontainer}>
             <div>
-              {viewCommon ? (
+              {viewCommon || viewRepeating ? (
                 <div>
                   <div className={styles.table}>
                     <div>
@@ -365,12 +552,13 @@ export const AnalysisPage: React.FC = () => {
                             <td> {'F1'}</td>
                             <td> {'F2'}</td>
                             <td> {'Failure type'}</td>
+                            <td>{'QA?'}</td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
-                  {getNotInCommon().map((data, key) => (
+                  {getNotInGroup().map((data, key) => (
                     <RegisteredDataField key={key}>
                       <label className={styles.fontSize}>
                         {data.notificationNumber}
@@ -406,71 +594,208 @@ export const AnalysisPage: React.FC = () => {
                       <label className={styles.fontSize}>
                         {data.failureType}
                       </label>
+                      {data.qualityStatus ? (
+                        <i className={'material-icons ' + styles.checkedicon}>
+                          {'check'}
+                        </i>
+                      ) : (
+                        <i
+                          className={'material-icons ' + styles.notcheckedicon}
+                        >
+                          {'clear'}
+                        </i>
+                      )}
                     </RegisteredDataField>
                   ))}
-                  {commonErrors?.map((data, key) => (
-                    <div className={styles.common} key={key}>
-                      <div className={styles.commonErrorName}>{data}</div>
-                      <div className={styles.commondescription}>
-                        {notificationGroups
-                          .filter((group) => group.name == data)
-                          .map((group) => group.description)}
+                  {viewCommon ? (
+                    <div>
+                      {commonFailures?.map((data, key) => (
+                        <div
+                          className={[styles.common, styles.commonColor].join(
+                            ' '
+                          )}
+                          key={key}
+                        >
+                          <div className={styles.commonFailureName}>{data}</div>
+                          <div className={styles.commondescription}>
+                            {notificationGroups
+                              .filter((group) => group.name === data)
+                              .map((group) => group.description)}
+                          </div>
+                          {getCommon()
+                            .filter(
+                              (notification) =>
+                                notification.commonFailure === data
+                            )
+                            .map((data, key) => (
+                              <RegisteredDataField key={key}>
+                                <label className={styles.fontSize}>
+                                  {data.notificationNumber}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {new Date(
+                                    data.detectionDate as Date
+                                  ).toLocaleDateString()}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.equipmentGroupL2}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.tag}
+                                </label>
+                                <label
+                                  onClick={() => {
+                                    setOpen(!open)
+                                    setLongText(data.longText ?? '')
+                                  }}
+                                  className={styles.clickable}
+                                >
+                                  {data.shortText}
+                                  <ViewLongText
+                                    title="Long text"
+                                    text={longText}
+                                    isOpen={open}
+                                  />
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.detectionMethod}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.F1}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.F2}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.failureType}
+                                </label>
+                                {data.qualityStatus ? (
+                                  <i
+                                    className={
+                                      'material-icons ' + styles.checkedicon
+                                    }
+                                  >
+                                    {'check'}
+                                  </i>
+                                ) : (
+                                  <i
+                                    className={
+                                      'material-icons ' + styles.notcheckedicon
+                                    }
+                                  >
+                                    {'clear'}
+                                  </i>
+                                )}
+                              </RegisteredDataField>
+                            ))}
+                        </div>
+                      ))}
+                      <div className={styles.commonbutton}>
+                        <Button
+                          label={'Add or edit common cause group'}
+                          size="small"
+                          onClick={() =>
+                            history.push(MAIN_ROUTES.ADD_COMMON_CAUSE_FAILURE)
+                          }
+                        />
                       </div>
-                      {getCommon()
-                        .filter(
-                          (notification) => notification.commonError === data
-                        )
-                        .map((data, key) => (
-                          <RegisteredDataField key={key}>
-                            <label className={styles.fontSize}>
-                              {data.notificationNumber}
-                            </label>
-                            <label className={styles.fontSize}>
-                              {new Date(
-                                data.detectionDate as Date
-                              ).toLocaleDateString()}
-                            </label>
-                            <label className={styles.fontSize}>
-                              {data.equipmentGroupL2}
-                            </label>
-                            <label className={styles.fontSize}>
-                              {data.tag}
-                            </label>
-                            <label
-                              onClick={() => {
-                                setOpen(!open)
-                                setLongText(data.longText ?? '')
-                              }}
-                              className={styles.clickable}
-                            >
-                              {data.shortText}
-                              <ViewLongText
-                                title="Long text"
-                                text={longText}
-                                isOpen={open}
-                              />
-                            </label>
-                            <label className={styles.fontSize}>
-                              {data.detectionMethod}
-                            </label>
-                            <label className={styles.fontSize}>{data.F1}</label>
-                            <label className={styles.fontSize}>{data.F2}</label>
-                            <label className={styles.fontSize}>
-                              {data.failureType}
-                            </label>
-                          </RegisteredDataField>
-                        ))}
                     </div>
-                  ))}
-                  <div className={styles.commonbutton}>
-                    <Button
-                      label={'Add or edit common cause group'}
-                      size="small"
-                      onClick={() =>
-                        history.push(MAIN_ROUTES.ADD_NOTIFICATION_GROUP)
-                      }
-                    />
-                  </div>
+                  ) : null}
+                  {viewRepeating ? (
+                    <div>
+                      {repeatingFailures?.map((data, key) => (
+                        <div
+                          className={[
+                            styles.common,
+                            styles.repeatingColor,
+                          ].join(' ')}
+                          key={key}
+                        >
+                          <div className={styles.commonFailureName}>{data}</div>
+                          <div className={styles.commondescription}>
+                            {notificationGroups
+                              .filter((group) => group.name === data)
+                              .map((group) => group.description)}
+                          </div>
+                          {getRepeating()
+                            .filter(
+                              (notification) =>
+                                notification.repeatingFailure === data
+                            )
+                            .map((data, key) => (
+                              <RegisteredDataField key={key}>
+                                <label className={styles.fontSize}>
+                                  {data.notificationNumber}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {new Date(
+                                    data.detectionDate as Date
+                                  ).toLocaleDateString()}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.equipmentGroupL2}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.tag}
+                                </label>
+                                <label
+                                  onClick={() => {
+                                    setOpen(!open)
+                                    setLongText(data.longText ?? '')
+                                  }}
+                                  className={styles.clickable}
+                                >
+                                  {data.shortText}
+                                  <ViewLongText
+                                    title="Long text"
+                                    text={longText}
+                                    isOpen={open}
+                                  />
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.detectionMethod}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.F1}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.F2}
+                                </label>
+                                <label className={styles.fontSize}>
+                                  {data.failureType}
+                                </label>
+                                {data.qualityStatus ? (
+                                  <i
+                                    className={
+                                      'material-icons ' + styles.checkedicon
+                                    }
+                                  >
+                                    {'check'}
+                                  </i>
+                                ) : (
+                                  <i
+                                    className={
+                                      'material-icons ' + styles.notcheckedicon
+                                    }
+                                  >
+                                    {'clear'}
+                                  </i>
+                                )}
+                              </RegisteredDataField>
+                            ))}
+                        </div>
+                      ))}
+                      <div className={styles.commonbutton}>
+                        <Button
+                          label={'Add or edit repeating failure group'}
+                          size="small"
+                          onClick={() =>
+                            history.push(MAIN_ROUTES.ADD_REPEATING_FAILURE)
+                          }
+                        />
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
               ) : (
                 <div>
@@ -488,6 +813,7 @@ export const AnalysisPage: React.FC = () => {
                             <td> {'F1'}</td>
                             <td> {'F2'}</td>
                             <td> {'Failure type'}</td>
+                            <td>{'QA?'}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -529,6 +855,17 @@ export const AnalysisPage: React.FC = () => {
                       <label className={styles.fontSize}>
                         {data.failureType}
                       </label>
+                      {data.qualityStatus ? (
+                        <i className={'material-icons ' + styles.checkedicon}>
+                          {'check'}
+                        </i>
+                      ) : (
+                        <i
+                          className={'material-icons ' + styles.notcheckedicon}
+                        >
+                          {'clear'}
+                        </i>
+                      )}
                     </RegisteredDataField>
                   ))}
                 </div>
