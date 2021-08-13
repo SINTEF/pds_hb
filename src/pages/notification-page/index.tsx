@@ -180,6 +180,26 @@ export const NotificationPage: React.FC = () => {
     }
   }
 
+  const getNotifications = async () => {
+    const dataRequest = `/?company=${userContext.user?.companyName}`
+    const notificationData: APIResponse<
+      INotification[]
+    > = await notificationGet(dataRequest)
+    if (notificationResponse.ok) {
+      setNotifications(notificationData.data)
+    }
+  }
+
+  const editQualityStatus = async (
+    notification: string,
+    currentValue: boolean
+  ) => {
+    await notificationPut(notification, { qualityStatus: !currentValue })
+    if (notificationResponse.ok) {
+      getNotifications()
+    }
+  }
+
   useEffect(() => {
     setViewComment(false)
   }, [close])
@@ -305,7 +325,7 @@ export const NotificationPage: React.FC = () => {
                   className={styles.clickable}
                 >
                   {data.shortText}
-                  {data.notificationNumber === selectedNotificationNumber ? (
+                  {data.notificationNumber === selectedNotificationNumber && (
                     <ViewLongText
                       title="Long text"
                       text={
@@ -317,7 +337,7 @@ export const NotificationPage: React.FC = () => {
                       }
                       isOpen={open}
                     />
-                  ) : null}
+                  )}
                 </label>
                 <label className={styles.fontSize}>{data.workOrder}</label>
                 <label className={styles.fontSize}>{data.activityText}</label>
@@ -331,8 +351,7 @@ export const NotificationPage: React.FC = () => {
                   <i
                     className={'material-icons ' + styles.checkedicon}
                     onClick={() => {
-                      notificationPut(data._id, { qualityStatus: false })
-                      window.location.reload()
+                      editQualityStatus(data._id, true)
                     }}
                   >
                     {'check'}
@@ -341,8 +360,7 @@ export const NotificationPage: React.FC = () => {
                   <i
                     className={'material-icons ' + styles.notcheckedicon}
                     onClick={() => {
-                      notificationPut(data._id, { qualityStatus: true })
-                      window.location.reload()
+                      editQualityStatus(data._id, false)
                     }}
                   >
                     {'clear'}
@@ -356,7 +374,7 @@ export const NotificationPage: React.FC = () => {
                   }}
                 >
                   {'comment'}
-                  {data.notificationNumber === selectedNotificationNumber ? (
+                  {data.notificationNumber === selectedNotificationNumber && (
                     <CommentSection isOpen={viewComment}>
                       <i
                         className={'material-icons ' + styles.close}
@@ -377,7 +395,7 @@ export const NotificationPage: React.FC = () => {
                           )
                           .map((content, key) => (
                             <div key={key} className={styles.commentContent}>
-                              {content.created ? (
+                              {content.created && (
                                 <div className={styles.date}>
                                   {content.author +
                                     ': ' +
@@ -391,7 +409,7 @@ export const NotificationPage: React.FC = () => {
                                     {'delete'}
                                   </div>
                                 </div>
-                              ) : null}
+                              )}
                               <div className={styles.comment} key={key}>
                                 <EditableField
                                   type={'comment'}
@@ -440,7 +458,7 @@ export const NotificationPage: React.FC = () => {
                         </i>
                       </div>
                     </CommentSection>
-                  ) : null}
+                  )}
                 </i>
                 <i
                   onClick={() =>

@@ -52,19 +52,19 @@ export const Header: React.FC = () => {
             {' '}
             Browse
           </Link>
+          {userContext.user?.userGroupType === 'admin' ? (
+            <Link
+              className={
+                url === MAIN_ROUTES.ANALYSIS ? styles.current : styles.pageLink
+              }
+              to={MAIN_ROUTES.ANALYSIS}
+            >
+              {' '}
+              Analysis
+            </Link>
+          ) : null}
           {userContext.user?.userGroupType === 'operator' ? (
             <div className={styles.operatorLinks}>
-              <Link
-                className={
-                  url === MAIN_ROUTES.NOTIFICATIONS
-                    ? styles.current
-                    : styles.pageLink
-                }
-                to={MAIN_ROUTES.NOTIFICATIONS}
-              >
-                {' '}
-                Notifications
-              </Link>
               <Link
                 className={
                   url === MAIN_ROUTES.INVENTORY
@@ -75,6 +75,17 @@ export const Header: React.FC = () => {
               >
                 {' '}
                 Inventory
+              </Link>
+              <Link
+                className={
+                  url === MAIN_ROUTES.NOTIFICATIONS
+                    ? styles.current
+                    : styles.pageLink
+                }
+                to={MAIN_ROUTES.NOTIFICATIONS}
+              >
+                {' '}
+                Notifications
               </Link>
               <Link
                 className={

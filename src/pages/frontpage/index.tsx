@@ -74,7 +74,7 @@ export const Frontpage: React.FC = () => {
           </div>
         ) : null}
         {userContext.user?.userGroupType === 'admin' ? (
-          <div className={[styles.adminMenu, styles.menu].join(' ')}>
+          <div className={[styles.operatorMenu, styles.menu].join(' ')}>
             {componentLoad && (
               <div className={styles.loading}>
                 <Loader type="Grid" color="grey" />
@@ -102,6 +102,10 @@ export const Frontpage: React.FC = () => {
             <Button
               label={'Browse and edit equipment data'}
               onClick={() => history.push(MAIN_ROUTES.BROWSE)}
+            />
+            <Button
+              label={'Analysis'}
+              onClick={() => history.push(MAIN_ROUTES.ANALYSIS)}
             />
             <Button
               label={'Administrate'}

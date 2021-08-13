@@ -61,6 +61,8 @@
   margin: 20px;
   display: flex;
   flex-direction: column;
+  align-self: flex-end;
+  padding-right: 100px;
 }
 
 .newComponentButton > * {

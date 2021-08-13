@@ -19,6 +19,9 @@ export interface IComponent {
     application?: Array<string>
     diagnosticsConfiguration?: Array<string>
     testMaintenanceMonitoringStrategy?: Array<string>
+    size?: Array<string>
+    medium?: Array<string>
+    type?: Array<string>
   }
   data: IData // should be array, but which type?
   module: string

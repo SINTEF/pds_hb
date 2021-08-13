@@ -14,6 +14,7 @@ import { IInventoryInstance } from '../../models/inventoryinstance'
 import { Filter } from '../../components/filter'
 import Loader from 'react-loader-spinner'
 import { SearchField } from '../../components/search-field'
+import { CommentSection } from '../../components/comment-section'
 
 export const InventoryPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
@@ -24,6 +25,11 @@ export const InventoryPage: React.FC = () => {
   const [equipmentGroups, setEquipmentGroups] = useState<
     Record<string, boolean>
   >({})
+  const [open, setOpen] = useState<boolean>(false)
+  const [selectedTag, setSelectedTag] = useState<string>()
+  const [selectedL3, setSelectedL3] = useState<
+    Record<string, string | undefined>
+  >()
 
   const {
     get: inventoryInstanceGet,
@@ -139,6 +145,7 @@ export const InventoryPage: React.FC = () => {
                   <td>{'Tag description'}</td>
                   <td>{'Vendor'}</td>
                   <td>{'Equipment model'}</td>
+                  <td>{'L3'}</td>
                   <td></td>
                 </tr>
               </tbody>
@@ -157,6 +164,37 @@ export const InventoryPage: React.FC = () => {
               <label className={styles.fontSize}>{data.tagDescription}</label>
               <label className={styles.fontSize}>{data.vendor}</label>
               <label className={styles.fontSize}>{data.equipmentModel}</label>
+              <label
+                onClick={() => {
+                  setOpen(!open)
+                  setSelectedTag(data.tag ?? '')
+                  setSelectedL3(data.L3 ?? {})
+                }}
+                className={styles.clickable}
+              >
+                {'L3'}
+                {data.tag === selectedTag ? (
+                  <CommentSection isOpen={open}>
+                    <div></div>
+                    <div>
+                      {Object.keys(selectedL3 ? selectedL3 : {})
+                        .filter((key) =>
+                          selectedL3 ? selectedL3[key] !== '' : null
+                        )
+                        .map((category, key2) => (
+                          <div key={key2} className={styles.l3}>
+                            <div className={styles.l3Description}>
+                              {category + ':'}
+                            </div>
+                            <div className={styles.l3Value}>
+                              {selectedL3 ? selectedL3[category] : ''}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </CommentSection>
+                ) : null}
+              </label>
               <i
                 onClick={() =>
                   history.push(

@@ -19,6 +19,7 @@ import { INotificationGroup } from '../../models/notificationGroup'
 import { Button } from '../../components/button'
 import MAIN_ROUTES from '../../routes/routes.constants'
 import { useHistory } from 'react-router-dom'
+import { Filter } from '../../components/filter'
 
 export const AnalysisPage: React.FC = () => {
   const userContext = useContext(UserContext) as IUserContext
@@ -42,6 +43,10 @@ export const AnalysisPage: React.FC = () => {
   >([])
   const [failureModes, setFailureModes] = useState<string[]>([])
   const [onlyQa, setOnlyQa] = useState<boolean>(false)
+  const [L3filters, setL3Filters] = useState<string[]>([])
+  const [selectedL3, setSelectedL3] = useState<Record<string, string[]>>({})
+  const [facilities, setFacilities] = useState<Record<string, boolean>>({})
+  const [operators, setOperators] = useState<Record<string, boolean>>({})
 
   const {
     get: notificationGroupsGet,
@@ -59,7 +64,9 @@ export const AnalysisPage: React.FC = () => {
       const dataRequest = `?company=${userContext.user?.companyName}`
       const notificationGroupData: APIResponse<
         INotificationGroup[]
-      > = await notificationGroupsGet(dataRequest)
+      > = await notificationGroupsGet(
+        userContext.user?.userGroupType !== 'admin' ? dataRequest : ''
+      )
       if (notificationGroupsResponse.ok) {
         setNotificationGroups(notificationGroupData.data)
       }
@@ -83,7 +90,9 @@ export const AnalysisPage: React.FC = () => {
       const dataRequest = `?company=${userContext.user?.companyName}`
       const inventoryData: APIResponse<
         IInventoryInstance[]
-      > = await inventoryInstanceGet(dataRequest)
+      > = await inventoryInstanceGet(
+        userContext.user?.userGroupType !== 'admin' ? dataRequest : ''
+      )
       if (inventoryInstanceResponse.ok) {
         setInventory(inventoryData.data)
       }
@@ -101,7 +110,9 @@ export const AnalysisPage: React.FC = () => {
   useEffect(() => {
     const getPeriod = async () => {
       const dataRequest = `?company=${userContext.user?.companyName}`
-      const periodData: APIResponse<IPeriod[]> = await periodGet(dataRequest)
+      const periodData: APIResponse<IPeriod[]> = await periodGet(
+        userContext.user?.userGroupType !== 'admin' ? dataRequest : ''
+      )
       if (periodResponse.ok) {
         setPeriods(periodData.data)
       }
@@ -123,7 +134,11 @@ export const AnalysisPage: React.FC = () => {
       const dataRequest = `/?company=${userContext.user?.companyName}&failureType=DU`
       const notificationData: APIResponse<
         INotification[]
-      > = await notificationGet(dataRequest)
+      > = await notificationGet(
+        userContext.user?.userGroupType !== 'admin'
+          ? dataRequest
+          : '/?failureType=DU'
+      )
       if (notificationResponse.ok) {
         setNotifications(notificationData.data)
         setView(notificationData.data)
@@ -131,6 +146,11 @@ export const AnalysisPage: React.FC = () => {
           notificationData.data
             .map((notification) => notification.equipmentGroupL2)
             .filter((v, i, a) => a.indexOf(v) === i)
+        )
+        setOperators(
+          Object.entries(notificationData.data)
+            .map((notification) => notification[1].company)
+            .reduce((obj, name) => ({ ...obj, [name]: false }), {})
         )
       }
     }
@@ -141,6 +161,17 @@ export const AnalysisPage: React.FC = () => {
     const relevantNotifications = notifications.filter(
       (notification) =>
         (notification.equipmentGroupL2 as string) === equipmentGroup
+    )
+
+    setFacilities(
+      Object.entries(
+        inventory.filter(
+          (inventoryInstance) =>
+            inventoryInstance.equipmentGroupL2 === equipmentGroup
+        )
+      )
+        .map((inventoryInstance) => inventoryInstance[1].facility)
+        .reduce((obj, name) => ({ ...obj, [name]: false }), {})
     )
 
     setStart(
@@ -190,7 +221,82 @@ export const AnalysisPage: React.FC = () => {
         )
         .filter((v, i, a) => a.indexOf(v) === i)
     )
+
+    const inventoryTags = notifications.map((notification) => notification.tag)
+    const L3 = inventory
+      .filter(
+        (inventoryInstance) =>
+          (inventoryInstance.equipmentGroupL2 as string) === equipmentGroup
+      )
+      .filter((inventoryInstance) =>
+        inventoryTags.includes(inventoryInstance.tag)
+      )
+      .map(
+        (inventoryInstance) =>
+          inventoryInstance.L3 as Record<string, string | undefined>
+      )
+    const relevantL3 = L3.map((l3) =>
+      Object.keys(l3).filter((key) => l3[key] !== '')
+    )
+      .flat(1)
+      .filter((v, i, a) => a.indexOf(v) === i)
+    setL3Filters(relevantL3)
+    setSelectedL3({})
+    setSelectedL3(
+      relevantL3.reduce((obj, value) => ({ ...obj, [value as string]: [] }), {})
+    )
   }, [equipmentGroup])
+
+  const filterL3 = () => {
+    const l3Notifications: INotification[] = []
+    Object.keys(selectedL3).map((key) =>
+      l3Notifications.push(
+        ...viewedNotifications.filter((not) =>
+          inventory
+            .filter((inv) =>
+              selectedL3[key].includes((inv.L3 as Record<string, string>)[key])
+            )
+            .map((inv) => inv.tag)
+            .includes(not.tag)
+        )
+      )
+    )
+    if (l3Notifications.length < 1) {
+      l3Notifications.push(...notifications)
+    }
+    return l3Notifications
+  }
+
+  const filterFacility = () => {
+    const facilityFilters = Object.entries(facilities)
+      .filter((group) => group[1])
+      .flatMap(([key]) => key)
+    const filteredTags = inventory
+      .filter((inventoryInstance) =>
+        facilityFilters.includes(inventoryInstance.facility)
+      )
+      .map((inventoryInstance) => inventoryInstance.tag)
+    const filteredNotifications = notifications.filter((notification) =>
+      filteredTags.includes(notification.tag)
+    )
+    if (!Object.values(facilities).includes(true)) {
+      filteredNotifications.push(...notifications)
+    }
+    return filteredNotifications
+  }
+
+  const filterOperator = () => {
+    const operatorFilters = Object.entries(operators)
+      .filter((group) => group[1])
+      .flatMap(([key]) => key)
+    const filteredNotifications = notifications.filter((notification) =>
+      operatorFilters.includes(notification.company)
+    )
+    if (!Object.values(operators).includes(true)) {
+      filteredNotifications.push(...notifications)
+    }
+    return filteredNotifications
+  }
 
   useEffect(() => {
     setView(
@@ -201,10 +307,13 @@ export const AnalysisPage: React.FC = () => {
           new Date(notification.detectionDate).getTime() <=
             new Date(periodEnd).getTime() &&
           new Date(notification.detectionDate).getTime() >=
-            new Date(periodStart).getTime()
+            new Date(periodStart).getTime() &&
+          filterL3().includes(notification) &&
+          filterFacility().includes(notification) &&
+          filterOperator().includes(notification)
       )
     )
-  }, [equipmentGroup, periodStart, periodEnd, onlyQa])
+  }, [equipmentGroup, periodStart, periodEnd, onlyQa, selectedL3, facilities])
 
   const getCommon = () => {
     return viewedNotifications.filter(
@@ -299,11 +408,42 @@ export const AnalysisPage: React.FC = () => {
     return (top / bottom).toPrecision(2)
   }
 
+  const filterInventoryL3 = () => {
+    const l3Inventory: IInventoryInstance[] = []
+    Object.keys(selectedL3).map((key) =>
+      l3Inventory.push(
+        ...inventory.filter((inv) =>
+          selectedL3[key].includes((inv.L3 as Record<string, string>)[key])
+        )
+      )
+    )
+    if (l3Inventory.length < 1) {
+      l3Inventory.push(...inventory)
+    }
+    return l3Inventory
+  }
+
+  const filterFacilityL3 = () => {
+    const facilityFilters = Object.entries(facilities)
+      .filter((group) => group[1])
+      .flatMap(([key]) => key)
+
+    const facilityInventory = inventory.filter((inventoryInstance) =>
+      facilityFilters.includes(inventoryInstance.facility)
+    )
+    if (facilityInventory.length < 1) {
+      facilityInventory.push(...inventory)
+    }
+    return facilityInventory
+  }
+
   const totalEquipments = () => {
     const relevantInventory = inventory.filter(
       (inventoryInstance) =>
         (inventoryInstance.equipmentGroupL2 as string).toLowerCase() ===
-        equipmentGroup?.toLowerCase()
+          equipmentGroup?.toLowerCase() &&
+        filterInventoryL3().includes(inventoryInstance) &&
+        filterFacilityL3().includes(inventoryInstance)
     )
 
     const relevantPeriods = periods.filter((period) =>
@@ -319,7 +459,9 @@ export const AnalysisPage: React.FC = () => {
     const relevantInventory = inventory.filter(
       (inventoryInstance) =>
         (inventoryInstance.equipmentGroupL2 as string).toLowerCase() ===
-        equipmentGroup?.toLowerCase()
+          equipmentGroup?.toLowerCase() &&
+        filterInventoryL3().includes(inventoryInstance) &&
+        filterFacilityL3().includes(inventoryInstance)
     )
 
     const relevantPeriods = periods.filter((period) =>
@@ -344,8 +486,7 @@ export const AnalysisPage: React.FC = () => {
         )
       )
       .reduce((a, b) => a + b, 0)
-    //const time2 = 36e5 * 24 * 365 * relevantPeriods.length
-    //console.log((endDates - startDates) / time2)
+
     return (endDates - startDates) / time
   }
 
@@ -387,8 +528,47 @@ export const AnalysisPage: React.FC = () => {
       ).length
       return ((100 * total) / calculateTotalDu()).toFixed(1)
     }
+  }
 
-    //return (100*viewedNotifications.filter((notification)=> notification.F2 === failureMode).length/calculateTotalDu()).toFixed(1)
+  const getL3Values = (key: string) => {
+    const inventoryTags = viewedNotifications.map(
+      (notification) => notification.tag
+    )
+    const L3 = inventory
+      .filter((inventoryInstance) =>
+        inventoryTags.includes(inventoryInstance.tag)
+      )
+      .map(
+        (inventoryInstance) =>
+          inventoryInstance.L3 as Record<string, string | undefined>
+      )
+    const relevantL3 = L3.map((l3) => l3[key])
+      .flat(1)
+      .filter((v, i, a) => a.indexOf(v) === i)
+      .reduce(
+        (obj, value) => ({
+          ...obj,
+          [value as string]: selectedL3[key]
+            ? selectedL3[key].includes(value as string)
+              ? true
+              : false
+            : null,
+        }),
+        {}
+      )
+    return relevantL3
+  }
+
+  const L3filtering = (filter: string, selected: string, value: boolean) => {
+    value
+      ? setSelectedL3({
+          ...selectedL3,
+          [filter]: [...selectedL3[filter], selected],
+        })
+      : setSelectedL3({
+          ...selectedL3,
+          [filter]: selectedL3[filter].filter((l3) => l3 !== selected),
+        })
   }
 
   return notificationLoad ? (
@@ -399,74 +579,90 @@ export const AnalysisPage: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.center}>
         {equipmentGroup ? (
-          <div className={styles.center}>
-            <Title title={`Analysis of:`} dynamic={equipmentGroup} />
-            <div className={styles.statisticsContainer}>
-              <div className={styles.statisticsText}>
-                {'Total DU errors for selected data:'}
-              </div>
-              <div className={styles.statisticsNumber}>
-                {calculateTotalDu()}
-              </div>
-              <div className={styles.statisticsText}>{'Number of units:'}</div>
-              <div className={styles.statisticsNumber}>{totalEquipments()}</div>
-              <div className={styles.statisticsText}>
-                {'Aggregated operation time in 10^6 hours:'}
-              </div>
-              <div className={styles.statisticsNumber}>
-                {calculateAggregatedOperationTime().toPrecision(4)}
-              </div>
+          <div>
+            <div className={styles.center}>
+              <Title title={`Analysis of:`} dynamic={equipmentGroup} />
             </div>
-            <div className={styles.statisticsContainer}>
-              {calculateAggregatedOperationTime() > 0 ? (
+            <div className={styles.left}>
+              <div className={styles.statisticsContainer}>
                 <div className={styles.statisticsText}>
-                  {'Failure rate (per 10^6 hours): '}
+                  {'Total DU errors for selected data:'}
                 </div>
-              ) : null}
-              {calculateAggregatedOperationTime() > 0 ? (
                 <div className={styles.statisticsNumber}>
-                  {calculateFailureRate()}
+                  {calculateTotalDu()}
                 </div>
-              ) : null}
-              {failureModes.map((failureMode, key) => (
-                <div key={key} className={styles.statisticsContainer}>
+                <div className={styles.statisticsText}>
+                  {'Number of units:'}
+                </div>
+                <div className={styles.statisticsNumber}>
+                  {totalEquipments()}
+                </div>
+                <div className={styles.statisticsText}>
+                  {'Aggregated operation time in 10^6 hours:'}
+                </div>
+                <div className={styles.statisticsNumber}>
+                  {calculateAggregatedOperationTime().toPrecision(4)}
+                </div>
+                {calculateAggregatedOperationTime() > 0 && (
                   <div className={styles.statisticsText}>
-                    {failureMode + ':'}
+                    {'Failure rate per 10^6 hours: '}
                   </div>
+                )}
+                {calculateAggregatedOperationTime() > 0 && (
                   <div className={styles.statisticsNumber}>
-                    {failurePercentage(failureMode) + '%'}
+                    {calculateFailureRate()}
                   </div>
-                </div>
-              ))}
-            </div>
-            <div className={styles.statisticsContainer}>
-              {viewCommon ? (
-                <div className={styles.statisticsText}>{'β1-value:'}</div>
-              ) : null}
-              {viewCommon ? (
-                <div className={styles.statisticsNumber}>
-                  {(
-                    (viewedNotifications.length - getNotInCommon().length) /
-                    viewedNotifications.length
-                  ).toPrecision(2)}
-                </div>
-              ) : null}
-              {viewCommon ? (
-                <div className={styles.statisticsText}>{'β2-value:'}</div>
-              ) : null}
-              {viewCommon ? (
-                <div className={styles.statisticsNumber}>
-                  {calculateBeta2()}
-                </div>
-              ) : null}
-              {viewCommon ? (
-                <div className={styles.statisticsText}>{'β3-value:'}</div>
-              ) : null}
-              {viewCommon ? (
-                <div className={styles.statisticsNumber}>
-                  {calculateBeta3()}
-                </div>
-              ) : null}
+                )}
+              </div>
+              <div className={styles.statisticsContainer}>
+                {viewCommon && (
+                  <div className={styles.statisticsText}>{'β1-value:'}</div>
+                )}
+                {viewCommon && (
+                  <div className={styles.statisticsNumber}>
+                    {(
+                      (viewedNotifications.length - getNotInCommon().length) /
+                      viewedNotifications.length
+                    ).toPrecision(2)}
+                  </div>
+                )}
+                {viewCommon && (
+                  <div className={styles.statisticsText}>{'β2-value:'}</div>
+                )}
+                {viewCommon && (
+                  <div className={styles.statisticsNumber}>
+                    {' '}
+                    {calculateBeta2()}{' '}
+                  </div>
+                )}
+                {viewCommon && (
+                  <div className={styles.statisticsText}>{'β3-value:'}</div>
+                )}
+                {viewCommon && (
+                  <div className={styles.statisticsNumber}>
+                    {calculateBeta3()}
+                  </div>
+                )}
+              </div>
+              <div className={styles.statisticsContainer}>
+                {calculateTotalDu() > 0 &&
+                  failureModes.map((failureMode, key) => (
+                    <div
+                      key={key}
+                      className={[
+                        styles.statisticsContainer,
+                        styles.failurePercentage,
+                      ].join(' ')}
+                    >
+                      <div className={styles.statisticsText}>
+                        {failureMode + ':'}
+                      </div>
+                      <div className={styles.statisticsNumber}>
+                        {failurePercentage(failureMode) + '%'}
+                      </div>
+                    </div>
+                  ))}
+              </div>
             </div>
           </div>
         ) : (
@@ -486,6 +682,40 @@ export const AnalysisPage: React.FC = () => {
       </div>
       {equipmentGroup ? (
         <div>
+          <div className={styles.L3FiltersContainer}>
+            {L3filters.map((filter, key) => (
+              <Filter
+                key={key}
+                category={filter}
+                filters={getL3Values(filter)}
+                onClick={(selected, value) =>
+                  L3filtering(filter, selected, value)
+                }
+              />
+            ))}
+            <Filter
+              category={'facility'}
+              filters={facilities}
+              onClick={(selected, newValue) => {
+                setFacilities({
+                  ...facilities,
+                  [selected]: newValue,
+                })
+              }}
+            />
+            {userContext.user?.userGroupType === 'admin' && (
+              <Filter
+                category={'operator'}
+                filters={operators}
+                onClick={(selected, newValue) => {
+                  setOperators({
+                    ...operators,
+                    [selected]: newValue,
+                  })
+                }}
+              />
+            )}
+          </div>
           <div className={styles.menucontainer}>
             <InputField
               variant="primary"
@@ -580,11 +810,13 @@ export const AnalysisPage: React.FC = () => {
                         className={styles.clickable}
                       >
                         {data.shortText}
-                        <ViewLongText
-                          title="Long text"
-                          text={longText}
-                          isOpen={open}
-                        />
+                        <div className={styles.front}>
+                          <ViewLongText
+                            title="Long text"
+                            text={longText}
+                            isOpen={open}
+                          />
+                        </div>
                       </label>
                       <label className={styles.fontSize}>
                         {data.detectionMethod}
@@ -607,7 +839,7 @@ export const AnalysisPage: React.FC = () => {
                       )}
                     </RegisteredDataField>
                   ))}
-                  {viewCommon ? (
+                  {viewCommon && (
                     <div>
                       {commonFailures?.map((data, key) => (
                         <div
@@ -700,7 +932,7 @@ export const AnalysisPage: React.FC = () => {
                         />
                       </div>
                     </div>
-                  ) : null}
+                  )}
                   {viewRepeating ? (
                     <div>
                       {repeatingFailures?.map((data, key) => (

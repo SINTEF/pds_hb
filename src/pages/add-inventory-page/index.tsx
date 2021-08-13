@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import styles from './AddInventoryPage.module.css'
-import useFetch from 'use-http'
+import useFetch, { CachePolicies } from 'use-http'
 import { Title } from '../../components/title'
 import { InputField } from '../../components/input-field'
 import { Button } from '../../components/button'
@@ -14,6 +14,7 @@ import MAIN_ROUTES from '../../routes/routes.constants'
 import * as XLSX from 'xlsx'
 import { RegisteredDataField } from '../../components/registered-data-field'
 import Loader from 'react-loader-spinner'
+import { CommentSection } from '../../components/comment-section'
 
 export interface Form {
   company: string | undefined
@@ -24,19 +25,29 @@ export interface Form {
   vendor: string | null
   equipmentModel: string | null
   startDate: Date
-  L3: Record<string, string | number> | null
+  L3: Record<string, string> | null
 }
 
 export const AddInventoryPage: React.FC = () => {
   const history = useHistory()
-  const { post } = useFetch()
-
+  const {
+    response: inventoryResponse,
+    post: inventoryPost,
+    loading: inventoryLoad,
+  } = useFetch(
+    '/inventoryInstances',
+    (options) => {
+      options.cachePolicy = CachePolicies.NO_CACHE
+      return options
+    },
+    []
+  )
+  const [successNumber, setSuccess] = useState<number>(0)
   const userContext = useContext(UserContext) as IUserContext
-
-  //const [L3 /*, setL3*/] = useState<string[]>(['type', 'medium', 'size'])
-
   const [pageState, setPage] = useState<number>(1)
   const [uploadOk, setUploadOk] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false)
+  const [selectedTag, setSelectedTag] = useState<string>()
 
   const [dataState, setData] = useState<Form>({
     company: undefined,
@@ -97,11 +108,21 @@ export const AddInventoryPage: React.FC = () => {
           tagDescription: (d['Tag description'] ?? '') as string,
           vendor: (d['Vendor'] ?? '') as string,
           equipmentModel: (d['Eq. Model'] ?? '') as string,
-          /*L3: {
-            ['type']: d['Type'],
-            ['medium']: d['Medium'],
-            ['size']: d['Size'] as number,
-          } as Record<string, string | number>,*/
+          L3: {
+            measuringPrinciple: (d['Measuring principle'] ?? '') as string,
+            designMountingPrinciple: (d['Design/mounting principle'] ??
+              '') as string,
+            actuationPrinciple: (d['Actuation principle'] ?? '') as string,
+            service: (d['Service'] ?? '') as string,
+            medium: (d['Medium'] ?? '') as string,
+            dimension: (d['Dimension'] ?? d['Size'] ?? '') as string,
+            locationEnvironment: (d['Location/Environment'] ?? '') as string,
+            application: (d['Application'] ?? '') as string,
+            diagnosticsInternal: (d['Diagnostics-internal'] ?? '') as string,
+            diagnosticsExternal: (d['Diagnostics-external'] ?? '') as string,
+            configuration: (d['Configuration'] ?? '') as string,
+            type: (d['Type'] ?? '') as string,
+          },
         } as Form
         setInventory((inventoryInstance) => [...inventoryInstance, d])
       })
@@ -142,8 +163,11 @@ export const AddInventoryPage: React.FC = () => {
 
   const updateData = async (form: Form): Promise<void> => {
     form = { ...form, company: userContext.user?.companyName }
+    await inventoryPost(form)
 
-    await post('/inventoryInstances/', form)
+    if (inventoryResponse.ok) {
+      setSuccess((successNumber) => successNumber + 1)
+    }
   }
 
   const updateMultipleInventoryInstances = () => {
@@ -253,11 +277,10 @@ export const AddInventoryPage: React.FC = () => {
                   <td className={hasTag() ? undefined : styles.required}>
                     {'Tag'}
                   </td>
+                  <td>{'TagDescription'}</td>
                   <td>{'Vendor'}</td>
                   <td>{'Eq. Model'}</td>
-                  {/*L3.map((value, key) => (
-                    <td key={key}>{value}</td>
-                  ))*/}
+                  <td>{'L3'}</td>
                 </tr>
               </tbody>
             </table>
@@ -286,17 +309,42 @@ export const AddInventoryPage: React.FC = () => {
             <label className={styles.fontSize}>
               {inventoryInstance.equipmentModel}
             </label>
-            {/*
-            <label className={styles.fontSize}>
-              {inventoryInstance.L3 ? inventoryInstance.L3['type'] : null}
+            <label
+              onClick={() => {
+                setOpen(!open)
+                setSelectedTag(inventoryInstance.tag ?? '')
+              }}
+              className={styles.clickable}
+            >
+              {'L3'}
+              {inventoryInstance.tag === selectedTag ? (
+                <CommentSection isOpen={open}>
+                  <div></div>
+                  <div>
+                    {Object.keys(
+                      inventoryInstance.L3 ? inventoryInstance.L3 : {}
+                    )
+                      .filter((key) =>
+                        inventoryInstance.L3
+                          ? inventoryInstance.L3[key] !== ''
+                          : null
+                      )
+                      .map((category, key2) => (
+                        <div key={key2} className={styles.l3}>
+                          <div className={styles.l3Description}>
+                            {category + ':'}
+                          </div>
+                          <div className={styles.l3Value}>
+                            {inventoryInstance.L3
+                              ? inventoryInstance.L3[category]
+                              : ''}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </CommentSection>
+              ) : null}
             </label>
-            <label className={styles.fontSize}>
-              {inventoryInstance.L3 ? inventoryInstance.L3['medium'] : null}
-            </label>
-            <label className={styles.fontSize}>
-              {inventoryInstance.L3 ? inventoryInstance.L3['size'] : null}
-            </label>
-            */}
           </RegisteredDataField>
         ))}
       </div>
@@ -419,11 +467,15 @@ export const AddInventoryPage: React.FC = () => {
       </div>
     )
   } else if (pageState === 4) {
-    return (
+    return inventoryLoad || !userContext ? (
+      <div className={styles.loading}>
+        <Loader type="Grid" color="grey" />
+      </div>
+    ) : (
       <div className={styles.container}>
         <Title title={'Add inventory'} />
         <div className={[styles.container, styles.buttoncontainer].join(' ')}>
-          {'Inventory successfully added!'}
+          {`${successNumber} of ${inventory.length} notifications successfully added!`}
           <Button
             label={'Add more inventory instances'}
             onClick={() => {
