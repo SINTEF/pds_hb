@@ -1,4 +1,4 @@
-//type TStatus = 'published' | 'approved' | 'not approved' | 'not reviewed'
+type TStatus = 'published' | 'approved' | 'not approved' | 'not reviewed'
 
 export interface INotification {
   _id: string
@@ -20,4 +20,5 @@ export interface INotification {
   repeatingFailure?: string
   qualityStatus?: boolean
   operatorComment?: string[]
+  status?: TStatus
 }

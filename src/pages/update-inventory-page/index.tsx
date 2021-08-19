@@ -64,12 +64,6 @@ export const UpdateInventoryPage: React.FC = () => {
       case 'Edit facility':
         inventoryInstanceData['facility'] = form.content
         break
-      case 'Edit equipment group/L2':
-        inventoryInstanceData['equipmentGroupL2'] = form.content
-        break
-      case 'Edit tag':
-        inventoryInstanceData['tag'] = form.content
-        break
       case 'Edit tag description':
         inventoryInstanceData['tagDescription'] = form.content
         break
@@ -114,18 +108,6 @@ export const UpdateInventoryPage: React.FC = () => {
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />
-                <EditableField
-                  index="Edit equipment group/L2"
-                  content={inventoryInstance.data?.equipmentGroupL2}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
-                <EditableField
-                  index="Edit tag"
-                  content={inventoryInstance.data?.tag}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
 
                 <EditableField
                   index="Edit tag description"
@@ -148,14 +130,6 @@ export const UpdateInventoryPage: React.FC = () => {
                   onSubmit={handleUpdate}
                 />
 
-                {/*inventoryInstance.data.sintefComment !== 'No comment' && (
-                  <EditableField
-                    index="SINTEF comment"
-                    content={inventoryInstance.data.sintefComment}
-                    isAdmin={false}
-                    onSubmit={() => false}
-                  />
-                )*/}
                 <div className={styles.button}>
                   <div
                     className={styles.back}
@@ -183,18 +157,6 @@ export const UpdateInventoryPage: React.FC = () => {
                 <EditableField
                   index="Edit facility"
                   content={inventoryInstance.data.facility}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
-                <EditableField
-                  index="Edit equipment group/L2"
-                  content={inventoryInstance.data.equipmentGroupL2}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
-                <EditableField
-                  index="Edit tag"
-                  content={inventoryInstance.data.tag}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />

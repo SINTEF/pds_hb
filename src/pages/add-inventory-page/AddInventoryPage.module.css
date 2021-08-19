@@ -132,3 +132,12 @@
   -webkit-overflow-scrolling: touch;
   max-height: 300px;
 }
+
+.infotext {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 30px;
+  color: red;
+  font-size: 20px;
+}

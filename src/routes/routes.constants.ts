@@ -21,6 +21,8 @@ const MAIN_ROUTES = {
   ADD_NOTIFICATION_GROUP: '/notifications/add-notification-group',
   ADD_COMMON_CAUSE_FAILURE: '/notifications/add-common-cause-failure',
   ADD_REPEATING_FAILURE: '/notifications/add-repeating-failure',
+  PERIODS: '/periods',
+  SEE_ALL_EDITS: '/edits',
 }
 
 export const COMPANY_SUB_ROUTES = {

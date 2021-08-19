@@ -29,6 +29,8 @@ import { UpdateInventoryPage } from './pages/update-inventory-page'
 import { AnalysisPage } from './pages/analysis-page'
 import { AddCommonFailurePage } from './pages/add-commonFailure-page'
 import { AddRepeatingFailurePage } from './pages/add-repeatingFailure-page'
+import { PeriodPage } from './pages/period-page'
+import { AllEditsPage } from './pages/admin-all-edits-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -108,6 +110,9 @@ function App(): JSX.Element {
             <AuthRoute exact path={MAIN_ROUTES.ADD_INVENTORY}>
               <AddInventoryPage />
             </AuthRoute>
+            <AuthRoute exact path={MAIN_ROUTES.PERIODS}>
+              <PeriodPage />
+            </AuthRoute>
             <AuthRoute exact path={MAIN_ROUTES.ANALYSIS}>
               <AnalysisPage />
             </AuthRoute>
@@ -116,6 +121,9 @@ function App(): JSX.Element {
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.ADD_COMPONENT}>
               <AddComponentPage />
+            </AuthRoute>
+            <AuthRoute path={MAIN_ROUTES.SEE_ALL_EDITS}>
+              <AllEditsPage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />

@@ -139,7 +139,6 @@ export const InventoryPage: React.FC = () => {
               <tbody>
                 <tr>
                   <td>{'Facility'}</td>
-                  <td>{'Date'}</td>
                   <td>{'Equipment group L2'}</td>
                   <td>{'Tag'}</td>
                   <td>{'Tag description'}</td>
@@ -156,9 +155,6 @@ export const InventoryPage: React.FC = () => {
           {viewedInventory?.map((data, key) => (
             <RegisteredDataField key={key}>
               <label className={styles.fontSize}>{data.facility}</label>
-              <label className={styles.fontSize}>
-                {new Date(data.startDate as Date).toLocaleDateString()}
-              </label>
               <label className={styles.fontSize}>{data.equipmentGroupL2}</label>
               <label className={styles.fontSize}>{data.tag}</label>
               <label className={styles.fontSize}>{data.tagDescription}</label>

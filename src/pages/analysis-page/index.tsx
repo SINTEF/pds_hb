@@ -94,7 +94,7 @@ export const AnalysisPage: React.FC = () => {
         userContext.user?.userGroupType !== 'admin' ? dataRequest : ''
       )
       if (inventoryInstanceResponse.ok) {
-        setInventory(inventoryData.data)
+        setInventory(inventoryData?.data)
       }
     }
     getInventory()
@@ -146,11 +146,6 @@ export const AnalysisPage: React.FC = () => {
           notificationData.data
             .map((notification) => notification.equipmentGroupL2)
             .filter((v, i, a) => a.indexOf(v) === i)
-        )
-        setOperators(
-          Object.entries(notificationData.data)
-            .map((notification) => notification[1].company)
-            .reduce((obj, name) => ({ ...obj, [name]: false }), {})
         )
       }
     }
@@ -220,6 +215,12 @@ export const AnalysisPage: React.FC = () => {
           notification[1].F2 ? notification[1].F2 : 'undefined'
         )
         .filter((v, i, a) => a.indexOf(v) === i)
+    )
+
+    setOperators(
+      Object.entries(relevantNotifications)
+        .map((notification) => notification[1].company)
+        .reduce((obj, name) => ({ ...obj, [name]: false }), {})
     )
 
     const inventoryTags = notifications.map((notification) => notification.tag)
@@ -313,7 +314,44 @@ export const AnalysisPage: React.FC = () => {
           filterOperator().includes(notification)
       )
     )
-  }, [equipmentGroup, periodStart, periodEnd, onlyQa, selectedL3, facilities])
+  }, [
+    equipmentGroup,
+    periodStart,
+    periodEnd,
+    onlyQa,
+    selectedL3,
+    facilities,
+    operators,
+  ])
+
+  useEffect(() => {
+    const relevantNotifications = notifications.filter(
+      (notification) =>
+        (notification.equipmentGroupL2 as string) === equipmentGroup &&
+        (!onlyQa || notification.qualityStatus === true) &&
+        filterL3().includes(notification) &&
+        filterFacility().includes(notification) &&
+        filterOperator().includes(notification)
+    )
+    setStart(
+      new Date(
+        Math.min(
+          ...relevantNotifications.map(
+            (notification) => new Date(notification.detectionDate).getTime() - 1
+          )
+        )
+      )
+    )
+    setEnd(
+      new Date(
+        Math.max(
+          ...relevantNotifications.map(
+            (notification) => new Date(notification.detectionDate).getTime() + 1
+          )
+        )
+      )
+    )
+  }, [selectedL3, facilities, operators, onlyQa, equipmentGroup])
 
   const getCommon = () => {
     return viewedNotifications.filter(
@@ -423,7 +461,7 @@ export const AnalysisPage: React.FC = () => {
     return l3Inventory
   }
 
-  const filterFacilityL3 = () => {
+  const filterInventoryFacility = () => {
     const facilityFilters = Object.entries(facilities)
       .filter((group) => group[1])
       .flatMap(([key]) => key)
@@ -437,18 +475,33 @@ export const AnalysisPage: React.FC = () => {
     return facilityInventory
   }
 
+  const filterInventoryOperator = () => {
+    const operatorFilters = Object.entries(operators)
+      .filter((group) => group[1])
+      .flatMap(([key]) => key)
+    const filteredInventory = inventory.filter((inventoryInstance) =>
+      operatorFilters.includes(inventoryInstance.company)
+    )
+    if (!Object.values(operators).includes(true)) {
+      filteredInventory.push(...inventory)
+    }
+    return filteredInventory
+  }
+
   const totalEquipments = () => {
     const relevantInventory = inventory.filter(
       (inventoryInstance) =>
         (inventoryInstance.equipmentGroupL2 as string).toLowerCase() ===
           equipmentGroup?.toLowerCase() &&
         filterInventoryL3().includes(inventoryInstance) &&
-        filterFacilityL3().includes(inventoryInstance)
+        filterInventoryFacility().includes(inventoryInstance) &&
+        filterInventoryOperator().includes(inventoryInstance)
     )
 
     const relevantPeriods = periods.filter((period) =>
       relevantInventory
         .map((inventoryInstance) => inventoryInstance.tag)
+        .filter((v, i, a) => a.indexOf(v) === i)
         .includes(period.tag)
     )
 
@@ -461,7 +514,8 @@ export const AnalysisPage: React.FC = () => {
         (inventoryInstance.equipmentGroupL2 as string).toLowerCase() ===
           equipmentGroup?.toLowerCase() &&
         filterInventoryL3().includes(inventoryInstance) &&
-        filterFacilityL3().includes(inventoryInstance)
+        filterInventoryFacility().includes(inventoryInstance) &&
+        filterInventoryOperator().includes(inventoryInstance)
     )
 
     const relevantPeriods = periods.filter((period) =>
@@ -469,6 +523,7 @@ export const AnalysisPage: React.FC = () => {
         .map((inventoryInstance) => inventoryInstance.tag)
         .includes(period.tag)
     )
+
     const time = 36e5 * 10e6
     const startDates = relevantPeriods
       .map((period) =>
@@ -478,6 +533,7 @@ export const AnalysisPage: React.FC = () => {
         )
       )
       .reduce((a, b) => a + b, 0)
+
     const endDates = relevantPeriods
       .map((period) =>
         Math.min(
@@ -486,7 +542,6 @@ export const AnalysisPage: React.FC = () => {
         )
       )
       .reduce((a, b) => a + b, 0)
-
     return (endDates - startDates) / time
   }
 

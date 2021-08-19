@@ -5,40 +5,46 @@ import { Button } from '../../components/button'
 import { useHistory } from 'react-router-dom'
 import MAIN_ROUTES, { SUB_ROUTES } from '../../routes/routes.constants'
 import useFetch, { CachePolicies } from 'use-http'
-import { IComponent } from '../../models/component'
 import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
 import { APIResponse } from '../../models/api-response'
 import Loader from 'react-loader-spinner'
+import { IInventoryInstance } from '../../models/inventoryinstance'
 
 export const Frontpage: React.FC = () => {
   const history = useHistory()
-  const { error } = useFetch<APIResponse<IComponent[]>>('/components', [])
-
   const userContext = useContext(UserContext) as IUserContext
-
-  const [components, setComponents] = useState<IComponent[]>([])
+  const [equipmentGroups, setEquipmentGroups] = useState<string[]>([])
 
   const {
-    get: componentGet,
-    response: componentResponse,
-    loading: componentLoad,
-  } = useFetch<APIResponse<IComponent>>('/components', (options) => {
-    options.cachePolicy = CachePolicies.NO_CACHE
-    return options
-  })
+    get: inventoryGet,
+    response: inventoryResponse,
+    loading: inventoryLoad,
+  } = useFetch<APIResponse<IInventoryInstance[]>>(
+    '/inventoryInstances/anonymized',
+    (options) => {
+      options.cachePolicy = CachePolicies.NO_CACHE
+      return options
+    }
+  )
 
   useEffect(() => {
-    const loadComponents = async () => {
-      const components = await componentGet()
-      if (componentResponse.ok) setComponents(components.data)
+    const loadInventory = async () => {
+      const inventoryInstances: APIResponse<
+        IInventoryInstance[]
+      > = await inventoryGet()
+      if (inventoryResponse.ok) {
+        setEquipmentGroups(
+          inventoryInstances.data
+            .map((inventoryInstance) => inventoryInstance.equipmentGroupL2)
+            .filter((v, i, a) => a.indexOf(v) === i)
+        )
+      }
     }
-    loadComponents()
-  }, [componentGet, componentResponse])
+    loadInventory()
+  }, [inventoryGet, inventoryResponse])
 
-  const suggestions = components.map((component) => component.name) ?? []
-
-  return componentLoad || !userContext ? (
+  return inventoryLoad || !userContext ? (
     <div className={styles.loading}>
       <Loader type="Grid" color="grey" />
     </div>
@@ -52,7 +58,7 @@ export const Frontpage: React.FC = () => {
               variant="primary"
               icon={'search'}
               placeholder="Search for component..."
-              suggestions={suggestions}
+              suggestions={equipmentGroups}
               onValueChanged={() => false}
               onClick={(componentName) =>
                 history.push(
@@ -75,7 +81,7 @@ export const Frontpage: React.FC = () => {
         ) : null}
         {userContext.user?.userGroupType === 'admin' ? (
           <div className={[styles.operatorMenu, styles.menu].join(' ')}>
-            {componentLoad && (
+            {inventoryLoad && (
               <div className={styles.loading}>
                 <Loader type="Grid" color="grey" />
               </div>
@@ -84,7 +90,7 @@ export const Frontpage: React.FC = () => {
               variant="primary"
               icon={'search'}
               placeholder="Search for component..."
-              suggestions={suggestions}
+              suggestions={equipmentGroups}
               onValueChanged={() => false}
               onClick={(componentName) =>
                 history.push(
@@ -108,14 +114,18 @@ export const Frontpage: React.FC = () => {
               onClick={() => history.push(MAIN_ROUTES.ANALYSIS)}
             />
             <Button
-              label={'Administrate'}
+              label={'Review and publish data'}
+              onClick={() => history.push(MAIN_ROUTES.SEE_ALL_EDITS)}
+            />
+            <Button
+              label={'Administrate users'}
               onClick={() => history.push(MAIN_ROUTES.ADMIN)}
             />
           </div>
         ) : null}
         {userContext.user?.userGroupType === 'operator' ? (
           <div className={[styles.operatorMenu, styles.menu].join(' ')}>
-            {componentLoad && (
+            {inventoryLoad && (
               <div className={styles.loading}>
                 <Loader type="Grid" color="grey" />
               </div>
@@ -124,7 +134,7 @@ export const Frontpage: React.FC = () => {
               variant="primary"
               icon={'search'}
               placeholder="Search for component..."
-              suggestions={suggestions}
+              suggestions={equipmentGroups}
               onValueChanged={() => false}
               onClick={(componentName) =>
                 history.push(
@@ -156,9 +166,7 @@ export const Frontpage: React.FC = () => {
               onClick={() => history.push(MAIN_ROUTES.ANALYSIS)}
             />
           </div>
-        ) : (
-          error && 'Error!'
-        )}
+        ) : null}
       </div>
       <div className={styles.footer}>
         <div className={styles.contact}>{'Contact info:'}</div>

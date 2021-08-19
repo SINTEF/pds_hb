@@ -7,7 +7,6 @@ import { COMPANY_SUB_ROUTES, SUB_ROUTES } from '../../routes/routes.constants'
 import { CompanyUserPage } from '../company-user-page'
 import { ManageFacilitiesPage } from '../manage-facilities-page'
 import { ManageStaffmembersPage } from '../manage-staffmembers-page'
-import { OwnDataPage } from '../own-data'
 import { RegisteredDataPage } from '../registered-data'
 import { UpdateDataPage } from '../update-data-page'
 
@@ -77,9 +76,6 @@ export const CompanyPage: React.FC = () => {
           </Route>
           <Route path={path + COMPANY_SUB_ROUTES.USER}>
             <CompanyUserPage />
-          </Route>
-          <Route path={[path + COMPANY_SUB_ROUTES.REG_DATA, path]}>
-            <OwnDataPage />
           </Route>
         </Switch>
       </div>

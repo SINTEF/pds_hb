@@ -467,7 +467,7 @@ export const AddNotificationsPage: React.FC = () => {
             </label>
           </RegisteredDataField>
         ))}
-        {tagNotInInventory.length > 0 && (
+        {tagNotInInventory().length > 0 && (
           <div className={styles.infotext}>
             Following notifications will not be added as their tags are missing
             from the period document

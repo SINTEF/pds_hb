@@ -467,7 +467,7 @@ export const AddInventoryPage: React.FC = () => {
       </div>
     )
   } else if (pageState === 4) {
-    return inventoryLoad || !userContext ? (
+    return inventoryLoad || !userContext || !inventoryResponse.ok ? (
       <div className={styles.loading}>
         <Loader type="Grid" color="grey" />
       </div>

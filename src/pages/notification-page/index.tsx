@@ -158,7 +158,10 @@ export const NotificationPage: React.FC = () => {
 
   const postComment = async (content: string): Promise<void> => {
     const form = {
-      company: userContext.user?.companyName,
+      company: notifications.filter(
+        (notification) =>
+          notification.notificationNumber === selectedNotificationNumber
+      )[0].company,
       author: userContext.user?.username,
       content: content,
       notificationNumber: selectedNotificationNumber,
@@ -275,6 +278,11 @@ export const NotificationPage: React.FC = () => {
             label={'Add more notifications'}
             size="small"
             onClick={() => history.push(MAIN_ROUTES.ADD_NOTIFICATIONS)}
+          />
+          <Button
+            label={'Administrate observation periods'}
+            size="small"
+            onClick={() => history.push(MAIN_ROUTES.PERIODS)}
           />
         </div>
       </div>

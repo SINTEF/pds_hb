@@ -54,12 +54,6 @@ export const UpdateNotificationPage: React.FC = () => {
     const index = form.index
 
     switch (index) {
-      case 'Edit equipment group/L2':
-        notificationData['equipmentGroupL2'] = form.content
-        break
-      case 'Edit tag':
-        notificationData['tag'] = form.content
-        break
       case 'Edit short text':
         notificationData['shortText'] = form.content
         break
@@ -115,19 +109,6 @@ export const UpdateNotificationPage: React.FC = () => {
                 dynamic={notification.data.notificationNumber}
               />
               <div className={styles.data}>
-                <EditableField
-                  index="Edit equipment group/L2"
-                  content={notification.data.equipmentGroupL2}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
-                <EditableField
-                  index="Edit tag"
-                  content={notification.data.tag}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
-
                 <EditableField
                   index="Edit short text"
                   content={notification.data.shortText}
@@ -223,18 +204,6 @@ export const UpdateNotificationPage: React.FC = () => {
                 <EditableField
                   index="Edit Notification number"
                   content={notification.data.notificationNumber}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
-                <EditableField
-                  index="Edit equipment group/L2"
-                  content={notification.data.equipmentGroupL2}
-                  isAdmin={true}
-                  onSubmit={handleUpdate}
-                />
-                <EditableField
-                  index="Edit tag"
-                  content={notification.data.tag}
                   isAdmin={true}
                   onSubmit={handleUpdate}
                 />

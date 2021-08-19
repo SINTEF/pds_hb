@@ -268,7 +268,7 @@ export const AddCommonFailurePage: React.FC = () => {
         >
           {'< Back'}
         </div>
-        <Title title={'Add common failure'} />
+        <Title title={'Add common cause failure'} />
         <div className={styles.data}>
           <InputField
             variant="standard"
@@ -437,7 +437,10 @@ export const AddCommonFailurePage: React.FC = () => {
         >
           {'< Back'}
         </div>
-        <Title title={'Edit common error: '} dynamic={selectedGroup?.name} />
+        <Title
+          title={'Edit common cause failure: '}
+          dynamic={selectedGroup?.name}
+        />
         <div>Notifications can be removed from group by clicking on them</div>
         <div className={styles.common}>
           <div className={styles.column}>
@@ -512,9 +515,9 @@ export const AddCommonFailurePage: React.FC = () => {
           variant="secondary"
           label="Notifications"
           placeholder={'Search for notifications numbers to add..'}
-          suggestions={notifications.map(
-            (notification) => notification.notificationNumber
-          )}
+          suggestions={notifications
+            .filter((notification) => inSelected[0]?.F2 === notification.F2)
+            .map((notification) => notification.notificationNumber)}
           onValueChanged={() => false}
           onClick={(notification) => {
             setInSelected([
