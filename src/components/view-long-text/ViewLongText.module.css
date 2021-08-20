@@ -1,0 +1,54 @@
+@keyframes modalFade {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.content {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 20px;
+  outline: none;
+  padding: 20px;
+  margin: auto auto;
+  max-width: 60%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation-name: modalFade;
+  animation-duration: 0.3s;
+}
+
+.text {
+  font-size: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-height: 300px;
+  height: fit-content;
+  overflow: auto;
+}
+
+.description {
+  margin-top: 50px;
+  font-size: 15px;
+  color: #bbb;
+}
+
+.icon {
+  display: flex;
+  align-items: baseline;
+  padding-bottom: 10px;
+}
