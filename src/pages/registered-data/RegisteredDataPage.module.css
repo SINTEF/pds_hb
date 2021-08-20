@@ -1,0 +1,57 @@
+.container {
+  align-content: center;
+  padding-right: 70px;
+  padding-bottom: 100px;
+}
+
+.filters {
+  display: flex;
+  position: absolute;
+  top: 200px;
+  gap: 1rem;
+  padding-left: 4px;
+}
+
+.component {
+  margin-top: 100px;
+  display: flex;
+  position: absolute;
+  z-index: 1;
+}
+
+.flex {
+  display: flex;
+}
+
+.table {
+  margin-top: 70px;
+}
+
+.headers {
+  height: 60px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  align-content: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+.button {
+  cursor: pointer;
+  color: #003d65;
+}
+.icon {
+  cursor: pointer;
+}
+.fontSize {
+  font-size: 15px;
+}

@@ -1,4 +1,4 @@
-type TStatus = 'published' | 'unpublished' | 'new'
+type TStatus = 'published' | 'approved' | 'not approved' | 'not reviewed'
 
 export interface IDataInstance {
   _id: string
@@ -10,11 +10,11 @@ export interface IDataInstance {
   T: number
   du: number
   populationSize?: number
-  failureRate?: number
+  failureRates?: number
   comment?: string
   sintefComment?: string
   status?: TStatus
-  /*L3: {
+  L3: {
     measuringPrinciple?: string
     designMountingPrinciple?: string
     actuationPrinciple?: string
@@ -24,6 +24,6 @@ export interface IDataInstance {
     application?: string
     diagnosticsConfiguration?: string
     testMaintenanceMonitoringStrategy?: string
-  }*/
+  }
   created?: Date
 }

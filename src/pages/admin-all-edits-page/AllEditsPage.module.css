@@ -1,9 +1,7 @@
 .container {
-  align-content: center;
-  padding-right: 70px;
-  padding-left: 70px;
+  width: 100%;
+  padding-right: 50px;
   padding-bottom: 100px;
-  padding-top: 70px;
 }
 
 .header {
@@ -14,7 +12,6 @@
 
 .title {
   align-self: center;
-  padding-bottom: 30px;
 }
 
 .tabs {
@@ -43,7 +40,7 @@
   background: transparent;
   font-weight: bold;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 23px;
   margin-left: -50px;
 }
 
@@ -53,7 +50,7 @@
   background: transparent;
   font-weight: bold;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 23px;
 }
 
 .datainstances {
@@ -88,149 +85,4 @@ td {
   cursor: pointer;
   text-decoration: underline;
   color: #01316a;
-}
-
-.loading {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
-}
-
-.checkedicon {
-  color: black;
-}
-
-.notcheckedicon {
-  color: black;
-}
-
-.icon {
-  cursor: pointer;
-}
-
-.comment {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  font-size: smaller;
-  padding: 5px;
-  margin-bottom: 10px;
-  border: black solid 2px;
-  border-radius: 15px;
-}
-
-.commentsContainer {
-  width: 90%;
-  padding-left: 15px;
-  padding-right: 15px;
-  gap: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  max-height: 300px;
-}
-
-.commentContent {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 10px;
-}
-
-.writeComment {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.date {
-  display: flex;
-  flex-direction: row;
-  font-size: 10px;
-  min-width: fit-content;
-  color: gray;
-  font-weight: bold;
-}
-
-.close {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  min-width: 100%;
-  max-height: 30px;
-  cursor: pointer;
-  font-size: 35px;
-  padding-left: 20px;
-}
-
-.smallIcon {
-  cursor: pointer;
-  font-size: 15px;
-  color: gray;
-  max-width: 15px;
-  padding-left: 3px;
-  padding-right: 3px;
-}
-
-.fontSize {
-  font-size: small;
-}
-
-.clickable {
-  font-size: small;
-  text-decoration: underline;
-  color: #003d65;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.notifications {
-  font-size: 15px;
-}
-
-.datainstanceContainer {
-  padding-top: 60px;
-  padding-bottom: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding-bottom: 40px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #003d65;
-}
-
-.dataTable {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 30px;
-}
-
-.buttonContainer {
-  padding-bottom: 20px;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.activeContainer {
-  padding-top: 20px;
 }

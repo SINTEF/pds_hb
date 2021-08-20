@@ -43,7 +43,7 @@
 }
 
 .table {
-  padding-top: 10px;
+  padding-top: 100px;
 }
 
 .responseOk {
@@ -66,6 +66,7 @@
   flex-direction: row;
   align-items: baseline;
   justify-content: left;
+  padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
@@ -87,42 +88,4 @@
   color: #003d65;
   font-size: 34px;
   padding-right: 40px;
-}
-
-.loading {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
-}
-
-.description {
-  display: flex;
-  flex-direction: column;
-  border: 1px;
-  border-color: #000000;
-  border-style: groove;
-  padding: 20px 20px 20px 20px;
-  border-radius: 5px;
-  background-color: white;
-  line-height: 0px;
-  position: relative;
-  min-height: 100px;
-  margin-bottom: 25px;
-}
-
-.titlecontainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-}
-
-.line {
-  border: none;
-  background-color: #000000;
-  height: 1px;
-  width: 60%;
 }
