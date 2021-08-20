@@ -161,7 +161,7 @@ export const BrowseComponentPage: React.FC = () => {
           <div className={[styles.padding, styles.center].join(' ')}>
             <Title
               title={'Failure data on:'}
-              dynamic={componentName.split('+').join(' ')}
+              dynamic={componentName?.split('+').join(' ')}
             />
           </div>
           <div className={styles.titlecontainer}>
