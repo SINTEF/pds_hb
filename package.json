@@ -20,8 +20,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "typescript": "3.8",
-    "use-http": "^1.0.15",
-    "xlsx": "^0.17.0"
+    "use-http": "^1.0.15"
   },
   "scripts": {
     "start": "react-scripts -r @cypress/instrument-cra start",

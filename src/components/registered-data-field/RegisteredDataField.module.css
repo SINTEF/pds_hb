@@ -6,12 +6,12 @@
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 td {
   display: table-cell;
   text-align: left;
   vertical-align: middle;
   align-content: center;
-  padding-left: 30px;
+  padding-left: 50px;
 }

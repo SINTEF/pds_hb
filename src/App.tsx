@@ -20,17 +20,6 @@ import { AdminPage } from './pages/admin-page'
 import { CompanyUserPage } from './pages/company-user-page'
 import { AddComponentPage } from './pages/add-component-page'
 import { RegisterNewUserPage } from './pages/register-new-user/idex'
-import { NotificationPage } from './pages/notification-page'
-import { AddNotificationsPage } from './pages/add-notifications-page'
-import { InventoryPage } from './pages/inventory-page'
-import { AddInventoryPage } from './pages/add-inventory-page'
-import { UpdateNotificationPage } from './pages/update-notification-page'
-import { UpdateInventoryPage } from './pages/update-inventory-page'
-import { AnalysisPage } from './pages/analysis-page'
-import { AddCommonFailurePage } from './pages/add-commonFailure-page'
-import { AddRepeatingFailurePage } from './pages/add-repeatingFailure-page'
-import { PeriodPage } from './pages/period-page'
-import { AllEditsPage } from './pages/admin-all-edits-page'
 
 function App(): JSX.Element {
   const { storedValue: token } = useLocalStorage<string>('token', '')
@@ -86,44 +75,11 @@ function App(): JSX.Element {
             <AuthRoute exact path={MAIN_ROUTES.HOME}>
               <Frontpage />
             </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.NOTIFICATIONS}>
-              <NotificationPage />
-            </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.ADD_NOTIFICATIONS}>
-              <AddNotificationsPage />
-            </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.ADD_COMMON_CAUSE_FAILURE}>
-              <AddCommonFailurePage />
-            </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.ADD_REPEATING_FAILURE}>
-              <AddRepeatingFailurePage />
-            </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.EDIT_NOTIFICATION}>
-              <UpdateNotificationPage />
-            </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.INVENTORY}>
-              <InventoryPage />
-            </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.EDIT_INVENTORY}>
-              <UpdateInventoryPage />
-            </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.ADD_INVENTORY}>
-              <AddInventoryPage />
-            </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.PERIODS}>
-              <PeriodPage />
-            </AuthRoute>
-            <AuthRoute exact path={MAIN_ROUTES.ANALYSIS}>
-              <AnalysisPage />
-            </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.ADD}>
               <AddDataPage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.ADD_COMPONENT}>
               <AddComponentPage />
-            </AuthRoute>
-            <AuthRoute path={MAIN_ROUTES.SEE_ALL_EDITS}>
-              <AllEditsPage />
             </AuthRoute>
             <AuthRoute path={MAIN_ROUTES.NOT_FOUND}>
               <NotFound />

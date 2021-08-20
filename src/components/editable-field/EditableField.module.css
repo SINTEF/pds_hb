@@ -2,17 +2,8 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-}
-
-.standard {
   padding-top: 25px;
 }
-
-.comment {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
 .index {
   font-weight: bold;
   font-size: 24px;
@@ -20,20 +11,11 @@
   white-space: nowrap;
 }
 .content {
+  font-size: 34px;
+  color: #003d65;
   width: 100%;
   padding-left: 15px;
 }
-
-.standard > content {
-  font-size: 34px;
-  color: #003d65;
-}
-
-.comment > content {
-  font-size: 10px;
-  color: black;
-}
-
 .divider {
   margin-top: 5px;
 }
@@ -44,26 +26,9 @@
 .input {
   border: none;
 }
-
 .iconbutton {
   float: right;
 }
-
-.commentIcon {
-  padding-left: 10px;
-}
-
 .icon {
   font-size: 24px;
-}
-
-.textarea {
-  border: none;
-  overflow: hidden;
-  min-height: 100px;
-}
-
-.textarea:focus {
-  border: none;
-  outline: none;
 }

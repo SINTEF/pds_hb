@@ -10,7 +10,6 @@ export interface InputProps {
   icon?: string
   placeholder?: string
   success?: boolean
-  accept?: string
 }
 
 export const InputField: React.FC<InputProps> = ({
@@ -22,7 +21,6 @@ export const InputField: React.FC<InputProps> = ({
   icon,
   placeholder,
   success,
-  accept,
 }: InputProps) => {
   const [hasContent, setHasContent] = useState<boolean>(!!value)
   const handleChanged = (
@@ -78,7 +76,6 @@ export const InputField: React.FC<InputProps> = ({
             type={type}
             placeholder={placeholder}
             onChange={handleChanged}
-            accept={accept}
           ></input>
         ) : null}
         {type !== 'textarea' && type !== 'file' ? (

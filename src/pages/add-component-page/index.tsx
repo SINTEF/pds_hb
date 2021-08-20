@@ -26,9 +26,6 @@ type L3Fields =
   | 'application'
   | 'diagnosticsConfiguration'
   | 'testMaintenanceMonitoringStrategy'
-  | 'size'
-  | 'medium'
-  | 'type'
 
 export interface IComponentInfoForm {
   name: string
@@ -73,9 +70,6 @@ export const AddComponentPage: FC = () => {
       application: '',
       diagnosticsConfiguration: '',
       testMaintenanceMonitoringStrategy: '',
-      size: '',
-      medium: '',
-      type: '',
     },
     data: [],
   })
@@ -90,9 +84,6 @@ export const AddComponentPage: FC = () => {
     application: false,
     diagnosticsConfiguration: false,
     testMaintenanceMonitoringStrategy: false,
-    size: false,
-    medium: false,
-    type: false,
   })
 
   const [L3SearchFieldState, setL3SearchFieldState] = useState<string>('')
@@ -181,9 +172,6 @@ export const AddComponentPage: FC = () => {
         application: '',
         diagnosticsConfiguration: '',
         testMaintenanceMonitoringStrategy: '',
-        size: '',
-        medium: '',
-        type: '',
       },
       data: [],
     })
@@ -198,9 +186,6 @@ export const AddComponentPage: FC = () => {
       application: false,
       diagnosticsConfiguration: false,
       testMaintenanceMonitoringStrategy: false,
-      size: false,
-      medium: false,
-      type: false,
     })
 
     setModalOpen(false)
