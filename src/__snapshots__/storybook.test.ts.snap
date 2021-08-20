@@ -2647,49 +2647,6 @@ exports[`Storyshots pages/Browse Standard 1`] = `
       >
         <div>
           <div
-            className="iconbutton commentIcon"
-          >
-            <div
-              className="react-ripples"
-              onClick={[Function]}
-              style={
-                Object {
-                  "display": "inline-flex",
-                  "overflow": "hidden",
-                  "position": "relative",
-                }
-              }
-            >
-              <i
-                aria-label="edit"
-                className="material-icons"
-                onClick={[Function]}
-                role="button"
-                style={
-                  Object {
-                    "cursor": "pointer",
-                    "fontSize": "smaller",
-                  }
-                }
-              >
-                edit
-              </i>
-              <s
-                style={
-                  Object {
-                    "borderRadius": "50%",
-                    "height": 35,
-                    "opacity": 0,
-                    "pointerEvents": "none",
-                    "position": "absolute",
-                    "transform": "translate(-50%, -50%)",
-                    "width": 35,
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
             className="container comment"
           >
             <div

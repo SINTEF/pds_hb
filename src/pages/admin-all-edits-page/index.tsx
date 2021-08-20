@@ -242,10 +242,6 @@ export const AllEditsPage: React.FC = () => {
     }
   }
 
-  const possibleRelease = () => {
-    return notReviewedState.length > 0 || approvedState.length > 0
-  }
-
   const approvedNotificationExists = () => {
     return approvedState.length > 0
   }
@@ -599,36 +595,300 @@ export const AllEditsPage: React.FC = () => {
         </div>
       </div>
       <hr />
-      {pageState === 'Not Reviewed' &&
-        (possibleRelease() ? (
-          <>
-            {notReviewedState.length > 0 && (
+      {pageState === 'Not Reviewed' && (
+        <>
+          {notReviewedState.length > 0 && (
+            <div className={styles.table}>
+              <div>
+                <table className={styles.headers}>
+                  <tbody>
+                    <tr>
+                      <td>{'Notification number'}</td>
+                      <td>{'Date'}</td>
+                      <td>{'Equipment group L2'}</td>
+                      <td>{'Tag'}</td>
+                      <td>{'Short text (click for longer text)'}</td>
+                      <td> {'Detection method'}</td>
+                      <td> {'F1'}</td>
+                      <td> {'F2'}</td>
+                      <td> {'Failure type'}</td>
+                      <td>{'QA?'}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+          {notReviewedState &&
+            notReviewedState?.map(
+              (
+                edit,
+                idx // type any?
+              ) =>
+                (
+                  <RegisteredDataField key={idx}>
+                    <label className={styles.notifications} key={idx}>
+                      {edit.notificationNumber}
+                    </label>
+                    <label className={styles.notifications} key={idx}>
+                      {new Date(
+                        edit.detectionDate as Date
+                      ).toLocaleDateString()}
+                    </label>
+                    <label className={styles.notifications} key={idx}>
+                      {edit.equipmentGroupL2}
+                    </label>
+                    <label className={styles.notifications} key={idx}>
+                      {edit.tag}
+                    </label>
+                    <label
+                      onClick={() => {
+                        setOpen(!open)
+                        setSelectedNotificationNumber(edit.notificationNumber)
+                      }}
+                      className={styles.clickable}
+                    >
+                      {edit.shortText}
+                      {edit.notificationNumber ===
+                        selectedNotificationNumber && (
+                        <ViewLongText
+                          title="Long text"
+                          text={
+                            notReviewedState.filter(
+                              (notification) =>
+                                notification.notificationNumber ===
+                                selectedNotificationNumber
+                            )[0].longText ?? ''
+                          }
+                          isOpen={open}
+                        />
+                      )}
+                    </label>
+                    <label className={styles.notifications}>
+                      {edit.detectionMethod}
+                    </label>
+                    <label className={styles.notifications}>{edit.F1}</label>
+                    <label className={styles.notifications}>{edit.F2}</label>
+                    <label className={styles.notifications}>
+                      {edit.failureType}
+                    </label>
+                    {edit.qualityStatus ? (
+                      <i className={'material-icons ' + styles.checkedicon}>
+                        {'check'}
+                      </i>
+                    ) : (
+                      <i className={'material-icons ' + styles.notcheckedicon}>
+                        {'clear'}
+                      </i>
+                    )}
+                    <i
+                      className={'material-icons ' + styles.icon}
+                      onClick={() => {
+                        setSelectedNotificationNumber(edit.notificationNumber)
+                        setViewComment(true)
+                      }}
+                    >
+                      {'comment'}
+                      {edit.notificationNumber ===
+                        selectedNotificationNumber && (
+                        <CommentSection isOpen={viewComment}>
+                          <i
+                            className={'material-icons ' + styles.close}
+                            onClick={() => setClose(!close)}
+                          >
+                            {'clear'}
+                          </i>
+                          <Title
+                            title={'comments on: '}
+                            dynamic={selectedNotificationNumber}
+                          />
+                          <div className={styles.commentsContainer}>
+                            {comments
+                              .filter(
+                                (comment) =>
+                                  comment.notificationNumber ===
+                                  selectedNotificationNumber
+                              )
+                              .map((content, key) => (
+                                <div
+                                  key={key}
+                                  className={styles.commentContent}
+                                >
+                                  {content.created && (
+                                    <div className={styles.date}>
+                                      {content.author +
+                                        ': ' +
+                                        new Date(
+                                          content.created
+                                        ).toDateString()}
+                                      <div
+                                        className={
+                                          'material-icons ' + styles.smallIcon
+                                        }
+                                        onClick={() =>
+                                          deleteComment(content._id)
+                                        }
+                                      >
+                                        {'delete'}
+                                      </div>
+                                    </div>
+                                  )}
+                                  <div className={styles.comment} key={key}>
+                                    <EditableField
+                                      type={'comment'}
+                                      content={content.content}
+                                      isAdmin={true}
+                                      onSubmit={(value) => {
+                                        commentPut(content._id, {
+                                          content: value.content,
+                                        })
+                                        setComments(
+                                          comments.filter((comment) =>
+                                            comment._id === content._id
+                                              ? {
+                                                  ...comment,
+                                                  content: value.content,
+                                                }
+                                              : comment
+                                          )
+                                        )
+                                      }}
+                                    ></EditableField>
+                                  </div>
+                                </div>
+                              ))}
+                          </div>
+                          <div className={styles.writeComment}>
+                            <InputField
+                              variant="standard"
+                              label="New"
+                              type="text"
+                              value={newComment ?? ''}
+                              onValueChanged={(value) =>
+                                setNewComment(value as string)
+                              }
+                            />
+                            <i
+                              className={'material-icons ' + styles.icon}
+                              onClick={() => {
+                                if (newComment !== '') {
+                                  postComment(newComment)
+                                }
+                                setNewComment('')
+                              }}
+                            >
+                              {'send'}
+                            </i>
+                          </div>
+                        </CommentSection>
+                      )}
+                    </i>
+                    <div
+                      className={styles.approve}
+                      onClick={() => {
+                        approveEdit(edit._id)
+                      }}
+                      key={idx}
+                    >
+                      {'Approve'}
+                    </div>
+                    <div
+                      className={styles.remove}
+                      onClick={() => {
+                        disApproveEdit(edit._id)
+                      }}
+                      key={idx}
+                    >
+                      {'Disapprove'}
+                    </div>
+                  </RegisteredDataField>
+                ) ?? []
+            )}
+        </>
+      )}
+      {pageState === 'Approved' &&
+        (approvedNotificationExists() ? (
+          <div>
+            <div className={styles.datainstanceContainer}>
               <div className={styles.table}>
                 <div>
                   <table className={styles.headers}>
                     <tbody>
                       <tr>
-                        <td>{'Notification number'}</td>
-                        <td>{'Date'}</td>
+                        <td>{'Facility'}</td>
                         <td>{'Equipment group L2'}</td>
-                        <td>{'Tag'}</td>
-                        <td>{'Short text (click for longer text)'}</td>
-                        <td> {'Detection method'}</td>
-                        <td> {'F1'}</td>
-                        <td> {'F2'}</td>
-                        <td> {'Failure type'}</td>
-                        <td>{'QA?'}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{'Number of du'}</td>
+                        <td>{'T'}</td>
+                        <td> {'Start year'}</td>
+                        <td> {'End year'}</td>
+                        <td> {'Population size'}</td>
+                        <td> {'Failure rate'}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-            )}
-            {notReviewedState &&
-              notReviewedState?.map(
+              {approvedState &&
+                generateDataInstances(approvedState).map((data, key) => (
+                  <RegisteredDataField key={key}>
+                    <label className={styles.notifications} key={key}>
+                      {data.facility}
+                    </label>
+                    <label className={styles.notifications} key={key}>
+                      {data.component}
+                    </label>
+                    <label className={styles.notifications} key={key}>
+                      {data.du}
+                    </label>
+                    <label className={styles.notifications} key={key}>
+                      {data.T + ' · 10^6'}
+                    </label>
+                    <label className={styles.notifications} key={key}>
+                      {new Date(data.startDate).getFullYear()}
+                    </label>
+                    <label className={styles.notifications} key={key}>
+                      {new Date(data.endDate).getFullYear()}
+                    </label>
+                    <label className={styles.notifications} key={key}>
+                      {data.populationSize}
+                    </label>
+                    <label className={styles.notifications} key={key}>
+                      {data.failureRate}
+                    </label>
+                  </RegisteredDataField>
+                ))}
+            </div>
+            <div className={styles.info}>
+              The data ready for publish (above) is based on the notifications
+              below:
+            </div>
+            <div className={styles.table}>
+              <div>
+                <table className={styles.headers}>
+                  <tbody>
+                    <tr>
+                      <td>{'Notification number'}</td>
+                      <td>{'Date'}</td>
+                      <td>{'Equipment group L2'}</td>
+                      <td>{'Tag'}</td>
+                      <td>{'Short text'}</td>
+                      <td> {'Detection method'}</td>
+                      <td> {'F1'}</td>
+                      <td> {'F2'}</td>
+                      <td> {'Failure type'}</td>
+                      <td>{'QA?'}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            {approvedState &&
+              approvedState?.map(
                 (
                   edit,
                   idx // type any?
@@ -649,28 +909,8 @@ export const AllEditsPage: React.FC = () => {
                       <label className={styles.notifications} key={idx}>
                         {edit.tag}
                       </label>
-                      <label
-                        onClick={() => {
-                          setOpen(!open)
-                          setSelectedNotificationNumber(edit.notificationNumber)
-                        }}
-                        className={styles.clickable}
-                      >
+                      <label className={styles.notifications}>
                         {edit.shortText}
-                        {edit.notificationNumber ===
-                          selectedNotificationNumber && (
-                          <ViewLongText
-                            title="Long text"
-                            text={
-                              notReviewedState.filter(
-                                (notification) =>
-                                  notification.notificationNumber ===
-                                  selectedNotificationNumber
-                              )[0].longText ?? ''
-                            }
-                            isOpen={open}
-                          />
-                        )}
                       </label>
                       <label className={styles.notifications}>
                         {edit.detectionMethod}
@@ -691,117 +931,8 @@ export const AllEditsPage: React.FC = () => {
                           {'clear'}
                         </i>
                       )}
-                      <i
-                        className={'material-icons ' + styles.icon}
-                        onClick={() => {
-                          setSelectedNotificationNumber(edit.notificationNumber)
-                          setViewComment(true)
-                        }}
-                      >
-                        {'comment'}
-                        {edit.notificationNumber ===
-                          selectedNotificationNumber && (
-                          <CommentSection isOpen={viewComment}>
-                            <i
-                              className={'material-icons ' + styles.close}
-                              onClick={() => setClose(!close)}
-                            >
-                              {'clear'}
-                            </i>
-                            <Title
-                              title={'comments on: '}
-                              dynamic={selectedNotificationNumber}
-                            />
-                            <div className={styles.commentsContainer}>
-                              {comments
-                                .filter(
-                                  (comment) =>
-                                    comment.notificationNumber ===
-                                    selectedNotificationNumber
-                                )
-                                .map((content, key) => (
-                                  <div
-                                    key={key}
-                                    className={styles.commentContent}
-                                  >
-                                    {content.created && (
-                                      <div className={styles.date}>
-                                        {content.author +
-                                          ': ' +
-                                          new Date(
-                                            content.created
-                                          ).toDateString()}
-                                        <div
-                                          className={
-                                            'material-icons ' + styles.smallIcon
-                                          }
-                                          onClick={() =>
-                                            deleteComment(content._id)
-                                          }
-                                        >
-                                          {'delete'}
-                                        </div>
-                                      </div>
-                                    )}
-                                    <div className={styles.comment} key={key}>
-                                      <EditableField
-                                        type={'comment'}
-                                        content={content.content}
-                                        isAdmin={true}
-                                        onSubmit={(value) => {
-                                          commentPut(content._id, {
-                                            content: value.content,
-                                          })
-                                          setComments(
-                                            comments.filter((comment) =>
-                                              comment._id === content._id
-                                                ? {
-                                                    ...comment,
-                                                    content: value.content,
-                                                  }
-                                                : comment
-                                            )
-                                          )
-                                        }}
-                                      ></EditableField>
-                                    </div>
-                                  </div>
-                                ))}
-                            </div>
-                            <div className={styles.writeComment}>
-                              <InputField
-                                variant="standard"
-                                label="New"
-                                type="text"
-                                value={newComment ?? ''}
-                                onValueChanged={(value) =>
-                                  setNewComment(value as string)
-                                }
-                              />
-                              <i
-                                className={'material-icons ' + styles.icon}
-                                onClick={() => {
-                                  if (newComment !== '') {
-                                    postComment(newComment)
-                                  }
-                                  setNewComment('')
-                                }}
-                              >
-                                {'send'}
-                              </i>
-                            </div>
-                          </CommentSection>
-                        )}
-                      </i>
-                      <div
-                        className={styles.approve}
-                        onClick={() => {
-                          approveEdit(edit._id)
-                        }}
-                        key={idx}
-                      >
-                        {'Approve'}
-                      </div>
+
+                      <div key={idx}>{}</div>
                       <div
                         className={styles.remove}
                         onClick={() => {
@@ -814,168 +945,10 @@ export const AllEditsPage: React.FC = () => {
                     </RegisteredDataField>
                   ) ?? []
               )}
-          </>
-        ) : (
-          <div className={styles.centerInfo}>
-            {
-              "Seems like the PDS users don't experience any failures these days!"
-            }
           </div>
-        ))}
-      {pageState === 'Approved' &&
-        (possibleRelease() ? (
-          approvedNotificationExists() ? (
-            <>
-              <div className={styles.datainstanceContainer}>
-                <div className={styles.table}>
-                  <div>
-                    <table className={styles.headers}>
-                      <tbody>
-                        <tr>
-                          <td>{'Facility'}</td>
-                          <td>{'Equipment group L2'}</td>
-                          <td>{'Number of du'}</td>
-                          <td>{'T'}</td>
-                          <td> {'Start year'}</td>
-                          <td> {'End year'}</td>
-                          <td> {'Population size'}</td>
-                          <td> {'Failure rate'}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                {approvedState &&
-                  generateDataInstances(approvedState).map((data, key) => (
-                    <RegisteredDataField key={key}>
-                      <label className={styles.notifications} key={key}>
-                        {data.facility}
-                      </label>
-                      <label className={styles.notifications} key={key}>
-                        {data.component}
-                      </label>
-                      <label className={styles.notifications} key={key}>
-                        {data.du}
-                      </label>
-                      <label className={styles.notifications} key={key}>
-                        {data.T + ' · 10^6'}
-                      </label>
-                      <label className={styles.notifications} key={key}>
-                        {data.startDate.getFullYear()}
-                      </label>
-                      <label className={styles.notifications} key={key}>
-                        {data.endDate.getFullYear()}
-                      </label>
-                      <label className={styles.notifications} key={key}>
-                        {data.populationSize}
-                      </label>
-                      <label className={styles.notifications} key={key}>
-                        {data}
-                      </label>
-                    </RegisteredDataField>
-                  ))}
-              </div>
-              <div className={styles.info}>
-                The data ready for publish (above) is based on the notifications
-                below:
-              </div>
-              <div className={styles.table}>
-                <div>
-                  <table className={styles.headers}>
-                    <tbody>
-                      <tr>
-                        <td>{'Notification number'}</td>
-                        <td>{'Date'}</td>
-                        <td>{'Equipment group L2'}</td>
-                        <td>{'Tag'}</td>
-                        <td>{'Short text'}</td>
-                        <td> {'Detection method'}</td>
-                        <td> {'F1'}</td>
-                        <td> {'F2'}</td>
-                        <td> {'Failure type'}</td>
-                        <td>{'QA?'}</td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              {approvedState &&
-                approvedState?.map(
-                  (
-                    edit,
-                    idx // type any?
-                  ) =>
-                    (
-                      <RegisteredDataField key={idx}>
-                        <label className={styles.notifications} key={idx}>
-                          {edit.notificationNumber}
-                        </label>
-                        <label className={styles.notifications} key={idx}>
-                          {new Date(
-                            edit.detectionDate as Date
-                          ).toLocaleDateString()}
-                        </label>
-                        <label className={styles.notifications} key={idx}>
-                          {edit.equipmentGroupL2}
-                        </label>
-                        <label className={styles.notifications} key={idx}>
-                          {edit.tag}
-                        </label>
-                        <label className={styles.notifications}>
-                          {edit.shortText}
-                        </label>
-                        <label className={styles.notifications}>
-                          {edit.detectionMethod}
-                        </label>
-                        <label className={styles.notifications}>
-                          {edit.F1}
-                        </label>
-                        <label className={styles.notifications}>
-                          {edit.F2}
-                        </label>
-                        <label className={styles.notifications}>
-                          {edit.failureType}
-                        </label>
-                        {edit.qualityStatus ? (
-                          <i className={'material-icons ' + styles.checkedicon}>
-                            {'check'}
-                          </i>
-                        ) : (
-                          <i
-                            className={
-                              'material-icons ' + styles.notcheckedicon
-                            }
-                          >
-                            {'clear'}
-                          </i>
-                        )}
-
-                        <div key={idx}>{}</div>
-                        <div
-                          className={styles.remove}
-                          onClick={() => {
-                            disApproveEdit(edit._id)
-                          }}
-                          key={idx}
-                        >
-                          {'Disapprove'}
-                        </div>
-                      </RegisteredDataField>
-                    ) ?? []
-                )}
-            </>
-          ) : (
-            <div className={styles.centerInfo}>
-              {'There are no approved edits at the moment...'}
-            </div>
-          )
         ) : (
           <div className={styles.centerInfo}>
-            {
-              "Seems like the PDS users don't experience any failures these days!"
-            }
+            {'There are no approved edits at the moment...'}
           </div>
         ))}
       {pageState === 'Publish' && (

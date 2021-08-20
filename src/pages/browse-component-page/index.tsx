@@ -176,7 +176,7 @@ export const BrowseComponentPage: React.FC = () => {
                   ? description
                   : 'There is no description available for this equipment group'
               }
-              isAdmin={true}
+              isAdmin={userContext.user?.userGroupType === 'admin'}
               onSubmit={(value) => updateComponent(value.content)}
             />
           </div>
