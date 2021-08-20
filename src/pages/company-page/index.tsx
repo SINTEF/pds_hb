@@ -7,7 +7,6 @@ import { COMPANY_SUB_ROUTES, SUB_ROUTES } from '../../routes/routes.constants'
 import { CompanyUserPage } from '../company-user-page'
 import { ManageFacilitiesPage } from '../manage-facilities-page'
 import { ManageStaffmembersPage } from '../manage-staffmembers-page'
-import { RegisteredDataPage } from '../registered-data'
 import { UpdateDataPage } from '../update-data-page'
 
 import styles from './CompanyPage.module.css'
@@ -62,11 +61,11 @@ export const CompanyPage: React.FC = () => {
           <Route
             exact
             path={[
-              path + COMPANY_SUB_ROUTES.REG_DATA + SUB_ROUTES.VIEW,
+              path + COMPANY_SUB_ROUTES.MANAGE_FAC + SUB_ROUTES.VIEW,
               path + SUB_ROUTES.VIEW,
             ]}
           >
-            <RegisteredDataPage />
+            <ManageFacilitiesPage />
           </Route>
           <Route path={path + COMPANY_SUB_ROUTES.MANAGE_FAC}>
             <ManageFacilitiesPage />

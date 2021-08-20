@@ -6,18 +6,21 @@ import MAIN_ROUTES from '../../routes/routes.constants'
 import styles from './BrowseComponentPage.module.css'
 
 import { Title } from '../../components/title'
-import { TextBox } from '../../components/text-box'
 import { Table } from '../../components/table'
 import { UserContext } from '../../utils/context/userContext'
 import { IUserContext } from '../../models/user'
 import { IDataInstance } from '../../models/datainstance'
 import { APIResponse } from '../../models/api-response'
 import Loader from 'react-loader-spinner'
+import { IComponent } from '../../models/component'
+import { EditableField } from '../../components/editable-field'
 
 export const BrowseComponentPage: React.FC = () => {
   const { componentName } = useParams<{ componentName: string }>()
   const userContext = useContext(UserContext) as IUserContext
   const [failuredataState, setFailuredata] = useState<IDataInstance[]>([])
+  const [description, setDescription] = useState<string>('')
+  const [component, setComponent] = useState<IComponent[]>([])
 
   const headers = [
     'Source',
@@ -29,6 +32,63 @@ export const BrowseComponentPage: React.FC = () => {
     'Failure rate (per 10^6 hours)',
   ]
   const history = useHistory()
+
+  const {
+    get: componentGet,
+    put: componentPut,
+    post: componentPost,
+    response: componentResponse,
+  } = useFetch<APIResponse<IComponent>>(`/components`, (options) => {
+    options.cachePolicy = CachePolicies.NO_CACHE
+    return options
+  })
+
+  useEffect(() => {
+    const getComponentDescription = async () => {
+      const dataRequest = `/?equipmentGroupL2=${componentName}`
+      const componentData: APIResponse<IComponent[]> = await componentGet(
+        dataRequest
+      )
+      if (componentResponse.ok) setComponent(componentData.data)
+    }
+    getComponentDescription()
+  }, [componentName, componentGet, componentResponse, userContext.user])
+
+  const getComponents = async () => {
+    const dataRequest = `/?equipmentGroupL2=${componentName}`
+    const componentData: APIResponse<IComponent[]> = await componentGet(
+      dataRequest
+    )
+    if (componentResponse.ok) {
+      setComponent(componentData.data)
+      setDescription(componentData?.data[0]?.description)
+    }
+  }
+
+  const postComponent = async (content: string): Promise<void> => {
+    const form = {
+      equipmentGroupL2: componentName,
+      description: content,
+    }
+    await componentPost(form)
+    if (componentResponse.ok) {
+      getComponents()
+    }
+  }
+
+  const updateComponent = (newDescription: string) => {
+    if (component.length > 0) {
+      componentPut(component[0]._id, {
+        description: newDescription,
+      })
+    } else {
+      postComponent(newDescription)
+    }
+  }
+
+  useEffect(() => {
+    getComponents()
+  }, [componentGet, componentPut, componentResponse, userContext.user])
 
   const {
     get: datainstanceGet,
@@ -104,20 +164,20 @@ export const BrowseComponentPage: React.FC = () => {
               dynamic={componentName.split('+').join(' ')}
             />
           </div>
-          <div className={styles.description}>
-            <TextBox
-              title="Description"
-              content={'test' as string}
-              size="large"
-              isAdmin={userContext.user?.userGroupType === 'admin'}
-            />
+          <div className={styles.titlecontainer}>
+            {'Description'}
+            <hr className={styles.line} />
           </div>
-          <div className={styles.padding}>
-            <TextBox
-              title="Definition of DU"
-              content={'test' as string} // definition of DU not in db
-              size="large"
-              isAdmin={userContext.user?.userGroupType === 'admin'}
+          <div className={styles.description}>
+            <EditableField
+              type={'comment'}
+              content={
+                description
+                  ? description
+                  : 'There is no description available for this equipment group'
+              }
+              isAdmin={true}
+              onSubmit={(value) => updateComponent(value.content)}
             />
           </div>
           <div className={[styles.center, styles.padding].join(' ')}>

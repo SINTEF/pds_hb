@@ -371,7 +371,12 @@ export const AllEditsPage: React.FC = () => {
         failureRate:
           Math.round(
             (getNumberOfDU(facility, eqGroup, data) /
-              calculateAggregatedOperationTime(facility, eqGroup) +
+              (Math.round(
+                (calculateAggregatedOperationTime(facility, eqGroup) +
+                  Number.EPSILON) *
+                  1000
+              ) /
+                1000) +
               Number.EPSILON) *
               100
           ) / 100,
