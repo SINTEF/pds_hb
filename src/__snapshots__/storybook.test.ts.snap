@@ -345,7 +345,7 @@ exports[`Storyshots Components/editable-field Editmode 1`] = `
 exports[`Storyshots Components/editable-field Not Admin 1`] = `
 <div>
   <div
-    className="container"
+    className="container standard"
   >
     <div
       className="container"
@@ -356,7 +356,7 @@ exports[`Storyshots Components/editable-field Not Admin 1`] = `
         Index: 
       </label>
       <label
-        className="content"
+        className="content standard"
       >
         123456
       </label>
@@ -373,7 +373,7 @@ exports[`Storyshots Components/editable-field Not Admin 1`] = `
 exports[`Storyshots Components/editable-field Viewmode 1`] = `
 <div>
   <div
-    className="container"
+    className="container standard"
   >
     <div
       className="container"
@@ -384,7 +384,7 @@ exports[`Storyshots Components/editable-field Viewmode 1`] = `
         Index: 
       </label>
       <label
-        className="content"
+        className="content standard"
       >
         123456
       </label>
@@ -1083,103 +1083,6 @@ exports[`Storyshots Pages/Read Standard 1`] = `
 </div>
 `;
 
-exports[`Storyshots RegisteredData Standard 1`] = `
-<div
-  className="container"
->
-  <label
-    className="button"
-    onClick={[Function]}
-  >
-     &lt; Back
-  </label>
-  <div
-    className="center"
-  >
-    <div
-      className="container"
-    >
-      <div
-        className="titlecontainer"
-      >
-        <div
-          className="title notdynamic"
-        />
-      </div>
-      <hr
-        className="line"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="filters padding"
-    >
-      <div
-        className="open"
-      >
-        <div
-          className="container"
-        >
-          <button
-            className="button standard"
-            onClick={[Function]}
-          >
-            <div>
-              Component
-            </div>
-            <i
-              className="material-icons icon"
-            >
-              expand_more
-            </i>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      className="table"
-    >
-      <div>
-        <table
-          className="headers"
-        >
-          <tbody>
-            <tr>
-              <td>
-                Creation date
-              </td>
-              <td>
-                T
-              </td>
-              <td>
-                PopulationSize
-              </td>
-              <td>
-                DU
-              </td>
-              <td>
-                Status
-              </td>
-              <td>
-                 
-                Comment
-              </td>
-              <td>
-                 
-                SINTEF comment
-              </td>
-              <td />
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots RegisteredDataField Standard 1`] = `
 <table
   className="container"
@@ -1222,11 +1125,11 @@ exports[`Storyshots Search field Primary Search Field 1`] = `
     className="field"
   >
     <input
-      defaultValue=""
       onChange={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       placeholder="Search for component..."
+      type="text"
       value=""
     />
     <i
@@ -1252,11 +1155,11 @@ exports[`Storyshots Search field Secondary Search Field 1`] = `
       :
     </label>
     <input
-      defaultValue=""
       onChange={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       placeholder="Set a component..."
+      type="text"
       value=""
     />
   </div>
@@ -1432,6 +1335,7 @@ exports[`Storyshots Switch Checked 1`] = `
 >
   <input
     checked={true}
+    className="blue"
     type="checkbox"
   />
   <span
@@ -1447,6 +1351,7 @@ exports[`Storyshots Switch Large 1`] = `
   className="switch large"
 >
   <input
+    className="blue"
     type="checkbox"
   />
   <span
@@ -1462,6 +1367,7 @@ exports[`Storyshots Switch Small 1`] = `
   className="switch small"
 >
   <input
+    className="blue"
     type="checkbox"
   />
   <span
@@ -1477,6 +1383,7 @@ exports[`Storyshots Switch Standard 1`] = `
   className="switch medium"
 >
   <input
+    className="blue"
     type="checkbox"
   />
   <span
@@ -1830,6 +1737,98 @@ exports[`Storyshots Title Standard 1`] = `
 </div>
 `;
 
+exports[`Storyshots pages/AddCommonFailurePage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="back"
+    onClick={[Function]}
+  >
+    &lt; Back
+  </div>
+  <div
+    className="title"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Add or edit repeating failure
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div
+    className="container firstpagebuttoncontainer"
+  >
+    <div
+      className="menu"
+    >
+      <div
+        className="addButton"
+      >
+        <div
+          className="react-ripples"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "inline-flex",
+              "overflow": "hidden",
+              "position": "relative",
+            }
+          }
+        >
+          <button
+            className="button medium standard"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": undefined,
+              }
+            }
+            type="button"
+          >
+            Add repeating failure
+            <i
+              className="material-icons icon"
+              style={
+                Object {
+                  "fontSize": "",
+                }
+              }
+            >
+              chevron_right
+            </i>
+          </button>
+          <s
+            style={
+              Object {
+                "borderRadius": "50%",
+                "height": 35,
+                "opacity": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+                "transform": "translate(-50%, -50%)",
+                "width": 35,
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots pages/AddCompanyPage Standard 1`] = `
 <div
   className="container"
@@ -2160,11 +2159,11 @@ exports[`Storyshots pages/AddComponentPage Standard 1`] = `
         className="field"
       >
         <input
-          defaultValue=""
           onChange={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           placeholder="Search..."
+          type="text"
           value=""
         />
         <i
@@ -2308,7 +2307,7 @@ exports[`Storyshots pages/AddComponentPage Standard 1`] = `
 
 exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
 <div
-  className="facilitycontainer"
+  className="container"
 >
   <div
     className="container"
@@ -2319,7 +2318,7 @@ exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
       <div
         className="title notdynamic"
       >
-        Choose Facility
+        Add failure data
       </div>
     </div>
     <hr
@@ -2327,26 +2326,473 @@ exports[`Storyshots pages/AddDataPagePage Standard 1`] = `
     />
   </div>
   <div
-    className="secondary SearchField"
-    onBlur={[Function]}
+    className="data"
   >
     <div
-      className="field"
+      className="standard  "
     >
-      <label>
-        Facility
-        :
-      </label>
-      <input
-        defaultValue=""
-        onChange={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        placeholder="Choose facility to register data to..."
-        value=""
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Component"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Component
+        </label>
+        <input
+          id="Component"
+          onChange={[Function]}
+          placeholder="Choose component..."
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Source"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Source
+        </label>
+        <input
+          id="Source"
+          onChange={[Function]}
+          placeholder="Provide a source..."
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="DU value"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          DU value
+        </label>
+        <input
+          id="DU value"
+          onChange={[Function]}
+          placeholder="Set a DU-value..."
+          type="number"
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="T (in 10^6 hours)"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          T (in 10^6 hours)
+        </label>
+        <input
+          id="T (in 10^6 hours)"
+          onChange={[Function]}
+          placeholder="Set T..."
+          type="number"
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Start period"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Start period
+        </label>
+        <input
+          id="Start period"
+          onChange={[Function]}
+          type="date"
+          value={2021-08-20T09:44:26.967Z}
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="End period"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          End period
+        </label>
+        <input
+          id="End period"
+          onChange={[Function]}
+          type="date"
+          value={2021-08-20T09:44:26.967Z}
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Population size"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Population size
+        </label>
+        <input
+          id="Population size"
+          onChange={[Function]}
+          placeholder="Set a population size..."
+          type="number"
+        />
+      </div>
+    </div>
+    <div
+      className="standard  "
+    >
+      <div
+        className="field"
+      >
+        <label
+          className=""
+          htmlFor="Failure rate (per 10^6 hours)"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Failure rate (per 10^6 hours)
+        </label>
+        <input
+          id="Failure rate (per 10^6 hours)"
+          onChange={[Function]}
+          placeholder="Set Failure rate..."
+          type="number"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/AddInventoryPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="title"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Add inventory data
+        </div>
+      </div>
+      <hr
+        className="line"
       />
     </div>
-    <ul />
+  </div>
+  <div
+    className="container firstpagebuttoncontainer"
+  >
+    <div
+      className="primary  "
+    >
+      <div
+        className="primaryContent"
+      >
+        <label
+          className="labelTuck"
+          htmlFor="Upload file"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Upload file
+        </label>
+        <input
+          accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          id="Upload file"
+          onChange={[Function]}
+          type="file"
+        />
+      </div>
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Add inventory data manually
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/AddNotificationsPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="back"
+    onClick={[Function]}
+  >
+    &lt; Back
+  </div>
+  <div
+    className="title"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Add notification
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div
+    className="container firstpagebuttoncontainer"
+  >
+    <div
+      className="primary  "
+    >
+      <div
+        className="primaryContent"
+      >
+        <label
+          className="labelTuck"
+          htmlFor="Upload file"
+          style={
+            Object {
+              "alignSelf": "",
+            }
+          }
+        >
+          Upload file
+        </label>
+        <input
+          accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          id="Upload file"
+          onChange={[Function]}
+          type="file"
+        />
+      </div>
+    </div>
+    <div
+      className="react-ripples"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-flex",
+          "overflow": "hidden",
+          "position": "relative",
+        }
+      }
+    >
+      <button
+        className="button medium standard"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+        type="button"
+      >
+        Add notification manually
+        <i
+          className="material-icons icon"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        >
+          chevron_right
+        </i>
+      </button>
+      <s
+        style={
+          Object {
+            "borderRadius": "50%",
+            "height": 35,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "transform": "translate(-50%, -50%)",
+            "width": 35,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/AnalysisPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="center"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Select equipment group
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+    <div
+      className="searchfield"
+    >
+      <div
+        className="secondary SearchField"
+        onBlur={[Function]}
+      >
+        <div
+          className="field"
+        >
+          <label>
+            Choose equipment group
+            :
+          </label>
+          <input
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            placeholder="Search for equipment group..."
+            type="text"
+            value=""
+          />
+        </div>
+        <ul />
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -2406,7 +2852,9 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           >
             <div
               className="title notdynamic"
-            />
+            >
+              Failure data on:
+            </div>
           </div>
           <hr
             className="line"
@@ -2414,95 +2862,73 @@ exports[`Storyshots pages/Browse Standard 1`] = `
         </div>
       </div>
       <div
-        className="description"
+        className="titlecontainer"
       >
-        <div
-          className="container large"
-        >
-          <div
-            className="head"
-          >
-            <div
-              className="titlecontainer"
-            >
-              Description
-              <hr
-                className="line"
-              />
-            </div>
-          </div>
-          <p />
-        </div>
+        Description
+        <hr
+          className="line"
+        />
       </div>
       <div
-        className="padding"
+        className="description"
       >
-        <div
-          className="container large"
-        >
+        <div>
           <div
-            className="head"
+            className="iconbutton commentIcon"
           >
             <div
-              className="titlecontainer"
+              className="react-ripples"
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": "inline-flex",
+                  "overflow": "hidden",
+                  "position": "relative",
+                }
+              }
             >
-              Definition of DU
-              <hr
-                className="line"
+              <i
+                aria-label="edit"
+                className="material-icons"
+                onClick={[Function]}
+                role="button"
+                style={
+                  Object {
+                    "cursor": "pointer",
+                    "fontSize": "smaller",
+                  }
+                }
+              >
+                edit
+              </i>
+              <s
+                style={
+                  Object {
+                    "borderRadius": "50%",
+                    "height": 35,
+                    "opacity": 0,
+                    "pointerEvents": "none",
+                    "position": "absolute",
+                    "transform": "translate(-50%, -50%)",
+                    "width": 35,
+                  }
+                }
               />
             </div>
           </div>
-          <p />
-        </div>
-      </div>
-      <div>
-        <div
-          className="container"
-        >
           <div
-            className="container"
+            className="container comment"
           >
-            <label
-              className="index"
+            <div
+              className="container"
             >
-              Date of revision: 
-            </label>
-            <label
-              className="content"
-            >
-              
-            </label>
+              <label
+                className="content comment"
+              >
+                There is no description available for this equipment group
+              </label>
+            </div>
           </div>
-        </div>
-        <div>
-          <hr
-            className="divider"
-          />
-        </div>
-      </div>
-      <div>
-        <div
-          className="container"
-        >
-          <div
-            className="container"
-          >
-            <label
-              className="index"
-            >
-              Remarks: 
-            </label>
-            <label
-              className="content"
-            >
-              
-            </label>
-          </div>
-        </div>
-        <div>
-          <hr
-            className="divider"
-          />
         </div>
       </div>
       <div
@@ -2527,24 +2953,11 @@ exports[`Storyshots pages/Browse Standard 1`] = `
       </div>
       <div>
         <div
-          className="filters padding"
-        />
-        <div
           className="table"
         >
           <div
             className="DUcontainer"
           >
-            <div
-              className="lambdaDU"
-            >
-              λDU (Per 10^6 hours): 
-            </div>
-            <div
-              className="lambdaDUnumber"
-            >
-              NaN
-            </div>
             <div
               className="lambdaDU"
             >
@@ -2561,12 +2974,6 @@ exports[`Storyshots pages/Browse Standard 1`] = `
           >
             <thead>
               <tr>
-                <th>
-                  Failure rates
-                </th>
-                <th>
-                  Company
-                </th>
                 <th>
                   Source
                 </th>
@@ -2586,7 +2993,7 @@ exports[`Storyshots pages/Browse Standard 1`] = `
                   Population size
                 </th>
                 <th>
-                  Comment
+                  Failure rate (per 10^6 hours)
                 </th>
               </tr>
             </thead>
@@ -2607,21 +3014,28 @@ exports[`Storyshots pages/ChooseComponentPagePage Standard 1`] = `
   className="container"
 >
   <div
-    className="container"
+    className="title"
   >
     <div
-      className="titlecontainer"
+      className="container"
     >
       <div
-        className="title notdynamic"
+        className="titlecontainer"
       >
-        Choose equipment group
+        <div
+          className="title notdynamic"
+        >
+          Choose equipment group
+        </div>
       </div>
+      <hr
+        className="line"
+      />
     </div>
-    <hr
-      className="line"
-    />
   </div>
+  <div
+    className="components"
+  />
 </div>
 `;
 
@@ -2629,10 +3043,12 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
 <div
   className="frontpage"
 >
-  <div
-    className="title"
-  >
-    PDS Datahandbook
+  <div>
+    <div
+      className="title"
+    >
+      PDS Datahandbook
+    </div>
   </div>
   <div
     className="footer"
@@ -2647,6 +3063,172 @@ exports[`Storyshots pages/Frontpage General Frontpage 1`] = `
     >
       Email: sintef@post.no
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/InventoryPage Standard 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="center"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="titlecontainer"
+      >
+        <div
+          className="title notdynamic"
+        >
+          Inventory
+        </div>
+      </div>
+      <hr
+        className="line"
+      />
+    </div>
+  </div>
+  <div
+    className="menucontainer"
+  >
+    <div
+      className="filtercontainer"
+    >
+      <div
+        className="open"
+      >
+        <div
+          className="container"
+        >
+          <button
+            className="button standard"
+            onClick={[Function]}
+          >
+            <div>
+              Equipment group L2
+            </div>
+            <i
+              className="material-icons icon"
+            >
+              expand_more
+            </i>
+          </button>
+        </div>
+      </div>
+      <div
+        className="small SearchField"
+        onBlur={[Function]}
+      >
+        <div
+          className="field"
+        >
+          <input
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            placeholder="Search for tags..."
+            type="text"
+            value=""
+          />
+        </div>
+        <ul />
+      </div>
+    </div>
+    <div
+      className="buttoncontainer"
+    >
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <button
+          className="button small standard"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": undefined,
+            }
+          }
+          type="button"
+        >
+          Add more inventory
+          <i
+            className="material-icons icon"
+            style={
+              Object {
+                "fontSize": "",
+              }
+            }
+          >
+            chevron_right
+          </i>
+        </button>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="inventorycontainer"
+  >
+    <div
+      className="table"
+    >
+      <div>
+        <table
+          className="headers"
+        >
+          <tbody>
+            <tr>
+              <td>
+                Facility
+              </td>
+              <td>
+                Equipment group L2
+              </td>
+              <td>
+                Tag
+              </td>
+              <td>
+                Tag description
+              </td>
+              <td>
+                Vendor
+              </td>
+              <td>
+                Equipment model
+              </td>
+              <td>
+                L3
+              </td>
+              <td />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div />
   </div>
 </div>
 `;
@@ -2758,11 +3340,11 @@ exports[`Storyshots pages/Mange facilities Standard 1`] = `
           :
         </label>
         <input
-          defaultValue=""
           onChange={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           placeholder="Enter name of facility..."
+          type="text"
           value=""
         />
       </div>
@@ -2798,29 +3380,593 @@ exports[`Storyshots pages/Not found (404) Standard 1`] = `
 </div>
 `;
 
-exports[`Storyshots pages/OwnDataPage Standard 1`] = `
+exports[`Storyshots pages/NotificationPage Standard 1`] = `
 <div
   className="container"
 >
   <div
-    className="container"
+    className="center"
   >
     <div
-      className="titlecontainer"
+      className="container"
     >
       <div
-        className="title notdynamic"
+        className="titlecontainer"
       >
-        Choose equipment group
+        <div
+          className="title notdynamic"
+        >
+          Notifications
+        </div>
       </div>
+      <hr
+        className="line"
+      />
     </div>
-    <hr
-      className="line"
-    />
   </div>
   <div
-    className="components"
-  />
+    className="statisticsContainer"
+  >
+    <div
+      className="statisticsText"
+    >
+      Total  number of notifications:
+    </div>
+    <div
+      className="statisticsNumber"
+    >
+      0
+    </div>
+  </div>
+  <div
+    className="menucontainer"
+  >
+    <div
+      className="filtercontainer"
+    >
+      <div
+        className="open"
+      >
+        <div
+          className="container"
+        >
+          <button
+            className="button standard"
+            onClick={[Function]}
+          >
+            <div>
+              Equipment group L2
+            </div>
+            <i
+              className="material-icons icon"
+            >
+              expand_more
+            </i>
+          </button>
+        </div>
+      </div>
+      <div
+        className="open"
+      >
+        <div
+          className="container"
+        >
+          <button
+            className="button standard"
+            onClick={[Function]}
+          >
+            <div>
+              Failure Type
+            </div>
+            <i
+              className="material-icons icon"
+            >
+              expand_more
+            </i>
+          </button>
+        </div>
+      </div>
+      <div
+        className="small SearchField"
+        onBlur={[Function]}
+      >
+        <div
+          className="field"
+        >
+          <input
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            placeholder="Search for tags..."
+            type="text"
+            value=""
+          />
+        </div>
+        <ul />
+      </div>
+      <div
+        className="open"
+      >
+        <div
+          className="container"
+        >
+          <button
+            className="button standard"
+            onClick={[Function]}
+          >
+            <div>
+              Year
+            </div>
+            <i
+              className="material-icons icon"
+            >
+              expand_more
+            </i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="buttoncontainer"
+    >
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <button
+          className="button small standard"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": undefined,
+            }
+          }
+          type="button"
+        >
+          Add more notifications
+          <i
+            className="material-icons icon"
+            style={
+              Object {
+                "fontSize": "",
+              }
+            }
+          >
+            chevron_right
+          </i>
+        </button>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+      <div
+        className="react-ripples"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "inline-flex",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <button
+          className="button small standard"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": undefined,
+            }
+          }
+          type="button"
+        >
+          Administrate observation periods
+          <i
+            className="material-icons icon"
+            style={
+              Object {
+                "fontSize": "",
+              }
+            }
+          >
+            chevron_right
+          </i>
+        </button>
+        <s
+          style={
+            Object {
+              "borderRadius": "50%",
+              "height": 35,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "transform": "translate(-50%, -50%)",
+              "width": 35,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="notificationscontainer"
+  >
+    <div>
+      <div>
+        <div
+          className="table"
+        >
+          <div>
+            <table
+              className="headers"
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    Notification number
+                  </td>
+                  <td>
+                    Date
+                  </td>
+                  <td>
+                    Equipment group L2
+                  </td>
+                  <td>
+                    Tag
+                  </td>
+                  <td>
+                    Short text (click for longer text)
+                  </td>
+                  <td>
+                    Work order
+                  </td>
+                  <td>
+                    Activity text
+                  </td>
+                  <td>
+                     
+                    Detection method
+                  </td>
+                  <td>
+                     
+                    F1
+                  </td>
+                  <td>
+                     
+                    F2
+                  </td>
+                  <td>
+                     
+                    Failure type
+                  </td>
+                  <td>
+                    QA?
+                  </td>
+                  <td />
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/UpdateInventoryPage Standard 1`] = `
+<div>
+  <div
+    className="loading"
+  >
+    <div
+      aria-busy="true"
+      className=""
+      style={Object {}}
+    >
+      <svg
+        aria-label="audio-loading"
+        fill="grey"
+        height={80}
+        viewBox="0 0 105 105"
+        width={80}
+      >
+        <circle
+          cx="12.5"
+          cy="12.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="0s"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="12.5"
+          cy="52.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="100ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="52.5"
+          cy="12.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="300ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="52.5"
+          cy="52.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="600ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="92.5"
+          cy="12.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="800ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="92.5"
+          cy="52.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="400ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="12.5"
+          cy="92.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="700ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="52.5"
+          cy="92.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="500ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="92.5"
+          cy="92.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="200ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots pages/UpdateNotificationPage Standard 1`] = `
+<div>
+  <div
+    className="loading"
+  >
+    <div
+      aria-busy="true"
+      className=""
+      style={Object {}}
+    >
+      <svg
+        aria-label="audio-loading"
+        fill="grey"
+        height={80}
+        viewBox="0 0 105 105"
+        width={80}
+      >
+        <circle
+          cx="12.5"
+          cy="12.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="0s"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="12.5"
+          cy="52.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="100ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="52.5"
+          cy="12.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="300ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="52.5"
+          cy="52.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="600ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="92.5"
+          cy="12.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="800ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="92.5"
+          cy="52.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="400ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="12.5"
+          cy="92.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="700ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="52.5"
+          cy="92.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="500ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+        <circle
+          cx="92.5"
+          cy="92.5"
+          r={12.5}
+        >
+          <animate
+            attributeName="fill-opacity"
+            begin="200ms"
+            calcMode="linear"
+            dur="1s"
+            repeatCount="indefinite"
+            values="1;.2;1"
+          />
+        </circle>
+      </svg>
+    </div>
+  </div>
 </div>
 `;
 
