@@ -5,7 +5,6 @@ import { MenuButton } from '../../components/menu-button'
 import { SideMenu } from '../../components/side-menu'
 import { ADMIN_SUB_ROUTES, SUB_ROUTES } from '../../routes/routes.constants'
 import { AddCompanyPage } from '../admin-add-company'
-import { AllEditsPage } from '../admin-all-edits-page'
 import { ApproveUsersPage } from '../admin-apporve-users'
 import { UpdateDataPage } from '../update-data-page'
 
@@ -21,12 +20,6 @@ export const AdminPage: React.FC = () => {
         <div className={styles.menu}>
           <SideMenu>
             <>
-              <MenuButton
-                onClick={() =>
-                  history.push(url + ADMIN_SUB_ROUTES.SEE_ALL_EDITS)
-                }
-                label="See all edits"
-              />
               <MenuButton
                 onClick={() =>
                   history.push(url + ADMIN_SUB_ROUTES.APPROVE_USERS)
@@ -57,9 +50,6 @@ export const AdminPage: React.FC = () => {
           </Route>
           <Route path={path + ADMIN_SUB_ROUTES.ADD_COMPANY}>
             <AddCompanyPage />
-          </Route>
-          <Route path={[path + ADMIN_SUB_ROUTES.SEE_ALL_EDITS, path]}>
-            <AllEditsPage />
           </Route>
         </Switch>
       </div>

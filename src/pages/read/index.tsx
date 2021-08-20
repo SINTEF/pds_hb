@@ -135,7 +135,7 @@ export const Read: React.FC = () => {
         <div>
           <span className={styles.error}>
             {error
-              ? "Hmm, that didn't go according to plan. Try again later!"
+              ? "Hmm, that didn't go according to plan. Try refreshing the page!"
               : ''}
           </span>
           <Loader height={24} color="grey" type="Grid" visible={loading} />

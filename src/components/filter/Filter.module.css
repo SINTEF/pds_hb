@@ -1,3 +1,7 @@
+:root {
+  --max-width: 200px;
+}
+
 .open {
   display: flex;
   flex-direction: column;
@@ -6,12 +10,14 @@
   background-color: #ffffff;
   outline: black solid 4px;
   height: fit-content;
+  max-width: var(--max-width);
+  margin-top: 4px;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  max-width: 237px;
+  max-width: var(--max-width);
   padding-left: 0px;
   margin-top: -10px;
 }
