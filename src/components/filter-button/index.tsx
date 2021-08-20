@@ -10,6 +10,8 @@ export interface FilterButtonProps {
 
   open: boolean
 
+  width?: string
+
   onClick: () => void
 }
 export const FilterButton: React.FC<FilterButtonProps> = ({
@@ -18,7 +20,9 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
   icon2 = 'expand_less',
   onClick,
   open,
+  width,
 }: FilterButtonProps) => {
+  document.documentElement.style.setProperty(`--width`, `${width}`)
   return (
     <div className={styles.container}>
       <button

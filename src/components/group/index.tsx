@@ -1,10 +1,8 @@
 import React from 'react'
 
 import styles from './Group.module.css'
-import { IGroup } from '../equipment-group-form'
-
 export interface GroupProps {
-  group: IGroup
+  group: string
 
   icon?: string
 
@@ -18,9 +16,9 @@ export const Group: React.FC<GroupProps> = ({ group, onClick }: GroupProps) => {
         <img
           className={styles.image}
           src={'https://www.svgrepo.com/show/131030/question-mark.svg'}
-          alt={`Icon for group ${group.name}`}
+          alt={`Icon for group ${group}`}
         />
-        {group.name.replace('-', ' ')}
+        {group}
       </div>
     </div>
   )

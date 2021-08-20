@@ -1,0 +1,143 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding-bottom: 200px;
+  padding-top: 30px;
+  width: auto;
+}
+
+.buttoncontainer {
+  height: 220px;
+  padding-top: 200px;
+}
+
+.firstpagebuttoncontainer {
+  height: 150px;
+  padding-top: 100px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 90%;
+}
+
+.button {
+  display: flex;
+  width: 90%;
+  padding-top: 60px;
+  justify-content: flex-end;
+}
+
+.inventorycontainer {
+  align-content: center;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-bottom: 100px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.fileupload {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 75px;
+  padding-top: 10px;
+}
+
+.headers {
+  height: 60px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.fontSize {
+  font-size: medium;
+}
+
+.clickable {
+  font-size: medium;
+  text-decoration: underline;
+  color: #003d65;
+  cursor: pointer;
+}
+
+.back {
+  align-self: flex-start;
+  padding-left: 10px;
+  color: #003d65;
+  cursor: pointer;
+  padding-top: 50px;
+}
+
+.title {
+  padding-top: 79px;
+}
+
+.previewpagebuttoncontainer {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 40px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.l3 {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.l3Description {
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.l3Value {
+  font-size: 25px;
+}
+
+.l3Container {
+  width: 90%;
+  padding-left: 15px;
+  padding-right: 15px;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: 300px;
+}
+
+.infotext {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 30px;
+  color: red;
+  font-size: 20px;
+}

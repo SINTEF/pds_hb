@@ -11,6 +11,18 @@ const MAIN_ROUTES = {
   NOT_FOUND: '*',
   ADMIN_COMPANY: '/admin-company',
   REGISTER: '/register',
+  NOTIFICATIONS: '/notifications',
+  ADD_NOTIFICATIONS: '/notifications/add-notifications',
+  EDIT_NOTIFICATION: '/notifications/:notificationId',
+  INVENTORY: '/inventory',
+  ADD_INVENTORY: '/inventory/add-inventory',
+  EDIT_INVENTORY: '/inventory/edit-inventory/:inventoryInstanceId',
+  ANALYSIS: '/analysis',
+  ADD_NOTIFICATION_GROUP: '/notifications/add-notification-group',
+  ADD_COMMON_CAUSE_FAILURE: '/notifications/add-common-cause-failure',
+  ADD_REPEATING_FAILURE: '/notifications/add-repeating-failure',
+  PERIODS: '/periods',
+  SEE_ALL_EDITS: '/edits',
 }
 
 export const COMPANY_SUB_ROUTES = {

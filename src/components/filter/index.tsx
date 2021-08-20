@@ -16,13 +16,15 @@ export const Filter: React.FC<FilterProps> = ({
   onClick,
 }: FilterProps) => {
   const [isClicked, setMode] = useState<boolean>(false)
-
   return (
     <div className={styles.open}>
       <FilterButton
         label={category}
         onClick={() => setMode(!isClicked)}
         open={isClicked}
+        width={window
+          .getComputedStyle(document.documentElement)
+          .getPropertyValue('--max-width')}
       ></FilterButton>
 
       {isClicked && (

@@ -1,0 +1,211 @@
+.container {
+  align-content: center;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-bottom: 100px;
+  padding-top: 70px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.headers {
+  height: 60px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.fontSize {
+  font-size: medium;
+}
+
+.clickable {
+  font-size: medium;
+  text-decoration: underline;
+  color: #003d65;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.notificationscontainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 240px;
+  padding-bottom: 40px;
+  padding-top: 10px;
+  width: 90%;
+  position: center;
+  z-index: -1;
+}
+
+.menucontainer {
+  padding-bottom: 100px;
+  margin-top: 160px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: absolute;
+  position: left;
+  gap: 20px;
+  width: 90%;
+  z-index: -1;
+  align-items: baseline;
+}
+
+.buttoncontainer {
+  display: flex;
+  justify-content: right;
+}
+
+.filtercontainer {
+  display: flex;
+  justify-content: left;
+  gap: 40px;
+}
+
+.statisticsText {
+  font-weight: bold;
+  padding-right: 10px;
+  font-size: 20px;
+  bottom: 0;
+}
+
+.statisticsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  padding-bottom: 20px;
+  width: fit-content;
+}
+
+.statisticsNumber {
+  color: #003d65;
+  font-size: 28px;
+  padding-right: 40px;
+}
+
+.searchfield {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  width: 100%;
+  z-index: 0.3;
+}
+
+.back {
+  align-self: flex-start;
+  padding-left: 100px;
+  color: #003d65;
+  cursor: pointer;
+}
+
+.periodselector {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+  gap: 10px;
+  width: 200px;
+}
+
+.description {
+  display: flex;
+  font-size: 15px;
+  width: fit-content;
+}
+
+.common {
+  border: 4px solid #000000;
+  table-layout: fixed;
+  width: 100% -20px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+.commonColor {
+  background-color: #003d65;
+}
+
+.repeatingColor {
+  background-color: hsl(0, 100%, 20%);
+}
+
+.commonFailureName {
+  font-size: 20px;
+  color: white;
+  padding-bottom: 15px;
+  padding-left: 10px;
+}
+
+.commonbutton {
+  display: flex;
+  padding-top: 20px;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.commondescription {
+  display: flex;
+  font-size: 15px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  width: fit-content;
+  color: white;
+}
+
+.checkedicon {
+  color: black;
+}
+
+.notcheckedicon {
+  color: black;
+}
+
+.L3FiltersContainer {
+  display: flex;
+  flex-direction: row;
+  padding-top: 75px;
+  gap: 20px;
+  position: absolute;
+  z-index: 0.2;
+  padding-left: 5px;
+}

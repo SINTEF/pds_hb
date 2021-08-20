@@ -9,6 +9,8 @@ export interface SwitchProps {
   handleChange: () => void
 
   size?: 'small' | 'medium' | 'large'
+
+  color?: 'blue' | 'red' | 'green'
 }
 
 export const Switch: React.FC<SwitchProps> = ({
@@ -16,6 +18,7 @@ export const Switch: React.FC<SwitchProps> = ({
   disabled,
   handleChange,
   size = 'medium',
+  color = 'blue',
 }: SwitchProps) => {
   return (
     <label className={[styles.switch, styles[size]].join(' ')}>
@@ -24,6 +27,7 @@ export const Switch: React.FC<SwitchProps> = ({
         onChange={handleChange}
         checked={checked}
         disabled={disabled}
+        className={styles[color]}
       ></input>
       <span className={[styles.slider, styles.round].join(' ')}> </span>
     </label>
